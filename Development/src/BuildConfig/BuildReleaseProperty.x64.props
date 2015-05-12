@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="BuildSettings.VC90.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>BuildReleaseProperty</_PropertySheetDisplayName>
+    <OutDir>$(OutPath)\$(Configuration)\</OutDir>
+    <IntDir>$(IntermediatePath)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalOptions>/Zm256  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\external\libs.x64\$(Configuration);..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

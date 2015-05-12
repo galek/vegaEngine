@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="BuildSettings.VC90.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>BuildReleaseProperty</_PropertySheetDisplayName>
+    <OutDir>$(OutPath)\$(Configuration)\</OutDir>
+    <IntDir>$(IntermediatePath)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalOptions>/Zm256  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\TBB\include;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\Bullet\src;$(SolutionDir)\..\external\Bullet\src\BulletCollision\BroadphaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionDispatch;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionShapes;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Gimpact;$(SolutionDir)\..\external\Bullet\src\BulletCollision\NarrowPhaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Character;$(SolutionDir)\..\external\Bullet\src\BulletCollision\ConstraintSolver;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Dynamics;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Featherstone;$(SolutionDir)\..\external\Bullet\src\BulletCollision\MLCPSolvers;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Vehicle;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\GpuSoftBodySolvers;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\out;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuNarrowPhaseCollisionTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuSampleTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\;$(SolutionDir)\..\external\Bullet\src\BulletSoftBody\;$(SolutionDir)\..\external\Bullet\src\LinearMath\;$(SolutionDir)\..\external\Bullet\src\vectormath\;$(SolutionDir)\..\external\Bullet\src\MiniCL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\external\libs\$(Configuration);..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

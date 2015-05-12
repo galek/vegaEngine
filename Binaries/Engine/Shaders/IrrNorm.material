@@ -1,0 +1,791 @@
+vertex_program IrrNormVP  hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormVP
+	target vs_3_0	
+}
+
+vertex_program IrrNormInterpVP  hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormInterpVP
+	target vs_3_0	
+}
+
+fragment_program IrrNormFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormFP
+	target ps_3_0	
+}
+
+fragment_program IrrNormNoAlbedoFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormNoAlbedoFP
+	target ps_3_0		
+}
+
+fragment_program IrrNormLinFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormLinFP
+	target ps_3_0		
+}
+
+fragment_program IrrNormLinNoAlbedoFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormLinNoAlbedoFP
+	target ps_3_0	
+}
+
+fragment_program IrrNormConstFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormConstFP
+	target ps_3_0		
+}
+
+fragment_program IrrNormConstNoAlbedoFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormConstNoAlbedoFP
+	target ps_3_0		
+}
+
+fragment_program IrrNormInterpFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormInterpFP
+	target ps_3_0
+}
+
+fragment_program IrrNormInterpNoAlbedoFP hlsl
+{
+	source IrrNorm.hlsl
+	entry_point IrrNormInterpNoAlbedoFP
+	target ps_3_0
+}
+
+
+
+//-----------------------------------------------------------------
+material IrrNorm
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormFP			
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 
+				
+			}
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s1
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s5
+				texture defaultCoeff.png
+				
+			}
+			// Coeff4
+			texture_unit Coeff4
+			{
+				//sampler s6
+				texture defaultCoeff.png
+				
+			}
+			// Coeff5
+			texture_unit Coeff5
+			{
+				//sampler s7
+				texture defaultCoeff.png
+				
+			}
+		}
+	}
+}
+
+material IrrNormNoAlbedo
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			texture_unit NormalMap
+			{
+				//sampler s0
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			// Coeff4
+			texture_unit Coeff4
+			{
+				//sampler s5
+				texture defaultCoeff.png
+				
+			}
+			// Coeff5
+			texture_unit Coeff5
+			{
+				//sampler s6
+				texture defaultCoeff.png
+				
+			}
+
+		}
+	}
+}
+
+
+material IrrNormLin
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormLinFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 
+				
+			}
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s1
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s5
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+}
+
+material IrrNormLinNoAlbedo
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormLinNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s0
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+}
+
+
+material IrrNormConst
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormConstFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}		
+		}
+	}
+}
+
+material IrrNormConstNoAlbedo
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormConstNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+		
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s0
+				texture defaultCoeff.png
+				
+			}	
+		}
+	}
+}
+
+
+
+material IrrNormLOD
+{
+	//set LOD parameters here as in IrrNorm.hlsl
+	lod_distances 50 90 
+
+	technique
+	{
+\\we use only the linear version - is sufficient in almost all cases
+		lod_index 0
+		
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormLinFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 
+				
+			}
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s1
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s5
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+	technique
+	{
+		lod_index 1
+		
+		pass
+		{
+			vertex_program_ref IrrNormInterpVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+				param_named_auto toWorld world_matrix
+				param_named_auto camWorld camera_position
+				
+				
+			}
+			fragment_program_ref IrrNormInterpFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 
+				
+			}
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s1
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s5
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+	
+	technique
+	{
+		lod_index 2
+			
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormConstFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				texture defaultAlbedo.png 	
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}		
+		}
+	}
+}
+
+
+material IrrNormLODNoAlbedo
+{
+	//set LOD parameters here as in IrrNorm.hlsl
+	lod_distances 50 90   
+
+	technique
+	{
+\\we use only the linear version - is sufficient in almost all cases
+		lod_index 0 
+		
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormLinNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s0
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+	
+	
+	
+	technique
+	{
+		lod_index 1
+		
+		pass
+		{
+			vertex_program_ref IrrNormInterpVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+				param_named_auto toWorld world_matrix
+				param_named_auto camWorld camera_position
+				
+				
+			}
+			fragment_program_ref IrrNormInterpNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Normal map
+			texture_unit NormalMap
+			{
+				//sampler s0
+				texture defaultNormal.png
+				
+			}
+			
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s1
+				texture defaultCoeff.png
+				
+			}
+			// Coeff1
+			texture_unit Coeff1
+			{
+				//sampler s2
+				texture defaultCoeff.png
+				
+			}
+			// Coeff2
+			texture_unit Coeff2
+			{
+				//sampler s3
+				texture defaultCoeff.png
+				
+			}
+			// Coeff3
+			texture_unit Coeff3
+			{
+				//sampler s4
+				texture defaultCoeff.png
+				
+			}
+			
+		}
+	}
+	
+	
+	technique
+	{
+		lod_index 2
+		
+		pass
+		{
+			vertex_program_ref IrrNormVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref IrrNormConstNoAlbedoFP
+			{
+
+			}
+			
+			depth_write on
+			alpha_rejection greater_equal 128
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+		
+			// Coeff0
+			texture_unit Coeff0
+			{
+				//sampler s0
+				texture defaultCoeff.png
+				
+			}	
+		}
+	}
+}
+

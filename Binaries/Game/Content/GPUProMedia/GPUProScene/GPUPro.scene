@@ -1,0 +1,139 @@
+<scene formatVersion="1.0" upAxis="y" unitsPerMeter="100" unitType="centimeters" minOgreVersion="1.6" ogreMaxVersion="2.2.7" author="OgreMax Scene Exporter (www.ogremax.com)" application="Maya">
+    <environment>
+        <colourAmbient r="0.329412" g="0.329412" b="0.329412" />
+        <colourBackground r="0" g="0" b="0" />
+        <clipping near="0" far="100000" />
+    </environment>
+    <nodes>
+        <node name="Ground">
+            <position x="-1.50196" y="-1.79724" z="-0.429665" />
+            <scale x="3.871" y="3.871" z="3.871" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="GroundShape" castShadows="true" receiveShadows="true" meshFile="GroundShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Dirt" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Statue">
+            <position x="1.31732" y="-1.94004" z="-13.3743" />
+            <scale x="1.47203" y="1.47203" z="1.47203" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="StatueShape" castShadows="true" receiveShadows="true" meshFile="StatueShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Fischi" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="NormalTest">
+            <position x="-40.4433" y="0.497839" z="-23.5742" />
+            <scale x="1.49274" y="1.49274" z="1.49274" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="NormalTestShape" castShadows="true" receiveShadows="true" meshFile="NormalTestShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Test" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="SunLight">
+            <position x="-84.9922" y="14.3631" z="-16.2824" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="-0.64385" qy="0.0553841" qz="-0.760714" qw="-0.0608599" />
+            <light name="SunLightShape" visible="true" type="directional" castShadows="true" power="0.7">
+                <colourDiffuse r="1" g="0.916" b="0.596" />
+                <colourSpecular r="0" g="0" b="0" />
+                <lightAttenuation constant="1" linear="0" quadric="0" />
+            </light>
+        </node>
+        <node name="RockWall">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RockWallShape" castShadows="true" receiveShadows="true" meshFile="RockWallShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Rock1" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RocksRight">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RocksRightShape" castShadows="true" receiveShadows="true" meshFile="RocksRightShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Rock1" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="StatueCave">
+            <position x="-11.8899" y="0.918533" z="21.0642" />
+            <scale x="1.47203" y="1.47203" z="1.47203" />
+            <rotation qx="0" qy="0.727021" qz="0" qw="0.686615" />
+            <entity name="StatueCaveShape" castShadows="true" receiveShadows="true" meshFile="StatueCaveShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Fischi" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Lava">
+            <position x="-11.5617" y="1.45431" z="15.496" />
+            <scale x="1.30224" y="2.70453" z="1.30224" />
+            <rotation qx="-0.00192789" qy="6.22722e-005" qz="-0.0322838" qw="0.999477" />
+            <entity name="LavaShape" castShadows="true" receiveShadows="true" meshFile="LavaShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="LavaGlow" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="RocksLeft">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="RocksLeftShape" castShadows="true" receiveShadows="true" meshFile="RocksLeftShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Rock1" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Artefact">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="ArtefactShape" castShadows="true" receiveShadows="true" meshFile="ArtefactShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="BlueGlow" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="HoleLight">
+            <position x="89.482" y="-15.4972" z="53.3634" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="1" qy="0" qz="0" qw="-4.37114e-008" />
+            <light name="HoleLightShape" visible="true" type="point" castShadows="true" power="100">
+                <colourDiffuse r="0.4" g="0.647059" b="1" />
+                <colourSpecular r="0" g="0" b="0" />
+                <lightAttenuation range="1" constant="1" linear="0" quadric="0" />
+            </light>
+        </node>
+        <node name="Hut">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="HutShape" castShadows="true" receiveShadows="true" meshFile="HutShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Rock1" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="DeepCave">
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <rotation qx="0" qy="0" qz="0" qw="1" />
+            <entity name="DeepCaveShape" castShadows="true" receiveShadows="true" meshFile="DeepCaveShape.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Rock1" />
+                </subentities>
+            </entity>
+        </node>
+    </nodes>
+</scene>

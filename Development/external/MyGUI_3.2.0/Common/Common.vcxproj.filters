@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{719476f2-0433-4b9b-8a2b-fee39a5976a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\OIS">
+      <UniqueIdentifier>{761554dd-923a-4952-990f-d61adcb53d47}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Base\Ogre\BaseManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\OIS\InputManager.cpp">
+      <Filter>Base\OIS</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\OIS\PointerManager.cpp">
+      <Filter>Base\OIS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Ogre\BaseManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Ogre\RenderBox\RenderBoxScene.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Ogre\RenderBox\RenderBox.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\OIS\InputManager.h">
+      <Filter>Base\OIS</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\OIS\PointerManager.h">
+      <Filter>Base\OIS</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

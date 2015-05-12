@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="sys">
+      <UniqueIdentifier>{558edc9d-4ae7-47a9-b85c-03e2212a9d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win32">
+      <UniqueIdentifier>{0963664d-6752-4e56-9cb7-beba447313d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\xgPublic\win32\xg.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\xgPublic\sys\alarm_t.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgPublic\sys\xgstring.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgPublic\sys\xml.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgPublic\win32\resource.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\xgPublic\sys\xgstring.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgPublic\sys\xml.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgPublic\win32\alarm_t.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

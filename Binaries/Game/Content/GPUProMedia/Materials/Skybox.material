@@ -1,0 +1,55 @@
+vertex_program SkyboxVP  hlsl
+{
+	source Skybox.hlsl
+	entry_point SkyboxVP
+	target vs_3_0	
+}
+
+
+fragment_program SkyboxFP hlsl
+{
+	source Skybox.hlsl
+	entry_point SkyboxFP
+	target ps_3_0	
+}
+
+fragment_program SkyboxHDRFP hlsl
+{
+	source Skybox.hlsl
+	entry_point SkyboxHDRFP
+	target ps_3_0	
+}
+
+
+material CampusSky
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref SkyboxVP
+			{
+				param_named_auto worldViewProj worldviewproj_matrix
+			}
+			fragment_program_ref SkyboxFP			
+			{
+
+			}
+			
+			depth_write on
+			lighting off
+			cull_hardware clockwise 
+			cull_software back
+
+			// Albedo map
+			texture_unit AlbedoMap 
+			{ 
+				//sampler s0
+				cubic_texture campus_cross.png separateUV 
+				tex_address_mode clamp
+				
+			}
+			
+		}
+	}
+}

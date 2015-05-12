@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>6</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Tegra-Android">
+      <Configuration>Release</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6A281BA9-5C0E-4595-B1A7-792DCF5D2558}</ProjectGuid>
+    <RootNamespace>NxOgreLight</RootNamespace>
+    <ProjectName>BulletPhysics</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidArch>armv7-a</AndroidArch>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidAPILevel>android-17</AndroidAPILevel>
+    <AndroidArch>armv7-a</AndroidArch>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildReleaseProperty.VC90.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildReleaseProperty.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildDebugProperty.VC90.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildDebugProperty.x64.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <Import Project="..\BuildConfig\BuildSettings.VC90.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30128.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Binaries\lib\Binaries.win32_d\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Binaries\lib\Binaries.win32\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>..\..\Intermediate\x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\..\..\Binaries\lib\Binaries.win64\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\Binaries\lib\Binaries.win64_d\$(Configuration)\</OutDir>
+    <IntDir>..\..\Intermediate\x64\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.a</TargetExt>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\PhysX;$(SolutionDir)\..\external\PhysX\Include;$(SolutionDir)\..\external\PhysX\Include\characterkinematic;$(SolutionDir)\..\external\PhysX\Include\cloth;$(SolutionDir)\..\external\PhysX\Include\extensions;$(SolutionDir)\..\external\PhysX\Include\cooking;$(SolutionDir)\..\external\PhysX\Include\common;$(SolutionDir)\..\external\PhysX\Include\vehicle;$(SolutionDir)\..\external\PhysX\Include\RepXUpgrader;$(SolutionDir)\..\external\PhysX\Include\RepX;$(SolutionDir)\..\external\PhysX\Include\pxtask;$(SolutionDir)\..\external\PhysX\Include\pvd;$(SolutionDir)\..\external\PhysX\Include\physxvisualdebuggersdk;$(SolutionDir)\..\external\PhysX\Include\physxprofilesdk;$(SolutionDir)\..\external\PhysX\Include\particles;$(SolutionDir)\..\external\PhysX\Include\gpu;$(SolutionDir)\..\external\PhysX\Include\geometry;$(SolutionDir)\..\external\PhysX\Include\foundation;$(SolutionDir)\..\external\PhysX\Source\foundation\Include;$(SolutionDir)\..\external\TBB\include;$(SolutionDir)\..\external\Bullet\src;$(SolutionDir)\..\external\Bullet\src\BulletCollision\BroadphaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionDispatch;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionShapes;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Gimpact;$(SolutionDir)\..\external\Bullet\src\BulletCollision\NarrowPhaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Character;$(SolutionDir)\..\external\Bullet\src\BulletCollision\ConstraintSolver;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Dynamics;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Featherstone;$(SolutionDir)\..\external\Bullet\src\BulletCollision\MLCPSolvers;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Vehicle;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\GpuSoftBodySolvers;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\out;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuNarrowPhaseCollisionTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuSampleTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\;$(SolutionDir)\..\external\Bullet\src\BulletSoftBody\;$(SolutionDir)\..\external\Bullet\src\LinearMath\;$(SolutionDir)\..\external\Bullet\src\vectormath\;$(SolutionDir)\..\external\Bullet\src\MiniCL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExpandAttributedSource>true</ExpandAttributedSource>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>FoundationDEBUG.lib;PhysX3CommonDEBUG.lib;PhysX3CharacterKinematic.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;LowLevel.lib;GeomUtilsDEBUG.lib;SceneQuery.lib;SimulationController.lib;PxTask.lib;PhysX3ExtensionsDEBUG.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OGRE_LIB)\$(Configuration);$(PHYSX_DIR)\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;ConvexDecomposition_vs2010_debug.lib;LinearMath_vs2010_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\PhysX;$(SolutionDir)\..\external\PhysX\Include;$(SolutionDir)\..\external\PhysX\Include\characterkinematic;$(SolutionDir)\..\external\PhysX\Include\cloth;$(SolutionDir)\..\external\PhysX\Include\extensions;$(SolutionDir)\..\external\PhysX\Include\cooking;$(SolutionDir)\..\external\PhysX\Include\common;$(SolutionDir)\..\external\PhysX\Include\vehicle;$(SolutionDir)\..\external\PhysX\Include\RepXUpgrader;$(SolutionDir)\..\external\PhysX\Include\RepX;$(SolutionDir)\..\external\PhysX\Include\pxtask;$(SolutionDir)\..\external\PhysX\Include\pvd;$(SolutionDir)\..\external\PhysX\Include\physxvisualdebuggersdk;$(SolutionDir)\..\external\PhysX\Include\physxprofilesdk;$(SolutionDir)\..\external\PhysX\Include\particles;$(SolutionDir)\..\external\PhysX\Include\gpu;$(SolutionDir)\..\external\PhysX\Include\geometry;$(SolutionDir)\..\external\PhysX\Include\foundation;$(SolutionDir)\..\external\PhysX\Source\foundation\Include;$(SolutionDir)\..\external\TBB\include;$(SolutionDir)\..\external\Bullet\src;$(SolutionDir)\..\external\Bullet\src\BulletCollision\BroadphaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionDispatch;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionShapes;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Gimpact;$(SolutionDir)\..\external\Bullet\src\BulletCollision\NarrowPhaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Character;$(SolutionDir)\..\external\Bullet\src\BulletCollision\ConstraintSolver;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Dynamics;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Featherstone;$(SolutionDir)\..\external\Bullet\src\BulletCollision\MLCPSolvers;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Vehicle;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\GpuSoftBodySolvers;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\out;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuNarrowPhaseCollisionTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuSampleTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\;$(SolutionDir)\..\external\Bullet\src\BulletSoftBody\;$(SolutionDir)\..\external\Bullet\src\LinearMath\;$(SolutionDir)\..\external\Bullet\src\vectormath\;$(SolutionDir)\..\external\Bullet\src\MiniCL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExpandAttributedSource>true</ExpandAttributedSource>
+      <AssemblerOutput>All</AssemblerOutput>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>FoundationDEBUG.lib;PhysX3CommonDEBUG.lib;PhysX3CharacterKinematic.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;LowLevel.lib;GeomUtilsDEBUG.lib;SceneQuery.lib;SimulationController.lib;PxTask.lib;PhysX3ExtensionsDEBUG.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OGRE_LIB)\$(Configuration);$(PHYSX_DIR)\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_x64_debug.lib;BulletDynamics_vs2010_x64_debug.lib;BulletSoftBody_vs2010_x64_debug.lib;ConvexDecomposition_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;PhysX3Common_x86.lib;PhysX3CharacterKinematic_x86.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PxTask.lib;PhysX3Extensions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\Release;$(SolutionDir)\..\external\PhysX\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010.lib;BulletDynamics_vs2010.lib;BulletSoftBody_vs2010.lib;ConvexDecomposition_vs2010.lib;LinearMath_vs2010.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>BOOST_ALL_NO_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\PhysX;$(SolutionDir)\..\external\PhysX\Include;$(SolutionDir)\..\external\PhysX\Include\characterkinematic;$(SolutionDir)\..\external\PhysX\Include\cloth;$(SolutionDir)\..\external\PhysX\Include\extensions;$(SolutionDir)\..\external\PhysX\Include\cooking;$(SolutionDir)\..\external\PhysX\Include\common;$(SolutionDir)\..\external\PhysX\Include\vehicle;$(SolutionDir)\..\external\PhysX\Include\RepXUpgrader;$(SolutionDir)\..\external\PhysX\Include\RepX;$(SolutionDir)\..\external\PhysX\Include\pxtask;$(SolutionDir)\..\external\PhysX\Include\pvd;$(SolutionDir)\..\external\PhysX\Include\physxvisualdebuggersdk;$(SolutionDir)\..\external\PhysX\Include\physxprofilesdk;$(SolutionDir)\..\external\PhysX\Include\particles;$(SolutionDir)\..\external\PhysX\Include\gpu;$(SolutionDir)\..\external\PhysX\Include\geometry;$(SolutionDir)\..\external\PhysX\Include\foundation;$(SolutionDir)\..\external\PhysX\Source\foundation\Include;$(SolutionDir)\..\external\TBB\include;$(SolutionDir)\..\external\Bullet\src;$(SolutionDir)\..\external\Bullet\src\BulletCollision\BroadphaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionDispatch;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionShapes;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Gimpact;$(SolutionDir)\..\external\Bullet\src\BulletCollision\NarrowPhaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Character;$(SolutionDir)\..\external\Bullet\src\BulletCollision\ConstraintSolver;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Dynamics;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Featherstone;$(SolutionDir)\..\external\Bullet\src\BulletCollision\MLCPSolvers;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Vehicle;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\GpuSoftBodySolvers;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\out;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuNarrowPhaseCollisionTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuSampleTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\;$(SolutionDir)\..\external\Bullet\src\BulletSoftBody\;$(SolutionDir)\..\external\Bullet\src\LinearMath\;$(SolutionDir)\..\external\Bullet\src\vectormath\;$(SolutionDir)\..\external\Bullet\src\MiniCL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;PhysX3Common_x86.lib;PhysX3CharacterKinematic_x86.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PxTask.lib;PhysX3Extensions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\Release;$(SolutionDir)\..\external\PhysX\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_x64_release.lib;BulletDynamics_vs2010_x64_release.lib;BulletSoftBody_vs2010_x64_release.lib;ConvexDecomposition_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ClCompile>
+      <GccExceptionHandling>true</GccExceptionHandling>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>-std=c++11 -fpermissive -lBulletCollision -lBulletDynamics -lBulletSoftBody -lConvexDecomposition -lLinearMath %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\TBB\include;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\Bullet\src;$(SolutionDir)\..\external\Bullet\src\BulletCollision\BroadphaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionDispatch;$(SolutionDir)\..\external\Bullet\src\BulletCollision\CollisionShapes;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Gimpact;$(SolutionDir)\..\external\Bullet\src\BulletCollision\NarrowPhaseCollision;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Character;$(SolutionDir)\..\external\Bullet\src\BulletCollision\ConstraintSolver;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Dynamics;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Featherstone;$(SolutionDir)\..\external\Bullet\src\BulletCollision\MLCPSolvers;$(SolutionDir)\..\external\Bullet\src\BulletCollision\Vehicle;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\GpuSoftBodySolvers;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\out;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuNarrowPhaseCollisionTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\SpuSampleTask;$(SolutionDir)\..\external\Bullet\src\BulletMultiThreaded\;$(SolutionDir)\..\external\Bullet\src\BulletSoftBody\;$(SolutionDir)\..\external\Bullet\src\LinearMath\;$(SolutionDir)\..\external\Bullet\src\vectormath\;$(SolutionDir)\..\external\Bullet\src\MiniCL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{86d80ffc-f25e-40f5-891b-00cb17257278}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{98923de1-ae6e-48f9-8bb4-cd92b30dccac}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Constraints\OgreBulletDynamics6DofConstraint.h" />
+    <ClInclude Include="inc\Constraints\OgreBulletDynamics6DofSpringConstraint.h" />
+    <ClInclude Include="inc\Constraints\OgreBulletDynamicsConeTwistConstraint.h" />
+    <ClInclude Include="inc\Constraints\OgreBulletDynamicsHingeConstraint.h" />
+    <ClInclude Include="inc\Constraints\OgreBulletDynamicsPoint2pointConstraint.h" />
+    <ClInclude Include="inc\Constraints\OgreBulletDynamicsRaycastVehicle.h" />
+    <ClInclude Include="inc\Debug\OgreBulletCollisionsDebugContact.h" />
+    <ClInclude Include="inc\Debug\OgreBulletCollisionsDebugDrawer.h" />
+    <ClInclude Include="inc\Debug\OgreBulletCollisionsDebugLines.h" />
+    <ClInclude Include="inc\Debug\OgreBulletCollisionsDebugShape.h" />
+    <ClInclude Include="inc\OgreBulletCollisions.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsObject.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsObjectState.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsPreRequisites.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsRay.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsShape.h" />
+    <ClInclude Include="inc\OgreBulletCollisionsWorld.h" />
+    <ClInclude Include="inc\OgreBulletDynamics.h" />
+    <ClInclude Include="inc\OgreBulletDynamicsConstraint.h" />
+    <ClInclude Include="inc\OgreBulletDynamicsObjectState.h" />
+    <ClInclude Include="inc\OgreBulletDynamicsPreRequisites.h" />
+    <ClInclude Include="inc\OgreBulletDynamicsRigidBody.h" />
+    <ClInclude Include="inc\OgreBulletDynamicsWorld.h" />
+    <ClInclude Include="inc\Prefab\OgreBulletDynamicsRagDoll.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsBoxShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsCapsuleShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsCompoundShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsConeShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsConvexHullShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsCylinderShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsGImpactShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsMinkowskiSumShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsMultiSphereShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsSphereShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsStaticPlaneShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsTerrainShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsTriangleShape.h" />
+    <ClInclude Include="inc\Shapes\OgreBulletCollisionsTrimeshShape.h" />
+    <ClInclude Include="inc\Utils\OgreBulletCollisionsMeshToShapeConverter.h" />
+    <ClInclude Include="inc\Utils\OgreBulletConverter.h" />
+    <ClInclude Include="inc\Utils\OgreBulletUtils.h" />
+    <ClInclude Include="inc\VBodys.h" />
+    <ClInclude Include="inc\VBulletPhysics.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Constraints\OgreBulletDynamics6DofConstraint.cpp" />
+    <ClCompile Include="src\Constraints\OgreBulletDynamics6DofSpringConstraint.cpp" />
+    <ClCompile Include="src\Constraints\OgreBulletDynamicsConeTwistConstraint.cpp" />
+    <ClCompile Include="src\Constraints\OgreBulletDynamicsHingeConstraint.cpp" />
+    <ClCompile Include="src\Constraints\OgreBulletDynamicsPoint2pointConstraint.cpp" />
+    <ClCompile Include="src\Constraints\OgreBulletDynamicsRaycastVehicle.cpp" />
+    <ClCompile Include="src\Debug\OgreBulletCollisionsDebugContact.cpp" />
+    <ClCompile Include="src\Debug\OgreBulletCollisionsDebugDrawer.cpp" />
+    <ClCompile Include="src\Debug\OgreBulletCollisionsDebugLines.cpp" />
+    <ClCompile Include="src\Debug\OgreBulletCollisionsDebugShape.cpp" />
+    <ClCompile Include="src\OgreBulletCollisionsObject.cpp" />
+    <ClCompile Include="src\OgreBulletCollisionsObjectState.cpp" />
+    <ClCompile Include="src\OgreBulletCollisionsRay.cpp" />
+    <ClCompile Include="src\OgreBulletCollisionsShape.cpp" />
+    <ClCompile Include="src\OgreBulletCollisionsWorld.cpp" />
+    <ClCompile Include="src\OgreBulletDynamicsConstraint.cpp" />
+    <ClCompile Include="src\OgreBulletDynamicsObjectState.cpp" />
+    <ClCompile Include="src\OgreBulletDynamicsRigidBody.cpp" />
+    <ClCompile Include="src\OgreBulletDynamicsWorld.cpp" />
+    <ClCompile Include="src\Prefab\OgreBulletDynamicsRagDoll.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsBoxShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsCapsuleShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsCompoundShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsConeShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsConvexHullShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsCylinderShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsGImpactShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsMinkowskiSumShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsMultiSphereShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsSphereShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsStaticPlaneShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsTerrainShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsTriangleShape.cpp" />
+    <ClCompile Include="src\Shapes\OgreBulletCollisionsTrimeshShape.cpp" />
+    <ClCompile Include="src\Utils\OgreBulletCollisionsMeshToShapeConverter.cpp" />
+    <ClCompile Include="src\VBodys.cpp" />
+    <ClCompile Include="src\VBulletPhysics.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

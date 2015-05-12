@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android">
+      <Configuration>Release</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>MyGUICommon</ProjectName>
+    <ProjectGuid>{A7CC412A-FD4D-4B61-BB92-07AFF76BB506}</ProjectGuid>
+    <RootNamespace>MyGUICommon</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.lib</TargetExt>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <TargetExt>.lib</TargetExt>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Debug/Common_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Debug/Common_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Debug/Common_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Release/Common.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <StringPooling>
+      </StringPooling>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Release/Common.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <StringPooling>
+      </StringPooling>
+      <GccExceptionHandling>true</GccExceptionHandling>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\MyGUI_3.2.0\lib\Release/Common.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\lib\x64\;$(SolutionDir)\..\libs.x64\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Base\Ogre\BaseManager.cpp" />
+    <ClCompile Include="Input\OIS\InputManager.cpp" />
+    <ClCompile Include="Input\OIS\PointerManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Ogre\BaseManager.h" />
+    <ClInclude Include="Input\OIS\InputManager.h" />
+    <ClInclude Include="Input\OIS\PointerManager.h" />
+    <ClInclude Include="Ogre\RenderBox\RenderBox.h" />
+    <ClInclude Include="Ogre\RenderBox\RenderBoxScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyGUIEngine\MyGUIEngine.vcxproj">
+      <Project>{f197073c-1879-4741-88c3-69746a36222a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Platforms\Ogre\OgrePlatform\MyGUI.OgrePlatform.vcxproj">
+      <Project>{19f8c499-0a02-48ca-9861-5da869422402}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

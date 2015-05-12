@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\cpgf\include;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\lib\x86\;$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\TBB\lib\ia32\vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

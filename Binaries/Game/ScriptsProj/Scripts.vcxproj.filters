@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{82f48774-98c5-4d4f-9e77-b7832d3757d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Programs">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shaders\Cg">
+      <UniqueIdentifier>{9ec73ebd-c59f-4f6f-96aa-72e1e1192ac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Cg\DS">
+      <UniqueIdentifier>{55a93baf-98e6-4007-9fda-12a028fda587}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Scripts\Stonehenge.lua">
+      <Filter>Файлы исходного кода</Filter>
+    </None>
+    <None Include="..\Scripts\GameStart.lua">
+      <Filter>Файлы исходного кода</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\AdaptivePNTrianglesTessellation.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ASCII.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ASMSwizzle.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\BaseMaterial.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\BlackAndWhite.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Bloom.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Bloom2.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\bumpmapping.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\CellShading.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\CGSwizzle.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Common.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Common2.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\CompositorDemo.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ConeStepMapping.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\deferred.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\deferred_post.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\deferred_post.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\deferred_post_minilight.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\deferreddemo.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Dither.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\DOF.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\DualQuaternion.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\DualQuaternion.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\DualQuaternionSkinning_Shadow.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\DynTex.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Effects.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Effects.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Embossed.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples-Advanced.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples-DynTex.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Examples-Water.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Example-Water.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\facial.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Fresnel.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\FXAA.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\FXAA_Final.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\FXAA_Luma.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Glass.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\GLSLSwizzle.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Halftone.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\HardwareSkinningShadow.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\hdr.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\HeatVision.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Hurt.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\HW_VTF_LUTInstancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\HW_VTFInstancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\HWInstancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\instancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Instancing.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\InstancingMisc.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Invert.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\IrrNorm.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\IsoSurf.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Laplace.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\MotionBlur.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\MotionBlur.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\MRTtest.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\NightVision.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Ocean.controls">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Ocean.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\OffsetMapping.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Ogre.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\OldMovie.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\OldTV.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ParticleGS.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Penguin.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\POM.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\POM.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Posterize.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\pssm.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\RadialBlur.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\RasterizationOrder.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\RZR-002.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShaderInstancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShaderSystem.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowCaster.cg">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowCaster.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowCaster.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.cg">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\shadows.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\SharpenEdges.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\sibenik.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\smaa.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\smaa.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\smoke.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\SSAA.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\SSAA.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ssao.compositor">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\ssao.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\StdQuad_fp.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\StdQuad_vp.program">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Tesselation.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\TextureAtlasSampleOrg.tai">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\TextureAtlasSampleWrap.tai">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Tiling.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\VarianceShadowmap.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\VTFInstancing.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\Water.material">
+      <Filter>Shaders\Programs</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ASCIIFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Basic.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Basic_sm4.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\BumpMapping.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\CelShading.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Combine_fp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Common.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\cone_stepm.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\depthshadowobject.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DitherFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DOF_ps.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternion.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternion_Common.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternionSkinning_Shadow.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Dyn-Text.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Fresnel.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\FXAA.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\GlassFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Grass.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\GrayScale.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\HalftoneFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\HardwareSkinningShadow.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\hdr.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\HeatVision.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\HW_VTFInstancing.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\HWBasicInstancing.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\instancing.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Instancing_ps.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\InstancingMisc.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\InstancingVertexInterpolators.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\InvertFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\isosurf.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\LaplaceFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\MotionBlur.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\NightVisionFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Ocean2HLSL_Cg.frag">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Ocean2HLSL_Cg.vert">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\oceanHLSL_Cg.frag">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\oceanHLSL_Cg.vert">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\OffsetMapping.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\OldMovieFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\OldTV.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ParticleGS.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\PassthroughFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\PassthroughFP_sm4.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\PosterizeFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Projection.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\pssm.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Radial_Blur_FP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\recastdebug.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\RSM.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShaderInstancing.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShadowCaster.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShadowCaster_sm4.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\shadows.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\SharpenEdgesFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\smaa.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\SSAA_FP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ssao.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\ssao_sm4.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\StdQuad_fp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\StdQuad_vp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Swizzle.gp">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\SwizzleGP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\TextureArrayVS.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\TilingFP.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\Tonemapping.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowcasterfp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowcastervp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowreceiverfp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowreceivervp.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\VTFInstancing.cg">
+      <Filter>Shaders\Cg</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\Ambient_ps.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\Ambient_ps_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps — копия.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps.orig.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_vs.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_vs_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowColour_ps.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowColour_ps_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowDS_ps.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowDS_ps_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowNormal_ps.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowNormal_ps_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\vs.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\vs_sm4.cg">
+      <Filter>Shaders\Cg\DS</Filter>
+    </None>
+    <None Include="..\Scripts\EngineMain.lua">
+      <Filter>Файлы исходного кода</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Engine\Shaders\!REWRITE.txt">
+      <Filter>Shaders\Programs</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Engine\Shaders\AreaTexDX9.dds">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\black.png">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\BubblyBricks-ColorMap.tga">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\BubblyBricks-NormalMap.tga">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\DefaultDiffuse.dds">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\DefaultNormal.dds">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\KernelRotation.png">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\random.png">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\SearchTex.dds">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+    <Image Include="..\..\Engine\Shaders\white.bmp">
+      <Filter>Shaders\Programs</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Engine\Shaders\CsmShadows.h">
+      <Filter>Shaders\Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\DepthShadowMapReceiverJitter.h">
+      <Filter>Shaders\Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\SMAA.h">
+      <Filter>Shaders\Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\Utils.h">
+      <Filter>Shaders\Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\programs\Cg\Fxaa3_9.h">
+      <Filter>Shaders\Cg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\programs\ShaderDefines.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Shaders\programs\Helpers.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

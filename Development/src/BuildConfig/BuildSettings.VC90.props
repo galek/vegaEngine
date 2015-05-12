@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <IntermediatePath>..\..\Intermediate\MSVC90\</IntermediatePath>
+    <IntermediateFlag>$(Configuration)\$(ProjectName)</IntermediateFlag>
+    <CoreInclude>Inc;..\Core\inc</CoreInclude>
+    <EngineALLInclude>inc;..\Core\inc;..\Common;..\Editor;..\Engine\inc;..\Render\inc;..\Shared</EngineALLInclude>
+    <ExternalInclude>..\..\external\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;..\..\external\MyGUI_3.2.0\\MyGUIEngine\include;..\..\external\speedtree\Include;..\..\external\ffmpeg</ExternalInclude>
+    <OgreInclude>inc;include;..\..\external;..\..\external\ois\includes;..\..\external\ogre;..\..\external\ogre\include;..\..\external\ogre\Components\RTShaderSystem\include;..\..\external\ogre\OgreMain\include;     ..\..\external\ogre\RenderSystems\Direct3D9\include;..\..\external\ogre\RenderSystems\Direct3D11\include;     ..\..\external\ogre\RenderSystems\GL\include;..\..\external\ogre\RenderSystems\GLES\include;     ..\..\external\ogre\RenderSystems\GLES2\include;     ..\..\external\ogre\PlugIns\BSPSceneManager\include;..\..\external\ogre\PlugIns\CgProgramManager\include;     ..\..\external\ogre\PlugIns\EXRCodec\include;..\..\external\ogre\PlugIns\OctreeSceneManager\include;     ..\..\external\ogre\PlugIns\OctreeZone\include;..\..\external\ogre\PlugIns\ParticleFX\include;     ..\..\external\ogre\PlugIns\PCZSceneManager\include;</OgreInclude>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>BuildSettings</_PropertySheetDisplayName>
+    <OutDir />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\DXSDK\include\;$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\luabind;$(SolutionDir)\..\external\luabind\detail;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="IntermediatePath">
+      <Value>$(IntermediatePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IntermediateFlag">
+      <Value>$(IntermediateFlag)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CoreInclude">
+      <Value>$(CoreInclude)</Value>
+    </BuildMacro>
+    <BuildMacro Include="EngineALLInclude">
+      <Value>$(EngineALLInclude)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ExternalInclude">
+      <Value>$(ExternalInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="OgreInclude">
+      <Value>$(OgreInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

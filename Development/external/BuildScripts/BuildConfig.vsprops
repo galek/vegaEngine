@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="BuildConfig"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;&quot;$(SolutionDir)\..\DXSDK\include&quot;;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		AdditionalLibraryDirectories="$(SolutionDir)\..\DXSDK\lib\x86\;$(SolutionDir)\..\libs\$(ConfigurationName)\;$(SolutionDir)\..\TBB\lib\ia32\vc9"
+	/>
+</VisualStudioPropertySheet>

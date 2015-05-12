@@ -1,0 +1,13 @@
+abstract material BaseMaterial
+{
+  technique
+	{
+		pass
+		{
+			texture_unit Diffuse
+			{
+				texture $diffuse_map
+			}
+		}
+	}
+}

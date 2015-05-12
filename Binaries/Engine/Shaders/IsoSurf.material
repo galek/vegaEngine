@@ -1,0 +1,164 @@
+//////////
+// HLSL //
+//////////
+vertex_program IsoSurf/SampleFieldVS_HLSL hlsl
+{
+	source isosurf.hlsl
+	entry_point mainVS
+	target vs_4_0
+
+	default_params
+	{
+		param_named IsoValue float 1.0
+		param_named_auto WorldViewProj worldviewproj_matrix
+		param_named_auto origWorldViewIT inverse_transpose_worldview_matrix
+	}
+}
+
+geometry_program IsoSurf/TessellateTetrahedraGS_HLSL hlsl
+{
+	source isosurf.hlsl
+	entry_point mainGS
+	target gs_4_0
+	uses_adjacency_information true
+	
+	default_params
+	{
+		param_named IsoValue float 1
+	}
+}
+
+fragment_program IsoSurf/MetaballPS_HLSL hlsl
+{
+	source isosurf.hlsl
+	entry_point mainPS
+	target ps_4_0
+}
+
+//////////
+//  CG  //
+//////////
+vertex_program IsoSurf/SampleFieldVS_CG cg
+{
+	source isosurf.cg
+	entry_point mainVS
+	profiles vp40 arbvp1
+
+	default_params
+	{
+		param_named IsoValue float 1.0
+		param_named_auto WorldViewProj worldviewproj_matrix
+		param_named_auto origWorldViewIT inverse_transpose_worldview_matrix
+	}
+}
+
+geometry_program IsoSurf/TessellateTetrahedraGS_CG cg
+{
+	source isosurf.cg
+	entry_point mainGS
+	profiles gpu_gp gp4_gp
+	uses_adjacency_information true
+	
+	default_params
+	{
+		param_named IsoValue float 1
+	}
+}
+
+fragment_program IsoSurf/MetaballPS_CG cg
+{
+	source isosurf.cg
+	entry_point mainPS
+	profiles fp40 arbfp1
+}
+
+//////////
+// GLSL //
+//////////
+vertex_program IsoSurf/SampleFieldVS_GLSL glsl
+{
+	source SampleFieldVS.glsl
+	syntax glsl150
+
+	default_params
+	{
+		param_named IsoValue float 1.0
+		param_named_auto WorldViewProj worldviewproj_matrix
+		param_named_auto origWorldViewIT inverse_transpose_worldview_matrix
+	}
+}
+
+geometry_program IsoSurf/TessellateTetrahedraGS_GLSL glsl
+{
+	source TessellateTetrahedraGS.glsl
+	syntax glsl150
+	uses_adjacency_information true
+	
+	default_params
+	{
+		param_named IsoValue float 1
+	}
+}
+
+fragment_program IsoSurf/MetaballPS_GLSL glsl
+{
+	source MetaballFP.glsl
+	syntax glsl150
+}
+
+vertex_program IsoSurf/SampleFieldVS unified
+{
+	delegate IsoSurf/SampleFieldVS_GLSL
+	delegate IsoSurf/SampleFieldVS_HLSL
+	delegate IsoSurf/SampleFieldVS_CG
+	default_params
+	{
+
+	}
+}
+
+geometry_program IsoSurf/TessellateTetrahedraGS unified
+{
+	delegate IsoSurf/TessellateTetrahedraGS_GLSL
+	delegate IsoSurf/TessellateTetrahedraGS_HLSL
+	delegate IsoSurf/TessellateTetrahedraGS_CG
+	default_params
+	{
+
+	}
+}
+
+fragment_program IsoSurf/MetaballPS unified
+{
+	delegate IsoSurf/MetaballPS_GLSL
+	delegate IsoSurf/MetaballPS_HLSL
+	delegate IsoSurf/MetaballPS_CG
+	default_params
+	{
+
+	}
+}
+
+material IsoSurf/TessellateTetrahedra
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref IsoSurf/SampleFieldVS
+			{
+			
+			}
+			
+			geometry_program_ref IsoSurf/TessellateTetrahedraGS
+			{
+			
+			}
+			
+			fragment_program_ref IsoSurf/MetaballPS
+			{
+			
+			}
+		}
+	}
+}

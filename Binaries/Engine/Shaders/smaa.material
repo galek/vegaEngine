@@ -1,0 +1,281 @@
+vertex_program SMAA/EdgeDetection_VS cg
+{
+    source smaa.cg
+    profiles vs_3_0 glslv
+    entry_point EdgeDetection_VS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+        param_named_auto viewportSize viewport_size
+        param_named_auto wvp worldviewproj_matrix
+    }
+}
+
+fragment_program SMAA/ColorEdgeDetection_PS cg
+{
+    source smaa.cg
+    profiles ps_3_0 glslf
+    entry_point ColorEdgeDetection_PS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+    }
+}
+
+fragment_program SMAA/LumaEdgeDetection_PS cg
+{
+    source smaa.cg
+    profiles ps_3_0 glslf
+    entry_point LumaEdgeDetection_PS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+    }
+}
+
+fragment_program SMAA/DepthEdgeDetection_PS cg
+{
+    source smaa.cg
+    profiles ps_3_0 glslf
+    entry_point DepthEdgeDetection_PS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+    }
+}
+
+vertex_program SMAA/BlendWeightCalculation_VS cg
+{
+    source smaa.cg
+    profiles vs_3_0 glslv
+    entry_point BlendWeightCalculation_VS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+        param_named_auto viewportSize viewport_size
+        param_named_auto wvp worldviewproj_matrix
+    }
+}
+
+fragment_program SMAA/BlendWeightCalculation_PS cg
+{
+    source smaa.cg
+    profiles ps_3_0 glslf
+    entry_point BlendWeightCalculation_PS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+        param_named_auto viewportSize viewport_size
+    }
+}
+
+vertex_program SMAA/NeighborhoodBlending_VS cg
+{
+    source smaa.cg
+    profiles vs_3_0 glslv
+    entry_point NeighborhoodBlending_VS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+        param_named_auto viewportSize viewport_size
+        param_named_auto wvp worldviewproj_matrix
+    }
+}
+
+fragment_program SMAA/NeighborhoodBlending_PS cg
+{
+    source smaa.cg
+    profiles ps_3_0 glslf 
+    entry_point NeighborhoodBlending_PS
+    compile_arguments -DCG_COMPILER=1
+    default_params
+    {
+        param_named_auto viewportSize viewport_size
+    }
+}
+
+material SMAA/ColorEdgeDetection
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref SMAA/EdgeDetection_VS
+            {
+            }
+
+            fragment_program_ref SMAA/ColorEdgeDetection_PS
+            {
+            }
+
+            depth_check off
+
+            texture_unit colorGammaTex
+            {
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+
+            texture_unit predicationTex
+            {
+				tex_address_mode clamp
+				filtering linear linear linear
+            }
+        }
+    }
+}
+
+material SMAA/LumaEdgeDetection
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref SMAA/EdgeDetection_VS
+            {
+            }
+
+            fragment_program_ref SMAA/LumaEdgeDetection_PS
+            {
+            }
+
+            depth_check off
+
+            texture_unit colorGammaTex
+            {
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+
+            texture_unit predicationTex
+            {
+				tex_address_mode clamp
+				filtering linear linear linear
+            }
+        }
+    }
+}
+
+material SMAA/DepthEdgeDetection
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref SMAA/EdgeDetection_VS
+            {
+            }
+
+            fragment_program_ref SMAA/LumaEdgeDetection_PS
+            {
+            }
+
+            depth_check off
+
+            texture_unit depthTex
+            {
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+        }
+    }
+}
+
+material SMAA/BlendWeightCalculation
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref SMAA/BlendWeightCalculation_VS
+            {
+            }
+
+            fragment_program_ref SMAA/BlendWeightCalculation_PS
+            {
+            }
+
+            depth_check off
+
+            texture_unit edgesTex
+            {
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+
+            texture_unit areaTex
+            {
+                texture AreaTexDX9.dds
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+
+            texture_unit searchTex
+            {
+                texture SearchTex.dds
+                tex_address_mode clamp
+                filtering point point point
+            }
+        }
+    }
+}
+
+material SMAA/NeighborhoodBlending
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref SMAA/NeighborhoodBlending_VS
+            {
+            }
+
+            fragment_program_ref SMAA/NeighborhoodBlending_PS
+            {
+            }
+
+            depth_check off
+
+            texture_unit colorTex
+            {
+                tex_address_mode clamp
+                filtering linear linear point
+            }
+            texture_unit blendTex
+            {
+                tex_address_mode clamp
+                filtering linear linear linear
+            }
+        }
+    }
+}
+
+
+
+
+material SMAA_Quad
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref Compositor/StdQuad_vp
+            {
+            }
+
+            fragment_program_ref Compositor/StdQuad_fp
+            {
+            }
+
+			cull_hardware none
+			cull_software none
+
+            depth_check off
+
+            texture_unit scene
+            {
+				filtering none
+            }
+		}
+	}
+}

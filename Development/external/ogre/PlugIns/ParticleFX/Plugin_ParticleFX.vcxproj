@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android">
+      <Configuration>Release</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{652D4E56-7AA3-4FCC-B638-AF33E996B2C1}</ProjectGuid>
+    <RootNamespace>Plugin_ParticleFX</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <AndroidAPILevel>android-17</AndroidAPILevel>
+    <AndroidArch>armv7-a</AndroidArch>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.a</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;$(SolutionDir)\..\TBB\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;INTEL_SUITE_VERSION=STANDALONE_LIBS;INTEL_TBB_VERSION=TBB_4_0_4.0.5005.344_IA32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;$(SolutionDir)\..\TBB\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;INTEL_SUITE_VERSION=STANDALONE_LIBS;INTEL_TBB_VERSION=TBB_4_0_4.0.5005.344_IA32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <GccExceptionHandling>true</GccExceptionHandling>
+      <AdditionalOptions>-fPIC -fpermissive %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.a32\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <AdditionalOptions />
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Debug";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRE_PARTICLEFXPLUGIN_EXPORTS;CMAKE_INTDIR="Release";Plugin_ParticleFX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\libs.x64\Release\OgreMain.lib;$(SolutionDir)\..\DXSDK\Lib\x64\d3d9.lib;$(SolutionDir)\..\DXSDK\Lib\x64\d3dx9.lib;$(SolutionDir)\..\DXSDK\Lib\x64\DxErr.lib;$(SolutionDir)\..\DXSDK\Lib\x64\dxguid.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)\;$(SolutionDir)\..\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <AssemblyDebug>true</AssemblyDebug>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\OgreAreaEmitter.cpp" />
+    <ClCompile Include="src\OgreBoxEmitter.cpp" />
+    <ClCompile Include="src\OgreColourFaderAffector.cpp" />
+    <ClCompile Include="src\OgreColourFaderAffector2.cpp" />
+    <ClCompile Include="src\OgreColourImageAffector.cpp" />
+    <ClCompile Include="src\OgreColourInterpolatorAffector.cpp" />
+    <ClCompile Include="src\OgreCylinderEmitter.cpp" />
+    <ClCompile Include="src\OgreDeflectorPlaneAffector.cpp" />
+    <ClCompile Include="src\OgreDirectionRandomiserAffector.cpp" />
+    <ClCompile Include="src\OgreEllipsoidEmitter.cpp" />
+    <ClCompile Include="src\OgreHollowEllipsoidEmitter.cpp" />
+    <ClCompile Include="src\OgreLinearForceAffector.cpp" />
+    <ClCompile Include="src\OgreParticleFX.cpp" />
+    <ClCompile Include="src\OgreParticleFXPlugin.cpp" />
+    <ClCompile Include="src\OgrePointEmitter.cpp" />
+    <ClCompile Include="src\OgreRingEmitter.cpp" />
+    <ClCompile Include="src\OgreRotationAffector.cpp" />
+    <ClCompile Include="src\OgreScaleAffector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OgreAreaEmitter.h" />
+    <ClInclude Include="include\OgreBoxEmitter.h" />
+    <ClInclude Include="include\OgreBoxEmitterFactory.h" />
+    <ClInclude Include="include\OgreColourFaderAffector.h" />
+    <ClInclude Include="include\OgreColourFaderAffector2.h" />
+    <ClInclude Include="include\OgreColourFaderAffectorFactory.h" />
+    <ClInclude Include="include\OgreColourFaderAffectorFactory2.h" />
+    <ClInclude Include="include\OgreColourImageAffector.h" />
+    <ClInclude Include="include\OgreColourImageAffectorFactory.h" />
+    <ClInclude Include="include\OgreColourInterpolatorAffector.h" />
+    <ClInclude Include="include\OgreColourInterpolatorAffectorFactory.h" />
+    <ClInclude Include="include\OgreCylinderEmitter.h" />
+    <ClInclude Include="include\OgreCylinderEmitterFactory.h" />
+    <ClInclude Include="include\OgreDeflectorPlaneAffector.h" />
+    <ClInclude Include="include\OgreDeflectorPlaneAffectorFactory.h" />
+    <ClInclude Include="include\OgreDirectionRandomiserAffector.h" />
+    <ClInclude Include="include\OgreDirectionRandomiserAffectorFactory.h" />
+    <ClInclude Include="include\OgreEllipsoidEmitter.h" />
+    <ClInclude Include="include\OgreEllipsoidEmitterFactory.h" />
+    <ClInclude Include="include\OgreHollowEllipsoidEmitter.h" />
+    <ClInclude Include="include\OgreHollowEllipsoidEmitterFactory.h" />
+    <ClInclude Include="include\OgreLinearForceAffector.h" />
+    <ClInclude Include="include\OgreLinearForceAffectorFactory.h" />
+    <ClInclude Include="include\OgreParticleFXPlugin.h" />
+    <ClInclude Include="include\OgreParticleFXPrerequisites.h" />
+    <ClInclude Include="include\OgrePointEmitter.h" />
+    <ClInclude Include="include\OgrePointEmitterFactory.h" />
+    <ClInclude Include="include\OgreRingEmitter.h" />
+    <ClInclude Include="include\OgreRingEmitterFactory.h" />
+    <ClInclude Include="include\OgreRotationAffector.h" />
+    <ClInclude Include="include\OgreRotationAffectorFactory.h" />
+    <ClInclude Include="include\OgreScaleAffector.h" />
+    <ClInclude Include="include\OgreScaleAffectorFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OgreMain\OgreMain.vcxproj">
+      <Project>{ae9f6baf-f30b-4aac-a22a-38f23b0c0447}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

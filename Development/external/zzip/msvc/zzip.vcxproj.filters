@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{b6c95ddf-a865-46c5-923c-d0cbcbe1d165}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{b072f429-daf4-4ae9-abeb-ffe2c5a500d2}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{5d1b8e9f-9550-46f5-92e4-a2aab90758ca}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Nick">
+      <UniqueIdentifier>{f21dc85a-194c-4bf3-b0ad-d3297fcd12e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\zzip\dir.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\err.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\file.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\info.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\plugin.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\stat.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\zip.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\fetch.c">
+      <Filter>Nick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\fseeko.c">
+      <Filter>Nick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\memdisk.c">
+      <Filter>Nick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\mmapped.c">
+      <Filter>Nick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zzip\write.c">
+      <Filter>Nick</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\zzip\__debug.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\__dirent.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\__hints.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\__mmap.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\_config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\_msvc.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\conf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\file.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\format.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\lib.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\plugin.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\stdint.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\zzip.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\__fnmatch.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\autoconf.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\fetch.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\fseeko.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\info.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\memdisk.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\mmapped.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\types.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\write.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\zconf.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\zlib.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zzip\zzip32.h">
+      <Filter>Nick</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\zzip\_msvc.sed">
+      <Filter>Nick</Filter>
+    </None>
+    <None Include="..\zzip\Makefile.am">
+      <Filter>Nick</Filter>
+    </None>
+    <None Include="..\zzip\Makefile.in">
+      <Filter>Nick</Filter>
+    </None>
+  </ItemGroup>
+</Project>

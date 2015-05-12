@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android">
+      <Configuration>Release</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{63EA784D-72E0-43D6-8038-98C6DB509643}</ProjectGuid>
+    <RootNamespace>RenderSystem_GLES2</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\bin\Debug/RenderSystem_GLES2_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;Opengl32.lib;glu32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x86\;$(SolutionDir)\..\boost\libs\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\bin\Debug/RenderSystem_GLES2_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\Debug\OgreMain_d.lib;\lib\release\libGLESv2.lib;\lib\release\libEGL.lib;$(SolutionDir)\..\boost\lib\libboost_thread-vc90-mt-1_49.lib;$(SolutionDir)\..\boost\lib\libboost_date_time-vc90-mt-1_49.lib;$(SolutionDir)\..\libs\freetype249.lib;$(SolutionDir)\..\libs\FreeImage.lib;$(SolutionDir)\..\libs\zziplib.lib;$(SolutionDir)\..\libs\ZLib.lib;$(SolutionDir)\..\boost\lib\libboost_thread-vc90-mt-1_49.lib;$(SolutionDir)\..\boost\lib\libboost_date_time-vc90-mt-1_49.lib</AdditionalDependencies>
+      <OutputFile>..\..\bin\Debug\RenderSystem_GLES2_d.dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\boost\lib\$(OutDir);$(SolutionDir)\..\boost\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\bin\Debug\RenderSystem_GLES2_d.pdb</ProgramDatabaseFile>
+      <ImportLibrary>..\..\lib\Debug\RenderSystem_GLES2_d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>..\..\bin\Debug/RenderSystem_GLES2_d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;Opengl32.lib;glu32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\Lib\x64\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x64;$(SolutionDir)\..\libs.x64\$(Configuration);$(SolutionDir)\..\boost\libs.x64\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;Opengl32.lib;glu32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x86\;$(SolutionDir)\..\boost\libs\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;INTEL_SUITE_VERSION=STANDALONE_LIBS;INTEL_TBB_VERSION=TBB_4_0_4.0.5005.344_IA32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ProgramDataBaseFileName>..\..\bin\Release/RenderSystem_GLES2.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <GccExceptionHandling>true</GccExceptionHandling>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\Release\OgreMain.lib;\lib\release\libGLESv2.lib;\lib\release\libEGL.lib;$(SolutionDir)\..\boost\lib\libboost_thread-vc90-mt-1_49.lib;$(SolutionDir)\..\boost\lib\libboost_date_time-vc90-mt-1_49.lib;$(SolutionDir)\..\libs\freetype249.lib;$(SolutionDir)\..\libs\FreeImage.lib;$(SolutionDir)\..\libs\zziplib.lib;$(SolutionDir)\..\libs\ZLib.lib;$(SolutionDir)\..\boost\lib\libboost_thread-vc90-mt-1_49.lib;$(SolutionDir)\..\boost\lib\libboost_date_time-vc90-mt-1_49.lib</AdditionalDependencies>
+      <OutputFile>..\..\bin\Release\RenderSystem_GLES2.dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\boost\lib\$(OutDir);$(SolutionDir)\..\boost\lib;$(SolutionDir)\..\TBB\Lib\ia32\vc9;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>..\..\bin\Release\RenderSystem_GLES2.pdb</ProgramDatabaseFile>
+      <ImportLibrary>..\..\lib\Release\RenderSystem_GLES2.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\GLES\;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;$(ProjectDir)\src\EGL\WIN32;$(ProjectDir)\include\EGL\WIN32;$(ProjectDir)\include;$(ProjectDir)\include\EGL;$(ProjectDir)\include\EAGL;$(ProjectDir)\src\GLSLES\include;$(ProjectDir)\include\EGL\Android;..\..\Components\RTShaderSystem\include;$(SolutionDir)\..\TBB\Include;$(SolutionDir)\..\hlsl2glslfork\include;$(SolutionDir)\..\glsl-optimizer\src\glsl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;USE_RTSHADER_SYSTEM;OGRE_GLES2PLUGIN_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_GLES2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;src\EGL\WIN32;include\EGL\WIN32;include;include\EGL;include\EAGL;src\GLSLES\include;..\..\Components\RTShaderSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;Opengl32.lib;glu32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\Lib\x64\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x64;$(SolutionDir)\..\libs.x64\$(Configuration);$(SolutionDir)\..\boost\libs.x64\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OgreMain\src\VegaLibs.cpp" />
+    <ClCompile Include="src\EGL\Android\OgreAndroidEGLContext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\Android\OgreAndroidEGLSupport.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\Android\OgreAndroidEGLWindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\Android\OgreAndroidResource.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\Android\OgreAndroidResourceManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\OgreEGLContext.cpp" />
+    <ClCompile Include="src\EGL\OgreEGLRenderTexture.cpp" />
+    <ClCompile Include="src\EGL\OgreEGLSupport.cpp" />
+    <ClCompile Include="src\EGL\OgreEGLWindow.cpp" />
+    <ClCompile Include="src\gles3w.cpp" />
+    <ClCompile Include="src\OgreGLES2Context.cpp" />
+    <ClCompile Include="src\OgreGLES2DefaultHardwareBufferManager.cpp" />
+    <ClCompile Include="src\OgreGLES2DepthBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2EngineDll.cpp" />
+    <ClCompile Include="src\OgreGLES2FBOMultiRenderTarget.cpp" />
+    <ClCompile Include="src\OgreGLES2FBORenderTexture.cpp" />
+    <ClCompile Include="src\OgreGLES2FrameBufferObject.cpp" />
+    <ClCompile Include="src\OgreGLES2GpuProgram.cpp" />
+    <ClCompile Include="src\OgreGLES2GpuProgramManager.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwareBufferManager.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwareIndexBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwareOcclusionQuery.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwarePixelBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwareUniformBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2HardwareVertexBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2PixelFormat.cpp" />
+    <ClCompile Include="src\OgreGLES2Plugin.cpp" />
+    <ClCompile Include="src\OgreGLES2RenderSystem.cpp" />
+    <ClCompile Include="src\OgreGLES2RenderTexture.cpp" />
+    <ClCompile Include="src\OgreGLES2RenderToVertexBuffer.cpp" />
+    <ClCompile Include="src\OgreGLES2StateCacheManager.cpp" />
+    <ClCompile Include="src\OgreGLES2Support.cpp" />
+    <ClCompile Include="src\OgreGLES2Texture.cpp" />
+    <ClCompile Include="src\OgreGLES2TextureManager.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESCgProgram.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESCgProgramFactory.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESExtSupport.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESGpuProgram.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESLinkProgram.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESLinkProgramManager.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESPreprocessor.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgram.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgramCommon.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgramFactory.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgramManagerCommon.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgramPipeline.cpp" />
+    <ClCompile Include="src\GLSLES\src\OgreGLSLESProgramPipelineManager.cpp" />
+    <ClCompile Include="src\EGL\WIN32\OgreWin32EGLContext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\WIN32\OgreWin32EGLRenderTexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\WIN32\OgreWin32EGLSupport.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EGL\WIN32\OgreWin32EGLWindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\OgreGLES2UniformCache.cpp" />
+    <ClCompile Include="src\OgreGLES2VertexDeclaration.cpp" />
+    <ClCompile Include="src\StateCacheManager\OgreGLES2StateCacheManagerImp.cpp" />
+    <ClCompile Include="src\StateCacheManager\OgreGLES2UniformCacheImp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\EGL\OgreEGLContext.h" />
+    <ClInclude Include="include\EGL\OgreEGLRenderTexture.h" />
+    <ClInclude Include="include\EGL\OgreEGLSupport.h" />
+    <ClInclude Include="include\EGL\OgreEGLWindow.h" />
+    <ClInclude Include="include\OgreGLES2Context.h" />
+    <ClInclude Include="include\OgreGLES2DefaultHardwareBufferManager.h" />
+    <ClInclude Include="include\OgreGLES2DepthBuffer.h" />
+    <ClInclude Include="include\OgreGLES2FBOMultiRenderTarget.h" />
+    <ClInclude Include="include\OgreGLES2FBORenderTexture.h" />
+    <ClInclude Include="include\OgreGLES2FrameBufferObject.h" />
+    <ClInclude Include="include\OgreGLES2GpuProgram.h" />
+    <ClInclude Include="include\OgreGLES2GpuProgramManager.h" />
+    <ClInclude Include="include\OgreGLES2HardwareBufferManager.h" />
+    <ClInclude Include="include\OgreGLES2HardwareIndexBuffer.h" />
+    <ClInclude Include="include\OgreGLES2HardwareOcclusionQuery.h" />
+    <ClInclude Include="include\OgreGLES2HardwarePixelBuffer.h" />
+    <ClInclude Include="include\OgreGLES2HardwareVertexBuffer.h" />
+    <ClInclude Include="include\OgreGLES2PixelFormat.h" />
+    <ClInclude Include="include\OgreGLES2Plugin.h" />
+    <ClInclude Include="include\OgreGLES2Prerequisites.h" />
+    <ClInclude Include="include\OgreGLES2RenderSystem.h" />
+    <ClInclude Include="include\OgreGLES2RenderTexture.h" />
+    <ClInclude Include="include\OgreGLES2Support.h" />
+    <ClInclude Include="include\OgreGLES2Texture.h" />
+    <ClInclude Include="include\OgreGLES2TextureManager.h" />
+    <ClInclude Include="include\EGL\WIN32\OgreGLES2Util.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESExtSupport.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESGpuProgram.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESLinkProgram.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESLinkProgramManager.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESPreprocessor.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgram.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgramCommon.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgramFactory.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgramManagerCommon.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgramPipeline.h" />
+    <ClInclude Include="src\GLSLES\include\OgreGLSLESProgramPipelineManager.h" />
+    <ClInclude Include="include\EGL\WIN32\OgreWin32EGLContext.h" />
+    <ClInclude Include="include\EGL\WIN32\OgreWin32EGLRenderTexture.h" />
+    <ClInclude Include="include\EGL\WIN32\OgreWin32EGLSupport.h" />
+    <ClInclude Include="include\EGL\WIN32\OgreWin32EGLWindow.h" />
+    <ClInclude Include="src\StateCacheManager\OgreGLES2NullStateCacheManagerImp.h" />
+    <ClInclude Include="src\StateCacheManager\OgreGLES2NullUniformCacheImp.h" />
+    <ClInclude Include="src\StateCacheManager\OgreGLES2StateCacheManagerImp.h" />
+    <ClInclude Include="src\StateCacheManager\OgreGLES2UniformCacheImp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\glsl-optimizer\projects\vs2010\glsl_optimizer_lib.vcxproj">
+      <Project>{b475a403-9d9b-410d-8a93-ba49fc4dd811}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\hlsl2glslfork\hlslang.vcxproj">
+      <Project>{3b146cc5-b2b8-4573-9d46-6139e2edfea3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OgreMain\OgreMain.vcxproj">
+      <Project>{ae9f6baf-f30b-4aac-a22a-38f23b0c0447}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PlugIns\CgProgramManager\Plugin_CgProgramManager.vcxproj">
+      <Project>{df0c1ef0-f5b6-47d2-a2aa-be447c7b521f}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

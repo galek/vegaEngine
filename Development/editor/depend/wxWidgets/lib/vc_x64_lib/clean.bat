@@ -1,0 +1,2 @@
+del *.exp
+del *.pdb

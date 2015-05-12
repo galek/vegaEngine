@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="frame">
+      <UniqueIdentifier>{b52062de-c1ed-418f-97e0-50261219a63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{225df6a9-880f-40f0-8c71-e6c0e568e483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="prop">
+      <UniqueIdentifier>{9c64c2cf-bf04-4919-9226-14db633f4ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrapper">
+      <UniqueIdentifier>{e3703678-9b4f-4726-99de-a4af93143e01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toolbar">
+      <UniqueIdentifier>{aebf5d36-9e13-47e2-aa7b-5ff9302d992f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{6d94bc41-f59a-4ef8-8c93-703dc9c99c98}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\xgEditor\app_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\docInfoList_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\frame_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\log_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\stdafx.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\updateBag_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxChoicebookEx.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxListbookEx.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxNotebookEx.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxOgre_t.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxTreebookEx.cpp">
+      <Filter>frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\aiNaviTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\cameraTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\gridTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\mathUtil.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\prsTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\renderOptionTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\resInsertTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\sectorTool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\tool_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\toolBag_t.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\blankProp_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\entityProp_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\eventHandler_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\frameInitTool_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\lightProp_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\moveObjectPropBag_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\prop_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\propBag_t.cpp">
+      <Filter>prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\lightTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\manager.cpp" />
+    <ClCompile Include="..\src\xgEditor\testTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\update_t.cpp" />
+    <ClCompile Include="..\src\cgSys\EngineWrapper.cpp">
+      <Filter>wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\MainToolBar.cpp">
+      <Filter>toolbar</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\xgEditor\app_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\docInfo_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\docInfoList_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\frame_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\log_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\resource.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\stdafx.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\updateBag_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\wxChoicebookEx.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\wxListbookEx.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\wxNotebookEx.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\wxOgre_t.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\wxTreebookEx.h">
+      <Filter>frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\aiNaviTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\cameraTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\gridTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\mathUtil.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\prsTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\renderOptionTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\resInsertTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\sectorTool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\tool_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\toolBag_t.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\blankProp_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\entityProp_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\eventHandler_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\lightProp_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\moveObjectProp_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\moveObjectPropBag_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\prop_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\propBag_t.h">
+      <Filter>prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\lightTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\manager.h" />
+    <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
+    <ClInclude Include="..\src\xgEditor\reg.h" />
+    <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
+    <ClInclude Include="..\src\xgEditor\testTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\update_t.h" />
+    <ClInclude Include="..\src\cgSys\EngineWrapper.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\MainToolBar.h">
+      <Filter>toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgEditor\toolsids.h">
+      <Filter>toolbar</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\src\xgEditor\iconMain.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\xgEditor\xgEditor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\xgEditor\xgEditor.aps" />
+  </ItemGroup>
+</Project>

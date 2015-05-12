@@ -1,0 +1,57 @@
+
+// full screen quad with camera-to-pixel ray calculations
+
+vertex_program motionblur_vs cg
+{
+    source MotionBlur.cg
+    profiles vs_5_0 vs_1_1 arbvp1 vp20
+    entry_point motionblur_vs
+    default_params
+    {
+        param_named_auto wvp worldviewproj_matrix
+    }
+}
+
+fragment_program motionblur_ps cg
+{
+    source MotionBlur.cg
+    entry_point motionblur_ps
+    // will run on anything with pixel shader 2.b and up
+    profiles ps_5_0 ps_3_0 arbfp1 fp20
+    default_params
+    {
+
+    }
+}
+
+
+material MotionBlur
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref motionblur_vs 
+            {
+            }
+
+            fragment_program_ref motionblur_ps 
+            {
+            }
+
+            texture_unit geomMap
+            {
+                tex_address_mode clamp
+                filtering bilinear
+            }
+
+            texture_unit scene
+            {
+                tex_address_mode clamp
+                filtering bilinear
+            }
+
+
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<entityInfoBag>
+  <info>
+    <base>
+      <class>player_t</class>
+      <template>player_t</template>
+    </base>
+    <entity>
+      <mesh>Box01.mesh</mesh>
+      <density>0.1</density>
+    </entity>
+  </info>
+  <info>
+    <base>
+      <class>npc_t</class>
+      <template>npc</template>
+    </base>
+    <entity>
+      <mesh>laser.mesh</mesh>
+      <density>0.1</density>
+    </entity>
+  </info>
+</entityInfoBag>

@@ -1,0 +1,23 @@
+vertex_program csm_vs cg
+{
+    source cone_stepm.cg
+    profiles vs_1_1 gp4vp
+    entry_point csm_vs
+    default_params
+    {
+        param_named_auto wvpMat worldviewproj_matrix
+        param_named_auto wvMat worldview_matrix
+        param_named tile float 1
+    }
+}
+
+fragment_program csm_ps cg
+{
+    source cone_stepm.cg
+    profiles ps_3_0 gp4fp
+    entry_point csm_ps
+    default_params
+    {
+        param_named depth float 0.15
+    }
+}

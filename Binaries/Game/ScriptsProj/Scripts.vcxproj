@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{920157C7-7345-471E-879D-98A57CA9161B}</ProjectGuid>
+    <RootNamespace>Scripts</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\Engine\Shaders\AdaptivePNTrianglesTessellation.material" />
+    <None Include="..\..\Engine\Shaders\ASCII.material" />
+    <None Include="..\..\Engine\Shaders\ASMSwizzle.material" />
+    <None Include="..\..\Engine\Shaders\BaseMaterial.material" />
+    <None Include="..\..\Engine\Shaders\BlackAndWhite.material" />
+    <None Include="..\..\Engine\Shaders\Bloom.material" />
+    <None Include="..\..\Engine\Shaders\Bloom2.material" />
+    <None Include="..\..\Engine\Shaders\bumpmapping.material" />
+    <None Include="..\..\Engine\Shaders\CellShading.material" />
+    <None Include="..\..\Engine\Shaders\CGSwizzle.material" />
+    <None Include="..\..\Engine\Shaders\Common.material" />
+    <None Include="..\..\Engine\Shaders\Common2.material" />
+    <None Include="..\..\Engine\Shaders\CompositorDemo.material" />
+    <None Include="..\..\Engine\Shaders\ConeStepMapping.program" />
+    <None Include="..\..\Engine\Shaders\deferred.compositor" />
+    <None Include="..\..\Engine\Shaders\deferreddemo.material" />
+    <None Include="..\..\Engine\Shaders\deferred_post.material" />
+    <None Include="..\..\Engine\Shaders\deferred_post.program" />
+    <None Include="..\..\Engine\Shaders\deferred_post_minilight.material" />
+    <None Include="..\..\Engine\Shaders\Dither.material" />
+    <None Include="..\..\Engine\Shaders\DOF.material" />
+    <None Include="..\..\Engine\Shaders\DualQuaternion.material" />
+    <None Include="..\..\Engine\Shaders\DualQuaternion.program" />
+    <None Include="..\..\Engine\Shaders\DualQuaternionSkinning_Shadow.material" />
+    <None Include="..\..\Engine\Shaders\DynTex.material" />
+    <None Include="..\..\Engine\Shaders\Effects.compositor" />
+    <None Include="..\..\Engine\Shaders\Effects.material" />
+    <None Include="..\..\Engine\Shaders\Embossed.material" />
+    <None Include="..\..\Engine\Shaders\Example-Water.material" />
+    <None Include="..\..\Engine\Shaders\Examples-Advanced.material" />
+    <None Include="..\..\Engine\Shaders\Examples-DynTex.material" />
+    <None Include="..\..\Engine\Shaders\Examples-Water.material" />
+    <None Include="..\..\Engine\Shaders\Examples.compositor" />
+    <None Include="..\..\Engine\Shaders\Examples.material" />
+    <None Include="..\..\Engine\Shaders\Examples.program" />
+    <None Include="..\..\Engine\Shaders\facial.material" />
+    <None Include="..\..\Engine\Shaders\Fresnel.material" />
+    <None Include="..\..\Engine\Shaders\FXAA.compositor" />
+    <None Include="..\..\Engine\Shaders\FXAA_Final.material" />
+    <None Include="..\..\Engine\Shaders\FXAA_Luma.material" />
+    <None Include="..\..\Engine\Shaders\Glass.material" />
+    <None Include="..\..\Engine\Shaders\GLSLSwizzle.material" />
+    <None Include="..\..\Engine\Shaders\Halftone.material" />
+    <None Include="..\..\Engine\Shaders\HardwareSkinningShadow.material" />
+    <None Include="..\..\Engine\Shaders\hdr.material" />
+    <None Include="..\..\Engine\Shaders\HeatVision.material" />
+    <None Include="..\..\Engine\Shaders\Hurt.material" />
+    <None Include="..\..\Engine\Shaders\HWInstancing.material" />
+    <None Include="..\..\Engine\Shaders\HW_VTFInstancing.material" />
+    <None Include="..\..\Engine\Shaders\HW_VTF_LUTInstancing.material" />
+    <None Include="..\..\Engine\Shaders\instancing.material" />
+    <None Include="..\..\Engine\Shaders\Instancing.program" />
+    <None Include="..\..\Engine\Shaders\InstancingMisc.material" />
+    <None Include="..\..\Engine\Shaders\Invert.material" />
+    <None Include="..\..\Engine\Shaders\IrrNorm.material" />
+    <None Include="..\..\Engine\Shaders\IsoSurf.material" />
+    <None Include="..\..\Engine\Shaders\Laplace.material" />
+    <None Include="..\..\Engine\Shaders\MotionBlur.compositor" />
+    <None Include="..\..\Engine\Shaders\MotionBlur.material" />
+    <None Include="..\..\Engine\Shaders\MRTtest.material" />
+    <None Include="..\..\Engine\Shaders\NightVision.material" />
+    <None Include="..\..\Engine\Shaders\Ocean.controls" />
+    <None Include="..\..\Engine\Shaders\Ocean.material" />
+    <None Include="..\..\Engine\Shaders\OffsetMapping.material" />
+    <None Include="..\..\Engine\Shaders\Ogre.material" />
+    <None Include="..\..\Engine\Shaders\OldMovie.material" />
+    <None Include="..\..\Engine\Shaders\OldTV.material" />
+    <None Include="..\..\Engine\Shaders\ParticleGS.material" />
+    <None Include="..\..\Engine\Shaders\Penguin.material" />
+    <None Include="..\..\Engine\Shaders\POM.material" />
+    <None Include="..\..\Engine\Shaders\POM.program" />
+    <None Include="..\..\Engine\Shaders\Posterize.material" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ASCIIFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Basic.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Basic_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\BumpMapping.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\CelShading.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Combine_fp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Common.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\cone_stepm.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\Ambient_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\Ambient_ps_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps — копия.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps.orig.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_ps_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_vs.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\LightMaterial_vs_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowColour_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowColour_ps_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowDS_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowDS_ps_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowNormal_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\ShowNormal_ps_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\vs.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DeferredShading\post\vs_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\depthshadowobject.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DitherFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DOF_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternion.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternionSkinning_Shadow.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\DualQuaternion_Common.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Dyn-Text.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Fresnel.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\FXAA.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\GlassFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Grass.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\GrayScale.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\HalftoneFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\HardwareSkinningShadow.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\hdr.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\HeatVision.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\HWBasicInstancing.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\HW_VTFInstancing.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\instancing.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\InstancingMisc.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\InstancingVertexInterpolators.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Instancing_ps.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\InvertFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\isosurf.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\LaplaceFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\MotionBlur.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\NightVisionFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Ocean2HLSL_Cg.frag" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Ocean2HLSL_Cg.vert" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\oceanHLSL_Cg.frag" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\oceanHLSL_Cg.vert" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\OffsetMapping.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\OldMovieFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\OldTV.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ParticleGS.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\PassthroughFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\PassthroughFP_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\PosterizeFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Projection.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\pssm.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Radial_Blur_FP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\recastdebug.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\RSM.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShaderInstancing.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShadowCaster.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ShadowCaster_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\shadows.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\SharpenEdgesFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\smaa.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\SSAA_FP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ssao.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\ssao_sm4.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\StdQuad_fp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\StdQuad_vp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Swizzle.gp" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\SwizzleGP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\TextureArrayVS.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\TilingFP.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\Tonemapping.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowcasterfp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowcastervp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowreceiverfp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\varianceshadowreceivervp.cg" />
+    <None Include="..\..\Engine\Shaders\programs\Cg\VTFInstancing.cg" />
+    <None Include="..\..\Engine\Shaders\pssm.material" />
+    <None Include="..\..\Engine\Shaders\RadialBlur.material" />
+    <None Include="..\..\Engine\Shaders\RasterizationOrder.material" />
+    <None Include="..\..\Engine\Shaders\RZR-002.material" />
+    <None Include="..\..\Engine\Shaders\ShaderInstancing.material" />
+    <None Include="..\..\Engine\Shaders\ShaderSystem.material" />
+    <None Include="..\..\Engine\Shaders\ShadowCaster.cg" />
+    <None Include="..\..\Engine\Shaders\ShadowCaster.material" />
+    <None Include="..\..\Engine\Shaders\ShadowCaster.program" />
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.cg" />
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.material" />
+    <None Include="..\..\Engine\Shaders\ShadowReceiver.program" />
+    <None Include="..\..\Engine\Shaders\shadows.material" />
+    <None Include="..\..\Engine\Shaders\SharpenEdges.material" />
+    <None Include="..\..\Engine\Shaders\sibenik.material" />
+    <None Include="..\..\Engine\Shaders\smaa.compositor" />
+    <None Include="..\..\Engine\Shaders\smaa.material" />
+    <None Include="..\..\Engine\Shaders\smoke.material" />
+    <None Include="..\..\Engine\Shaders\SSAA.compositor" />
+    <None Include="..\..\Engine\Shaders\SSAA.material" />
+    <None Include="..\..\Engine\Shaders\ssao.compositor" />
+    <None Include="..\..\Engine\Shaders\ssao.material" />
+    <None Include="..\..\Engine\Shaders\StdQuad_fp.program" />
+    <None Include="..\..\Engine\Shaders\StdQuad_vp.program" />
+    <None Include="..\..\Engine\Shaders\Tesselation.material" />
+    <None Include="..\..\Engine\Shaders\TextureAtlasSampleOrg.tai" />
+    <None Include="..\..\Engine\Shaders\TextureAtlasSampleWrap.tai" />
+    <None Include="..\..\Engine\Shaders\Tiling.material" />
+    <None Include="..\..\Engine\Shaders\VarianceShadowmap.material" />
+    <None Include="..\..\Engine\Shaders\VTFInstancing.material" />
+    <None Include="..\..\Engine\Shaders\Water.material" />
+    <None Include="..\Scripts\EngineMain.lua" />
+    <None Include="..\Scripts\GameStart.lua" />
+    <None Include="..\Scripts\Stonehenge.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Engine\Shaders\!REWRITE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Engine\Shaders\AreaTexDX9.dds" />
+    <Image Include="..\..\Engine\Shaders\black.png" />
+    <Image Include="..\..\Engine\Shaders\BubblyBricks-ColorMap.tga" />
+    <Image Include="..\..\Engine\Shaders\BubblyBricks-NormalMap.tga" />
+    <Image Include="..\..\Engine\Shaders\DefaultDiffuse.dds" />
+    <Image Include="..\..\Engine\Shaders\DefaultNormal.dds" />
+    <Image Include="..\..\Engine\Shaders\KernelRotation.png" />
+    <Image Include="..\..\Engine\Shaders\random.png" />
+    <Image Include="..\..\Engine\Shaders\SearchTex.dds" />
+    <Image Include="..\..\Engine\Shaders\white.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Engine\Shaders\CsmShadows.h" />
+    <ClInclude Include="..\..\Engine\Shaders\DepthShadowMapReceiverJitter.h" />
+    <ClInclude Include="..\..\Engine\Shaders\programs\Cg\Fxaa3_9.h" />
+    <ClInclude Include="..\..\Engine\Shaders\programs\Helpers.h" />
+    <ClInclude Include="..\..\Engine\Shaders\programs\ShaderDefines.h" />
+    <ClInclude Include="..\..\Engine\Shaders\SMAA.h" />
+    <ClInclude Include="..\..\Engine\Shaders\Utils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

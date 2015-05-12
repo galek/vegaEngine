@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android">
+      <Configuration>Release</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AE9F6BAF-F30B-4AAC-A22A-38F23B0C0447}</ProjectGuid>
+    <RootNamespace>OgreMain</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <AndroidArch>armv7-a</AndroidArch>
+    <AndroidAPILevel>android-17</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\BuildScripts\BuildConfig.x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.a</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <AssemblerListingLocation>$(Configuration)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference />
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <AssemblerListingLocation>Debug</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference />
+    <Link>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm106</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <AssemblerListingLocation>$(Configuration)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs.x64\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OGRE_NONCLIENT_BUILD;BOOST_ALL_NO_LIB;FREEIMAGE_LIB;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <AssemblerListingLocation>$(Configuration)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(SolutionDir)\..\libs\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs\$(Configuration)\ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(ANDROID_NDK_ROOT);include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;OGRE_NONCLIENT_BUILD;BOOST_ALL_NO_LIB;FREEIMAGE_LIB;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <AssemblerListingLocation>Release</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <GccExceptionHandling>true</GccExceptionHandling>
+      <AdditionalOptions>-fPIC -fpermissive %(AdditionalOptions)</AdditionalOptions>
+      <Warnings>DisableAllWarnings</Warnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>-landroid</AdditionalOptions>
+      <AdditionalDependencies>$(SolutionDir)\..\libs.a32\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.a32\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs.a32\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs.a32\$(Configuration)\ZLib.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.a32\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <DllDataFileName />
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>OgreStableHeaders.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)\..\libs.x64\$(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AssemblerListingLocation>$(Configuration)</AssemblerListingLocation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ProjectReference />
+    <Link>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\ZLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <Version>1.8</Version>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)\;$(SolutionDir)\..\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <ForceSymbolReferences>
+      </ForceSymbolReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Hash\MurmurHash3.cpp" />
+    <ClCompile Include="src\OgreSTBICodec.cpp" />
+    <ClInclude Include="include\Threading\NGOgreThreadHeadersSTL.h" />
+    <ClInclude Include="src\Android\OgreAndroidLogListener.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Android\OgreAPKFileSystemArchive.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Android\OgreAPKZipArchive.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Android\OgreErrorDialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Android\OgreFileSystemLayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Android\OgreTimer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClCompile Include="src\OgreAlignedAllocator.cpp" />
+    <ClCompile Include="src\OgreAnimable.cpp" />
+    <ClCompile Include="src\OgreAnimation.cpp" />
+    <ClCompile Include="src\OgreAnimationState.cpp" />
+    <ClCompile Include="src\OgreAnimationTrack.cpp" />
+    <ClCompile Include="src\OgreArchiveManager.cpp" />
+    <ClCompile Include="src\OgreAtomicScalar.cpp" />
+    <ClCompile Include="src\OgreAutoParamDataSource.cpp" />
+    <ClCompile Include="src\OgreAxisAlignedBox.cpp" />
+    <ClCompile Include="src\OgreBillboard.cpp" />
+    <ClCompile Include="src\OgreBillboardChain.cpp" />
+    <ClCompile Include="src\OgreBillboardParticleRenderer.cpp" />
+    <ClCompile Include="src\OgreBillboardSet.cpp" />
+    <ClCompile Include="src\OgreBone.cpp" />
+    <ClCompile Include="src\OgreCamera.cpp" />
+    <ClCompile Include="src\OgreCodec.cpp" />
+    <ClCompile Include="src\OgreColourValue.cpp" />
+    <ClCompile Include="src\OgreCommon.cpp" />
+    <ClCompile Include="src\OgreCompositionPass.cpp" />
+    <ClCompile Include="src\OgreCompositionTargetPass.cpp" />
+    <ClCompile Include="src\OgreCompositionTechnique.cpp" />
+    <ClCompile Include="src\OgreCompositor.cpp" />
+    <ClCompile Include="src\OgreCompositorChain.cpp" />
+    <ClCompile Include="src\OgreCompositorInstance.cpp" />
+    <ClCompile Include="src\OgreCompositorManager.cpp" />
+    <ClCompile Include="src\OgreETCCodec.cpp" />
+    <ClCompile Include="src\WIN32\OgreConfigDialog.cpp" />
+    <ClCompile Include="src\OgreConfigFile.cpp" />
+    <ClCompile Include="src\OgreControllerManager.cpp" />
+    <ClCompile Include="src\OgreConvexBody.cpp" />
+    <ClCompile Include="src\OgreDataStream.cpp" />
+    <ClCompile Include="src\OgreDDSCodec.cpp" />
+    <ClCompile Include="src\OgreDefaultHardwareBufferManager.cpp" />
+    <ClCompile Include="src\OgreDefaultSceneQueries.cpp" />
+    <ClCompile Include="src\Threading\OgreDefaultWorkQueueStandard.cpp" />
+    <ClCompile Include="src\Threading\OgreDefaultWorkQueueTBB.cpp" />
+    <ClCompile Include="src\OgreDeflate.cpp" />
+    <ClCompile Include="src\OgreDepthBuffer.cpp" />
+    <ClCompile Include="src\OgreDistanceLodStrategy.cpp" />
+    <ClCompile Include="src\OgreDualQuaternion.cpp" />
+    <ClCompile Include="src\OgreDynLib.cpp" />
+    <ClCompile Include="src\OgreDynLibManager.cpp" />
+    <ClCompile Include="src\OgreEdgeListBuilder.cpp" />
+    <ClCompile Include="src\OgreEntity.cpp" />
+    <ClCompile Include="src\WIN32\OgreErrorDialog.cpp" />
+    <ClCompile Include="src\OgreException.cpp" />
+    <ClCompile Include="src\OgreExternalTextureSource.cpp" />
+    <ClCompile Include="src\OgreExternalTextureSourceManager.cpp" />
+    <ClCompile Include="src\OgreFileSystem.cpp" />
+    <ClCompile Include="src\WIN32\OgreFileSystemLayer.cpp" />
+    <ClCompile Include="src\OgreFreeImageCodec.cpp" />
+    <ClCompile Include="src\OgreFrustum.cpp" />
+    <ClCompile Include="src\OgreGpuProgram.cpp" />
+    <ClCompile Include="src\OgreGpuProgramManager.cpp" />
+    <ClCompile Include="src\OgreGpuProgramParams.cpp" />
+    <ClCompile Include="src\OgreGpuProgramUsage.cpp" />
+    <ClCompile Include="src\OgreHardwareBufferManager.cpp" />
+    <ClCompile Include="src\OgreHardwareCounterBuffer.cpp" />
+    <ClCompile Include="src\OgreHardwareIndexBuffer.cpp" />
+    <ClCompile Include="src\OgreHardwareOcclusionQuery.cpp" />
+    <ClCompile Include="src\OgreHardwarePixelBuffer.cpp" />
+    <ClCompile Include="src\OgreHardwareUniformBuffer.cpp" />
+    <ClCompile Include="src\OgreHardwareVertexBuffer.cpp" />
+    <ClCompile Include="src\OgreHighLevelGpuProgram.cpp" />
+    <ClCompile Include="src\OgreHighLevelGpuProgramManager.cpp" />
+    <ClCompile Include="src\OgreImage.cpp" />
+    <ClCompile Include="src\OgreInstanceBatch.cpp" />
+    <ClCompile Include="src\OgreInstanceBatchHW.cpp" />
+    <ClCompile Include="src\OgreInstanceBatchHW_VTF.cpp" />
+    <ClCompile Include="src\OgreInstanceBatchShader.cpp" />
+    <ClCompile Include="src\OgreInstanceBatchVTF.cpp" />
+    <ClCompile Include="src\OgreInstancedEntity.cpp" />
+    <ClCompile Include="src\OgreInstancedGeometry.cpp" />
+    <ClCompile Include="src\OgreInstanceManager.cpp" />
+    <ClCompile Include="src\OgreKeyFrame.cpp" />
+    <ClCompile Include="src\OgreLight.cpp" />
+    <ClCompile Include="src\OgreLodStrategy.cpp" />
+    <ClCompile Include="src\OgreLodStrategyManager.cpp" />
+    <ClCompile Include="src\OgreLog.cpp" />
+    <ClCompile Include="src\OgreLogManager.cpp" />
+    <ClCompile Include="src\OgreManualObject.cpp" />
+    <ClCompile Include="src\OgreMaterial.cpp" />
+    <ClCompile Include="src\OgreMaterialManager.cpp" />
+    <ClCompile Include="src\OgreMaterialSerializer.cpp" />
+    <ClCompile Include="src\OgreMath.cpp" />
+    <ClCompile Include="src\OgreMatrix3.cpp" />
+    <ClCompile Include="src\OgreMatrix4.cpp" />
+    <ClCompile Include="src\OgreMemoryAllocatedObject.cpp" />
+    <ClCompile Include="src\OgreMemoryNedAlloc.cpp" />
+    <ClCompile Include="src\OgreMemoryNedPooling.cpp" />
+    <ClCompile Include="src\OgreMemoryTracker.cpp" />
+    <ClCompile Include="src\OgreMesh.cpp" />
+    <ClCompile Include="src\OgreMeshManager.cpp" />
+    <ClCompile Include="src\OgreMeshSerializer.cpp" />
+    <ClCompile Include="src\OgreMeshSerializerImpl.cpp" />
+    <ClCompile Include="src\OgreMovableObject.cpp" />
+    <ClCompile Include="src\OgreMovablePlane.cpp" />
+    <ClCompile Include="src\OgreNode.cpp" />
+    <ClCompile Include="src\OgreNumerics.cpp" />
+    <ClCompile Include="src\OgreOptimisedUtil.cpp" />
+    <ClCompile Include="src\WIN32\OgreOptimisedUtilDirectXMath.cpp" />
+    <ClCompile Include="src\OgreOptimisedUtilGeneral.cpp" />
+    <ClCompile Include="src\OgreOptimisedUtilSSE.cpp" />
+    <ClCompile Include="src\OgreParticle.cpp" />
+    <ClCompile Include="src\OgreParticleEmitter.cpp" />
+    <ClCompile Include="src\OgreParticleEmitterCommands.cpp" />
+    <ClCompile Include="src\OgreParticleIterator.cpp" />
+    <ClCompile Include="src\OgreParticleSystem.cpp" />
+    <ClCompile Include="src\OgreParticleSystemManager.cpp" />
+    <ClCompile Include="src\OgrePass.cpp" />
+    <ClCompile Include="src\OgrePatchMesh.cpp" />
+    <ClCompile Include="src\OgrePatchSurface.cpp" />
+    <ClCompile Include="src\OgrePixelCountLodStrategy.cpp" />
+    <ClCompile Include="src\OgrePixelFormat.cpp" />
+    <ClCompile Include="src\OgrePlane.cpp" />
+    <ClCompile Include="src\OgrePlatformInformation.cpp" />
+    <ClCompile Include="src\OgrePolygon.cpp" />
+    <ClCompile Include="src\OgrePose.cpp" />
+    <ClCompile Include="src\OgreArchive.cpp" />
+    <ClCompile Include="src\OgrePrecompiledHeaders.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Android'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Android'">OgreStableHeaders.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">OgreStableHeaders.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\OgrePredefinedControllers.cpp" />
+    <ClCompile Include="src\OgrePrefabFactory.cpp" />
+    <ClCompile Include="src\OgreProfiler.cpp" />
+    <ClCompile Include="src\OgrePVRTCCodec.cpp" />
+    <ClCompile Include="src\OgreQuaternion.cpp" />
+    <ClCompile Include="src\OgreRectangle2D.cpp" />
+    <ClCompile Include="src\OgreRenderQueue.cpp" />
+    <ClCompile Include="src\OgreRenderQueueInvocation.cpp" />
+    <ClCompile Include="src\OgreRenderQueueSortingGrouping.cpp" />
+    <ClCompile Include="src\OgreRenderSystem.cpp" />
+    <ClCompile Include="src\OgreRenderSystemCapabilities.cpp" />
+    <ClCompile Include="src\OgreRenderSystemCapabilitiesManager.cpp" />
+    <ClCompile Include="src\OgreRenderSystemCapabilitiesSerializer.cpp" />
+    <ClCompile Include="src\OgreRenderTarget.cpp" />
+    <ClCompile Include="src\OgreRenderTexture.cpp" />
+    <ClCompile Include="src\OgreRenderToVertexBuffer.cpp" />
+    <ClCompile Include="src\OgreRenderWindow.cpp" />
+    <ClCompile Include="src\OgreResource.cpp" />
+    <ClCompile Include="src\OgreResourceBackgroundQueue.cpp" />
+    <ClCompile Include="src\OgreResourceGroupManager.cpp" />
+    <ClCompile Include="src\OgreResourceManager.cpp" />
+    <ClCompile Include="src\OgreRibbonTrail.cpp" />
+    <ClCompile Include="src\OgreRoot.cpp" />
+    <ClCompile Include="src\OgreRotationSpline.cpp" />
+    <ClCompile Include="src\OgreSceneManager.cpp" />
+    <ClCompile Include="src\OgreSceneManagerEnumerator.cpp" />
+    <ClCompile Include="src\OgreSceneNode.cpp" />
+    <ClCompile Include="src\OgreSceneQuery.cpp" />
+    <ClCompile Include="src\OgreScriptCompiler.cpp" />
+    <ClCompile Include="src\OgreScriptLexer.cpp" />
+    <ClCompile Include="src\OgreScriptParser.cpp" />
+    <ClCompile Include="src\OgreScriptTranslator.cpp" />
+    <ClCompile Include="src\OgreSerializer.cpp" />
+    <ClCompile Include="src\OgreShadowCameraSetup.cpp" />
+    <ClCompile Include="src\OgreShadowCameraSetupFocused.cpp" />
+    <ClCompile Include="src\OgreShadowCameraSetupLiSPSM.cpp" />
+    <ClCompile Include="src\OgreShadowCameraSetupPlaneOptimal.cpp" />
+    <ClCompile Include="src\OgreShadowCameraSetupPSSM.cpp" />
+    <ClCompile Include="src\OgreShadowCaster.cpp" />
+    <ClCompile Include="src\OgreShadowTextureManager.cpp" />
+    <ClCompile Include="src\OgreShadowVolumeExtrudeProgram.cpp" />
+    <ClCompile Include="src\OgreSimpleRenderable.cpp" />
+    <ClCompile Include="src\OgreSimpleSpline.cpp" />
+    <ClCompile Include="src\OgreSkeleton.cpp" />
+    <ClCompile Include="src\OgreSkeletonInstance.cpp" />
+    <ClCompile Include="src\OgreSkeletonManager.cpp" />
+    <ClCompile Include="src\OgreSkeletonSerializer.cpp" />
+    <ClCompile Include="src\OgreStaticGeometry.cpp" />
+    <ClCompile Include="src\OgreStreamSerialiser.cpp" />
+    <ClCompile Include="src\OgreString.cpp" />
+    <ClCompile Include="src\OgreStringConverter.cpp" />
+    <ClCompile Include="src\OgreStringInterface.cpp" />
+    <ClCompile Include="src\OgreSubEntity.cpp" />
+    <ClCompile Include="src\OgreSubMesh.cpp" />
+    <ClCompile Include="src\OgreTagPoint.cpp" />
+    <ClCompile Include="src\OgreTangentSpaceCalc.cpp" />
+    <ClCompile Include="src\OgreTechnique.cpp" />
+    <ClCompile Include="src\OgreTexture.cpp" />
+    <ClCompile Include="src\OgreTextureManager.cpp" />
+    <ClCompile Include="src\OgreTextureUnitState.cpp" />
+    <ClCompile Include="src\WIN32\OgreTimer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\OgreUnifiedHighLevelGpuProgram.cpp" />
+    <ClCompile Include="src\OgreUserObjectBindings.cpp" />
+    <ClCompile Include="src\OgreUTFString.cpp" />
+    <ClCompile Include="src\OgreVector2.cpp" />
+    <ClCompile Include="src\OgreVector3.cpp" />
+    <ClCompile Include="src\OgreVector4.cpp" />
+    <ClCompile Include="src\OgreVertexIndexData.cpp" />
+    <ClCompile Include="src\OgreViewport.cpp" />
+    <ClCompile Include="src\OgreWindowEventUtilities.cpp" />
+    <ClCompile Include="src\OgreWireBoundingBox.cpp" />
+    <ClCompile Include="src\OgreWorkQueue.cpp" />
+    <ClCompile Include="src\OgreZip.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\asm_math.h" />
+    <ClInclude Include="include\Ogre.h" />
+    <ClInclude Include="include\OgreAlignedAllocator.h" />
+    <ClInclude Include="include\OgreAnimable.h" />
+    <ClInclude Include="include\OgreAnimation.h" />
+    <ClInclude Include="include\OgreAnimationState.h" />
+    <ClInclude Include="include\OgreAnimationTrack.h" />
+    <ClInclude Include="include\OgreAny.h" />
+    <ClInclude Include="include\OgreArchive.h" />
+    <ClInclude Include="include\OgreArchiveFactory.h" />
+    <ClInclude Include="include\OgreArchiveManager.h" />
+    <ClInclude Include="include\OgreAtomicWrappers.h" />
+    <ClInclude Include="include\OgreAutoParamDataSource.h" />
+    <ClInclude Include="include\OgreAxisAlignedBox.h" />
+    <ClInclude Include="include\OgreBillboard.h" />
+    <ClInclude Include="include\OgreBillboardChain.h" />
+    <ClInclude Include="include\OgreBillboardParticleRenderer.h" />
+    <ClInclude Include="include\OgreBillboardSet.h" />
+    <ClInclude Include="include\OgreBitwise.h" />
+    <ClInclude Include="include\OgreBlendMode.h" />
+    <ClInclude Include="include\OgreBone.h" />
+    <ClInclude Include="..\include\OgreBuildSettings.h" />
+    <ClInclude Include="include\OgreCamera.h" />
+    <ClInclude Include="include\OgreCodec.h" />
+    <ClInclude Include="include\OgreColourValue.h" />
+    <ClInclude Include="include\OgreCommon.h" />
+    <ClInclude Include="include\OgreCompositionPass.h" />
+    <ClInclude Include="include\OgreCompositionTargetPass.h" />
+    <ClInclude Include="include\OgreCompositionTechnique.h" />
+    <ClInclude Include="include\OgreCompositor.h" />
+    <ClInclude Include="include\OgreCompositorChain.h" />
+    <ClInclude Include="include\OgreCompositorInstance.h" />
+    <ClInclude Include="include\OgreCompositorLogic.h" />
+    <ClInclude Include="include\OgreCompositorManager.h" />
+    <ClInclude Include="include\OgreConfig.h" />
+    <ClInclude Include="include\OgreConfigDialog.h" />
+    <ClInclude Include="include\WIN32\OgreConfigDialogImp.h" />
+    <ClInclude Include="include\OgreConfigFile.h" />
+    <ClInclude Include="include\OgreConfigOptionMap.h" />
+    <ClInclude Include="include\OgreController.h" />
+    <ClInclude Include="include\OgreControllerManager.h" />
+    <ClInclude Include="include\OgreConvexBody.h" />
+    <ClInclude Include="include\OgreCustomCompositionPass.h" />
+    <ClInclude Include="include\OgreDataStream.h" />
+    <ClInclude Include="include\OgreDDSCodec.h" />
+    <ClInclude Include="include\OgreDefaultHardwareBufferManager.h" />
+    <ClInclude Include="include\Threading\OgreDefaultWorkQueue.h" />
+    <ClInclude Include="include\Threading\OgreDefaultWorkQueueStandard.h" />
+    <ClInclude Include="include\Threading\OgreDefaultWorkQueueTBB.h" />
+    <ClInclude Include="include\OgreDeflate.h" />
+    <ClInclude Include="include\OgreDepthBuffer.h" />
+    <ClInclude Include="include\OgreDistanceLodStrategy.h" />
+    <ClInclude Include="include\OgreDualQuaternion.h" />
+    <ClInclude Include="include\OgreDynLib.h" />
+    <ClInclude Include="include\OgreDynLibManager.h" />
+    <ClInclude Include="include\OgreEdgeListBuilder.h" />
+    <ClInclude Include="include\OgreEntity.h" />
+    <ClInclude Include="include\OgreErrorDialog.h" />
+    <ClInclude Include="include\WIN32\OgreErrorDialogImp.h" />
+    <ClInclude Include="include\OgreException.h" />
+    <ClInclude Include="include\OgreExternalTextureSource.h" />
+    <ClInclude Include="include\OgreExternalTextureSourceManager.h" />
+    <ClInclude Include="include\OgreFactoryObj.h" />
+    <ClInclude Include="include\OgreFileSystem.h" />
+    <ClInclude Include="include\OgreFont.h" />
+    <ClInclude Include="include\OgreFontManager.h" />
+    <ClInclude Include="include\OgreFrameListener.h" />
+    <ClInclude Include="include\OgreFreeImageCodec.h" />
+    <ClInclude Include="include\OgreFrustum.h" />
+    <ClInclude Include="include\OgreGpuProgram.h" />
+    <ClInclude Include="include\OgreGpuProgramManager.h" />
+    <ClInclude Include="include\OgreGpuProgramParams.h" />
+    <ClInclude Include="include\OgreGpuProgramUsage.h" />
+    <ClInclude Include="include\OgreHardwareBuffer.h" />
+    <ClInclude Include="include\OgreHardwareBufferManager.h" />
+    <ClInclude Include="include\OgreHardwareIndexBuffer.h" />
+    <ClInclude Include="include\OgreHardwareOcclusionQuery.h" />
+    <ClInclude Include="include\OgreHardwarePixelBuffer.h" />
+    <ClInclude Include="include\OgreHardwareVertexBuffer.h" />
+    <ClInclude Include="include\OgreHeaderPrefix.h" />
+    <ClInclude Include="include\OgreHeaderSuffix.h" />
+    <ClInclude Include="include\OgreHighLevelGpuProgram.h" />
+    <ClInclude Include="include\OgreHighLevelGpuProgramManager.h" />
+    <ClInclude Include="include\OgreImage.h" />
+    <ClInclude Include="include\OgreImageCodec.h" />
+    <ClInclude Include="src\OgreImageResampler.h" />
+    <ClInclude Include="include\OgreInstanceBatch.h" />
+    <ClInclude Include="include\OgreInstanceBatchHW.h" />
+    <ClInclude Include="include\OgreInstanceBatchHW_VTF.h" />
+    <ClInclude Include="include\OgreInstanceBatchShader.h" />
+    <ClInclude Include="include\OgreInstanceBatchVTF.h" />
+    <ClInclude Include="include\OgreInstancedEntity.h" />
+    <ClInclude Include="include\OgreInstancedGeometry.h" />
+    <ClInclude Include="include\OgreInstanceManager.h" />
+    <ClInclude Include="include\OgreIteratorRange.h" />
+    <ClInclude Include="include\OgreIteratorWrapper.h" />
+    <ClInclude Include="include\OgreIteratorWrappers.h" />
+    <ClInclude Include="include\OgreKeyFrame.h" />
+    <ClInclude Include="include\OgreLight.h" />
+    <ClInclude Include="include\OgreLodListener.h" />
+    <ClInclude Include="include\OgreLodStrategy.h" />
+    <ClInclude Include="include\OgreLodStrategyManager.h" />
+    <ClInclude Include="include\OgreLog.h" />
+    <ClInclude Include="include\OgreLogManager.h" />
+    <ClInclude Include="include\OgreManualObject.h" />
+    <ClInclude Include="include\OgreMaterial.h" />
+    <ClInclude Include="include\OgreMaterialManager.h" />
+    <ClInclude Include="include\OgreMaterialSerializer.h" />
+    <ClInclude Include="include\OgreMath.h" />
+    <ClInclude Include="include\OgreMatrix3.h" />
+    <ClInclude Include="include\OgreMatrix4.h" />
+    <ClInclude Include="include\OgreMemoryAllocatedObject.h" />
+    <ClInclude Include="include\OgreMemoryAllocatorConfig.h" />
+    <ClInclude Include="include\OgreMemoryNedAlloc.h" />
+    <ClInclude Include="include\OgreMemoryNedPooling.h" />
+    <ClInclude Include="include\OgreMemoryStdAlloc.h" />
+    <ClInclude Include="include\OgreMemorySTLAllocator.h" />
+    <ClInclude Include="include\OgreMemoryTracker.h" />
+    <ClInclude Include="include\OgreMesh.h" />
+    <ClInclude Include="include\OgreMeshFileFormat.h" />
+    <ClInclude Include="include\OgreMeshManager.h" />
+    <ClInclude Include="include\OgreMeshSerializer.h" />
+    <ClInclude Include="include\OgreMeshSerializerImpl.h" />
+    <ClInclude Include="include\WIN32\OgreMinGWSupport.h" />
+    <ClInclude Include="include\OgreMovableObject.h" />
+    <ClInclude Include="include\OgreMovablePlane.h" />
+    <ClInclude Include="include\OgreNode.h" />
+    <ClInclude Include="include\OgreNumerics.h" />
+    <ClInclude Include="include\OgreOptimisedUtil.h" />
+    <ClInclude Include="include\OgreParticle.h" />
+    <ClInclude Include="include\OgreParticleAffector.h" />
+    <ClInclude Include="include\OgreParticleAffectorFactory.h" />
+    <ClInclude Include="include\OgreParticleEmitter.h" />
+    <ClInclude Include="include\OgreParticleEmitterCommands.h" />
+    <ClInclude Include="include\OgreParticleEmitterFactory.h" />
+    <ClInclude Include="include\OgreParticleIterator.h" />
+    <ClInclude Include="include\OgreParticleScriptCompiler.h" />
+    <ClInclude Include="include\OgreParticleSystem.h" />
+    <ClInclude Include="include\OgreParticleSystemManager.h" />
+    <ClInclude Include="include\OgreParticleSystemRenderer.h" />
+    <ClInclude Include="include\OgrePass.h" />
+    <ClInclude Include="include\OgrePatchMesh.h" />
+    <ClInclude Include="include\OgrePatchSurface.h" />
+    <ClInclude Include="src\OgrePixelConversions.h" />
+    <ClInclude Include="include\OgrePixelCountLodStrategy.h" />
+    <ClInclude Include="include\OgrePixelFormat.h" />
+    <ClInclude Include="include\OgrePlane.h" />
+    <ClInclude Include="include\OgrePlaneBoundedVolume.h" />
+    <ClInclude Include="include\OgrePlatform.h" />
+    <ClInclude Include="include\OgrePlatformInformation.h" />
+    <ClInclude Include="include\OgrePlugin.h" />
+    <ClInclude Include="include\OgrePolygon.h" />
+    <ClInclude Include="include\OgrePose.h" />
+    <ClInclude Include="include\OgrePredefinedControllers.h" />
+    <ClInclude Include="include\OgrePrefabFactory.h" />
+    <ClInclude Include="include\OgrePrerequisites.h" />
+    <ClInclude Include="include\OgreProfiler.h" />
+    <ClInclude Include="include\OgreProgressiveMesh.h" />
+    <ClInclude Include="include\OgrePVRTCCodec.h" />
+    <ClInclude Include="include\OgreQuaternion.h" />
+    <ClInclude Include="include\OgreRadixSort.h" />
+    <ClInclude Include="include\OgreRay.h" />
+    <ClInclude Include="include\OgreRectangle.h" />
+    <ClInclude Include="include\OgreRectangle2D.h" />
+    <ClInclude Include="include\OgreRenderable.h" />
+    <ClInclude Include="include\OgreRenderObjectListener.h" />
+    <ClInclude Include="include\OgreRenderOperation.h" />
+    <ClInclude Include="include\OgreRenderQueue.h" />
+    <ClInclude Include="include\OgreRenderQueueInvocation.h" />
+    <ClInclude Include="include\OgreRenderQueueListener.h" />
+    <ClInclude Include="include\OgreRenderQueueSortingGrouping.h" />
+    <ClInclude Include="include\OgreRenderSystem.h" />
+    <ClInclude Include="include\OgreRenderSystemCapabilities.h" />
+    <ClInclude Include="include\OgreRenderSystemCapabilitiesManager.h" />
+    <ClInclude Include="include\OgreRenderSystemCapabilitiesSerializer.h" />
+    <ClInclude Include="include\OgreRenderTarget.h" />
+    <ClInclude Include="include\OgreRenderTargetListener.h" />
+    <ClInclude Include="include\OgreRenderTexture.h" />
+    <ClInclude Include="include\OgreRenderToVertexBuffer.h" />
+    <ClInclude Include="include\OgreRenderWindow.h" />
+    <ClInclude Include="include\OgreResource.h" />
+    <ClInclude Include="include\OgreResourceBackgroundQueue.h" />
+    <ClInclude Include="include\OgreResourceGroupManager.h" />
+    <ClInclude Include="include\OgreResourceManager.h" />
+    <ClInclude Include="include\OgreRibbonTrail.h" />
+    <ClInclude Include="include\OgreRoot.h" />
+    <ClInclude Include="include\OgreRotationalSpline.h" />
+    <ClInclude Include="include\OgreSceneManager.h" />
+    <ClInclude Include="include\OgreSceneManagerEnumerator.h" />
+    <ClInclude Include="include\OgreSceneNode.h" />
+    <ClInclude Include="include\OgreSceneQuery.h" />
+    <ClInclude Include="include\OgreScriptCompiler.h" />
+    <ClInclude Include="include\OgreScriptLexer.h" />
+    <ClInclude Include="include\OgreScriptLoader.h" />
+    <ClInclude Include="include\OgreScriptParser.h" />
+    <ClInclude Include="include\OgreScriptTranslator.h" />
+    <ClInclude Include="include\OgreSearchOps.h" />
+    <ClInclude Include="include\OgreSerializer.h" />
+    <ClInclude Include="include\OgreShadowCameraSetup.h" />
+    <ClInclude Include="include\OgreShadowCameraSetupFocused.h" />
+    <ClInclude Include="include\OgreShadowCameraSetupLiSPSM.h" />
+    <ClInclude Include="include\OgreShadowCameraSetupPlaneOptimal.h" />
+    <ClInclude Include="include\OgreShadowCameraSetupPSSM.h" />
+    <ClInclude Include="include\OgreShadowCaster.h" />
+    <ClInclude Include="include\OgreShadowTextureManager.h" />
+    <ClInclude Include="include\OgreShadowVolumeExtrudeProgram.h" />
+    <ClInclude Include="include\OgreSharedPtr.h" />
+    <ClInclude Include="src\OgreSIMDHelper.h" />
+    <ClInclude Include="include\OgreSimpleRenderable.h" />
+    <ClInclude Include="include\OgreSimpleSpline.h" />
+    <ClInclude Include="include\OgreSingleton.h" />
+    <ClInclude Include="include\OgreSkeleton.h" />
+    <ClInclude Include="include\OgreSkeletonFileFormat.h" />
+    <ClInclude Include="include\OgreSkeletonInstance.h" />
+    <ClInclude Include="include\OgreSkeletonManager.h" />
+    <ClInclude Include="include\OgreSkeletonSerializer.h" />
+    <ClInclude Include="include\OgreSmallVector.h" />
+    <ClInclude Include="include\OgreSphere.h" />
+    <ClInclude Include="include\OgreSpotShadowFadePng.h" />
+    <ClInclude Include="include\OgreStableHeaders.h" />
+    <ClInclude Include="include\OgreStaticFaceGroup.h" />
+    <ClInclude Include="include\OgreStaticGeometry.h" />
+    <ClInclude Include="include\OgreStdHeaders.h" />
+    <ClInclude Include="include\OgreStreamSerialiser.h" />
+    <ClInclude Include="include\OgreString.h" />
+    <ClInclude Include="include\OgreStringConverter.h" />
+    <ClInclude Include="include\OgreStringInterface.h" />
+    <ClInclude Include="include\OgreStringVector.h" />
+    <ClInclude Include="include\OgreSubEntity.h" />
+    <ClInclude Include="include\OgreSubMesh.h" />
+    <ClInclude Include="include\OgreTagPoint.h" />
+    <ClInclude Include="include\OgreTangentSpaceCalc.h" />
+    <ClInclude Include="include\OgreTechnique.h" />
+    <ClInclude Include="include\OgreTexture.h" />
+    <ClInclude Include="include\OgreTextureManager.h" />
+    <ClInclude Include="include\OgreTextureUnitState.h" />
+    <ClInclude Include="include\Threading\OgreThreadDefines.h" />
+    <ClInclude Include="include\Threading\OgreThreadDefinesBoost.h" />
+    <ClInclude Include="include\Threading\OgreThreadDefinesNone.h" />
+    <ClInclude Include="include\Threading\OgreThreadDefinesPoco.h" />
+    <ClInclude Include="include\Threading\OgreThreadDefinesTBB.h" />
+    <ClInclude Include="include\Threading\OgreThreadHeaders.h" />
+    <ClInclude Include="include\Threading\OgreThreadHeadersBoost.h" />
+    <ClInclude Include="include\Threading\OgreThreadHeadersPoco.h" />
+    <ClInclude Include="include\Threading\OgreThreadHeadersTBB.h" />
+    <ClInclude Include="include\OgreTimer.h" />
+    <ClInclude Include="include\WIN32\OgreTimerImp.h" />
+    <ClInclude Include="include\OgreUnifiedHighLevelGpuProgram.h" />
+    <ClInclude Include="include\OgreUserObjectBindings.h" />
+    <ClInclude Include="include\OgreUTFString.h" />
+    <ClInclude Include="include\OgreVector2.h" />
+    <ClInclude Include="include\OgreVector3.h" />
+    <ClInclude Include="include\OgreVector4.h" />
+    <ClInclude Include="include\OgreVertexBoneAssignment.h" />
+    <ClInclude Include="include\OgreVertexIndexData.h" />
+    <ClInclude Include="include\OgreViewport.h" />
+    <ClInclude Include="include\OgreWindowEventUtilities.h" />
+    <ClInclude Include="include\OgreWireBoundingBox.h" />
+    <ClInclude Include="include\OgreWorkQueue.h" />
+    <ClInclude Include="include\OgreZip.h" />
+    <ClInclude Include="src\WIN32\resource.h" />
+    <ClInclude Include="src\WIN32\winres.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\WIN32\OgreWin32Resources.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Android'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\ogremain.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FreeImage\Source\FreeImageLib\FreeImageLib.2008.vcxproj">
+      <Project>{9e219df2-315d-478e-8a07-8960c377ce1e}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FreeImage\Source\ZLib\ZLib.2008.vcxproj">
+      <Project>{33134f61-c1ad-4b6f-9cea-503a9f140c52}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\..\freetype\builds\win32\vc2008\freetype.vcxproj">
+      <Project>{78b079bd-9fc7-4b9e-b4a6-96da0f00248b}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\..\zzip\msvc\zzip.vcxproj">
+      <Project>{c7569897-7de6-4d60-8803-e2b41c02695b}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

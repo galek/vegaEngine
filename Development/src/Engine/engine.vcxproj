@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>6</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Tegra-Android">
+      <Configuration>Release</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{882F047C-66AA-4CB9-8B2B-3CF45D0EAA43}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidArch>armv7-a</AndroidArch>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidAPILevel>android-17</AndroidAPILevel>
+    <AndroidArch>armv7-a</AndroidArch>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildReleaseProperty.VC90.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildReleaseProperty.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildDebugProperty.VC90.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\BuildConfig\BuildDebugProperty.x64.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <Import Project="..\BuildConfig\BuildSettings.VC90.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.20617.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\Binaries\Binaries.win32_d\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>..\..\Intermediate\x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\..\..\Binaries\Binaries.win64_d\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\Binaries\Binaries.win32\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>..\..\Intermediate\x64\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\..\..\Binaries\Binaries.win64\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.a</TargetExt>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExpandAttributedSource>true</ExpandAttributedSource>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>user32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <AssemblyDebug>true</AssemblyDebug>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExpandAttributedSource>true</ExpandAttributedSource>
+      <AssemblerOutput>All</AssemblerOutput>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>user32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>
+ %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePrivate.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4503;4099;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SetChecksum>true</SetChecksum>
+      <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <MinimumRequiredVersion />
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>
+ %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BOOST_ALL_NO_LIB;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EnginePrivate.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4503;4099;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>user32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>libboost_chrono-vc120-mt-1_55.lib;libboost_system-vc120-mt-1_55.lib;libboost_date_time-vc120-mt-1_55.lib</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SetChecksum>true</SetChecksum>
+      <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <AssemblyDebug>true</AssemblyDebug>
+      <MinimumRequiredVersion />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ClCompile>
+      <GccExceptionHandling>true</GccExceptionHandling>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>-std=c++11 -Wliteral-suffix -fpermissive %(AdditionalOptions)</AdditionalOptions>
+      <OptimizationLevel>O0</OptimizationLevel>
+      <Warnings>DisableAllWarnings</Warnings>
+      <CLanguageStandard>c11</CLanguageStandard>
+      <CppLanguageStandard>c++11</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\..\external\libs.a32\Release\libOgreMain.a;..\..\external\libs.a32\Release\libFreeImage.a;..\..\external\libs.a32\Release\libLibJPEG.a;..\..\external\libs.a32\Release\libLibOpenJPEG.a;..\..\external\libs.a32\Release\libLibPNG.a;..\..\external\libs.a32\Release\libLibRaw.a;..\..\external\libs.a32\Release\libLibTIFF4.a;..\..\external\libs.a32\Release\liblua.a;..\..\external\libs.a32\Release\libOgrePaging.a;..\..\external\libs.a32\Release\libOIS.a;..\..\external\libs.a32\Release\libOpenEXR.a;..\..\external\libs.a32\Release\libPlugin_CgProgramManager.a;..\..\external\libs.a32\Release\libPlugin_OctreeSceneManager.a;..\..\external\libs.a32\Release\libPlugin_ParticleFX.a;..\..\external\libs.a32\Release\libRenderSystem_GLES.a;..\..\external\libs.a32\Release\libRenderSystem_GLES2.a;..\..\external\libs.a32\Release\libZLib.a;..\..\external\libs.a32\Release\libzziplib.a;..\..\external\libs.a32\Release\libMyGUI.OgrePlatform.a;..\..\external\libs.a32\Release\libMyGUICommon.a;..\..\external\libs.a32\Release\libMyGUIEngine.a;..\..\external\libs.a32\Release\freetype249.a;..\..\libs.a32\Release\libAudioAL.a;..\..\libs.a32\Release\libBulletPhysics.a;..\..\libs.a32\Release\libCommon.a;..\..\libs.a32\Release\libCore.a;..\..\libs.a32\Release\libHydrax.a;..\..\libs.a32\Release\libplatform.a;..\..\libs.a32\Release\libRender.a;..\..\libs.a32\Release\libSkyX.a;..\..\libs.a32\Release\libAI.a;..\..\external\libs.a32\Release\BulletDynamics.a;..\..\external\libs.a32\Release\BulletCollision.a;..\..\external\libs.a32\Release\BulletSoftBody.a;..\..\external\libs.a32\Release\LinearMath.a;..\..\external\libs.a32\Release\ConvexDecomposition.a;..\..\external\libs.a32\Release\libOgreTerrain.a;..\..\external\libs.a32\Release\liblibvorbis_static.a;..\..\external\libs.a32\Release\liblibvorbisfile.a;..\..\external\libs.a32\Release\liblibogg_static.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AndroidSystemLibs>c;m;log;gcc;android;GLESv1_CM;EGL;GLESv2</AndroidSystemLibs>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AI\AI.vcxproj">
+      <Project>{4b67e249-5319-4ed5-a77b-6aafeec6ec85}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\AudioAL\AudioAL.vcxproj">
+      <Project>{63e674da-e000-4c00-8956-f25af29366b1}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\BulletPhysics\BulletPhysics.vcxproj">
+      <Project>{6a281ba9-5c0e-4595-b1a7-792dcf5d2558}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{86d80ffc-f25e-40f5-891b-00cb17257278}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{98923de1-ae6e-48f9-8bb4-cd92b30dccac}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Hydrax\Hydrax.vcxproj">
+      <Project>{5506c2ab-7dd1-47bb-a77d-eb26e52be41c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\platform\platform.vcxproj">
+      <Project>{069db063-0a5a-4cd6-a0b5-33053f328270}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Render\Render.vcxproj">
+      <Project>{1115c3ef-7daa-4fea-b837-6e80c94216bc}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\SkyX\SkyX.vcxproj">
+      <Project>{6d9e40e5-cb71-4332-8d96-ff24518c5e68}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\APIEngineCommands.h" />
+    <ClInclude Include="inc\camera\CameraFPS.h" />
+    <ClInclude Include="inc\camera\iCameraBase.h" />
+    <ClInclude Include="inc\camera\CameraFree.h" />
+    <ClInclude Include="inc\console.h" />
+    <ClInclude Include="inc\consoleCommands.h" />
+    <ClInclude Include="inc\EmitterSound.h" />
+    <ClInclude Include="inc\EngineBase.h" />
+    <ClInclude Include="inc\EngineGlobals.h" />
+    <ClInclude Include="inc\EnginePlugins.h" />
+    <ClInclude Include="inc\EnginePrivate.h" />
+    <ClInclude Include="inc\EngineScriptingEx.h" />
+    <ClInclude Include="inc\HydraxRttListener.h" />
+    <ClInclude Include="inc\Input.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxModel.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxPlatform.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxRenderWindowIterator.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxScene.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxTypes.h" />
+    <ClInclude Include="inc\ogremax\OgreMaxUtilities.h" />
+    <ClInclude Include="inc\ogremax\ProgressCalculator.h" />
+    <ClInclude Include="inc\ogremax\Version.h" />
+    <ClInclude Include="inc\SceneManager.h" />
+    <ClInclude Include="inc\tinyxml\tinyxml.h" />
+    <ClInclude Include="inc\Updater.h" />
+    <ClInclude Include="inc\Window.h" />
+    <ClInclude Include="inc\GUI\GUI.h" />
+    <ClInclude Include="inc\world\Actor.h" />
+    <ClInclude Include="inc\ActorDynamicSky.h" />
+    <ClInclude Include="inc\ActorLight.h" />
+    <ClInclude Include="inc\ActorMesh.h" />
+    <ClInclude Include="inc\ActorSkyBox.h" />
+    <ClInclude Include="inc\ActorSkyDome.h" />
+    <ClInclude Include="inc\ActorSkyPlane.h" />
+    <ClInclude Include="inc\ActorVegetation.h" />
+    <ClInclude Include="inc\ActorWater.h" />
+    <ClInclude Include="inc\EmitterParticle.h" />
+    <ClInclude Include="inc\xml\LevelLoader.h" />
+    <ClInclude Include="inc\xml\XMLRead.h" />
+    <ClInclude Include="inc\camera\CCSBasicCameraModes.h" />
+    <ClInclude Include="inc\camera\CCSCameraControlSystem.h" />
+    <ClInclude Include="inc\camera\CCSFastDelegate.h" />
+    <ClInclude Include="inc\camera\CCSFastDelegateBind.h" />
+    <ClInclude Include="inc\camera\CCSFreeCameraMode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\APIEngineCommands.cpp" />
+    <ClCompile Include="src\Camera\CameraFPS.cpp" />
+    <ClCompile Include="src\camera\CameraFree.cpp" />
+    <ClCompile Include="src\Camera\iCameraBase.cpp" />
+    <ClCompile Include="src\console.cpp" />
+    <ClCompile Include="src\ConsoleCommands.cpp" />
+    <ClCompile Include="src\EmitterSound.cpp" />
+    <ClCompile Include="src\EngineBase.cpp" />
+    <ClCompile Include="src\engineGlobals.cpp" />
+    <ClCompile Include="src\EnginePlugins.cpp" />
+    <ClCompile Include="EngineUnity.cpp" />
+    <ClCompile Include="src\EnginePrivate.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\EngineScriptingEx.cpp" />
+    <ClCompile Include="src\HydraxRttListener.cpp" />
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\LoadEngineModules.cpp" />
+    <ClCompile Include="src\ogremax\OgreMaxModel.cpp" />
+    <ClCompile Include="src\ogremax\OgreMaxScene.cpp" />
+    <ClCompile Include="src\ogremax\OgreMaxUtilities.cpp" />
+    <ClCompile Include="src\ogremax\ProgressCalculator.cpp" />
+    <ClCompile Include="src\ogremax\Version.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="src\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="src\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="src\Updater.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\GUI\GUI.cpp" />
+    <ClCompile Include="src\world\Actor.cpp" />
+    <ClCompile Include="src\ActorDynamicSky.cpp" />
+    <ClCompile Include="src\ActorLight.cpp" />
+    <ClCompile Include="src\ActorMesh.cpp" />
+    <ClCompile Include="src\ActorSkyBox.cpp" />
+    <ClCompile Include="src\ActorSkyDome.cpp" />
+    <ClCompile Include="src\ActorSkyPlane.cpp" />
+    <ClCompile Include="src\ActorVegetation.cpp" />
+    <ClCompile Include="src\ActorWater.cpp" />
+    <ClCompile Include="src\EmitterParticle.cpp" />
+    <ClCompile Include="src\xml\LevelLoader.cpp" />
+    <ClCompile Include="src\NodeParser.cpp" />
+    <ClCompile Include="src\xml\XMLRead.cpp" />
+    <ClCompile Include="src\Camera\CCSCameraControlSystem.cpp" />
+    <ClCompile Include="src\Camera\CCSFreeCameraMode.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

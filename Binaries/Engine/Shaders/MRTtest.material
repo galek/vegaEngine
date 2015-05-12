@@ -1,0 +1,135 @@
+// Scene material
+// MRT testing
+fragment_program MRTtest/scenefp/HLSL hlsl
+{
+	source mrttestfp.hlsl
+	entry_point mainfp_scene
+	target ps_2_0
+}
+
+fragment_program MRTtest/scenefp/GLSL glsl
+{
+	source mrttestfp_scene.glsl
+}
+
+fragment_program MRTtest/scenefp/GLSLES glsles
+{
+	source mrttestfp_scene.glsles
+}
+
+fragment_program MRTtest/scenefp unified
+{
+	delegate MRTtest/scenefp/HLSL
+	delegate MRTtest/scenefp/GLSL
+	delegate MRTtest/scenefp/GLSLES
+}
+
+material MRTtest/scene
+{
+	technique
+	{
+		scheme MRT
+		pass
+		{
+            polygon_mode_overrideable false
+			vertex_program_ref BasicVertexPrograms/AmbientOneTextureUnified
+			{
+				param_named ambient float4 1 1 1 1
+			}
+			fragment_program_ref MRTtest/scenefp
+			{
+			}
+
+			texture_unit
+			{
+				texture ogrelogo.png 
+			}
+			
+		}
+	}
+}
+
+
+fragment_program MRTtest/quadfp/HLSL hlsl
+{
+	source mrttestfp.hlsl
+	entry_point mainfp_quad
+	target ps_2_0
+}
+
+fragment_program MRTtest/quadfp/GLSL glsl
+{
+	source mrttestfp_quad.glsl
+
+	default_params
+	{
+		param_named rt0 int 0
+		param_named rt1 int 1
+		param_named rt2 int 2
+		param_named rt3 int 3
+	}
+}
+
+fragment_program MRTtest/quadfp/GLSLES glsles
+{
+	source mrttestfp_quad.glsles
+
+	default_params
+	{
+		param_named rt0 int 0
+		param_named rt1 int 1
+		param_named rt2 int 2
+		param_named rt3 int 3
+	}
+}
+
+fragment_program MRTtest/quadfp unified
+{
+	delegate MRTtest/quadfp/HLSL
+	delegate MRTtest/quadfp/GLSL
+	delegate MRTtest/quadfp/GLSLES
+}
+
+
+// Quad material
+material MRTtest/quad
+{
+    technique
+    {
+
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_func always_pass
+            polygon_mode_overrideable false
+
+			vertex_program_ref Compositor/StdQuad_NoCG_vp
+			{
+			}
+
+			fragment_program_ref MRTtest/quadfp
+			{
+			}
+
+			texture_unit RT0
+			{
+				tex_address_mode clamp
+			}
+			texture_unit RT1
+			{
+				tex_address_mode clamp
+			}
+			texture_unit RT2
+			{
+				tex_address_mode clamp
+			}
+			texture_unit RT3
+			{
+				tex_address_mode clamp
+			}
+
+
+		}
+	}
+}

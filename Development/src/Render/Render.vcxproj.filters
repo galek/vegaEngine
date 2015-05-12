@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{5c826726-aa97-4f04-918b-e7270864de22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\PostEffects">
+      <UniqueIdentifier>{53d712b1-94dd-4db5-a342-78e16a4c948e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Externals">
+      <UniqueIdentifier>{a2b0e5e1-42d7-4703-9811-c2ac61b2f44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Externals\Water System">
+      <UniqueIdentifier>{02379253-1749-40be-b1a6-91de88206ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{32464cd7-e393-478e-8e17-540b453e07e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\PostEffects">
+      <UniqueIdentifier>{0f121c64-861f-4fc0-bcf3-489d35113f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Externals">
+      <UniqueIdentifier>{ab3ec9c7-3d4b-4120-868a-a7175b4b6b57}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Render.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\renderdllex.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\RenderPrivate.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\TerrainMaterialGeneratorD.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\VideoPlayer.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\PostEffects\PostEffects.h">
+      <Filter>Заголовочные файлы\PostEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Externals.h">
+      <Filter>Заголовочные файлы\Externals</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\WaterSystem.h">
+      <Filter>Заголовочные файлы\Externals\Water System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\PostEffects\PostEffects.cpp">
+      <Filter>Файлы исходного кода\PostEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Externals.cpp">
+      <Filter>Файлы исходного кода\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ffmper_time.cpp">
+      <Filter>Файлы исходного кода\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderPrivate.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderScripting.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TerrainMaterialGeneratorD.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VideoPlayer.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

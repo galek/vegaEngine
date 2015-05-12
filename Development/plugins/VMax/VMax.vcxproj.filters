@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DllEntry.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExMaterial.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExMaterialSet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExMesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExOgreConverter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExShader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExSkeleton.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ogreExporter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VMaxLog.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExAnimation.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExData.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExMaterial.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExMaterialSet.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExMesh.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExOgreConverter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExPrerequisites.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExScene.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExShader.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExSkeleton.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ExTools.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ogreExporter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\paramlist.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\resource.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\VMaxLog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{5c2ea9a2-c302-4820-abe8-9bdf2df6496b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc">
+      <UniqueIdentifier>{ca578eed-d198-45ac-9bd3-7eb42d4915a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{72fe5742-7ed6-4764-86a2-57deded4e068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{54f853c1-84ee-45b4-a845-86eedd04cf9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\VMax.aps">
+      <Filter>res</Filter>
+    </None>
+    <None Include="inc\VMax.def">
+      <Filter>res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\VMax.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

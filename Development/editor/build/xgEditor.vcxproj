@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DFB263AB-EA17-4133-818A-62C077C5BFDA}</ProjectGuid>
+    <RootNamespace>xgEditor</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>VegaEd</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\Binaries\Binaries.win32_d\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\Binaries\Binaries.win64_d\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\Binaries\Binaries.win32\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\Binaries\Binaries.win64\</OutDir>
+    <IntDir>..\..\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\depend\ogre-win32-v1-4-0\ogrenew\OgreMain\include;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DLL_EXPORTS;_USRDLL;__WXMSW__;__WXDEBUG__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw28d_aui.lib;wxmsw28d_adv.lib;wxmsw28d_core.lib;wxbase28d.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;odbc32.lib;OgreMain_d.lib;wxmsw28d_propgrid.lib;cgSysd.lib;Kernel32.lib;xgpublicd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xgEditord.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\src\xgEditor\;..\depend\ogre-win32-v1-4-0\ogrenew\lib;..\bin;..\depend\wxWidgets\lib\vc_dll;..\depend\wxWidgets\lib;..\lib;..\depend\Visual Leak Detector\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <ProgramDatabaseFile>$(OutDir)xgEditor.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\depend\ogre-win32-v1-4-0\ogrenew\OgreMain\include;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DLL_EXPORTS;_USRDLL;__WXMSW__;__WXDEBUG__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw28d_aui.lib;wxmsw28d_adv.lib;wxmsw28d_core.lib;wxbase28d.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;odbc32.lib;OgreMain_d.lib;wxmsw28d_propgrid.lib;cgSysd.lib;Kernel32.lib;xgpublicd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xgEditord.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\src\xgEditor\;..\depend\ogre-win32-v1-4-0\ogrenew\lib;..\bin;..\depend\wxWidgets\lib\vc_dll;..\depend\wxWidgets\lib;..\lib;..\depend\Visual Leak Detector\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <ProgramDatabaseFile>$(OutDir)xgEditor.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\..\src\platform;..\..\src\Common;..\..\src\Core\inc;..\..\src\AI;..\..\src\AudioAL\inc;..\..\src\Render\inc;..\..\src\Engine\inc;..\..\src\BulletPhysics\inc;..\..\external\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;..\..\external\MyGUI_3.2.0\MyGUIEngine\include;..\..\external\boost\;..\..\external\ogre\include;..\..\external\ogre\;..\..\external\ogre\OgreMain\include;..\..\external\OIS\includes;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;..\depend\wxWidgets\include\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;__WXMSW__;WXBUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);..\depend\wxWidgets\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_html.lib;wxmsw30u_gl.lib;wxmsw30u_qa.lib;wxmsw30u_xrc.lib;wxmsw30u_richtext.lib;wxmsw30u_media.lib;wxmsw30u_stc.lib;wxscintilla.lib;wxmsw30u_webview.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\..\src\platform;..\..\src\Common;..\..\src\Core\inc;..\..\src\AI;..\..\src\AudioAL\inc;..\..\src\Render\inc;..\..\src\Engine\inc;..\..\src\BulletPhysics\inc;..\..\external\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;..\..\external\MyGUI_3.2.0\MyGUIEngine\include;..\..\external\boost\;..\..\external\ogre\include;..\..\external\ogre\;..\..\external\ogre\OgreMain\include;..\..\external\OIS\includes;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;..\depend\wxWidgets\include\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;__WXMSW__;WXBUILDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);..\depend\wxWidgets\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <IgnoreSpecificDefaultLibraries>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_html.lib;wxmsw30u_gl.lib;wxmsw30u_qa.lib;wxmsw30u_xrc.lib;wxmsw30u_richtext.lib;wxmsw30u_media.lib;wxmsw30u_stc.lib;wxscintilla.lib;wxmsw30u_webview.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cgSys\EngineWrapper.cpp" />
+    <ClCompile Include="..\src\xgEditor\app_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\docInfoList_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\frame_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\lightTool_t.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\log_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\MainToolBar.cpp" />
+    <ClCompile Include="..\src\xgEditor\manager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\testTool_t.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\updateBag_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\update_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\wxChoicebookEx.cpp" />
+    <ClCompile Include="..\src\xgEditor\wxListbookEx.cpp" />
+    <ClCompile Include="..\src\xgEditor\wxNotebookEx.cpp" />
+    <ClCompile Include="..\src\xgEditor\wxOgre_t.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\wxTreebookEx.cpp" />
+    <ClCompile Include="..\src\xgEditor\aiNaviTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\cameraTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\gridTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\mathUtil.cpp" />
+    <ClCompile Include="..\src\xgEditor\prsTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\renderOptionTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\resInsertTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\sectorTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\tool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\toolBag_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\blankProp_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\entityProp_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\eventHandler_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\frameInitTool_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\lightProp_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\moveObjectPropBag_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\prop_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\propBag_t.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\cgSys\EngineWrapper.h" />
+    <ClInclude Include="..\src\xgEditor\app_t.h" />
+    <ClInclude Include="..\src\xgEditor\docInfo_t.h" />
+    <ClInclude Include="..\src\xgEditor\docInfoList_t.h" />
+    <ClInclude Include="..\src\xgEditor\frame_t.h" />
+    <ClInclude Include="..\src\xgEditor\lightTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\log_t.h" />
+    <ClInclude Include="..\src\xgEditor\MainToolBar.h" />
+    <ClInclude Include="..\src\xgEditor\manager.h" />
+    <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
+    <ClInclude Include="..\src\xgEditor\reg.h" />
+    <ClInclude Include="..\src\xgEditor\resource.h" />
+    <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
+    <ClInclude Include="..\src\xgEditor\stdafx.h" />
+    <ClInclude Include="..\src\xgEditor\testTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\toolsids.h" />
+    <ClInclude Include="..\src\xgEditor\updateBag_t.h" />
+    <ClInclude Include="..\src\xgEditor\update_t.h" />
+    <ClInclude Include="..\src\xgEditor\wxChoicebookEx.h" />
+    <ClInclude Include="..\src\xgEditor\wxListbookEx.h" />
+    <ClInclude Include="..\src\xgEditor\wxNotebookEx.h" />
+    <ClInclude Include="..\src\xgEditor\wxOgre_t.h" />
+    <ClInclude Include="..\src\xgEditor\wxTreebookEx.h" />
+    <ClInclude Include="..\src\xgEditor\aiNaviTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\cameraTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\gridTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\mathUtil.h" />
+    <ClInclude Include="..\src\xgEditor\prsTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\renderOptionTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\resInsertTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\sectorTool_t.h" />
+    <ClInclude Include="..\src\xgEditor\tool_t.h" />
+    <ClInclude Include="..\src\xgEditor\toolBag_t.h" />
+    <ClInclude Include="..\src\xgEditor\blankProp_t.h" />
+    <ClInclude Include="..\src\xgEditor\entityProp_t.h" />
+    <ClInclude Include="..\src\xgEditor\eventHandler_t.h" />
+    <ClInclude Include="..\src\xgEditor\lightProp_t.h" />
+    <ClInclude Include="..\src\xgEditor\moveObjectProp_t.h" />
+    <ClInclude Include="..\src\xgEditor\moveObjectPropBag_t.h" />
+    <ClInclude Include="..\src\xgEditor\prop_t.h" />
+    <ClInclude Include="..\src\xgEditor\propBag_t.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\src\xgEditor\iconMain.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\xgEditor\xgEditor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AI\AI.vcxproj">
+      <Project>{4b67e249-5319-4ed5-a77b-6aafeec6ec85}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AudioAL\AudioAL.vcxproj">
+      <Project>{63e674da-e000-4c00-8956-f25af29366b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BulletPhysics\BulletPhysics.vcxproj">
+      <Project>{6a281ba9-5c0e-4595-b1a7-792dcf5d2558}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Common\Common.vcxproj">
+      <Project>{86d80ffc-f25e-40f5-891b-00cb17257278}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Core\Core.vcxproj">
+      <Project>{98923de1-ae6e-48f9-8bb4-cd92b30dccac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Engine\engine.vcxproj">
+      <Project>{882f047c-66aa-4cb9-8b2b-3cf45d0eaa43}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\platform\platform.vcxproj">
+      <Project>{069db063-0a5a-4cd6-a0b5-33053f328270}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Render\Render.vcxproj">
+      <Project>{1115c3ef-7daa-4fea-b837-6e80c94216bc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="cgSys.vcxproj">
+      <Project>{cbe6f841-6861-4631-a148-126545e6ddbc}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="xgpublic.vcxproj">
+      <Project>{c3dbfa0a-8576-47e3-85b4-39b6bea5aa1c}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\xgEditor\xgEditor.aps" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

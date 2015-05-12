@@ -1,0 +1,80 @@
+material gridMesh
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0 0 0
+			specular 0 0 0 0
+			emissive 0 0 0
+			lighting off
+			scene_blend alpha_blend
+			depth_write on
+		}
+	}
+}
+material sectorMesh
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0 0 0
+			specular 0 0 0 0
+			emissive 0 0 0
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+		}
+	}
+}
+material LightMesh
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0 0 0
+			specular 0 0 0 0
+			emissive 0 0 0
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+		}
+	}
+}
+material pfxMesh
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0 0 0
+			specular 0 0 0 0
+			emissive 0 0 0
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+		}
+	}
+}
+material aiNaviMesh
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0 0 0
+			specular 0 0 0 0
+			emissive 0 0 0
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+		}
+	}
+}

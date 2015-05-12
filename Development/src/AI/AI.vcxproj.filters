@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{d4b98ac2-9a65-4193-96f5-c5ae675e5d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\Recast">
+      <UniqueIdentifier>{73fce5ee-5302-46a2-a3b9-b70dcaa56eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\DetourCrowd">
+      <UniqueIdentifier>{40419bbc-d6bd-4b61-ba9c-8973fc101f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\Detour">
+      <UniqueIdentifier>{6c8407ce-7613-4e22-a7f6-a39fffee88a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\DetourTileCache">
+      <UniqueIdentifier>{04cbc6ff-b22e-4976-bb5c-9812fe71c6db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AI.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="OgreDetourCrowd.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="OgreRecast.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\Recast.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastAlloc.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastArea.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastContour.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastFilter.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastLayers.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastMesh.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastMeshDetail.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastRasterization.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Recast\RecastRegion.cpp">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourCrowd.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourLocalBoundary.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourObstacleAvoidance.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourPathCorridor.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourPathQueue.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourCrowd\DetourProximityGrid.cpp">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourAlloc.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourCommon.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourNavMesh.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourNavMeshBuilder.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourNavMeshQuery.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Detour\DetourNode.cpp">
+      <Filter>libs\Detour</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourTileCache\DetourTileCache.cpp">
+      <Filter>libs\DetourTileCache</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DetourTileCache\DetourTileCacheBuilder.cpp">
+      <Filter>libs\DetourTileCache</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\RecastContrib\fastlz\fastlz.c">
+      <Filter>libs\Recast</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexShapeObstacle.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="CylinderObstacle.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="OgreDetourTileCache.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="OgreRecastNavmeshPruner.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="RecastConvexHull.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="RecastInputGeom.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AiPrivate.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreDetourCrowd.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreRecast.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreRecastDefinitions.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Recast\Recast.h">
+      <Filter>libs\Recast</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Recast\RecastAlloc.h">
+      <Filter>libs\Recast</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Recast\RecastAssert.h">
+      <Filter>libs\Recast</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourCrowd.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourLocalBoundary.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourObstacleAvoidance.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourPathCorridor.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourPathQueue.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourCrowd\DetourProximityGrid.h">
+      <Filter>libs\DetourCrowd</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourAlloc.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourAssert.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourCommon.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourNavMesh.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourNavMeshBuilder.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourNavMeshQuery.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourNode.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Detour\DetourStatus.h">
+      <Filter>libs\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="AIDefs.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourTileCache\DetourTileCache.h">
+      <Filter>libs\DetourTileCache</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DetourTileCache\DetourTileCacheBuilder.h">
+      <Filter>libs\DetourTileCache</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexShapeObstacle.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="CylinderObstacle.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreDetourTileCache.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreRecastNavmeshPruner.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="RecastConvexHull.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="RecastInputGeom.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

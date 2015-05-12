@@ -1,0 +1,173 @@
+HelpOverlay
+{
+	zorder 500
+	// Stats block
+	container BorderPanel(HelpPanel)
+	{
+		metrics_mode pixels
+		vert_align top
+		left 5 
+		top 5
+		width 310
+		height 185
+		material Core/StatsBlockCenter
+        	border_size 1 1 1 1
+        	border_material Core/StatsBlockBorder
+        	border_topleft_uv     0.0000 1.0000 0.0039 0.9961
+	    	border_top_uv         0.0039 1.0000 0.9961 0.9961
+	    	border_topright_uv    0.9961 1.0000 1.0000 0.9961
+	    	border_left_uv        0.0000 0.9961 0.0039 0.0039
+	    	border_right_uv       0.9961 0.9961 1.0000 0.0039
+	    	border_bottomleft_uv  0.0000 0.0039 0.0039 0.0000
+        	border_bottom_uv      0.0039 0.0039 0.9961 0.0000
+	    	border_bottomright_uv 0.9961 0.0039 1.0000 0.0000
+
+		element TextArea(F1)
+		{
+			metrics_mode pixels
+			left 5
+			top 5
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption F1 : Toggle help 
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(F2)
+		{
+			metrics_mode pixels
+			left 5
+			top 20
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption F2 : Toggle stastics 
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(TAB)
+		{
+			metrics_mode pixels
+			left 5
+			top 35
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption TAB : Toggle albedo 
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(T)
+		{
+			metrics_mode pixels
+			left 5
+			top 55
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption T : Cycle texture filtering (anisotr., trilinear, bilinear)
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(R)
+		{
+			metrics_mode pixels
+			left 5
+			top 70
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption R : Cycle rendering mode
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(U)
+		{
+			metrics_mode pixels
+			left 5
+			top 85
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption U : Cycle uncompressed/DXT/EXR maps
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(H)
+		{
+			metrics_mode pixels
+			left 5
+			top 100
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption H : Toggle tonemapping
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}	
+						
+		element TextArea(1)
+		{
+			metrics_mode pixels
+			left 5
+			top 120
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption 1 : quadratic modified H-Basis (6 textures)
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(2)
+		{
+			metrics_mode pixels
+			left 5
+			top 135
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption 2 : linear modified H-Basis (4 textures)
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		element TextArea(3)
+		{
+			metrics_mode pixels
+			left 5
+			top 150
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption 3 : const modified H-Basis (1 texture = lightmap)
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+		
+		element TextArea(4)
+		{
+			metrics_mode pixels
+			left 5
+			top 165
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 16
+			caption 4 : Levels of detail (linear distance blend)
+			colour_top 0.7 0.9 0.7
+			colour_bottom 0.5 0.7 0.5
+		}
+
+
+
+}

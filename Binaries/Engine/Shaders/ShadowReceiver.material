@@ -1,0 +1,58 @@
+material ShadowReceiver
+{
+	technique
+	{
+		pass
+		{
+
+		    scene_blend alpha_blend
+			vertex_program_ref ShadowReceiverVP
+			{
+			}
+
+			fragment_program_ref ShadowReceiverFP
+			{
+			}
+
+			shadow_caster_vertex_program_ref DeferredShading/Shadows/CasterVP
+			{
+			}
+
+			shadow_caster_fragment_program_ref DeferredShading/Shadows/CasterFP
+			{
+			}
+
+			texture_unit Diffuse
+			{
+
+			}
+
+			texture_unit 0
+			{
+				content_type shadow
+				tex_address_mode clamp
+			}
+			texture_unit 1
+			{
+				content_type shadow
+				tex_address_mode clamp
+			}
+			 texture_unit 2
+			 {
+				 content_type shadow
+				 tex_address_mode clamp
+			 }
+			 texture_unit 3
+			 {
+				 content_type shadow
+				 tex_address_mode clamp
+			 }
+
+			 texture_unit 4
+			 {
+				 texture KernelRotation.png
+				 filtering none
+			 }
+		}
+	}
+}
