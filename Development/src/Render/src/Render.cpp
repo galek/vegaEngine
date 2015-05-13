@@ -8,6 +8,7 @@
 #include "RenderPrivate.h"
 #include "VideoPlayer.h"
 #include "PostEffects/PostEffects.h"
+#include "SharedData.h"
 
 using namespace Ogre;
 #pragma message("NICK-REFACTOR IT 2015")
@@ -25,6 +26,8 @@ namespace vega
 		, mEngineConfig(_manager->mEngineConfig)
 	{
 		Debug("[render]Render::Render");
+
+		mSystem = nullptr;
 		//Создаем дополнительные модули в рендере
 		externals = new Externals(this);
 	}
@@ -32,32 +35,38 @@ namespace vega
 	/**
 	*/
 	bool Render::PlayVideo(std::string _name)	{
+		if (!externals)
+			return false;
 		return externals->mVideoPlayer->playVideo(_name, true);
 	}
 
 	/**
 	*/
 	void Render::EnableDisableAA(bool _s){
-		int r = mEngineConfig->mAntiAlliasing;
+		/*int r = mEngineConfig->mAntiAlliasing;
 		switch (r){
 		case 1:
-			PostEffectSetStatus("SMAA", _s);
-			Debug("[AA]_EnableDisableAA SMAA-Render %i", _s);
-			break;
+		PostEffectSetStatus("SMAA", _s);
+		Debug("[AA]_EnableDisableAA SMAA-Render %i", _s);
+		break;
 		case 2:
-			PostEffectSetStatus("SSAA", _s);
-			Debug("[AA]_EnableDisableAA SSAA-Render %i", _s);
-			break;
+		PostEffectSetStatus("SSAA", _s);
+		Debug("[AA]_EnableDisableAA SSAA-Render %i", _s);
+		break;
 		case 3:
-			PostEffectSetStatus("FXAA", _s);
-			Debug("[AA]_EnableDisableAA FXAA-Render %i", _s);
-			break;
-		}
+		PostEffectSetStatus("FXAA", _s);
+		Debug("[AA]_EnableDisableAA FXAA-Render %i", _s);
+		break;
+		}*/
 	}
 
 	/**
 	*/
-	VideoPlayer* Render::GetPlayer() {
+	VideoPlayer* Render::GetPlayer()
+	{
+		if (!externals)
+			return nullptr;
+
 		return externals->mVideoPlayer;
 	}
 
@@ -69,24 +78,8 @@ namespace vega
 		Ogre::ResourceGroupManager*ptr = Ogre::ResourceGroupManager::getSingletonPtr();
 		if (!ptr)
 			ErrorFunction(true, "[Render::_LoadShaders]is not exist ResourceGroupManager!", __FILE__, __LINE__);
-		//Остальные ресурсы
-		//Shaders Zip's
-		Ogre::StringVectorPtr gameArchives = ptr->findResourceNames("Shaders", "*.shaders", false);
-		for (unsigned int i = 0; i < gameArchives->size(); i++)
-		{
-			ptr->addResourceLocation("..\\Engine\\Shaders\\" + (*gameArchives)[i], "Zip", "Shaders", true);
-			ptr->addResourceLocation("..\\Engine\\D3D11Shaders\\" + (*gameArchives)[i], "Zip", "Shaders", true);
-		}
-		ptr->addResourceLocation("..\\Engine\\D3D11Shaders\\", "FileSystem", "Shaders", true);
 
 		ptr->initialiseResourceGroup("Shaders");
-
-		//DEBUG
-#ifdef _DEBUG
-		gameArchives = Ogre::ResourceGroupManager::getSingleton().listResourceNames("Shaders");
-		for (unsigned int i = 0; i < gameArchives->size(); i++)
-			Debug("Shader File %s,number %i of shader archives", ((*gameArchives)[i]).c_str(), i);
-#endif
 	}
 
 	/**
@@ -102,12 +95,20 @@ namespace vega
 		{
 			_InitPostEffects();
 			{
-				mSceneMgr->setShadowTechnique(SHADOWTYPE_TEXTURE_ADDITIVE);
-				mSceneMgr->setShadowTextureCasterMaterial("Examples/Instancing/VTF/shadow_caster_dq_two_weights");
+				mSystem = new DeferredShadingSystem(mViewport, mSceneMgr, mCamera);
+				shData = new SharedData();
+				shData->iSystem = mSystem;
+				mSystem->initialize();
+				Debug("Activation DeferredShading");
+				mSystem->setActive(true);
 
-				mSceneMgr->setShadowTextureCount(1);
-				mSceneMgr->setShadowFarDistance(mEngineConfig->mShadowFarDistance);
-				mSceneMgr->setShadowDirectionalLightExtrusionDistance(mEngineConfig->mFarClipDistance);
+				// safely setup application's (not postfilter!) shared data
+				shData->iCamera = mCamera;
+				shData->iRoot = mRoot;
+				shData->iWindow = mWindow;
+				shData->iSceneMgr = mSceneMgr;
+				shData->iActivate = true;
+				shData->iGlobalActivate = true;
 			}
 			firstStart = false;
 		}
@@ -115,18 +116,29 @@ namespace vega
 
 	/**
 	*/
-	void Render::Update(float _evt)	{
-		externals->Update(_evt);
+	void Render::Update(float _evt)
+	{
+		if (externals)
+			externals->Update(_evt);
+		shData->iLastFrameTime = _evt;
+
+		if (shData->mMLAnimState)
+			shData->mMLAnimState->addTime(_evt);
 	}
 
 	/**
 	*/
-	Render::~Render()	{
+	Render::~Render()
+	{
+		SAFE_DELETE(externals);
+		SAFE_DELETE(shData);
+		SAFE_DELETE(mSystem);
 	}
 
 	/**
 	*/
-	void Render::_InitPostEffects()	{
+	void Render::_InitPostEffects()	
+	{
 		/// Create a couple of hard coded postfilter effects as an example of how to do it but the preferred method is to use compositor scripts.
 		_CreatePostEffects();
 		_EnablePostEffects();
@@ -135,13 +147,17 @@ namespace vega
 	/**
 	*/
 	void Render::PostEffectSetStatus(std::string _name, bool _status)	{
-#ifdef __EXPEREMENTAL__
-		if (_name == "SSAO"){
-			mSystem->setSSAO(_status);
+		if (_name == "SSAO")
+		{
 			Debug("[PostEffects]Enabled SSAO");
+			if (!mSystem)
+			{
+				ErrorF("Deferred Shading is not active");
+			}
+			mSystem->setSSAO(_status);
 		}
 		else
-#endif
+		{
 			if (_name == "HDR")
 			{
 				if (_status)
@@ -150,13 +166,15 @@ namespace vega
 					CompositorManager::getSingleton().removeCompositor(mViewport, _name);
 				CompositorManager::getSingleton().setCompositorEnabled(mViewport, _name, _status);
 			}
-			else{
+			else
+			{
 				if (_status)
 					CompositorManager::getSingleton().addCompositor(mViewport, _name);
 				else
 					CompositorManager::getSingleton().removeCompositor(mViewport, _name);
 				CompositorManager::getSingleton().setCompositorEnabled(mViewport, _name, _status);
 			}
+		}
 	}
 
 	/**

@@ -7,7 +7,7 @@
 */
 #pragma once
 
-#include "DeferredAndGI/ListenerFactoryLogic.h"
+#include "ListenerFactoryLogic.h"
 
 namespace vega
 {

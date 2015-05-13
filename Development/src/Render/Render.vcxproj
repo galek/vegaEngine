@@ -248,9 +248,23 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="inc\AmbientLight.h" />
+    <ClInclude Include="inc\DeferredLightCP.h" />
+    <ClInclude Include="inc\DeferredShading.h" />
+    <ClInclude Include="inc\DeferredShadingDemo.h" />
+    <ClInclude Include="inc\DLight.h" />
+    <ClInclude Include="inc\GBufferMaterialGenerator.h" />
+    <ClInclude Include="inc\GBufferSchemeHandler.h" />
+    <ClInclude Include="inc\GeomUtils.h" />
+    <ClInclude Include="inc\LightMaterialGenerator.h" />
+    <ClInclude Include="inc\ListenerFactoryLogic.h" />
+    <ClInclude Include="inc\MaterialGenerator.h" />
+    <ClInclude Include="inc\NullSchemeHandler.h" />
     <ClInclude Include="inc\Render.h" />
     <ClInclude Include="inc\renderdllex.h" />
     <ClInclude Include="inc\RenderPrivate.h" />
+    <ClInclude Include="inc\SharedData.h" />
+    <ClInclude Include="inc\SSAOLogic.h" />
     <ClInclude Include="inc\TerrainMaterialGeneratorD.h" />
     <ClInclude Include="inc\VideoPlayer.h" />
     <ClInclude Include="inc\PostEffects\PostEffects.h" />
@@ -258,7 +272,16 @@
     <ClInclude Include="inc\WaterSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AmbientLight.cpp" />
+    <ClCompile Include="src\DeferredLightCP.cpp" />
+    <ClCompile Include="src\DeferredShading.cpp" />
+    <ClCompile Include="src\DLight.cpp" />
     <ClCompile Include="src\ffmper_time.cpp" />
+    <ClCompile Include="src\GBufferMaterialGenerator.cpp" />
+    <ClCompile Include="src\GBufferSchemeHandler.cpp" />
+    <ClCompile Include="src\GeomUtils.cpp" />
+    <ClCompile Include="src\LightMaterialGenerator.cpp" />
+    <ClCompile Include="src\MaterialGenerator.cpp" />
     <ClCompile Include="src\Render.cpp" />
     <ClCompile Include="src\RenderPrivate.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -267,6 +290,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\RenderScripting.cpp" />
+    <ClCompile Include="src\SSAOLogic.cpp" />
     <ClCompile Include="src\TerrainMaterialGeneratorD.cpp" />
     <ClCompile Include="src\VideoPlayer.cpp" />
     <ClCompile Include="src\PostEffects\PostEffects.cpp" />

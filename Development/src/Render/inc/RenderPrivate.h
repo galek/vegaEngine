@@ -1,6 +1,6 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
-* Copyright (C) 2009-2014 Vega Group Ltd.
+* VegaEngine(TM) Package 0.5.6.0
+* Copyright (C) 2009-2015 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
@@ -23,20 +23,14 @@
 //-----------------------------------------------------------------------------
 #include "renderdllex.h"
 #include "render.h"
-
-// Deferred Renderer
-#include "TerrainMaterialGeneratorD.h"
-
+#include "SharedData.h"
 //-----------------------------------------------------------------------------
 // Actor Deps.
 //-----------------------------------------------------------------------------
 #include "Externals.h"
 #include "WaterSystem.h"
 #include "VideoPlayer.h"
-//-----------------------------------------------------------------------------
-// Automatic Link.
-//-----------------------------------------------------------------------------
-#pragma comment(lib,"Core.lib")
+
 //-----------------------------------------------------------------------------
 // Actor Deps.
 //-----------------------------------------------------------------------------

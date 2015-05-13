@@ -7,10 +7,10 @@
 */
 #pragma once
 #include "renderdllex.h"
- 
+
 namespace vega
 {
- 
+
 	/** \addtogroup Optional Components
 	*  @{
 	*/
@@ -18,18 +18,18 @@ namespace vega
 	*  Some details on the terrain component
 	*  @{
 	*/
- 
+
 	/** A TerrainMaterialGenerator which can cope with normal mapped, specular mapped
-		terrain. 
+		terrain.
 		@note Requires the Cg plugin to render correctly
-	*/
+		*/
 	class RENDER_API TerrainMaterialGeneratorD : public Ogre::TerrainMaterialGenerator
 	{
 	public:
 		TerrainMaterialGeneratorD();
 		~TerrainMaterialGeneratorD();
- 
-		/** Shader model 2 profile target. 
+
+		/** Shader model 2 profile target.
 		*/
 		class SM2Profile : public Ogre::TerrainMaterialGenerator::Profile
 		{
@@ -43,46 +43,46 @@ namespace vega
 			void updateParamsForCompositeMap(const Ogre::MaterialPtr& mat, const Ogre::Terrain* terrain);
 			void requestOptions(Ogre::Terrain* terrain);
 			bool isVertexCompressionSupported() const;
- 
+
 			/** Whether to support a global colour map over the terrain in the shader,
-				if it's present (default true). 
-			*/
+				if it's present (default true).
+				*/
 			bool isGlobalColourMapEnabled() const  { return mGlobalColourMapEnabled; }
 			/** Whether to support a global colour map over the terrain in the shader,
-			if it's present (default true). 
+			if it's present (default true).
 			*/
 			void setGlobalColourMapEnabled(bool enabled);
 			/** Whether to support a light map over the terrain in the shader,
-			if it's present (default true). 
+			if it's present (default true).
 			*/
 			bool isLightmapEnabled() const  { return mLightmapEnabled; }
 			/** Whether to support a light map over the terrain in the shader,
-			if it's present (default true). 
+			if it's present (default true).
 			*/
 			void setLightmapEnabled(bool enabled);
 			/** Whether to use the composite map to provide a lower LOD technique
-				in the distance (default true). 
-			*/
+				in the distance (default true).
+				*/
 			bool isCompositeMapEnabled() const  { return mCompositeMapEnabled; }
 			/** Whether to use the composite map to provide a lower LOD technique
-			in the distance (default true). 
+			in the distance (default true).
 			*/
 			void setCompositeMapEnabled(bool enabled);
- 
+
 			/// Internal
 			bool _isSM3Available() const { return mSM3Available; }
 			bool _isSM4Available() const { return mSM4Available; }
- 
+
 		protected:
- 
+
 			enum TechniqueType
 			{
-				HIGH_LOD, 
-				LOW_LOD, 
+				HIGH_LOD,
+				LOW_LOD,
 				RENDER_COMPOSITE_MAP
 			};
 			void addTechnique(const Ogre::MaterialPtr& mat, const Ogre::Terrain* terrain, TechniqueType tt);
- 
+
 			/// Interface definition for helper class to generate shaders
 			class ShaderHelper : public Ogre::TerrainAlloc
 			{
@@ -110,9 +110,9 @@ namespace vega
 				virtual void updateVpParams(const SM2Profile* prof, const Ogre::Terrain* terrain, TechniqueType tt, const Ogre::GpuProgramParametersSharedPtr& params);
 				virtual void updateFpParams(const SM2Profile* prof, const Ogre::Terrain* terrain, TechniqueType tt, const Ogre::GpuProgramParametersSharedPtr& params);
 				static std::string getChannel(unsigned int idx);
- 
+
 			};
- 
+
 			/// Utility class to help with generating shaders for Cg / HLSL.
 			class ShaderHelperCg : public ShaderHelper
 			{
@@ -126,7 +126,7 @@ namespace vega
 				void generateVpFooter(const SM2Profile* prof, const Ogre::Terrain* terrain, TechniqueType tt, Ogre::StringStream& outStream);
 				void generateFpFooter(const SM2Profile* prof, const Ogre::Terrain* terrain, TechniqueType tt, Ogre::StringStream& outStream);
 			};
- 
+
 			ShaderHelper* mShaderGen;
 			bool mGlobalColourMapEnabled;
 			bool mLightmapEnabled;
@@ -134,17 +134,16 @@ namespace vega
 			bool mSM3Available;
 			bool mSM4Available;
 		};
- 
- 
- 
- 
+
+
+
+
 	};
- 
- 
- 
+
+
+
 	/** @} */
 	/** @} */
- 
- 
+
+
 }
- 

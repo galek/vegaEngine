@@ -16,12 +16,12 @@ namespace vega
 	public:
 		VideoPlayer(Render* _render);
 		~VideoPlayer();
-		bool playVideo (const std::string& resourceName, bool allowSkipping);
+		bool playVideo(const std::string& resourceName, bool allowSkipping);
 		void Update();
 		void close();
 		void stopVideo();
 		bool isPlaying();
-		void setResolution (int w, int h) { mWidth = w; mHeight = h; }
+		void setResolution(int w, int h) { mWidth = w; mHeight = h; }
 	private:
 		Render* render;
 		struct VideoState* mState;

@@ -31,12 +31,12 @@ namespace vega
 		: mSkyX(s)
 		, mCreated(false)
 		, mMesh(nullptr)
-        , mSubMesh(0)
-        , mEntity(0)
-        , mVertexBuffer(0)
+		, mSubMesh(0)
+		, mEntity(0)
+		, mVertexBuffer(0)
 		, mVertices(0)
-        , mIndexBuffer(0)
-	    , mSceneNode(0)
+		, mIndexBuffer(0)
+		, mSceneNode(0)
 		, mSteps(70)
 		, mCircles(95)
 		, mUnderHorizonCircles(12)
@@ -44,7 +44,7 @@ namespace vega
 		, mUnderHorizonFadingExponent(0.75)
 		, mUnderHorizonFadingMultiplier(2)
 		, mRadiusMultiplier(0.95f)
-        , mMaterialName("_NULL_")
+		, mMaterialName("_NULL_")
 	{
 	}
 
@@ -67,14 +67,14 @@ namespace vega
 		Ogre::MeshManager::getSingleton().remove("SkyXMesh");
 		mSkyX->getSceneManager()->destroyEntity(mEntity);
 
-		mMesh=nullptr;
+		mMesh = nullptr;
 		mSubMesh = 0;
 		mEntity = 0;
 		mVertexBuffer.setNull();
 		mIndexBuffer.setNull();
 		mMaterialName = "_NULL_";
 
-		delete [] mVertices;
+		delete[] mVertices;
 
 		mCreated = false;
 	}
@@ -87,10 +87,10 @@ namespace vega
 		}
 
 		// Create mesh and submesh
-        mMesh = Ogre::MeshManager::getSingleton().createManual("SkyXMesh",
+		mMesh = Ogre::MeshManager::getSingleton().createManual("SkyXMesh",
 			Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME).getPointer();
-        mSubMesh = mMesh->createSubMesh();
-        mSubMesh->useSharedVertices = false;
+		mSubMesh = mMesh->createSubMesh();
+		mSubMesh->useSharedVertices = false;
 
 		// Create mesh geometry
 		_createGeometry();
@@ -99,17 +99,17 @@ namespace vega
 		mMesh->buildEdgeList();
 
 		// End mesh creation
-        mMesh->load();
-        mMesh->touch();
+		mMesh->load();
+		mMesh->touch();
 
-        mEntity = mSkyX->getSceneManager()->createEntity("SkyXMeshEnt", "SkyXMesh");
-        mEntity->setMaterialName(mMaterialName);
+		mEntity = mSkyX->getSceneManager()->createEntity("SkyXMeshEnt", "SkyXMesh");
+		mEntity->setMaterialName(mMaterialName);
 		mEntity->setCastShadows(false);
 		mEntity->setRenderQueueGroup(mSkyX->getRenderQueueGroups().skydome);
 
 		mSceneNode = mSkyX->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 		mSceneNode->showBoundingBox(false);
-        mSceneNode->attachObject(mEntity);
+		mSceneNode->attachObject(mEntity);
 
 		mCreated = true;
 	}
@@ -124,95 +124,95 @@ namespace vega
 		float Radius = getSkydomeRadius(cam);
 
 		mVertices[0].x = 0; mVertices[0].z = 0;	mVertices[0].y = Radius;
-		mVertices[0].nx = 0; mVertices[0].nz = 0; mVertices[0].ny = 1; 
+		mVertices[0].nx = 0; mVertices[0].nz = 0; mVertices[0].ny = 1;
 		mVertices[0].u = 4; mVertices[0].v = 4;
 		mVertices[0].o = 1;
 
-		float AngleStep = (Ogre::Math::PI/2) / (mCircles-mUnderHorizonCircles);
+		float AngleStep = (Ogre::Math::PI / 2) / (mCircles - mUnderHorizonCircles);
 
 		float r, uvr, c, s, h;
 		float currentPhiAngle, currentTethaAngle;
 		int x, y;
 
 		// Above-horizon
-		for(y=0;y<mCircles-mUnderHorizonCircles;y++) 
+		for (y = 0; y < mCircles - mUnderHorizonCircles; y++)
 		{
-			currentTethaAngle = Ogre::Math::PI/2 - AngleStep*(y+1);
+			currentTethaAngle = Ogre::Math::PI / 2 - AngleStep*(y + 1);
 
 			r = Ogre::Math::Cos(currentTethaAngle);
 			h = Ogre::Math::Sin(currentTethaAngle);
 
-			uvr = static_cast<float>(y+1)/(mCircles-mUnderHorizonCircles);
+			uvr = static_cast<float>(y + 1) / (mCircles - mUnderHorizonCircles);
 
-			for(x=0;x<mSteps;x++) 
+			for (x = 0; x < mSteps; x++)
 			{
 				currentPhiAngle = Ogre::Math::TWO_PI * x / mSteps;
 
 				c = Ogre::Math::Cos(currentPhiAngle) * r;
 				s = Ogre::Math::Sin(currentPhiAngle) * r;
 
-				mVertices[1+y*mSteps + x].x = c * Radius;
-				mVertices[1+y*mSteps + x].z = s * Radius;
-				mVertices[1+y*mSteps + x].y = h * Radius;
+				mVertices[1 + y*mSteps + x].x = c * Radius;
+				mVertices[1 + y*mSteps + x].z = s * Radius;
+				mVertices[1 + y*mSteps + x].y = h * Radius;
 
-				mVertices[1+y*mSteps + x].nx = c;
-				mVertices[1+y*mSteps + x].nz = s;
-				mVertices[1+y*mSteps + x].ny = h;
+				mVertices[1 + y*mSteps + x].nx = c;
+				mVertices[1 + y*mSteps + x].nz = s;
+				mVertices[1 + y*mSteps + x].ny = h;
 
-				mVertices[1+y*mSteps + x].u = (1 + c*uvr/r)*4;
-				mVertices[1+y*mSteps + x].v = (1 + s*uvr/r)*4;
+				mVertices[1 + y*mSteps + x].u = (1 + c*uvr / r) * 4;
+				mVertices[1 + y*mSteps + x].v = (1 + s*uvr / r) * 4;
 
-				mVertices[1+y*mSteps + x].o = 1;
+				mVertices[1 + y*mSteps + x].o = 1;
 			}
 		}
 
 		float op; // Opacity
 
 		// Under-horizon
-		for(y=mCircles-mUnderHorizonCircles;y<mCircles;y++) 
+		for (y = mCircles - mUnderHorizonCircles; y < mCircles; y++)
 		{
-			currentTethaAngle = Ogre::Math::PI/2 - AngleStep*(y+1);
+			currentTethaAngle = Ogre::Math::PI / 2 - AngleStep*(y + 1);
 
 			r = Ogre::Math::Cos(currentTethaAngle);
 			h = Ogre::Math::Sin(currentTethaAngle);
 
-			uvr = static_cast<float>(y+1)/(mCircles-mUnderHorizonCircles);
+			uvr = static_cast<float>(y + 1) / (mCircles - mUnderHorizonCircles);
 
-			op = Ogre::Math::Clamp<Ogre::Real>(Ogre::Math::Pow(static_cast<Ogre::Real>(mCircles-y-1) / mUnderHorizonCircles, mUnderHorizonFadingExponent)*mUnderHorizonFadingMultiplier, 0, 1);
+			op = Ogre::Math::Clamp<Ogre::Real>(Ogre::Math::Pow(static_cast<Ogre::Real>(mCircles - y - 1) / mUnderHorizonCircles, mUnderHorizonFadingExponent)*mUnderHorizonFadingMultiplier, 0, 1);
 
-			for(x=0;x<mSteps;x++) 
+			for (x = 0; x < mSteps; x++)
 			{
 				currentPhiAngle = Ogre::Math::TWO_PI * x / mSteps;
 
 				c = Ogre::Math::Cos(currentPhiAngle) * r;
 				s = Ogre::Math::Sin(currentPhiAngle) * r;
 
-				mVertices[1+y*mSteps + x].x = c * Radius;
-				mVertices[1+y*mSteps + x].z = s * Radius;
-				mVertices[1+y*mSteps + x].y = h * Radius;
+				mVertices[1 + y*mSteps + x].x = c * Radius;
+				mVertices[1 + y*mSteps + x].z = s * Radius;
+				mVertices[1 + y*mSteps + x].y = h * Radius;
 
-				mVertices[1+y*mSteps + x].nx = c;
-				mVertices[1+y*mSteps + x].nz = s;
-				mVertices[1+y*mSteps + x].ny = h;
+				mVertices[1 + y*mSteps + x].nx = c;
+				mVertices[1 + y*mSteps + x].nz = s;
+				mVertices[1 + y*mSteps + x].ny = h;
 
-				mVertices[1+y*mSteps + x].u = (1 + c*uvr/r)*4;
-				mVertices[1+y*mSteps + x].v = (1 + s*uvr/r)*4;
+				mVertices[1 + y*mSteps + x].u = (1 + c*uvr / r) * 4;
+				mVertices[1 + y*mSteps + x].v = (1 + s*uvr / r) * 4;
 
-				mVertices[1+y*mSteps + x].o = op;
+				mVertices[1 + y*mSteps + x].o = op;
 			}
 		}
 
 		// Update data
 		mVertexBuffer->
-				writeData(0,
-		                  mVertexBuffer->getSizeInBytes(),
-	                      mVertices,
-		                  true);
-	
+			writeData(0,
+			mVertexBuffer->getSizeInBytes(),
+			mVertices,
+			true);
+
 		// Update bounds
-	    Ogre::AxisAlignedBox meshBounds =
-			Ogre::AxisAlignedBox(-Radius, 0,     -Radius,
-			                      Radius, Radius, Radius);
+		Ogre::AxisAlignedBox meshBounds =
+			Ogre::AxisAlignedBox(-Radius, 0, -Radius,
+			Radius, Radius, Radius);
 
 		mMesh->_setBounds(meshBounds);
 		mSceneNode->_updateBounds();
@@ -221,7 +221,7 @@ namespace vega
 	void MeshManager::_createGeometry()
 	{
 		int numVertices = mSteps * mCircles + 1;
-		int numEle = 6 * mSteps * (mCircles-1) + 3 * mSteps;
+		int numEle = 6 * mSteps * (mCircles - 1) + 3 * mSteps;
 
 		// Vertex buffers
 		mSubMesh->vertexData = new Ogre::VertexData();
@@ -242,8 +242,8 @@ namespace vega
 
 		mVertexBuffer = Ogre::HardwareBufferManager::getSingleton().
 			createVertexBuffer(sizeof(VERTEX),
-			                   numVertices,
-			                   Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+			numVertices,
+			Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
 
 		vbind->setBinding(0, mVertexBuffer);
 
@@ -251,49 +251,49 @@ namespace vega
 
 		for (int k = 0; k < mSteps; k++)
 		{
-			indexbuffer[k*3] = 0;
-			indexbuffer[k*3+1] = k+1;
+			indexbuffer[k * 3] = 0;
+			indexbuffer[k * 3 + 1] = k + 1;
 
-			if (k != mSteps-1)
+			if (k != mSteps - 1)
 			{
-			    indexbuffer[k*3+2] = k+2;
+				indexbuffer[k * 3 + 2] = k + 2;
 			}
 			else
 			{
-				indexbuffer[k*3+2] = 1;
+				indexbuffer[k * 3 + 2] = 1;
 			}
 		}
 
 		unsigned short *twoface;
 
-		for(int y=0; y<mCircles-1; y++) 
+		for (int y = 0; y < mCircles - 1; y++)
 		{
-		    for(int x=0; x<mSteps; x++) 
+			for (int x = 0; x < mSteps; x++)
 			{
-			    twoface = indexbuffer + (y*mSteps+x)*6 + 3 * mSteps;
+				twoface = indexbuffer + (y*mSteps + x) * 6 + 3 * mSteps;
 
-			    int p0 = 1+y * mSteps + x ;
-			    int p1 = 1+y * mSteps + x + 1 ;
-			    int p2 = 1+(y+1)* mSteps + x ;
-			    int p3 = 1+(y+1)* mSteps + x + 1 ;
+				int p0 = 1 + y * mSteps + x;
+				int p1 = 1 + y * mSteps + x + 1;
+				int p2 = 1 + (y + 1)* mSteps + x;
+				int p3 = 1 + (y + 1)* mSteps + x + 1;
 
-				if (x == mSteps-1)
+				if (x == mSteps - 1)
 				{
-					p1 -= x+1;
-					p3 -= x+1;
+					p1 -= x + 1;
+					p3 -= x + 1;
 				}
 
 				// First triangle
-			    twoface[2]=p0;
-			    twoface[1]=p1;
-			    twoface[0]=p2;
+				twoface[2] = p0;
+				twoface[1] = p1;
+				twoface[0] = p2;
 
 				// Second triangle
-			    twoface[5]=p1;
-			    twoface[4]=p3;
-			    twoface[3]=p2;
-		    }
-	    }
+				twoface[5] = p1;
+				twoface[4] = p3;
+				twoface[3] = p2;
+			}
+		}
 
 		// Prepare buffer for indices
 		mIndexBuffer =
@@ -304,19 +304,19 @@ namespace vega
 
 		mIndexBuffer->
 			writeData(0,
-			          mIndexBuffer->getSizeInBytes(),
-			          indexbuffer,
-			          true);
+			mIndexBuffer->getSizeInBytes(),
+			indexbuffer,
+			true);
 
-		delete []indexbuffer;
+		delete[]indexbuffer;
 
 		// Set index buffer for this submesh
 		mSubMesh->indexData->indexBuffer = mIndexBuffer;
 		mSubMesh->indexData->indexStart = 0;
 		mSubMesh->indexData->indexCount = numEle;
 
-	    // Create our internal buffer for manipulations
-		mVertices = new VERTEX[1+mSteps * mCircles];
+		// Create our internal buffer for manipulations
+		mVertices = new VERTEX[1 + mSteps * mCircles];
 	}
 
 	void MeshManager::setGeometryParameters(const int &Steps, const int &Circles)
@@ -326,8 +326,8 @@ namespace vega
 
 		if (mCreated)
 		{
-		    remove();
-		    create();
+			remove();
+			create();
 		}
 	}
 
@@ -342,8 +342,8 @@ namespace vega
 
 		if (needToRecreate)
 		{
-		    remove();
-		    create();
+			remove();
+			create();
 		}
 	}
 

@@ -1023,16 +1023,17 @@ namespace vega
 
 
 	VideoPlayer::VideoPlayer(Render* _render)
-		: mState(NULL)
-		, mSceneMgr(_render->mSceneMgr)
+		: mState(nullptr)
 		, mVideoMaterial(nullptr)
-		, mRectangle(NULL)
-		, mNode(NULL)
+		, mRectangle(nullptr)
+		, mNode(nullptr)
 		, mAllowSkipping(false)
-		, mWidth(_render->mWindow->getWidth())
-		, mHeight(_render->mWindow->getHeight())
 		, render(_render)
 	{
+		mSceneMgr = _render->GetSceneMgr();
+		mWidth = _render->GetWindowMgr()->getWidth();
+		mHeight = _render->GetWindowMgr()->getHeight();
+
 		mVideoMaterial = Ogre::MaterialManager::getSingleton().getByName("VideoMaterial", "General").getPointer();
 		if (!mVideoMaterial)
 		{
