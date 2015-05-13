@@ -1,6 +1,6 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
-* Copyright (C) 2009-2014 Vega Group Ltd.
+* VegaEngine(TM) Package 0.5.6.0
+* Copyright (C) 2009-2015 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
@@ -58,13 +58,9 @@ namespace vega
 		volatile bool flushing;
 		int nb_packets;
 		int size;
-#ifdef USE_BOOST
-		boost::mutex mutex;
-		boost::condition_variable cond;
-#else
-		std::mutex mutex;
-		std::condition_variable cond;
-#endif
+
+		std::mutex mPMutex;
+		std::condition_variable mPCond;
 
 		void put(AVPacket *pkt);
 		int get(AVPacket *pkt, VideoState *is);
@@ -169,21 +165,13 @@ namespace vega
 		AVFrame*     rgbaFrame; // used as buffer for the frame converted from its native format to RGBA
 		int          pictq_size, pictq_rindex, pictq_windex;
 
-#ifdef USE_BOOST
-		boost::mutex pictq_mutex;
-		boost::condition_variable pictq_cond;
-		boost::thread parse_thread;
-		boost::thread video_thread;
-
-		boost::thread refresh_thread;
-#else
 		std::mutex pictq_mutex;
 		std::condition_variable pictq_cond;
 		std::thread parse_thread;
 		std::thread video_thread;
 
 		std::thread refresh_thread;
-#endif
+
 		volatile int refresh_rate_ms;
 		volatile bool refresh;
 		volatile bool quit;
@@ -208,7 +196,7 @@ namespace vega
 			av_free_packet(pkt);
 		}
 
-		this->mutex.lock();
+		this->mPMutex.lock();
 
 		if (!last_pkt)
 			this->first_pkt = pkt1;
@@ -217,18 +205,15 @@ namespace vega
 		this->last_pkt = pkt1;
 		this->nb_packets++;
 		this->size += pkt1->pkt.size;
-		this->cond.notify_one();
+		this->mPCond.notify_one();
 
-		this->mutex.unlock();
+		this->mPMutex.unlock();
 	}
 
 	int PacketQueue::get(AVPacket *pkt, VideoState *is)
 	{
-#ifdef USE_BOOST
-		boost::unique_lock<boost::mutex> lock(this->mutex);
-#else
-		std::unique_lock<std::mutex> lock(this->mutex);
-#endif
+		std::unique_lock<std::mutex> lock(this->mPMutex);
+
 		while (!is->quit)
 		{
 			AVPacketList *pkt1 = this->first_pkt;
@@ -248,7 +233,8 @@ namespace vega
 
 			if (this->flushing)
 				break;
-			this->cond.wait(lock);
+
+			this->mPCond.wait(lock);
 		}
 
 		return -1;
@@ -257,14 +243,14 @@ namespace vega
 	void PacketQueue::flush()
 	{
 		this->flushing = true;
-		this->cond.notify_one();
+		this->mPCond.notify_one();
 	}
 
 	void PacketQueue::clear()
 	{
 		AVPacketList *pkt, *pkt1;
 
-		this->mutex.lock();
+		this->mPMutex.lock();
 		for (pkt = this->first_pkt; pkt != NULL; pkt = pkt1)
 		{
 			pkt1 = pkt->next;
@@ -275,7 +261,7 @@ namespace vega
 		this->first_pkt = NULL;
 		this->nb_packets = 0;
 		this->size = 0;
-		this->mutex.unlock();
+		this->mPMutex.unlock();
 	}
 
 	class MovieAudioDecoder    //Nick  : public MWSound::Sound_Decoder
@@ -570,15 +556,6 @@ namespace vega
 
 	void VideoState::video_refresh(VideoState* is)
 	{
-#ifdef USE_BOOST
-		boost::system_time t = boost::get_system_time();
-		while (!is->quit)
-		{
-			t += boost::posix_time::milliseconds(is->refresh_rate_ms);
-			boost::this_thread::sleep(t);
-			is->refresh = true;
-		}
-#else
 		// Current date/time based on current system
 		auto t = std::chrono::system_clock::now();
 
@@ -588,7 +565,6 @@ namespace vega
 			std::this_thread::sleep_until(t);
 			is->refresh = true;
 		}
-#endif
 	}
 
 	void VideoState::video_display()
@@ -672,18 +648,11 @@ namespace vega
 
 		/* wait until we have a new pic */
 		{
-#ifdef USE_BOOST
-			boost::unique_lock<boost::mutex> lock(this->pictq_mutex);
-#else
 			std::unique_lock<std::mutex> lock(this->pictq_mutex);
-#endif
+
 			while (this->pictq_size >= VIDEO_PICTURE_QUEUE_SIZE && !this->quit)
-#ifdef USE_BOOST
-				this->pictq_cond.timed_wait(lock, boost::posix_time::milliseconds(1));
-#else
 				this->pictq_cond.wait_for(lock, std::chrono::milliseconds(1));//Nick:translate problems
-#endif
-	}
+		}
 		if (this->quit)
 			return -1;
 
@@ -711,12 +680,13 @@ namespace vega
 
 		// now we inform our display thread that we have a pic ready
 		this->pictq_windex = (this->pictq_windex + 1) % VIDEO_PICTURE_QUEUE_SIZE;
+
 		this->pictq_mutex.lock();
 		this->pictq_size++;
 		this->pictq_mutex.unlock();
 
 		return 0;
-}
+	}
 
 	float VideoState::synchronize_video(AVFrame *src_frame, float pts)
 	{
@@ -819,13 +789,9 @@ namespace vega
 				if ((self->audio_st && self->audioq.size > MAX_AUDIOQ_SIZE) ||
 					(self->video_st && self->videoq.size > MAX_VIDEOQ_SIZE))
 				{
-#ifdef USE_BOOST
-					boost::this_thread::sleep(boost::posix_time::milliseconds(10));
-#else
 					std::this_thread::sleep_for(std::chrono::milliseconds(10));
-#endif
 					continue;
-			}
+				}
 
 				if (av_read_frame(pFormatCtx, packet) < 0)
 					break;
@@ -837,7 +803,7 @@ namespace vega
 					self->audioq.put(packet);
 				else
 					av_free_packet(packet);
-		}
+			}
 
 			/* all done - wait for it */
 			self->videoq.flush();
@@ -847,13 +813,10 @@ namespace vega
 				// EOF reached, all packets processed, we can exit now
 				if (self->audioq.nb_packets == 0 && self->videoq.nb_packets == 0)
 					break;
-#ifdef USE_BOOST
-				boost::this_thread::sleep(boost::posix_time::milliseconds(100));
-#else
+
 				std::this_thread::sleep_for(std::chrono::milliseconds(100));
-#endif
 			}
-	}
+		}
 		catch (std::runtime_error& e) {
 			Warning("[VideoPlayer]An error occured playing the video: %s", e.what());
 		}
@@ -934,18 +897,15 @@ namespace vega
 
 			codecCtx->get_buffer = our_get_buffer;
 			codecCtx->release_buffer = our_release_buffer;
-#ifdef USE_BOOST
-			this->video_thread = boost::thread(video_thread_loop, this);
-			this->refresh_thread = boost::thread(video_refresh, this);
-#else
+
 			this->video_thread = std::thread(video_thread_loop, this);
 			this->refresh_thread = std::thread(video_refresh, this);
-#endif
+
 			break;
 
 		default:
 			break;
-	}
+		}
 
 		return 0;
 	}
@@ -1002,20 +962,16 @@ namespace vega
 			this->stream_open(audio_index, this->format_ctx);
 		if (video_index >= 0)
 			this->stream_open(video_index, this->format_ctx);
-#ifdef USE_BOOST
-		this->parse_thread = boost::thread(decode_thread_loop, this);
-#else
+
 		this->parse_thread = std::thread(decode_thread_loop, this);
-#endif
 	}
 
 	void VideoState::deinit()
 	{
 		this->quit = true;
 
-		this->audioq.cond.notify_one();
-		this->videoq.cond.notify_one();
-
+		this->audioq.mPCond.notify_one();
+		this->videoq.mPCond.notify_one();
 		if (this->parse_thread.joinable())
 			this->parse_thread.join();
 		if (this->video_thread.joinable())
@@ -1051,14 +1007,16 @@ namespace vega
 
 		void init(const std::string& resourceName)
 		{
-			throw ErrorF("[VideoPlayer]FFmpeg not supported, cannot play \""+resourceName+"\"");
+			throw ErrorF("[VideoPlayer]FFmpeg not supported, cannot play \"" + resourceName + "\"");
 		}
 		void deinit() { }
 
 		void close() { }
 
 		bool update(Ogre::Material* &mat, Ogre::Rectangle2D *rect, int screen_width, int screen_height)
-		{ return false; }
+		{
+			return false;
+		}
 	};
 
 #endif // defined COMPONENT_USE_FFMPEG
