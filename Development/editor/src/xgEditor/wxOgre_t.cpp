@@ -30,7 +30,7 @@ namespace vega
 		// EVT_PAINT(wxOgre_t::OnPaint) // Produces flickers and runs too fast!
 		EVT_ERASE_BACKGROUND(wxOgre_t::OnEraseBackground)
 		EVT_TIMER(ID_RENDERTIMER, wxOgre_t::OnRenderTimer)
-	END_EVENT_TABLE();
+		END_EVENT_TABLE();
 	/**
 	*/
 	void wxOgre_t::renderStaticThing(){

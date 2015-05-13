@@ -1,3 +1,31 @@
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2014 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+
 #ifndef __XMLSkeletonSerializer_H__
 #define __XMLSkeletonSerializer_H__
 
@@ -43,17 +71,17 @@ namespace Ogre {
         void writeBoneParent(TiXmlElement* boneHierarchyNode, String boneName , String parentName);
         void writeAnimation(TiXmlElement* animsNode, const Animation* anim);
         void writeAnimationTrack(TiXmlElement* tracksNode, 
-			const NodeAnimationTrack* track);
+            const NodeAnimationTrack* track);
         void writeKeyFrame(TiXmlElement* keysNode, const TransformKeyFrame* key);
-		void writeSkeletonAnimationLink(TiXmlElement* linksNode, 
-			const LinkedSkeletonAnimationSource& link);
-		
-		void readBones(Skeleton* skel, TiXmlElement* mBonesNode);
-		void readBones2(Skeleton* skel, TiXmlElement* mBonesNode);
-		void createHierarchy(Skeleton* skel, TiXmlElement* mHierNode);
-		void readKeyFrames(NodeAnimationTrack* track, TiXmlElement* mKeyfNode);
-		void readAnimations(Skeleton* skel, TiXmlElement* mAnimNode) ;
-		void readSkeletonAnimationLinks(Skeleton* skel, TiXmlElement* linksNode);
+        void writeSkeletonAnimationLink(TiXmlElement* linksNode, 
+            const LinkedSkeletonAnimationSource& link);
+        
+        void readBones(Skeleton* skel, TiXmlElement* mBonesNode);
+        void readBones2(Skeleton* skel, TiXmlElement* mBonesNode);
+        void createHierarchy(Skeleton* skel, TiXmlElement* mHierNode);
+        void readKeyFrames(NodeAnimationTrack* track, TiXmlElement* mKeyfNode);
+        void readAnimations(Skeleton* skel, TiXmlElement* mAnimNode) ;
+        void readSkeletonAnimationLinks(Skeleton* skel, TiXmlElement* linksNode);
 
     };
 

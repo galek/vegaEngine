@@ -30,7 +30,7 @@ namespace vega
 		SAFE_DELETE(sound);
 	}
 	
-	void Game::Initialize(){
+	void Game::PreInitialize(){
 		//File system is not Initialized
 	}
 	

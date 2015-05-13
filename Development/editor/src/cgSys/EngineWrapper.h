@@ -4,7 +4,7 @@ namespace vega
 {
 	class xgScene_t;
 
-	struct EngineWrapper :EngineGlobals
+	struct EngineWrapper :public EngineGlobals
 	{
 		EngineWrapper();
 		virtual ~EngineWrapper();

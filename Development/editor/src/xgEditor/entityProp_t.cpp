@@ -112,8 +112,8 @@ namespace vega
 #else
 			std::cerr << "An exception has occured: " << e.getFullDescription();
 #endif
+		}
 	}
-}
 	void entityProp_t::onColClick(wxListEvent& event){
 		if (e && e->hasSkeleton()){
 			Ogre::AnimationStateSet *ass = e->getAllAnimationStates();

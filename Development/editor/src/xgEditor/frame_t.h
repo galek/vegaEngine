@@ -59,27 +59,27 @@ namespace vega
 		void resetTool();
 		void CreateEditorToolBar();
 
-	/*private*/public:
-		wxString documentName;
-		std::string resRootPath;
-		moveObjectPropBag_t *moveObjectPropBag;
-		propBag_t *propBag;
-		wxTimer	timer;
-		updateBag_t *updateBag;
-		toolBag_t *toolBag;
-		toolBag_t *viewMsgRecvToolBag;
-		wxMenuBar *menuBar;
-		wxTreebook *toolWindow;
-		wxChoicebook *propWindow;
-		wxOgre_t *viewWindow;
-		wxChoicebook *projectWindow;
-		wxTextCtrl *logWindow;
-		wxAuiManager *fm;
-		docInfoList_t *docInfoList;
-		tool_t *currentViewMsgRecvTool;
-		WxMainToolBar*toolbar;
-		log_t*log;
-		prsTool_t*prs;
+		/*private*/public:
+			wxString documentName;
+			std::string resRootPath;
+			moveObjectPropBag_t *moveObjectPropBag;
+			propBag_t *propBag;
+			wxTimer	timer;
+			updateBag_t *updateBag;
+			toolBag_t *toolBag;
+			toolBag_t *viewMsgRecvToolBag;
+			wxMenuBar *menuBar;
+			wxTreebook *toolWindow;
+			wxChoicebook *propWindow;
+			wxOgre_t *viewWindow;
+			wxChoicebook *projectWindow;
+			wxTextCtrl *logWindow;
+			wxAuiManager *fm;
+			docInfoList_t *docInfoList;
+			tool_t *currentViewMsgRecvTool;
+			WxMainToolBar*toolbar;
+			log_t*log;
+			prsTool_t*prs;
 	};
 	extern frame_t *frame;
 }

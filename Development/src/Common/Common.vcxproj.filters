@@ -18,9 +18,6 @@
     <ClCompile Include="src\IEngine.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="CommonUnity.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\AudioUsefulFuncs.h">

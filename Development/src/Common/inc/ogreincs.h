@@ -11,12 +11,6 @@
 #include "Ogre.h"
 #include "OgreErrorDialog.h"
 
-#ifdef USE_BOOST
-#ifndef BOOST_ALL_NO_LIB
-#define BOOST_ALL_NO_LIB
-#endif
-#endif
-
 //Define it,only for fast building Physics/Audio wrappers
 #include "OIS.h"
 #include "OISEvents.h"

@@ -122,7 +122,7 @@ namespace vega
 	void EngineWrapper::CreateFrameListener()
 	{
 		window->Listener();
-	//crash	input->createFrameListener();
+		//crash	input->createFrameListener();
 		//crash	input->createFrameListener();
 		mGRoot->addFrameListener(updater);
 	}

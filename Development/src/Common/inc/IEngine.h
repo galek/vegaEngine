@@ -32,17 +32,11 @@
 // Threading includes.
 //-----------------------------------------------------------------------------
 #include "..\..\external\ogre\include\OgreBuildSettings.h"
-#ifdef USE_BOOST 
-#include <boost/thread/thread.hpp>
-#define BOOST_ASIO_NO_WIN32_LEAN_AND_MEAN
-#include <boost/asio.hpp>
-#else
 //Threads
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 #include <chrono>
-#endif
 //-----------------------------------------------------------------------------
 // Platform-specifics
 //-----------------------------------------------------------------------------

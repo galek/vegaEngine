@@ -1000,12 +1000,12 @@ namespace vega
 			for (row = begin_row; row <= end_row; ++row)
 				for (i = 0; i < dock_count; ++i)
 				{
-			wxDockInfo& d = docks.Item(i);
-			if (dock_direction == -1 || dock_direction == d.dock_direction)
-			{
-				if (d.dock_layer == layer && d.dock_row == row)
-					arr.Add(&d);
-			}
+					wxDockInfo& d = docks.Item(i);
+					if (dock_direction == -1 || dock_direction == d.dock_direction)
+					{
+						if (d.dock_layer == layer && d.dock_row == row)
+							arr.Add(&d);
+					}
 				}
 	}
 

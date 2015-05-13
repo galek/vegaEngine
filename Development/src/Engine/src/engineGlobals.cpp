@@ -116,7 +116,7 @@ namespace vega
 
 		Debug("[StartupSystems]iGame");
 		if (game)
-			game->Initialize();
+			game->PreInitialize();
 		else
 			Debug("[StartupSystems]iGame not Initialize");
 

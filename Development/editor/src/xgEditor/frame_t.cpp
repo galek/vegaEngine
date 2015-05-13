@@ -50,7 +50,7 @@ namespace vega
 		EVT_MENU(wxID_OPEN, frame_t::OnOpen)
 		EVT_MENU(wxID_SAVE, frame_t::OnSave)
 		EVT_MENU(wxID_SAVEAS, frame_t::OnSaveAs)
-		
+
 		EVT_ACTIVATE(frame_t::OnActivate)
 		END_EVENT_TABLE()
 		frame_t *frame;
@@ -309,7 +309,7 @@ namespace vega
 		fm->AddPane(logWindow, wxAuiPaneInfo().Name(wxT("log")).Caption(wxT("log")).Bottom());
 
 		initTool();
-		
+
 		viewMsgHandle_t *viewMsgHandle = new viewMsgHandle_t(this);
 		viewWindow->PushEventHandler(viewMsgHandle);
 		toggleTimerUpdate();

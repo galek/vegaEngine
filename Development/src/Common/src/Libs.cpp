@@ -6,12 +6,3 @@
 * All Rights Reserved.
 */
 #include "IEngine.h"
-
-#ifdef USE_BOOST
-#ifndef DEBUG
-#pragma comment(lib,"libboost_date_time-vc120-1_55.lib")
-#pragma comment(lib,"libboost_thread-vc120-mt-1_55.lib")
-#pragma comment(lib,"libboost_system-vc120-1_55.lib")
-#else
-#endif
-#endif

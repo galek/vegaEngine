@@ -456,7 +456,7 @@ namespace vega
 		EVT_TREE_SEL_CHANGED(wxID_TREECTRL, onEvent)
 		END_EVENT_TABLE();
 
-		bool resInsertTool_t::init(){
+	bool resInsertTool_t::init(){
 		frame->getView()->SetDropTarget(new DnDFile(this));
 		string resInsertToolDirInitDir;
 		wxNotebook *book = this;

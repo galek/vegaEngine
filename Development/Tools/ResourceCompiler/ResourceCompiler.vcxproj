@@ -227,7 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MeshUpgrader.cpp" />
     <ClCompile Include="OgreXMLMeshSerializer.cpp" />
     <ClCompile Include="OgreXMLSkeletonSerializer.cpp" />
     <ClCompile Include="tinystr.cpp" />

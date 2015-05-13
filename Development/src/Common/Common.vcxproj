@@ -215,20 +215,19 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CommonUnity.cpp" />
-    <ClInclude Include="src\BaseActorInterface.cpp" />
+    <ClCompile Include="src\BaseActorInterface.cpp" />
     <ClCompile Include="src\IEngine.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="src\iGame.cpp" />
-    <ClInclude Include="src\iInputManager.cpp" />
-    <ClInclude Include="src\iPhysics.cpp" />
-    <ClInclude Include="src\Libs.cpp" />
-    <ClInclude Include="src\RayCast.cpp" />
-    <ClInclude Include="src\SubSystems.cpp" />
+    <ClCompile Include="src\iGame.cpp" />
+    <ClCompile Include="src\iInputManager.cpp" />
+    <ClCompile Include="src\iPhysics.cpp" />
+    <ClCompile Include="src\Libs.cpp" />
+    <ClCompile Include="src\RayCast.cpp" />
+    <ClCompile Include="src\SubSystems.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\AudioUsefulFuncs.h" />

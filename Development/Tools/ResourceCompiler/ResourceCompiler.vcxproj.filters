@@ -5,16 +5,29 @@
       <UniqueIdentifier>{e999af6d-0b7a-4f77-be03-a99d50089dac}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
     </Filter>
+    <Filter Include="Include Files">
+      <UniqueIdentifier>{cf7d88e6-afc1-40f3-8f85-dab05504d87d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="OgreXMLMeshSerializer.h" />
-    <ClInclude Include="OgreXMLPrerequisites.h" />
-    <ClInclude Include="OgreXMLSkeletonSerializer.h" />
-    <ClInclude Include="tinystr.h" />
-    <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="OgreXMLMeshSerializer.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreXMLPrerequisites.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OgreXMLSkeletonSerializer.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ResourceCompiler.rc">
@@ -26,9 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshUpgrader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OgreXMLMeshSerializer.cpp">

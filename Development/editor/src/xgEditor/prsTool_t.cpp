@@ -270,13 +270,13 @@ namespace vega
 			}
 			/*else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE)
 			{
-				updateRot(event);
+			updateRot(event);
 			}
 			else if (buttonId == IDM_TOOLBAR_TOOL_SCALE){
-				updateScale(event);
+			updateScale(event);
 			}
 			else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE_Y){
-				updateRotY(event);
+			updateRotY(event);
 			}*/
 		}
 		event.GetPosition(&oldMouseXPos, &oldMouseYPos);

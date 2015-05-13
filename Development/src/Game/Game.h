@@ -1,18 +1,15 @@
 #pragma once
-#ifndef GAME_H
-#define GAME_H
-
 
 namespace vega
 {
-	class GAME_API Game:public iGame
+	class GAME_API Game :public iGame
 	{
 	public:
 		Game();
 		~Game();
-		virtual void			Initialize();
-		virtual void			CreateScene();
-		virtual void			Update(float _time);
+		virtual void PreInitialize();
+		virtual void CreateScene();
+		virtual void Update(float _time);
 	private:
 		void _enableStohMusic();
 	private:
@@ -20,4 +17,3 @@ namespace vega
 		class VideoPlayer*vplayer;
 	};
 };
-#endif

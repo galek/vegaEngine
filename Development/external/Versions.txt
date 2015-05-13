@@ -7,5 +7,5 @@ libvorbis-1.3.3
 libogg-1.3.0
 boost_1_55_0
 
-Ogre 1-9-0 stable
+Ogre 1-10-0 unstable
 lua-5.2.3

@@ -25,19 +25,31 @@ namespace vega
 	class Updater;
 	class AI;
 
-	struct ENGINE_API EngineGlobals :public CoreSystems
+	class ENGINE_API EngineGlobals :public CoreSystems
 	{
+	public:
 		EngineGlobals(void);
+
 		EngineGlobals(const EngineGlobals &gl);
+
 		virtual ~EngineGlobals(void);
+
+
 		virtual void Initialize(void);
+
 		void StartupOgre(void);
+
 		void Update(float _time);
+
 		virtual void Release(void);
+
 		__inline bool isLaunched() const { return mShutDown; }
+
 		// !@Engine Shoutdown
 		void EngineShoutdown(void);
+
 		void Go(void);
+
 		void SetGame(iGame*_game);
 
 		void RunScript(const char*_filename);
