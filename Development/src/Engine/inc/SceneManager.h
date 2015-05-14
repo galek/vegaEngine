@@ -10,7 +10,6 @@
 #ifndef _CameraControlSystem_H_
 #include "camera\CCSCameraControlSystem.h"
 #endif
-#include "inc\VVector.h"
 
 namespace vega
 {
@@ -67,7 +66,7 @@ namespace vega
 		HydraxRttListener*mHRTTL;
 		EngineGlobals *engine;
 	private:
-		VVector<Actor*>mSceneActors;
-		VVector<iCameraBase*>mSceneCameras;
+		std::vector<Actor*>mSceneActors;
+		std::vector<iCameraBase*>mSceneCameras;
 	};
 }

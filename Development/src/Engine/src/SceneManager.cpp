@@ -49,14 +49,15 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::_UpdateCameraMove(float _time)
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->Update(_time);
 		}
 	}
 	//-----------------------------------------------------------------------------
-	void SceneManager::CleanScene(){
-		mSceneActors.Erase();
+	void SceneManager::CleanScene()
+	{
+		mSceneActors.erase(mSceneActors.begin(), mSceneActors.end());
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::LoadLevel(const char* _mFileName, bool _newLoading)
@@ -75,7 +76,7 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::ManualStop()
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->ManualStop();
 		}
@@ -83,7 +84,7 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::InjectMouseMove(const Ogre::Vector2& evt)
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseMove(evt);
 		}
@@ -91,7 +92,7 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::InjectMouseDown(int id)
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseDown(id);
 		}
@@ -100,7 +101,7 @@ namespace vega
 	void SceneManager::InjectMouseUp(int _id)
 	{
 		OIS::MouseButtonID id = (OIS::MouseButtonID)_id;
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseUp(id);
 		}
@@ -108,7 +109,7 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void  SceneManager::InjectKeyDown(const int evt)
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectKeyDown(evt);
 		}
@@ -116,7 +117,7 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void  SceneManager::InjectKeyUp(const int evt)
 	{
-		for (int i = 0; i < mSceneCameras.GetSize(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++){
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectKeyUp(evt);
 		}
@@ -127,7 +128,7 @@ namespace vega
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::AddActorToList(Actor* _actor)	{
-		mSceneActors.AddElement(&_actor);
+		mSceneActors.push_back(_actor);
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::DeleteActor(Actor*_actor)	{
@@ -139,7 +140,7 @@ namespace vega
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::AddActorCameraToList(iCameraBase* _actor)	{
-		mSceneCameras.AddElement(&_actor);
+		mSceneCameras.push_back(_actor);
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::DeleteCameraFromList(iCameraBase*_actor)	{
