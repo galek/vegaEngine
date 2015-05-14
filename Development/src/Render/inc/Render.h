@@ -7,8 +7,27 @@
 */
 #pragma once
 
+#include <vector>
+#include <string>
+#ifndef RENDER_API
+#include "renderdllex.h"
+#endif
+
+namespace Ogre
+{
+	class Root;
+	class SceneManager;
+	class RenderWindow;
+	class Camera;
+	class Viewport;
+}
+
 namespace vega
 {
+	//Core
+	class CoreSystems;
+	struct EngineConfig;
+	//Render
 	class Externals;
 	class VideoPlayer;
 	class SharedData;
@@ -24,8 +43,8 @@ namespace vega
 		void Update(float _evt);
 
 
-		void PostEffectSetStatus(std::string _name, bool _status);
-		bool PlayVideo(std::string _name);
+		void PostEffectSetStatus(const char* _name, bool _status);
+		bool PlayVideo(const char* _name);
 		VideoPlayer* GetPlayer();
 		void EnableDisableAA(bool _s);
 

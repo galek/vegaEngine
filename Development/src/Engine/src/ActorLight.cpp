@@ -8,6 +8,7 @@
 // Last Update:15.01.13
 // BugFix:изменил функцию установки типа света,добавил функцию добавления дальности прорисовки
 #include "EnginePrivate.h"
+#include "ActorLight.h"
 #include "OgreWireBoundingBox.h"
 
 namespace vega

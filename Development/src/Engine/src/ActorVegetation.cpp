@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "ActorVegetation.h"
 
 using namespace Ogre;
 

@@ -362,7 +362,7 @@
     <ClCompile Include="src\ConsoleCommands.cpp" />
     <ClCompile Include="src\EmitterSound.cpp" />
     <ClCompile Include="src\EngineBase.cpp" />
-    <ClCompile Include="src\engineGlobals.cpp" />
+    <ClCompile Include="src\EngineGlobals.cpp" />
     <ClCompile Include="src\EnginePlugins.cpp" />
     <ClCompile Include="src\EnginePrivate.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

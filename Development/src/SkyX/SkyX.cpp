@@ -2,6 +2,7 @@
 
 #include "SkyX.h"
 #include "EnginePrivate.h"
+#include "ActorLight.h"//Nick:refactor!
 
 namespace vega
 {

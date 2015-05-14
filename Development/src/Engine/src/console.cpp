@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "Console.h"
 #include "ConsoleCommands.h"
 
 using namespace Ogre;
@@ -74,17 +75,17 @@ namespace vega
 		}
 
 		MapDelegate::iterator iter = mDelegates.find(key);
-		if (iter != mDelegates.end())		
+		if (iter != mDelegates.end())
 			iter->second(key, value);
-		
+
 		else
 		{
 			if (eventConsoleUnknowCommand.empty())
-			PrintTextToConsole(mStringUnknow + "'" + key + "'");
-			
-			else			
+				PrintTextToConsole(mStringUnknow + "'" + key + "'");
+
+			else
 				eventConsoleUnknowCommand(key, value);
-			
+
 		}
 
 		_sender->setCaption("");
@@ -137,20 +138,20 @@ namespace vega
 	}
 	/**
 	*/
-	void Console::RegisterConsoleDelegate(const MyGUI::UString& _command,const MyGUI::UString& _des, CommandDelegate::IDelegate* _delegate)
+	void Console::RegisterConsoleDelegate(const MyGUI::UString& _command, const MyGUI::UString& _des, CommandDelegate::IDelegate* _delegate)
 	{
 		mComboCommand->addItem(_command);
 		MapDelegate::iterator iter = mDelegates.find(_command);
 		if (iter != mDelegates.end())
 			MYGUI_LOG(Warning, "console - command '" << _command << "' already exist");
-		
+
 		mDelegates[_command] = _delegate;
 		//Описания
 		DescriptionsMap::iterator Desiter = mDescriptions.find(_command);
 		if (Desiter != mDescriptions.end())
 			MYGUI_LOG(Warning, "console - command '" << _command << "' already descripted");
-		
-		mDescriptions[_command]=_des;
+
+		mDescriptions[_command] = _des;
 	}
 
 	void Console::UnregisterConsoleDelegate(const MyGUI::UString& _command)
@@ -175,7 +176,7 @@ namespace vega
 	*/
 	void Console::PrintTextToConsole(const MyGUI::UString& _reason, const MyGUI::UString& _key,
 		const MyGUI::UString& _value)	{
-			PrintTextToConsole(MyGUI::utility::toString(_reason, "'", _key, " ", _value, "'"));
+		PrintTextToConsole(MyGUI::utility::toString(_reason, "'", _key, " ", _value, "'"));
 	}
 	/**
 	*/
@@ -205,7 +206,7 @@ namespace vega
 	/**
 	*/
 	bool Console::GetVisible()	{
-		return mMainWidget->getVisible();		
+		return mMainWidget->getVisible();
 	}
 	/**
 	*/
@@ -216,21 +217,21 @@ namespace vega
 	*/
 	void Console::GetListCommands()
 	{
-	//Описания
-		for(DescriptionsMap::iterator i = mDescriptions.begin();i!=mDescriptions.end();i++)
-			PrintTextToConsole(std::string(i->first+i->second));
+		//Описания
+		for (DescriptionsMap::iterator i = mDescriptions.begin(); i != mDescriptions.end(); i++)
+			PrintTextToConsole(std::string(i->first + i->second));
 	}
 	/**
 	*/
 	void Console::RegisterBaseCommands()
 	{
-		RegisterConsoleDelegate("help"," -get list commands with description", MyGUI::newDelegate(&ConsoleCommands::Help));
-		RegisterConsoleDelegate("clean"," -clean console", MyGUI::newDelegate(&ConsoleCommands::CleanConsole));
-		RegisterConsoleDelegate("quit"," -engine shoutdown", MyGUI::newDelegate(&ConsoleCommands::EngineShoutdown));	
-		RegisterConsoleDelegate("loadlevel"," -loading new level", MyGUI::newDelegate(&ConsoleCommands::LoadLevel));
-		RegisterConsoleDelegate("playv"," -play video clip", MyGUI::newDelegate(&ConsoleCommands::PlayV));
-		RegisterConsoleDelegate("r_aa"," -render antialiasing", MyGUI::newDelegate(&ConsoleCommands::R_AA));
-		RegisterConsoleDelegate("r_ssao"," -render SSAO", MyGUI::newDelegate(&ConsoleCommands::R_SSAO));
+		RegisterConsoleDelegate("help", " -get list commands with description", MyGUI::newDelegate(&ConsoleCommands::Help));
+		RegisterConsoleDelegate("clean", " -clean console", MyGUI::newDelegate(&ConsoleCommands::CleanConsole));
+		RegisterConsoleDelegate("quit", " -engine shoutdown", MyGUI::newDelegate(&ConsoleCommands::EngineShoutdown));
+		RegisterConsoleDelegate("loadlevel", " -loading new level", MyGUI::newDelegate(&ConsoleCommands::LoadLevel));
+		RegisterConsoleDelegate("playv", " -play video clip", MyGUI::newDelegate(&ConsoleCommands::PlayV));
+		RegisterConsoleDelegate("r_aa", " -render antialiasing", MyGUI::newDelegate(&ConsoleCommands::R_AA));
+		RegisterConsoleDelegate("r_ssao", " -render SSAO", MyGUI::newDelegate(&ConsoleCommands::R_SSAO));
 		RegisterConsoleDelegate("r_hdr", " -render hdr", MyGUI::newDelegate(&ConsoleCommands::R_HDR));
 		RegisterConsoleDelegate("runscript", " -running script", MyGUI::newDelegate(&ConsoleCommands::RunScript));
 		RegisterConsoleDelegate("pause", " -set pause", MyGUI::newDelegate(&ConsoleCommands::E_Pause));
@@ -239,6 +240,6 @@ namespace vega
 	/**
 	 */
 	void Console::messageLogged(const Ogre::String &message, Ogre::LogMessageLevel, bool, const Ogre::String &, bool &){
-		PrintTextToConsole("#FFE600"+message);
+		PrintTextToConsole("#FFE600" + message);
 	}
-} 
+}

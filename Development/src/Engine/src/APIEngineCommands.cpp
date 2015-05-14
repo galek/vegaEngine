@@ -6,6 +6,10 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "SceneManager.h"
+#include "Input.h"
+#include "GUI/GUI.h"
+
 #include "APIEngineCommands.h"
 
 namespace vega

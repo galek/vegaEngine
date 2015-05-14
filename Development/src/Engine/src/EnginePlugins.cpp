@@ -6,7 +6,8 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-#pragma message("NICK-REFACTOR IT 2015")
+#include "EnginePlugins.h"
+
 namespace vega
 {
 	//-----------------------------------------------------------------------------

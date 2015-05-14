@@ -11,7 +11,7 @@
 namespace vega
 {
 	class Hydrax;
-	struct EngineGlobals;
+	class EngineGlobals;
 
 	class ENGINE_API ActorWater :public Actor
 	{

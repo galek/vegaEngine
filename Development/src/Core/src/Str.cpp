@@ -7,6 +7,8 @@
 */
 #include "CorePrivate.h"
 #pragma message("NICK-REFACTOR IT 2015")
+
+//-------------------------------------------------------------------------------------
 //Вывод целого числа в виде строки
 std::string ToStr(const char *fmt, ...)
 {

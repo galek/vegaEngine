@@ -37,17 +37,5 @@
 
 //Main Engine
 #include "EngineGlobals.h"
-#include "Window.h"
-#include "EnginePlugins.h"
-#include "EngineBase.h"
-#include "Console.h"
-#include "Render.h"
-#include "SceneManager.h"
-#include "Input.h"
-#include "GUI/GUI.h"
 //Entity
 #include "world/Actor.h"
-#include "ActorMesh.h"
-#include "ActorVegetation.h"
-#include "ActorWater.h"
-#include "ActorLight.h"

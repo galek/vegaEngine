@@ -6,6 +6,9 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "SceneManager.h"
+#include "Render.h"
+#include "Console.h"
 #include "EngineScriptingEx.h"
 
 namespace vega
@@ -40,7 +43,7 @@ namespace vega
 		}
 		// !@Loading Level command
 		void PlayV(const MyGUI::UString & _key, const MyGUI::UString & _value) {
-			GetEngine()->GetRender()->PlayVideo(_value);
+			GetEngine()->GetRender()->PlayVideo(_value.asUTF8_c_str());
 		}
 		// !@Runing script
 		void RunScript(const MyGUI::UString & _key, const MyGUI::UString & _value) {

@@ -11,8 +11,7 @@ using namespace Ogre;
 #pragma message("NICK-REFACTOR IT 2015")
 namespace vega
 {
-	/*
-	**/
+	//-------------------------------------------------------------------------------------
 	const char* VFile::LoadFileHowCChar(const char *_mFilename)
 	{
 		try
@@ -29,8 +28,7 @@ namespace vega
 		}
 	}
 
-	/*
-	**/
+	//-------------------------------------------------------------------------------------
 	size_t VFile::LoadFileAndGetSize(const char *_mFilename)
 	{
 		try
@@ -47,8 +45,8 @@ namespace vega
 		}
 
 	}
-	/*
-	**/
+
+	//-------------------------------------------------------------------------------------
 	const char* VFile::GetHowCChar()
 	{
 		if (!pStream.isNull())
@@ -56,8 +54,8 @@ namespace vega
 		else
 			return "";
 	}
-	/*
-	**/
+
+	//-------------------------------------------------------------------------------------
 	size_t VFile::GetSize()
 	{
 		if (!pStream.isNull())
@@ -65,8 +63,8 @@ namespace vega
 		else
 			return 0;
 	}
-	/*
-	**/
+
+	//-------------------------------------------------------------------------------------
 	std::string VFile::LoadFileHowString(const char *_mFilename)
 	{
 		try
@@ -82,5 +80,5 @@ namespace vega
 			return "Errror Loading";
 		}
 	}
-
+	//-------------------------------------------------------------------------------------
 }

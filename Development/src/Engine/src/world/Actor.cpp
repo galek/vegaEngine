@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "SceneManager.h"
 
 
 namespace vega
@@ -15,7 +16,6 @@ namespace vega
 		:mStaticGeometry(nullptr),
 		phBody(nullptr)
 	{
-		_switchCollision();
 		GetEngine()->GetSceneMgr()->AddActorToList(this);
 	}
 	//-------------------------------------------------------------------------------------

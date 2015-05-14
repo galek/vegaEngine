@@ -7,6 +7,9 @@
 */
 
 #include "EnginePrivate.h"
+#include "Input.h"
+#include "Console.h"
+#include "SceneManager.h"
 
 namespace vega
 {

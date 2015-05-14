@@ -13,18 +13,16 @@ namespace vega
 	{
 	public:
 		//various getters used by class clients to get configuration directives
-		int getValueAsInt(const char* key);
-		float getValueAsFloat(const char* key,float _default=0);
-		std::string getValueAsString(const char* key,std::string _default="");
-		Ogre::Vector3 getValueAsVector3(const char* key,Ogre::Vector3 _default=Ogre::Vector3::ZERO);
-		bool getValueAsBool(const char* key,bool _default=false);
-		Ogre::ColourValue getValueAsColourValue(const char* key,Ogre::ColourValue _default=Ogre::ColourValue::ZERO);
-		bool getKeyExists(const char* key);
+		int GetValueAsInt(const char* key);
+		float GetValueAsFloat(const char* key, float _default = 0);
+		const std::string& GetValueAsString(const char* key, const std::string& _default = "");
+		Ogre::Vector3 GetValueAsVector3(const char* key, const Ogre::Vector3& _default = Ogre::Vector3::ZERO);
+		bool GetValueAsBool(const char* key, bool _default = false);
+		Ogre::ColourValue GetValueAsColourValue(const char* key, const Ogre::ColourValue& _default = Ogre::ColourValue::ZERO);
+		bool GetKeyExists(const char* key) const;
 
 		Config(const char* _filename="..\\Engine\\Configs\\BaseEngine.ini");
-		~Config();
-		
-
+		~Config(){}
 	private:
 		Ogre::ConfigFile m_ConfigFile;
 		//this is where our configuration data is stored

@@ -6,10 +6,8 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-
-//-----------------------------------------------------------------------------
-// Depends.
-//-----------------------------------------------------------------------------
+#include "EngineBase.h"
+#include "EnginePlugins.h"
 #include "OgreStaticPluginLoader.h"
 
 namespace vega

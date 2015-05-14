@@ -1,5 +1,5 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
+* VegaEngine(TM) Package 0.5.6.0
 * Copyright (C) 2009-2014 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
@@ -14,7 +14,7 @@ namespace vega
 	struct CORE_API Scripting
 	{
 	public:
-		Scripting();
+		Scripting(){}
 
 		~Scripting();
 

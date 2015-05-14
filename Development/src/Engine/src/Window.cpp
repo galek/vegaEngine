@@ -6,8 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-
-
+#include "Window.h"
 
 namespace vega
 {

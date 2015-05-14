@@ -13,9 +13,12 @@
 //Core
 #include "Scripting.h"
 //Engine
+#include "SceneManager.h"
 #include "ConsoleCommands.h"
 #include "EngineScriptingEx.h"
 #include "WrappedScriptFunctions.h"
+#include "ActorWater.h"
+#include "ActorMesh.h"
 #include "ActorDynamicSky.h"
 #include "ActorSkyDome.h"
 #include "ActorSkyBox.h"

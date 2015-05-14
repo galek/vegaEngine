@@ -45,7 +45,9 @@ namespace vega
 		void InitD3D9();
 		void InitOGL();
 		virtual void Initialize();
-		void GetDataFromSettingsFile();
+		__inline void GetDataFromSettingsFile(){ _ParseConfig(); }
+	private:
+		void _ParseConfig();
 	private:
 		ScriptSerializerManager*mShaderCache;
 	};

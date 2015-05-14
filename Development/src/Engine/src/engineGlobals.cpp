@@ -7,11 +7,17 @@
 */
 #include "EnginePrivate.h"
 #include "Console.h"
+#include "Window.h"
+#include "Input.h"
+#include "Render.h"
+#include "SceneManager.h"
+#include "EnginePlugins.h"
+#include "GUI/GUI.h"
 #include "EngineScriptingEx.h"
 #include "../../Core/inc/OgreStaticPluginLoader.h"
 #include "../../Common/inc/Raycast.h"
 #include "Updater.h"
-#pragma message("NICK-REFACTOR IT 2015")
+
 namespace vega
 {
 	//-------------------------------------------------------------------------------------

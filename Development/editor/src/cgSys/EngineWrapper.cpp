@@ -51,31 +51,7 @@ namespace vega
 
 	void EngineWrapper::PreInitSystems()
 	{
-		WriteInfoAboutBuild();
-		Debug("[PreInit]Updater");
-		updater = new Updater(this);
-		Debug("[PreInit]CollisionTools");
-		mRaycast = new CollisionTools(this);
-		Debug("[PreInit]Plugins");
-		plugins = new EnginePlugins();
-		Debug("[PreInit]loading Plugins");
-		LoadEngineModules();
-		Debug("[PreInit]Window");
-		window = new Window();
-		Debug("[PreInit]Input");
-		input = new Input();
-		Debug("[PreInit]Console");
-		console = new Console();
-		Debug("[PreInit]Render");
-		render = new Render(this);
-		Debug("[PreInit]GUI");
-		gui = new GUI();
-		Debug("[PreInit]LevelManager");
-		sceneManager = new SceneManager(this);
-		Debug("[PreInit]AI");
-		ai = new AI(mGSceneMgr);
-		Debug("[PreInit]Attempt Config");
-		AttemptConfig();
+		EngineGlobals::PreInitSystems();
 		editorL = true;
 	}
 

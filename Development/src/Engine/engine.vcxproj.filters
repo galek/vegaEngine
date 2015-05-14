@@ -188,9 +188,6 @@
     <ClCompile Include="src\EngineBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\engineGlobals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\EnginePlugins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -304,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="src\ConsoleCommands.cpp">
       <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineGlobals.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

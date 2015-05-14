@@ -1,11 +1,12 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
+* VegaEngine(TM) Package 0.5.6.0
 * Copyright (C) 2009-2014 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
 */
 #include "RenderPrivate.h"
+
 #include "VideoPlayer.h"
 #include "PostEffects/PostEffects.h"
 #include "SharedData.h"
@@ -34,7 +35,7 @@ namespace vega
 
 	/**
 	*/
-	bool Render::PlayVideo(std::string _name)	{
+	bool Render::PlayVideo(const char* _name)	{
 		if (!externals)
 			return false;
 		return externals->mVideoPlayer->playVideo(_name, true);
@@ -146,7 +147,7 @@ namespace vega
 
 	/**
 	*/
-	void Render::PostEffectSetStatus(std::string _name, bool _status)	{
+	void Render::PostEffectSetStatus(const char* _name, bool _status)	{
 		if (_name == "SSAO")
 		{
 			Debug("[PostEffects]Enabled SSAO");

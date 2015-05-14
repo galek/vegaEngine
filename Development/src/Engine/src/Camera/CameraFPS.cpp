@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "Engineprivate.h"
+#include "SceneManager.h"
 #include "camera/CameraFPS.h"
 #include "camera/CCSCameraControlSystem.h"
 #include "camera/CCSBasicCameraModes.h"

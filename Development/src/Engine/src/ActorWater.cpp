@@ -6,7 +6,8 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-
+#include "SceneManager.h"
+#include "ActorWater.h"
 //LWater
 #include "../Hydrax/include/Hydrax.h"
 #include "../Hydrax/include/Noise/FFT/FFT.h"

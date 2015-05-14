@@ -13,16 +13,13 @@
 #pragma message("NICK-REFACTOR IT 2015")
 namespace vega
 {
-	/**
-	*/
-	Scripting::Scripting() {
-	}
 
+	//-------------------------------------------------------------------------------------
 	Scripting::~Scripting() {
 		lua_close(luaState);
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	void Scripting::Initialize()
 	{
 		luaState = luaL_newstate();
@@ -33,13 +30,13 @@ namespace vega
 		bindMathFunctions();
 		bindCoreFunctions();
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	lua_State * Scripting::getLua() const {
 		return luaState;
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	int Scripting::doString(std::string code) const {
 		Debug("Loaded script: %s \n", code.c_str());
 		if (!luaL_loadbuffer(luaState, code.c_str(), code.length(), "line"))
@@ -52,14 +49,14 @@ namespace vega
 		}
 		return 0;
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	int Scripting::RunScript(const char* _filename){
 		VFile file;
 		return doString(file.LoadFileHowString(_filename));
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	void Scripting::bindLogFunctions() {
 		lua_register(luaState, "Debug", ScriptDebug);
 		lua_register(luaState, "LogPrintf", ScriptLogPrintf);
@@ -72,8 +69,8 @@ namespace vega
 				def("GetLoggingLevel", &GetLoggingLevel)
 			];
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	void Scripting::bindMathFunctions() {
 		TODO("Vector2,Matrix");
 		using namespace Ogre;
@@ -119,8 +116,8 @@ namespace vega
 				.def("saturate", &ColourValue::saturate)
 			];
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	void Scripting::bindCoreFunctions() {
 		using namespace luabind;
 		using namespace vega;
@@ -165,8 +162,8 @@ namespace vega
 					]
 			];
 	}
-	/**
-	*/
+
+	//-------------------------------------------------------------------------------------
 	int Scripting::RunFunctionByName(const char*_name) {
 		lua_getglobal(luaState, _name);
 		return lua_pcall(luaState, 0, 0, 0);

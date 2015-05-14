@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "SceneManager.h"
 #include "ActorDynamicSky.h"
 #include "../SkyX/SkyX.h"
 

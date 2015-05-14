@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "Engineprivate.h"
+#include "SceneManager.h"
 #include "camera/iCameraBase.h"
 
 namespace vega

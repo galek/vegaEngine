@@ -6,6 +6,7 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+#include "SceneManager.h"
 
 #include "xml/levelloader.h"
 
@@ -15,6 +16,7 @@
 #include "camera/iCameraBase.h"
 #include "HydraxRttListener.h"
 #include "ActorDynamicSky.h"
+#include "ActorWater.h"
 using namespace Ogre;
 
 namespace vega
