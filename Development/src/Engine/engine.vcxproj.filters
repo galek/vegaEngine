@@ -182,9 +182,6 @@
     <ClCompile Include="src\EnginePrivate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EngineUnity.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

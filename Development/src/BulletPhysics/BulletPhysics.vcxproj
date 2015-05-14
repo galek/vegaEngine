@@ -145,7 +145,7 @@
     </PostBuildEvent>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;ConvexDecomposition_vs2010_debug.lib;LinearMath_vs2010_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;Bullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -175,7 +175,7 @@
       </Message>
     </PostBuildEvent>
     <Lib>
-      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_x64_debug.lib;BulletDynamics_vs2010_x64_debug.lib;BulletSoftBody_vs2010_x64_debug.lib;ConvexDecomposition_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;Bullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -210,7 +210,7 @@
     </PostBuildEvent>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010.lib;BulletDynamics_vs2010.lib;BulletSoftBody_vs2010.lib;ConvexDecomposition_vs2010.lib;LinearMath_vs2010.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;Bullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -246,7 +246,7 @@
     </PostBuildEvent>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;BulletCollision_vs2010_x64_release.lib;BulletDynamics_vs2010_x64_release.lib;BulletSoftBody_vs2010_x64_release.lib;ConvexDecomposition_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;Bullet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">

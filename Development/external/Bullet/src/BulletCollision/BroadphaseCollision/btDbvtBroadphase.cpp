@@ -28,11 +28,11 @@ subject to the following restrictions:
 #if DBVT_BP_PROFILE
 struct	ProfileScope
 {
-	inline ProfileScope(btClock& clock,unsigned long& value) :
+	__forceinline ProfileScope(btClock& clock,unsigned long& value) :
 	m_clock(&clock),m_value(&value),m_base(clock.getTimeMicroseconds())
 	{
 	}
-	inline ~ProfileScope()
+	__forceinline ~ProfileScope()
 	{
 		(*m_value)+=m_clock->getTimeMicroseconds()-m_base;
 	}
