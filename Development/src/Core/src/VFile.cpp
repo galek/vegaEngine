@@ -11,6 +11,7 @@ using namespace Ogre;
 #pragma message("NICK-REFACTOR IT 2015")
 namespace vega
 {
+	//http://www.ogre3d.org/forums/viewtopic.php?p=507168#p507168
 	//-------------------------------------------------------------------------------------
 	const char* VFile::LoadFileHowCChar(const char *_mFilename)
 	{

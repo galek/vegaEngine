@@ -40,10 +40,7 @@ namespace vega
 
 	/**
 	*/
-	Config::~Config() { }
-	/**
-	*/
-	bool Config::getKeyExists(const char* key)
+	bool Config::GetKeyExists(const char* key) const
 	{
 		if (m_Configs.count(key) > 0)
 		{
@@ -53,9 +50,9 @@ namespace vega
 	}
 	/**
 	*/
-	std::string Config::getValueAsString(const char* key, std::string _default)
+	const std::string& Config::GetValueAsString(const char* key, const std::string &_default)
 	{
-		if (getKeyExists(key) == true)
+		if (GetKeyExists(key) == true)
 			return m_Configs[key];
 		else{
 			std::string x = ("Configuration key: ");
@@ -71,29 +68,29 @@ namespace vega
 	}
 	/**
 	*/
-	int Config::getValueAsInt(const char* key)	{
-		if (!getValueAsString(key).empty())
-			return atoi(getValueAsString(key).c_str());
+	int Config::GetValueAsInt(const char* key)	{
+		if (!GetValueAsString(key).empty())
+			return atoi(GetValueAsString(key).c_str());
 		else return 0;
 	}
 	/**
 	*/
-	float Config::getValueAsFloat(const char* key, float _default)	{
-		return Ogre::StringConverter::parseReal(getValueAsString(key), _default);
+	float Config::GetValueAsFloat(const char* key, float _default)	{
+		return Ogre::StringConverter::parseReal(GetValueAsString(key), _default);
 	}
 	/**
 	*/
-	bool Config::getValueAsBool(const char* key, bool _default)	{
-		return Ogre::StringConverter::parseBool(getValueAsString(key), _default);
+	bool Config::GetValueAsBool(const char* key, bool _default)	{
+		return Ogre::StringConverter::parseBool(GetValueAsString(key), _default);
 	}
 	/**
 	*/
-	Ogre::Vector3 Config::getValueAsVector3(const char* key, Ogre::Vector3 _default)	{
-		return Ogre::StringConverter::parseVector3(getValueAsString(key), _default);
+	Ogre::Vector3 Config::GetValueAsVector3(const char* key, const Ogre::Vector3 &_default) {
+		return Ogre::StringConverter::parseVector3(GetValueAsString(key), _default);
 	}
 	/**
 	*/
-	Ogre::ColourValue Config::getValueAsColourValue(const char* key, Ogre::ColourValue _default)	{
-		return Ogre::StringConverter::parseColourValue(getValueAsString(key), _default);
+	Ogre::ColourValue Config::GetValueAsColourValue(const char* key, const Ogre::ColourValue &_default) {
+		return Ogre::StringConverter::parseColourValue(GetValueAsString(key), _default);
 	}
 }

@@ -62,13 +62,19 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::LoadLevel(const char* _mFileName, bool _newLoading)
 	{
+		if (!levelloader)
+			return;
+
 		if (_newLoading)
 			CleanScene();
 
 		levelloader->Load(_mFileName, engine->mGWindow);
 	}
 	//-----------------------------------------------------------------------------
-	void SceneManager::Update(float _time){
+	void SceneManager::Update(float _time)
+	{
+		if (!mCameraCS)
+			return;
 		mCameraCS->update(_time);
 		_UpdateCameraMove(_time);
 		_UpdateSkyWater(_time);
