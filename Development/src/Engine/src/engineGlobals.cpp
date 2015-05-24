@@ -14,9 +14,12 @@
 #include "EnginePlugins.h"
 #include "GUI/GUI.h"
 #include "EngineScriptingEx.h"
+//From Core
+#include "../../Core/inc/BackgroundLoader.h"
 #include "../../Core/inc/OgreStaticPluginLoader.h"
 #include "../../Common/inc/Raycast.h"
 #include "Updater.h"
+
 
 namespace vega
 {
@@ -141,6 +144,8 @@ namespace vega
 		else
 			Debug("[StartupSystems]input not updated");
 
+		this->BackgroundLoad();
+
 		if (mEngineState == ES_PLAY)
 		{
 			if (audio)
@@ -162,7 +167,7 @@ namespace vega
 			if (sceneManager)
 				sceneManager->Update(_time);
 			else
-				Debug("[StartupSystems]levelloader not updated");
+				Debug("[StartupSystems]sceneManager not updated");
 
 			if (game)
 				game->Update(_time);
@@ -214,11 +219,6 @@ namespace vega
 		//delete ai
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::LoadResources(void){
-		Debug("EngineGlobals::LoadResources");
-		Ogre::ResourceBackgroundQueue::getSingleton().initialiseAllResourceGroups();
-	}
-	//-------------------------------------------------------------------------------------
 	void EngineGlobals::Go(void)
 	{
 		if (!Setup())
@@ -249,7 +249,6 @@ namespace vega
 
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("..//Engine//Scripts//", "FileSystem", "Engine", true);
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("..//Game//Scripts//", "FileSystem", "Game", true);
-		LoadResources();
 
 		if (mEngineConfig->mPrecacheResources)
 		{
@@ -260,38 +259,15 @@ namespace vega
 			path = "..//Game//Content//";
 			// Adding Archives
 			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Game", true);
+			mResBL->BackgroundLoadResourceGroup("Game", path);
 			gameArchives = Ogre::ResourceGroupManager::getSingleton().findResourceNames("Game", "*.npk", false);
 			for (unsigned int i = 0; i < gameArchives->size(); i++)
 				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path + (*gameArchives)[i], "Zip", "Game", true, true);
-
-			LoadResources();
 		}
 	}
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::SetupResources()
 	{
-		Debug("[Engine-Resource]-Loading resources from setupResources");
-
-		std::string path = "..//Engine//Shaders//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//Cg//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//GLSL//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//GLSL150//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//GLSL400//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//GLSLES//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//HLSL//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		path = "..//Engine//Shaders//programs//";
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Shaders", true);
-		// Adding Archives
-		Ogre::StringVectorPtr gameArchives = Ogre::ResourceGroupManager::getSingleton().findResourceNames("Shaders", "*.shaders", false);
-		for (unsigned int i = 0; i < gameArchives->size(); i++)
-			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path + (*gameArchives)[i], "Zip", "Shaders", true);
 
 	}
 	//-------------------------------------------------------------------------------------
@@ -333,15 +309,16 @@ namespace vega
 	bool EngineGlobals::Setup(void)
 	{
 		StartupOgre();
-		SetupResources();
 		Configure();
 		ChooseSceneManager();
 		CreateCamera();
 		CreateViewports();
 		Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 		PreInitSystems();
+		SetupResources();
 		StartupSystems();
 		CreateFrameListener();
+		PrecacheResources();
 		if (game)
 			game->CreateScene();
 
@@ -350,7 +327,7 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::StartupSystems()	{
 		Initialize();
-		PrecacheResources();
+		/*PrecacheResources();*/
 	}
 	//-------------------------------------------------------------------------------------
 	bool EngineGlobals::Update(const Ogre::FrameEvent& evt)
@@ -382,6 +359,7 @@ namespace vega
 		mGSceneMgr->setShadowFarDistance(mEngineConfig->mShadowFarDistance);
 		mGSceneMgr->setShadowTextureSize(mEngineConfig->mShadowTextureSize);
 		mGCamera->setFarClipDistance(mEngineConfig->mFarClipDistance);
+		mGCamera->setNearClipDistance(0.5);
 	}
 	//-------------------------------------------------------------------------------------
 	const char* EngineGlobals::GetCurrentState()
@@ -392,5 +370,6 @@ namespace vega
 			return "PAUSE";
 		else if (mEngineState == ES_PLAY)
 			return "PLAYING";
+		return "UNKNOWN";
 	}
 }

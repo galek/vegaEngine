@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="NsightTegraProject">
-    <NsightTegraProjectRevisionNumber>6</NsightTegraProjectRevisionNumber>
+    <NsightTegraProjectRevisionNumber>9</NsightTegraProjectRevisionNumber>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Tegra-Android">
@@ -61,16 +61,17 @@
     <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <AndroidArch>armv7-a</AndroidArch>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
     <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <AndroidAPILevel>android-17</AndroidAPILevel>
     <AndroidArch>armv7-a</AndroidArch>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings"></ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\BuildConfig\BuildReleaseProperty.VC90.props" />
@@ -152,8 +153,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -197,8 +197,7 @@
       <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries></IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SetChecksum>true</SetChecksum>
       <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration)\$(ProjectName).lib</ImportLibrary>
@@ -322,16 +321,7 @@
     <ClInclude Include="inc\EngineScriptingEx.h" />
     <ClInclude Include="inc\HydraxRttListener.h" />
     <ClInclude Include="inc\Input.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxModel.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxPlatform.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxRenderWindowIterator.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxScene.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxTypes.h" />
-    <ClInclude Include="inc\ogremax\OgreMaxUtilities.h" />
-    <ClInclude Include="inc\ogremax\ProgressCalculator.h" />
-    <ClInclude Include="inc\ogremax\Version.h" />
     <ClInclude Include="inc\SceneManager.h" />
-    <ClInclude Include="inc\tinyxml\tinyxml.h" />
     <ClInclude Include="inc\Updater.h" />
     <ClInclude Include="inc\Window.h" />
     <ClInclude Include="inc\GUI\GUI.h" />
@@ -345,8 +335,6 @@
     <ClInclude Include="inc\ActorVegetation.h" />
     <ClInclude Include="inc\ActorWater.h" />
     <ClInclude Include="inc\EmitterParticle.h" />
-    <ClInclude Include="inc\xml\LevelLoader.h" />
-    <ClInclude Include="inc\xml\XMLRead.h" />
     <ClInclude Include="inc\camera\CCSBasicCameraModes.h" />
     <ClInclude Include="inc\camera\CCSCameraControlSystem.h" />
     <ClInclude Include="inc\camera\CCSFastDelegate.h" />
@@ -373,15 +361,7 @@
     <ClCompile Include="src\HydraxRttListener.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\LoadEngineModules.cpp" />
-    <ClCompile Include="src\ogremax\OgreMaxModel.cpp" />
-    <ClCompile Include="src\ogremax\OgreMaxScene.cpp" />
-    <ClCompile Include="src\ogremax\OgreMaxUtilities.cpp" />
-    <ClCompile Include="src\ogremax\ProgressCalculator.cpp" />
-    <ClCompile Include="src\ogremax\Version.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
-    <ClCompile Include="src\tinyxml\tinyxml.cpp" />
-    <ClCompile Include="src\tinyxml\tinyxmlerror.cpp" />
-    <ClCompile Include="src\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="src\Updater.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\GUI\GUI.cpp" />
@@ -396,12 +376,9 @@
     <ClCompile Include="src\ActorWater.cpp" />
     <ClCompile Include="src\EmitterParticle.cpp" />
     <ClCompile Include="src\xml\LevelLoader.cpp" />
-    <ClCompile Include="src\NodeParser.cpp" />
-    <ClCompile Include="src\xml\XMLRead.cpp" />
     <ClCompile Include="src\Camera\CCSCameraControlSystem.cpp" />
     <ClCompile Include="src\Camera\CCSFreeCameraMode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets"></ImportGroup>
 </Project>

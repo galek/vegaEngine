@@ -29,12 +29,20 @@ namespace vega
 	{
 		SAFE_DELETE(sound);
 	}
-	
+
 	void Game::PreInitialize(){
 		//File system is not Initialized
 	}
-	
+
 	void Game::CreateScene()	{
+		GetEngine()->sceneManager->SetAmbientLight(0.15, 0.00, 0.00);
+		auto l1 = ActorLight::DirectLight("gsds");
+		l1->setDiffuse(0.5f, 0.45f, 0.1f);
+		l1->setDirection(Ogre::Vector3(1, -0.5, -0.2));
+		l1->setShadowFarClipDistance(250);
+		l1->setShadowFarDistance(75);
+		//Turn this on to have the directional light cast shadows
+		l1->setCastShadows(false);
 		API::RunScriptFunctionByName("EngineMain.lua", "EngineMain");
 	}
 

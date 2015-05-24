@@ -26,7 +26,7 @@ namespace vega
 		void frameRenderingQueued(void);
 		void createFrameListener(void);
 		void Recreate(bool);
-		__inline bool GetIsBuffered() { return mBuffered; }
+		EFORCEINLINE bool IsBuffered() { return mBuffered; }
 		bool keyPressed(const OIS::KeyEvent &arg);
 		void windowResized(Ogre::RenderWindow* _window);
 		// !@Unattach OIS before window shutdown (very important under Linux)

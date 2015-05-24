@@ -74,6 +74,14 @@ namespace vega
 			GetEngine()->GetGui()->ShowGUIMouseCursor(_status);
 		}
 		//-------------------------------------------------------------------------------------
+		bool GetShowGUICursor() {
+			return GetEngine()->GetGui()->IsShowingGUIMouseCursor();
+		}
+		//-------------------------------------------------------------------------------------
+		bool IsBufferredInput() {
+			return GetEngine()->GetInput()->IsBuffered();
+		}
+		//-------------------------------------------------------------------------------------
 		void RunScriptFunctionByName(const char*_file,const char* _status) {
 			RunScript(_file);
 			GetEngine()->mScript->RunFunctionByName(_status);

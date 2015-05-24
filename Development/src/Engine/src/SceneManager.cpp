@@ -8,8 +8,6 @@
 #include "EnginePrivate.h"
 #include "SceneManager.h"
 
-#include "xml/levelloader.h"
-
 #include "camera/CCSCameraControlSystem.h"
 #include "camera/CCSBasicCameraModes.h"
 #include "camera/CCSFreeCameraMode.h"
@@ -24,14 +22,14 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	SceneManager::SceneManager(EngineGlobals *_engine)
 		:engine(_engine)
-		, levelloader(nullptr)
+		/*, levelloader(nullptr)*/
 		, mCameraCS(nullptr)
 		, mCurrentCamera(nullptr)
 		, mHRTTL(nullptr)
 		, mWater(nullptr)
 		, mDSky(nullptr)
 	{
-		levelloader = new LevelLoader();
+		/*levelloader = new LevelLoader();*/
 		// Create the camera system using the previously created ogre camera.
 		mCameraCS = new CameraControlSystem(_engine->mGSceneMgr, "CameraControlSystem", _engine->mGCamera);
 		_CreateCameras();
@@ -62,13 +60,13 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::LoadLevel(const char* _mFileName, bool _newLoading)
 	{
-		if (!levelloader)
+		/*if (!levelloader)
 			return;
 
 		if (_newLoading)
 			CleanScene();
 
-		levelloader->Load(_mFileName, engine->mGWindow);
+		levelloader->Load(_mFileName, engine->mGWindow);*/
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::Update(float _time)

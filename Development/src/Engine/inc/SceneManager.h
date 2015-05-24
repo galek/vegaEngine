@@ -15,7 +15,7 @@ namespace vega
 {
 	struct Actor;
 	class CameraControlSystem;
-	class LevelLoader;
+	/*class LevelLoader;*/
 	class iCameraBase;
 	class ActorDynamicSky;
 	class ActorWater;
@@ -58,7 +58,7 @@ namespace vega
 		void _UpdateSkyWater(float _time);
 		void _InitForSkyWaterDepends();
 	private:
-		LevelLoader* levelloader;
+		/*LevelLoader* levelloader;*/
 		CameraControlSystem* mCameraCS;
 		iCameraBase*mCurrentCamera;
 		ActorDynamicSky*mDSky;

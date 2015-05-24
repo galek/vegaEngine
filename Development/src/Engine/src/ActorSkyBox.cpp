@@ -14,14 +14,14 @@ namespace vega
 	*/
 	ActorSkyBox::ActorSkyBox(const char* _material)
 	{
-		if(!GetEngine()->mGSceneMgr->isSkyBoxEnabled())
-			GetEngine()->mGSceneMgr->setSkyBox(true, _material);
+		if (!GetEngine()->mGSceneMgr->isSkyBoxEnabled())
+			GetEngine()->mGSceneMgr->setSkyBox(true, _material, 500);
 	}
 	/**
 	*/
 	ActorSkyBox::~ActorSkyBox()
 	{
-		if(GetEngine()->mGSceneMgr->isSkyBoxEnabled())
+		if (GetEngine()->mGSceneMgr->isSkyBoxEnabled())
 			GetEngine()->mGSceneMgr->destroySceneNode(GetEngine()->mGSceneMgr->getSkyBoxNode());
 	}
 }

@@ -8,6 +8,7 @@
 #include "CorePrivate.h"
 #include "Scripting.h"
 #include "Common.h"
+#include "BackgroundLoader.h"
 
 namespace vega
 {
@@ -23,18 +24,19 @@ namespace vega
 		, mShaderCache(nullptr)
 		, mRaycast(nullptr)
 		, mScript(nullptr)
+		, mResBL(nullptr)
 		, mEngineState(ES_LOADING)
 	{
 		ComputeBuildId();
 #ifndef _DEVELOP
-			if (!InitAdditions())
-				exit(0);
+		if (!InitAdditions())
+			exit(0);
 #else
-			InitAdditions();
+		InitAdditions();
 #endif
-		Initialize();
+		PreInitialize();
 	}
-	
+
 	//-------------------------------------------------------------------------------------
 	void CoreSystems::_ParseConfig()
 	{
@@ -58,7 +60,7 @@ namespace vega
 	}
 
 	//-------------------------------------------------------------------------------------
-	void CoreSystems::Initialize()
+	void CoreSystems::PreInitialize()
 	{
 		mConfig = new Config();
 
@@ -78,8 +80,9 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	void CoreSystems::Release(){
 		LogPrintf("CoreSystems::Release");
+		//SAFE_DELETE(mResBL);
+		//SAFE_DELETE(mScript);
 		SAFE_DELETE(mFS);
-//crash in editor		SAFE_DELETE(mScript);
 		SAFE_DELETE(mEngineConfig);
 		SAFE_DELETE(mConfig);
 		DestroyAdditions();
@@ -132,5 +135,22 @@ namespace vega
 		{
 			ErrorF("Render not selected. Shutdown");
 		}
-	}	
+	}
+
+	//-------------------------------------------------------------------------------------
+	void CoreSystems::BackgroundLoad() {
+		static bool firstStart = true;
+		if (firstStart)
+		{
+			mResBL = new ResourceGroupBackgroundLoader(this, 1);
+			firstStart = false;
+		}
+
+		if (!mResBL)
+		{
+			ErrorF("mResBL is nullptr");
+			return;
+		}
+		mResBL->Loading();
+	}
 }

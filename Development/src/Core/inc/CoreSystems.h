@@ -16,36 +16,46 @@ namespace vega
 	class FileSystem;
 	class ScriptSerializerManager;
 	class Scripting;
+	class ResourceGroupBackgroundLoader;
 
 	class CORE_API CoreSystems:public SubSystemsManager
 	{
 	public:
 		CoreSystems();
-		~CoreSystems();
-		
+		virtual ~CoreSystems();
+	protected:
+		void Release();
+		void WriteInfoAboutBuild();
 		void InitRenderer();
+		void BackgroundLoad();
+	public:
 		//Sub-systems
 		Config *mConfig;
 		EngineConfig *mEngineConfig;
 		FileSystem* mFS;
 		CollisionTools* mRaycast;
 		Scripting* mScript;
+		ResourceGroupBackgroundLoader* mResBL;
+
 		enum EngineState{
 			ES_BUILDING_GEOMETRY,
 			ES_BUILDING_LIGHT,
 			ES_BUILDING_PATHES,
 			ES_LOADING,
 			ES_PAUSE,
-			ES_PLAY
+			ES_PLAY,
+			ES_COUNT
 		};
 		EngineState mEngineState;
-		void WriteInfoAboutBuild();
-		virtual void Release();
 	protected:
 		void InitD3D9();
 		void InitOGL();
-		virtual void Initialize();
-		__inline void GetDataFromSettingsFile(){ _ParseConfig(); }
+		/*
+		Critical core systems
+		Not depend from Ogre::Root
+		*/
+		void PreInitialize();
+		EFORCEINLINE void GetDataFromSettingsFile() { _ParseConfig(); }
 	private:
 		void _ParseConfig();
 	private:

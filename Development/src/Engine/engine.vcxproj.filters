@@ -11,9 +11,6 @@
     <Filter Include="Header Files\Entity">
       <UniqueIdentifier>{6b8ae9cd-88dd-4c2a-ae5e-a61ad2fc2b24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\xml">
-      <UniqueIdentifier>{d9665dc4-5105-430d-9f55-6364d563458b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Camera">
       <UniqueIdentifier>{f40f8b17-2ec9-482a-99a7-b5a0c3d01a06}</UniqueIdentifier>
     </Filter>
@@ -30,9 +27,6 @@
     </Filter>
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{dc42cfce-f2d1-4a21-b21c-406efee5c938}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\xml">
-      <UniqueIdentifier>{8a149c93-08da-49e7-b37b-a0be2073dab3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\API">
       <UniqueIdentifier>{cf98db53-6f68-408a-b7d3-b4949b19af78}</UniqueIdentifier>
@@ -105,12 +99,6 @@
     <ClInclude Include="inc\EmitterParticle.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="inc\xml\LevelLoader.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\xml\XMLRead.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
     <ClInclude Include="inc\camera\CCSBasicCameraModes.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
@@ -150,33 +138,6 @@
     <ClInclude Include="inc\APIEngineCommands.h">
       <Filter>Header Files\API</Filter>
     </ClInclude>
-    <ClInclude Include="inc\tinyxml\tinyxml.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxModel.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxPlatform.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxRenderWindowIterator.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxScene.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxTypes.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\OgreMaxUtilities.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\ProgressCalculator.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ogremax\Version.h">
-      <Filter>Header Files\xml</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EnginePrivate.cpp">
@@ -212,14 +173,8 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\xml\XMLRead.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
     <ClCompile Include="src\SceneManager.cpp">
       <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NodeParser.cpp">
-      <Filter>Source Files\xml</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera\iCameraBase.cpp">
       <Filter>Source Files\Entity\Camera</Filter>
@@ -271,30 +226,6 @@
     </ClCompile>
     <ClCompile Include="src\EmitterSound.cpp">
       <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxml\tinyxml.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxml\tinyxmlerror.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tinyxml\tinyxmlparser.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ogremax\OgreMaxModel.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ogremax\OgreMaxScene.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ogremax\OgreMaxUtilities.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ogremax\ProgressCalculator.cpp">
-      <Filter>Source Files\xml</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ogremax\Version.cpp">
-      <Filter>Source Files\xml</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\GUI.cpp">
       <Filter>Source Files\GUI</Filter>

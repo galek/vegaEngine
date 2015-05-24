@@ -53,6 +53,8 @@ namespace vega
 		void setSpecular(const Ogre::ColourValue&);
 		// !@Set Shadow FarClip Distance(float)
 		void setShadowFarClipDistance(float _d);
+		// !@Set Shadow Far Distance(float)
+		void setShadowFarDistance(float _d);
 		// !@Get Direction
 		const Ogre::Vector3& getDirection();
 		// !@Get Diffuse Color()

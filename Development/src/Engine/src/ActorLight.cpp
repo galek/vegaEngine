@@ -76,6 +76,11 @@ namespace vega
 	}
 
 	//-------------------------------------------------------------------------------------
+	void ActorLight::setShadowFarDistance(float _d)	{
+		mLight->setShadowFarDistance(_d);
+	}
+
+	//-------------------------------------------------------------------------------------
 	void ActorLight::attach(Actor *_mParent)	{
 		_mParent->getNode()->attachObject(mLight);
 	}

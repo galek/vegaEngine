@@ -107,7 +107,7 @@ namespace vega
 				.def("AddWave", &ActorWater::AddWave)
 				//ActorSkyDome
 				, class_ <ActorSkyDome, bases<Actor>>("ActorSkyDome")
-				.def(luabind::constructor<>())
+				.def(luabind::constructor<const char*>())
 				.def("setCollisionModel", &ActorSkyDome::setCollisionModel)
 				.def("setMaterialName", &ActorSkyDome::setMaterialName)
 				.def("getName", &ActorSkyDome::getName)
@@ -122,7 +122,7 @@ namespace vega
 				.def("setScale", (void (ActorSkyDome::*)(float _x, float _y, float _z)) &ActorSkyDome::setScale)
 				//ActorSkyBox
 				, class_<ActorSkyBox, bases<Actor>>("ActorSkyBox")
-				.def(luabind::constructor<>())
+				.def(luabind::constructor<const char*>())
 				.def("setCollisionModel", &ActorSkyBox::setCollisionModel)
 				.def("setMaterialName", &ActorSkyBox::setMaterialName)
 				.def("getName", &ActorSkyBox::getName)

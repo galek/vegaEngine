@@ -128,6 +128,7 @@ typedef MyGUI::delegates::CDelegate2<const MyGUI::UString&, const MyGUI::UString
 
 		// если текущий текст автодополнен
 		bool mAutocomleted;
+		bool now, prev;
 	};
 
 };

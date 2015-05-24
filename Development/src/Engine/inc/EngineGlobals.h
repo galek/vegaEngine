@@ -71,8 +71,6 @@ namespace vega
 		void CreateViewports(void);
 		// !@Adding All Zip's,user dir's and directories(using masks)
 		void SetupResources(void);
-		// !@Loading Resources
-		void LoadResources(void);
 		// !@Creating classes for struct engine
 		void PreInitSystems(void);
 		// !@Initiliasing systems

@@ -78,7 +78,27 @@ namespace vega
 		Debug("Render::_LoadShaders()");
 		Ogre::ResourceGroupManager*ptr = Ogre::ResourceGroupManager::getSingletonPtr();
 		if (!ptr)
+		{
 			ErrorFunction(true, "[Render::_LoadShaders]is not exist ResourceGroupManager!", __FILE__, __LINE__);
+			return;
+		}
+
+		std::string path = "..//Engine//Shaders//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//Cg//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//GLSL//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//GLSL150//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//GLSL400//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//GLSLES//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//HLSL//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
+		path = "..//Engine//Shaders//programs//";
+		ptr->addResourceLocation(path, "FileSystem", "Shaders", true);
 
 		ptr->initialiseResourceGroup("Shaders");
 	}
@@ -138,7 +158,7 @@ namespace vega
 
 	/**
 	*/
-	void Render::_InitPostEffects()	
+	void Render::_InitPostEffects()
 	{
 		/// Create a couple of hard coded postfilter effects as an example of how to do it but the preferred method is to use compositor scripts.
 		_CreatePostEffects();

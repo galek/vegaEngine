@@ -20,8 +20,10 @@ CORE_API void ErrorFunction(bool _toLog,const char *fmt, const char *_file, int 
 #ifndef ErrorF
 #if ENGINE_PLATFORM != ENGINE_PLATFORM_ANDROID
 #define ErrorF(x) ErrorFunction(true,x,__FILE__,__LINE__)
+#define ErrorTrace() ErrorFunction(true,__FUNCTION__,__FILE__,__LINE__)
 #else
 #define ErrorF(x) 
+#define ErrorTrace()
 #endif
 #endif
 
