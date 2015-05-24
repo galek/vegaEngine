@@ -31,6 +31,8 @@ THE SOFTWARE.
 #include "OgreRoot.h"
 #include "OgreRenderSystem.h"
 
+
+#if OGRE_THREAD_PROVIDER != 3
 namespace Ogre
 {
     //---------------------------------------------------------------------
@@ -193,3 +195,4 @@ namespace Ogre
     }
 
 }
+#endif

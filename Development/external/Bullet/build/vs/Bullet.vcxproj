@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>9</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Android">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
       <Configuration>Debug</Configuration>
-      <Platform>Android</Platform>
+      <Platform>Tegra-Android</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Android">
+    <ProjectConfiguration Include="Release|Tegra-Android">
       <Configuration>Release</Configuration>
-      <Platform>Android</Platform>
+      <Platform>Tegra-Android</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -39,13 +42,14 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
     <AndroidArch>armv7-a</AndroidArch>
     <AndroidAPILevel>android-17</AndroidAPILevel>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -59,11 +63,12 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>arm-linux-androideabi-4.8</PlatformToolset>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -72,12 +77,11 @@
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings"></ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
@@ -86,7 +90,7 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
@@ -104,19 +108,19 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\..\libs\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\..\..\Intermediate\externals\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">BulletCollision_vs2010_debug</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">$(ProjectName)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">$(ProjectName)</TargetName>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\..\libs.x64\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\..\..\Intermediate\externals.x64\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BulletCollision_vs2010_x64_debug</TargetName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
     <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetExt>.lib</TargetExt>
     <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi</ExtensionsToDeleteOnClean>
     <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
     <OutDir>$(SolutionDir)\..\libs.a32\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\..\..\Intermediate\externals.a32\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
@@ -133,15 +137,13 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
@@ -159,7 +161,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -168,15 +170,13 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
@@ -192,6 +192,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -204,15 +205,13 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -241,8 +240,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -265,7 +263,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -274,8 +272,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -296,6 +293,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -308,8 +306,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader></PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -683,195 +680,101 @@
     <ClCompile Include="..\..\src\Bullet3Dynamics\ConstraintSolver\b3TypedConstraint.cpp" />
     <ClCompile Include="..\..\src\Bullet3Geometry\b3ConvexHullComputer.cpp" />
     <ClCompile Include="..\..\src\Bullet3Geometry\b3GeometryUtil.cpp" />
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDbvt.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDispatcher.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btMultiSapBroadphase.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionObject.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionWorld.cpp">
-    </ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDbvt.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btDispatcher.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btMultiSapBroadphase.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionObject.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionWorld.cpp"></ClCompile>
     <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCollisionWorldImporter.cpp" />
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btGhostObject.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btManifoldResult.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btUnionFind.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBox2dShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBoxShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCapsuleShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCollisionShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCompoundShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConcaveShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConeShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvex2dShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexHullShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexInternalShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCylinderShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btEmptyShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMultiSphereShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btOptimizedBvh.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btShapeHull.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btSphereShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTetrahedronShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleBuffer.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleCallback.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleMesh.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btUniformScalingShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btContactProcessing.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGenericPoolAllocator.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactBvh.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactShape.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btTriangleShapeEx.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_box_set.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_contact.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_memory.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_tri_collision.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp">
-    </ClCompile>
-    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp">
-    </ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btGhostObject.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btManifoldResult.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\btUnionFind.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBox2dShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBoxShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCapsuleShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCollisionShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCompoundShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConcaveShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConeShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvex2dShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexHullShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexInternalShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btCylinderShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btEmptyShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btMultiSphereShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btOptimizedBvh.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btShapeHull.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btSphereShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTetrahedronShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleBuffer.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleCallback.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleMesh.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\CollisionShapes\btUniformScalingShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btContactProcessing.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGenericPoolAllocator.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactBvh.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btGImpactShape.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\btTriangleShapeEx.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_box_set.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_contact.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_memory.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\Gimpact\gim_tri_collision.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp"></ClCompile>
     <ClCompile Include="..\..\src\BulletDynamics\Character\btKinematicCharacterController.cpp" />
     <ClCompile Include="..\..\src\BulletDynamics\ConstraintSolver\btConeTwistConstraint.cpp" />
     <ClCompile Include="..\..\src\BulletDynamics\ConstraintSolver\btContactConstraint.cpp" />
@@ -933,6 +836,5 @@
     <Text Include="..\..\src\LinearMath\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets"></ImportGroup>
 </Project>

@@ -28,6 +28,8 @@ THE SOFTWARE
 
 #include "../OgreWorkQueue.h"
 
+#if OGRE_THREAD_PROVIDER != 3
+
 namespace Ogre
 {
     /** Implementation of a general purpose request / response style background work queue.
@@ -78,5 +80,6 @@ namespace Ogre
     };
 
 }
+#endif
 
 #endif
