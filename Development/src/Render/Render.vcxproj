@@ -295,6 +295,9 @@
     <ClCompile Include="src\Externals.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{86d80ffc-f25e-40f5-891b-00cb17257278}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{98923de1-ae6e-48f9-8bb4-cd92b30dccac}</Project>
     </ProjectReference>

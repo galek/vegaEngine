@@ -6,6 +6,3 @@
 * All Rights Reserved.
 */
 #include "CorePrivate.h"
-
-#pragma comment(lib,"OgreMain.lib")
-#pragma comment(lib,"lua.lib")

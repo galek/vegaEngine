@@ -9,8 +9,6 @@
 
 #include "TerrainMaterialGeneratorD.h"
 
-#pragma comment(lib,"OgreTerrain.lib")
-
 using namespace Ogre;
 
 namespace vega

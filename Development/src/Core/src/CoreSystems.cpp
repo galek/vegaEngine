@@ -106,7 +106,7 @@ namespace vega
 		renderSystem->setConfigOption("FSAA", "0");
 		renderSystem->setConfigOption("Resource Creation Policy", "Create on active device");
 		renderSystem->setConfigOption("Multi device memory hint", "Auto hardware buffers management");
-		renderSystem->setConfigOption("Fixed Pipeline Enabled", "No");
+		renderSystem->setConfigOption("Fixed Pipeline Enabled", "Yes");
 		renderSystem->setConfigOption("VSync", "No");
 		renderSystem->setConfigOption("sRGB Gamma Conversion", "No");
 

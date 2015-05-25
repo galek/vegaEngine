@@ -9,7 +9,6 @@
 //Externals
 #include "lua\lua.hpp"
 #include "luabind\luabind.hpp"
-#pragma comment(lib,"lua.lib")
 //Core
 #include "Scripting.h"
 //Engine

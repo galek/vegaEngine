@@ -17,10 +17,6 @@
 
 #pragma comment(lib,"platform.lib")
 
-
-#pragma comment(lib,"OgreTerrain.lib")
-
-
 #pragma comment(lib,"MyGUICommon.lib")
 #pragma comment(lib,"MyGUI.OgrePlatform.lib")
 #pragma comment(lib,"MyGUIEngine.lib")
