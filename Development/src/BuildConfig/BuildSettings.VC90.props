@@ -21,7 +21,7 @@
       </AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\DXSDK\include\;$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\luabind;$(SolutionDir)\..\external\luabind\detail;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\DXSDK\include\;$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\luabind;$(SolutionDir)\..\external\luabind\detail;$(SolutionDir)\..\external\TBB\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

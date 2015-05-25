@@ -24,4 +24,3 @@
 #pragma comment(lib,"MyGUICommon.lib")
 #pragma comment(lib,"MyGUI.OgrePlatform.lib")
 #pragma comment(lib,"MyGUIEngine.lib")
-#pragma comment(lib,"freetype249.lib")

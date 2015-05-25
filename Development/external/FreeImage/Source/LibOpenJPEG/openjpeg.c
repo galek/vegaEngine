@@ -32,30 +32,6 @@
 #include "opj_includes.h"
 
 /* ---------------------------------------------------------------------- */
-#ifdef _WIN32
-#ifndef OPJ_STATIC
-BOOL APIENTRY
-DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
-
-	OPJ_ARG_NOT_USED(lpReserved);
-	OPJ_ARG_NOT_USED(hModule);
-
-	switch (ul_reason_for_call) {
-		case DLL_PROCESS_ATTACH :
-			break;
-		case DLL_PROCESS_DETACH :
-			break;
-		case DLL_THREAD_ATTACH :
-		case DLL_THREAD_DETACH :
-			break;
-    }
-
-    return TRUE;
-}
-#endif /* OPJ_STATIC */
-#endif /* _WIN32 */
-
-/* ---------------------------------------------------------------------- */
 
 
 const char* OPJ_CALLCONV opj_version(void) {

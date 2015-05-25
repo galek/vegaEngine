@@ -314,21 +314,22 @@ inline bool operator!=( const scalable_allocator<T>&, const scalable_allocator<U
 
 } // namespace tbb
 
-#if _MSC_VER
-    #if (__TBB_BUILD || __TBBMALLOC_BUILD) && !defined(__TBBMALLOC_NO_IMPLICIT_LINKAGE)
-        #define __TBBMALLOC_NO_IMPLICIT_LINKAGE 1
-    #endif
-
-    #if !__TBBMALLOC_NO_IMPLICIT_LINKAGE
-        #ifdef _DEBUG
-            #pragma comment(lib, "tbbmalloc_debug.lib")
-        #else
-            #pragma comment(lib, "tbbmalloc.lib")
-        #endif
-    #endif
-
-
-#endif
+//NickGalko:disabled autolink
+//#if _MSC_VER
+//    #if (__TBB_BUILD || __TBBMALLOC_BUILD) && !defined(__TBBMALLOC_NO_IMPLICIT_LINKAGE)
+//        #define __TBBMALLOC_NO_IMPLICIT_LINKAGE 1
+//    #endif
+//
+//    #if !__TBBMALLOC_NO_IMPLICIT_LINKAGE
+//        #ifdef _DEBUG
+//            #pragma comment(lib, "tbbmalloc_debug.lib")
+//        #else
+//            #pragma comment(lib, "tbbmalloc.lib")
+//        #endif
+//    #endif
+//
+//
+//#endif
 
 #endif /* __cplusplus */
 

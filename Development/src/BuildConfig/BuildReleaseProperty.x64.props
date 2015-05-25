@@ -13,10 +13,10 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalOptions>/Zm256  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc;$(ExternalInclude);$(OgreInclude);$(EngineALLInclude);$(SolutionDir)\..\external\Ogre\include\;$(SolutionDir)\..\external\boost;$(SolutionDir)\..\external\TBB\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\external\libs.x64\$(Configuration);..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../../Binaries/Lib/Binaries.win64/$(Configuration);$(SolutionDir)/../external/libs.x64;$(SolutionDir)/../external/libs.x64/$(Configuration)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

@@ -2,7 +2,7 @@ function StonehengeStart()
 Debug("[LUA]running StonehengeStart"); 
 --Skybox
 --sky = ActorDynamicSky();
-sky = ActorSkyBox("DeferredDemo/SkyBox");
+--sky = ActorSkyBox("DeferredDemo/SkyBox");
 --Meshes
 mesh = new ActorMesh("s1.mesh", "s1");
 mesh = new ActorMesh("s2.mesh", "s2");

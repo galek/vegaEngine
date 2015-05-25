@@ -242,30 +242,6 @@ void DoOneTimeInitializations() {
     __TBB_InitOnce::unlock();
 }
 
-#if (_WIN32||_WIN64) && !__TBB_SOURCE_DIRECTLY_INCLUDED
-//! Windows "DllMain" that handles startup and shutdown of dynamic library.
-extern "C" bool WINAPI DllMain( HANDLE /*hinstDLL*/, DWORD reason, LPVOID /*lpvReserved*/ ) {
-    switch( reason ) {
-        case DLL_PROCESS_ATTACH:
-            __TBB_InitOnce::add_ref();
-            break;
-        case DLL_PROCESS_DETACH:
-            __TBB_InitOnce::remove_ref();
-            // It is assumed that InitializationDone is not set after DLL_PROCESS_DETACH,
-            // and thus no race on InitializationDone is possible.
-            if( __TBB_InitOnce::initialization_done() ) {
-                // Remove reference that we added in DoOneTimeInitializations.
-                __TBB_InitOnce::remove_ref();
-            }
-            break;
-        case DLL_THREAD_DETACH:
-            governor::terminate_auto_initialized_scheduler();
-            break;
-    }
-    return true;
-}
-#endif /* (_WIN32||_WIN64) && !__TBB_SOURCE_DIRECTLY_INCLUDED */
-
 void itt_store_pointer_with_release_v3( void* dst, void* src ) {
     ITT_NOTIFY(sync_releasing, dst);
     __TBB_store_with_release(*static_cast<void**>(dst),src);

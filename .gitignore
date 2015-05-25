@@ -22,3 +22,6 @@
 Development/Intermediate/
 *.npk
 *.res
+/Intermediate/externals.x64/Release
+/Development/Tools/Launcher/obj/Release
+/Development/libs.x64/Release

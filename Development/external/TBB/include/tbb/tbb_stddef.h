@@ -328,13 +328,13 @@ public:
     no_copy() {}
 };
 
-#if TBB_DEPRECATED_MUTEX_COPYING
-class mutex_copy_deprecated_and_disabled {};
-#else
+//#if TBB_DEPRECATED_MUTEX_COPYING
+//class mutex_copy_deprecated_and_disabled {};
+//#else
 // By default various implementations of mutexes are not copy constructible
 // and not copy assignable.
 class mutex_copy_deprecated_and_disabled : no_copy {};
-#endif
+//#endif
 
 //! A function to check if passed in pointer is aligned on a specific border
 template<typename T>

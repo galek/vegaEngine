@@ -8,6 +8,7 @@
 #include "EnginePrivate.h"
 #include "Console.h"
 #include "ConsoleCommands.h"
+#include "APIEngineCommands.h"
 
 using namespace Ogre;
 using namespace std;
@@ -16,7 +17,7 @@ namespace vega
 {
 	/**
 	*/
-	Console::Console() : BaseLayout()	{	}
+	Console::Console() : BaseLayout(), now(false), prev(false)	{	}
 	/**
 	*/
 	void Console::Initialize()
@@ -211,7 +212,26 @@ namespace vega
 	/**
 	*/
 	void Console::SetVisible(bool _visible)	{
+#if 0
+		prev = API::IsBufferredInput();
+		now = !prev;
 		mMainWidget->setVisible(_visible);
+		if (prev != now)
+			API::SetBufferedUnBufferedMouseMode(now, API::GetShowGUICursor());
+		else
+			API::SetBufferedUnBufferedMouseMode(prev, API::GetShowGUICursor());
+#else
+		now = _visible;
+		mMainWidget->setVisible(_visible);
+		if (prev != _visible)
+			API::SetBufferedUnBufferedMouseMode(prev, API::GetShowGUICursor());
+		else
+			API::SetBufferedUnBufferedMouseMode(_visible, API::GetShowGUICursor());
+
+		if (prev != API::IsBufferredInput())
+			prev = now;
+#endif
+
 	}
 	/**
 	*/

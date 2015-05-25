@@ -6,3 +6,4 @@
 * All Rights Reserved.
 */
 #include "RenderPrivate.h"
+#pragma comment(lib,"OgreMain.lib")

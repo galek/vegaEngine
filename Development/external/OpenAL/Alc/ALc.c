@@ -690,43 +690,7 @@ static void alc_deinit_safe(void);
 UIntMap TlsDestructor;
 
 #ifndef AL_LIBTYPE_STATIC
-BOOL APIENTRY DllMain(HINSTANCE hModule,DWORD ul_reason_for_call,LPVOID lpReserved)
-{
-    ALsizei i;
 
-    // Perform actions based on the reason for calling.
-    switch(ul_reason_for_call)
-    {
-        case DLL_PROCESS_ATTACH:
-            /* Pin the DLL so we won't get unloaded until the process terminates */
-            GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
-                               (WCHAR*)hModule, &hModule);
-            InitUIntMap(&TlsDestructor, ~0);
-            alc_init();
-            break;
-
-        case DLL_THREAD_DETACH:
-            LockUIntMapRead(&TlsDestructor);
-            for(i = 0;i < TlsDestructor.size;i++)
-            {
-                void *ptr = pthread_getspecific(TlsDestructor.array[i].key);
-                void (*callback)(void*) = (void(*)(void*))TlsDestructor.array[i].value;
-                if(ptr && callback)
-                    callback(ptr);
-            }
-            UnlockUIntMapRead(&TlsDestructor);
-            break;
-
-        case DLL_PROCESS_DETACH:
-            if(!lpReserved)
-                alc_deinit();
-            else
-                alc_deinit_safe();
-            ResetUIntMap(&TlsDestructor);
-            break;
-    }
-    return TRUE;
-}
 #elif defined(_MSC_VER)
 #pragma section(".CRT$XCU",read)
 static void alc_constructor(void);

@@ -367,18 +367,19 @@
 #define __TBB_WEAK_SYMBOLS_PRESENT ( !_WIN32 && !__APPLE__ && !__sun && (__TBB_GCC_VERSION >= 40000 || __INTEL_COMPILER ) )
 #endif
 
+//NickGalko:Disabled
 /** __TBB_DYNAMIC_LOAD_ENABLED describes the system possibility to load shared libraries at run time **/
-#ifndef __TBB_DYNAMIC_LOAD_ENABLED
-    #define __TBB_DYNAMIC_LOAD_ENABLED 1
-#endif
-
+//#ifndef __TBB_DYNAMIC_LOAD_ENABLED
+//    #define __TBB_DYNAMIC_LOAD_ENABLED 1
+//#endif
+//NickGalko:Disabled
 /** __TBB_SOURCE_DIRECTLY_INCLUDED is a mode used in whitebox testing when
     it's necessary to test internal functions not exported from TBB DLLs
 **/
-#if (_WIN32||_WIN64) && (__TBB_SOURCE_DIRECTLY_INCLUDED || TBB_USE_PREVIEW_BINARY)
+//#if (_WIN32||_WIN64) && (__TBB_SOURCE_DIRECTLY_INCLUDED || TBB_USE_PREVIEW_BINARY)
     #define __TBB_NO_IMPLICIT_LINKAGE 1
     #define __TBBMALLOC_NO_IMPLICIT_LINKAGE 1
-#endif
+//#endif
 
 #ifndef __TBB_COUNT_TASK_NODES
     #define __TBB_COUNT_TASK_NODES TBB_USE_ASSERT

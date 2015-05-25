@@ -77,7 +77,8 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings"></ImportGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\BuildScripts\BuildConfig.props" />
@@ -150,7 +151,7 @@
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -183,7 +184,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -222,7 +224,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -230,7 +233,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -270,7 +273,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -287,7 +290,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
-      <StringPooling></StringPooling>
+      <StringPooling>
+      </StringPooling>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -306,7 +310,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -330,7 +335,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
-      <StringPooling></StringPooling>
+      <StringPooling>
+      </StringPooling>
       <GccExceptionHandling>true</GccExceptionHandling>
     </ClCompile>
     <ResourceCompile>
@@ -350,7 +356,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -358,7 +365,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\MyGUI_3.2.0\MyGUIEngine\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\.;$(SolutionDir)\..\MyGUI_3.2.0\Common;$(SolutionDir)\..\MyGUI_3.2.0\Common\Base\Ogre;$(SolutionDir)\..\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;$(SolutionDir)\..\ogre\OgreMain\include;$(SolutionDir)\..\ogre\include;$(SolutionDir)\..\MyGUI_3.2.0\Common\Input\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;MYGUI_STATIC;MYGUI_OGRE_PLATFORM;MYGUI_SAMPLES_INPUT_WIN32;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -408,5 +415,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets"></ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
 </Project>

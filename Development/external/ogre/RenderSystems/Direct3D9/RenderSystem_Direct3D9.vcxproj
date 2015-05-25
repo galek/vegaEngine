@@ -109,7 +109,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRED3DENGINEDLL_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_Direct3D9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -131,11 +131,11 @@
     <ProjectReference />
     <Link>
       <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;$(SolutionDir)\..\DXSDK\Lib\x86\d3d9.lib;$(SolutionDir)\..\DXSDK\Lib\x86\d3dx9.lib;$(SolutionDir)\..\DXSDK\Lib\x86\DxErr.lib;$(SolutionDir)\..\DXSDK\Lib\x86\dxguid.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;d3d9.lib;d3dx9.lib;DxErr.lib;dxguid.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>
       </Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x86\;$(SolutionDir)\..\boost\libs\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../external/DXSDK/Lib/x86/;$(SolutionDir)/../external/libs/$(Configuration);$(SolutionDir)/../external/libs/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
@@ -159,7 +159,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;$(SolutionDir)\..\TBB\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRED3DENGINEDLL_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_Direct3D9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -184,10 +184,10 @@
     <ProjectReference />
     <Link>
       <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;$(SolutionDir)\..\DXSDK\Lib\x86\d3d9.lib;$(SolutionDir)\..\DXSDK\Lib\x86\d3dx9.lib;$(SolutionDir)\..\DXSDK\Lib\x86\DxErr.lib;$(SolutionDir)\..\DXSDK\Lib\x86\dxguid.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;d3d9.lib;d3dx9.lib;DxErr.lib;dxguid.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>1.8</Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x86\;$(SolutionDir)\..\boost\libs\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../external/DXSDK/Lib/x86/;$(SolutionDir)/../external/libs/$(Configuration);$(SolutionDir)/../external/libs/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
       <MinimumRequiredVersion>
@@ -212,7 +212,7 @@
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRED3DENGINEDLL_EXPORTS;CMAKE_INTDIR="Debug";RenderSystem_Direct3D9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -236,11 +236,11 @@
     </ProjectReference>
     <Link>
       <AdditionalOptions> /STACK:10000000 /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;OgreMain.lib;d3d9.lib;d3dx9.lib;DxErr.lib;dxguid.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;d3d9.lib;d3dx9.lib;DxErr.lib;dxguid.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>
       </Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\Lib\x64\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x64;$(SolutionDir)\..\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../external/DXSDK/Lib/x64/;$(SolutionDir)/../external/libs.x64/$(Configuration);$(SolutionDir)/../external/libs.x64/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
@@ -265,7 +265,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\OgreMain\include;..\..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..\..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;_USRDLL;OGRED3DENGINEDLL_EXPORTS;CMAKE_INTDIR="Release";RenderSystem_Direct3D9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -292,10 +292,10 @@
     </ProjectReference>
     <Link>
       <AdditionalOptions> /STACK:10000000 /machine:X64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(SolutionDir)\..\DXSDK\Lib\x64\d3d9.lib;$(SolutionDir)\..\DXSDK\Lib\x64\d3dx9.lib;$(SolutionDir)\..\DXSDK\Lib\x64\DxErr.lib;$(SolutionDir)\..\DXSDK\Lib\x64\dxguid.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\ZLib.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;d3d9.lib;d3dx9.lib;DxErr.lib;dxguid.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>1.8</Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\DXSDK\Lib\x64\$(Configuration);$(SolutionDir)\..\DXSDK\Lib\x64;$(SolutionDir)\..\libs.x64\$(Configuration);$(SolutionDir)\..\boost\libs.x64\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../external/DXSDK/Lib/x64/;$(SolutionDir)/../external/libs.x64/$(Configuration);$(SolutionDir)/../external/libs.x64/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>

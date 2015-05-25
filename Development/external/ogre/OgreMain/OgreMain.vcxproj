@@ -77,7 +77,8 @@
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings"></ImportGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\BuildScripts\BuildConfig.props" />
@@ -155,7 +156,7 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -180,11 +181,12 @@
     </ResourceCompile>
     <ProjectReference />
     <Link>
-      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 /debug %(AdditionalOptions) /LTCG</AdditionalOptions>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <Version></Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
@@ -199,7 +201,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -229,15 +232,18 @@
     </ResourceCompile>
     <ProjectReference />
     <Link>
-      <AdditionalOptions></AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName)_d.dll</OutputFile>
-      <Version></Version>
+      <Version>
+      </Version>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
-      <MinimumRequiredVersion></MinimumRequiredVersion>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -257,7 +263,7 @@
     <ClCompile>
       <AdditionalOptions> /Zm106</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -282,11 +288,12 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalOptions> /STACK:10000000 /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;freetype249.lib;FreeImage.lib;zziplib.lib;ZLib.lib</AdditionalDependencies>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 /debug %(AdditionalOptions) /LTCG</AdditionalOptions>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <Version></Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)</AdditionalLibraryDirectories>
+      <Version>
+      </Version>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
@@ -311,7 +318,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OGRE_NONCLIENT_BUILD;BOOST_ALL_NO_LIB;FREEIMAGE_LIB;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -336,15 +343,17 @@
       <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(SolutionDir)\..\libs\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs\$(Configuration)\ZLib.lib</AdditionalDependencies>
+      <AdditionalOptions> /STACK:10000000 /machine:X86 %(AdditionalOptions) /LTCG</AdditionalOptions>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>1.8</Version>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
-      <IgnoreSpecificDefaultLibraries></IgnoreSpecificDefaultLibraries>
-      <MinimumRequiredVersion></MinimumRequiredVersion>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>true</AssemblyDebug>
     </Link>
@@ -357,7 +366,8 @@
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
+      <DllDataFileName>
+      </DllDataFileName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
@@ -399,8 +409,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.a32\$(Configuration)\;$(SolutionDir)\..\boost\libs\$(Configuration)\</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
-      <IgnoreSpecificDefaultLibraries></IgnoreSpecificDefaultLibraries>
-      <MinimumRequiredVersion></MinimumRequiredVersion>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <ProjectReference>
@@ -424,7 +436,7 @@
       <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>include;..\include;$(SolutionDir)\..\zzip;$(SolutionDir)\..\FreeImage\Source;$(SolutionDir)\..\freetype\include\freetype;$(SolutionDir)\..\freetype\include;..;$(SolutionDir)\..\Cg;$(SolutionDir)\..\;$(SolutionDir)\..\DXSDK\include;$(SolutionDir)\..\boost;$(SolutionDir)\..\TBB\include;include\WIN32;src\nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Release";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -450,17 +462,20 @@
     </ResourceCompile>
     <ProjectReference />
     <Link>
-      <AdditionalOptions> /STACK:10000000 /machine:X64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\freetype249.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\FreeImage.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\zziplib.lib;$(SolutionDir)\..\libs.x64\$(Configuration)\ZLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions> /STACK:10000000 /machine:X64 %(AdditionalOptions) /LTCG</AdditionalOptions>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <Version>1.8</Version>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <IgnoreSpecificDefaultLibraries></IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\libs.x64\$(Configuration)\;$(SolutionDir)\..\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
-      <MinimumRequiredVersion></MinimumRequiredVersion>
-      <ForceSymbolReferences></ForceSymbolReferences>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <MinimumRequiredVersion>
+      </MinimumRequiredVersion>
+      <ForceSymbolReferences>
+      </ForceSymbolReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>true</AssemblyDebug>
     </Link>
@@ -1011,6 +1026,9 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
+    <ProjectReference Include="..\..\tbb\build\vs2010\tbb.vcxproj">
+      <Project>{f62787dd-1327-448b-9818-030062bcfaa5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\zzip\msvc\zzip.vcxproj">
       <Project>{c7569897-7de6-4d60-8803-e2b41c02695b}</Project>
       <Private>false</Private>
@@ -1021,5 +1039,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets"></ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
 </Project>
