@@ -25,7 +25,7 @@ namespace vega
 		, mRaycast(nullptr)
 		, mScript(nullptr)
 		, mResBL(nullptr)
-		, mEngineState(ES_LOADING)
+		, mEngineState(EngineState::ES_LOADING)
 	{
 		ComputeBuildId();
 #ifndef _DEVELOP
@@ -106,7 +106,7 @@ namespace vega
 		renderSystem->setConfigOption("FSAA", "0");
 		renderSystem->setConfigOption("Resource Creation Policy", "Create on active device");
 		renderSystem->setConfigOption("Multi device memory hint", "Auto hardware buffers management");
-		renderSystem->setConfigOption("Fixed Pipeline Enabled", "Yes");
+		renderSystem->setConfigOption("Fixed Pipeline Enabled", "No");
 		renderSystem->setConfigOption("VSync", "No");
 		renderSystem->setConfigOption("sRGB Gamma Conversion", "No");
 
@@ -127,9 +127,9 @@ namespace vega
 
 	//-------------------------------------------------------------------------------------
 	void CoreSystems::InitRenderer(){
-		if (mEngineConfig->mRenderAPI == EngineConfig::RENDER_OGL)
+		if (mEngineConfig->mRenderAPI == EngineConfig::RenderAPI::RENDER_OGL)
 			InitOGL();
-		else if (mEngineConfig->mRenderAPI == EngineConfig::RENDER_DX9)
+		else if (mEngineConfig->mRenderAPI == EngineConfig::RenderAPI::RENDER_DX9)
 			InitD3D9();
 		else
 		{

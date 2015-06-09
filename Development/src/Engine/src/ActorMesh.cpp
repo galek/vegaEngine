@@ -45,7 +45,7 @@ namespace vega
 		// Загрузжаем файл меша
 		//_LoadInBackGround();
 		// Создаем временную entity
-		mEntity = GetEngine()->mGSceneMgr->createEntity(mName + "_Ent", mFileName);
+		mEntity = GetEngine()->mGSceneMgr->createEntity(mName + mFileName + "_Ent", mFileName);
 		mNode->attachObject(mEntity);
 		// Считаем вектор размера,по идее размер должен быть настоящим,т.е 
 		calculateSizeUsingAxisAlignedBox();
@@ -104,7 +104,7 @@ namespace vega
 		if (successfully)
 			GetEngine()->GetAI()->drawNavMesh();
 		else
-			SeriousWarning(false,"ERROR: could not generate useable navmesh from mesh.");
+			SeriousWarning(false, "ERROR: could not generate useable navmesh from mesh.");
 	}
 	//-------------------------------------------------------------------------------------
 	void ActorMesh::rebuildNavMesh(){

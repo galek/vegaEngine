@@ -45,13 +45,13 @@ namespace vega
 	}
 	//-----------------------------------------------------------------------------
 	void ActorWater::Update(float evt)	{
-		water->update(evt);			
+		water->update(evt);
 	}
 	//-----------------------------------------------------------------------------
 	void ActorWater::_Init(const std::string &_profile) {
 		mG = GetEngine();
 		Debug("WaterSystem::Init");
-		water = new Hydrax(mG->mGSceneMgr, mG->mGCamera, mG->mGWindow->getViewport(0));
+		water = new Hydrax(GetEngine()->mEngineConfig->mRenderAPI, mG->mGSceneMgr, mG->mGCamera, mG->mGWindow->getViewport(0));
 		Module::ProjectedGrid* mModule = new Module::ProjectedGrid( // модуль проекционной сетки
 			water,  // указатель на главный класс LWater
 			new Noise::Perlin(/* без особых параметров */),  // модуль для создания ряби

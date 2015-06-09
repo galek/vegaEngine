@@ -15,7 +15,8 @@ namespace vega
 			mGodRays(false), mPrecacheResources(false),
 			mShadowFarDistance(100), mShadowTextureSize(100),
 			mFarClipDistance(100),
-			mAntiAlliasing(AA_NONE), mRenderAPI(RENDER_NONE),
+			mAntiAlliasing(AA_NONE), 
+			mRenderAPI(RenderAPI::RENDER_NONE),
 			mResolution("1024 x 768"),
 			mFullscreen("No"),
 			mCompany("Vega Group"), mProjectName("DemoProject")
@@ -41,7 +42,8 @@ namespace vega
 		};
 		AntiAlliasing mAntiAlliasing;
 
-		enum RenderAPI{
+		enum class RenderAPI
+		{
 			RENDER_NONE = -1,
 			RENDER_OGL,
 			RENDER_DX9,

@@ -363,9 +363,6 @@
     <ProjectReference Include="..\..\external\OpenAL\buildWin\OpenAL32.vcxproj">
       <Project>{70251080-6136-4f0c-ad93-0eb8a914ad75}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\external\tbb\build\vs2010\tbb.vcxproj">
-      <Project>{f62787dd-1327-448b-9818-030062bcfaa5}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\external\zzip\msvc\zzip.vcxproj">
       <Project>{c7569897-7de6-4d60-8803-e2b41c02695b}</Project>
     </ProjectReference>

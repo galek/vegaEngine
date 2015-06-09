@@ -4,7 +4,7 @@ This source file is part of Hydrax.
 Visit ---
 
 Copyright (C) 2008 Xavier Verguín González <xavierverguin@hotmail.com>
-                                           <xavyiy@gmail.com>
+<xavyiy@gmail.com>
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free Software
@@ -23,7 +23,7 @@ http://www.gnu.org/copyleft/lesser.txt.
 
 --------------------------------------------------------------------------------
 Contributors:
-    Jose Luis Cercós Pita <jlcercos@alumnos.upm.es>
+Jose Luis Cercós Pita <jlcercos@alumnos.upm.es>
 --------------------------------------------------------------------------------
 */
 
@@ -34,59 +34,62 @@ Contributors:
 namespace vega
 {
 
-	Hydrax::Hydrax(Ogre::SceneManager *sm, Ogre::Camera *c, Ogre::Viewport *v)
-            : mSceneManager(sm)
-            , mCamera(c)
-			, mViewport(v)
-            , mCreated(false)
-			, mVisible(true)
-			, mPolygonMode(Ogre::PM_SOLID)
-			, mShaderMode(MaterialManager::SM_HLSL)
-            , mPosition(Ogre::Vector3(0,0,0))
-            , mPlanesError(0)
-            , mFullReflectionDistance(99999997952.0)
-            , mGlobalTransparency(0.05)
-			, mWaterColor(Ogre::Vector3(0,0.1,0.172))
-            , mNormalDistortion(0.09)
-            , mSunPosition(Ogre::Vector3(5000,3000,1))
-            , mSunStrength(1.75)
-            , mSunArea(150)
-            , mSunColor(Ogre::Vector3(1,0.75,0.25))
-            , mFoamMaxDistance(75000000.0)
-            , mFoamScale(0.0075)
-            , mFoamStart(0)
-            , mFoamTransparency(1)
-            , mDepthLimit(0)
-            , mDistLimit(0)
-            , mSmoothPower(30)
-            , mCausticsScale(20)
-            , mCausticsPower(15)
-            , mCausticsEnd(0.55)
-			, mGodRaysExposure(Ogre::Vector3(0.76,2.46,2.29))
-			, mGodRaysIntensity(0.015)
-			, mUnderwaterCameraSwitchDelta(1.25f)
-			, mCurrentFrameUnderwater(false)
-            , mMesh(new Mesh(this))
-			, mMaterialManager(new MaterialManager(this))
-			, mRttManager(new RttManager(this))
-			, mTextureManager(new TextureManager(this))
-			, mGodRaysManager(new GodRaysManager(this))
-			, mDecalsManager(new DecalsManager(this))
-			, mGPUNormalMapManager(new GPUNormalMapManager(this))
-			, mCfgFileManager(new CfgFileManager(this))
-			, mModule(0)
-            , mComponents(HYDRAX_COMPONENTS_NONE)
-    {
-        Debug("Hydrax created.");
-    }
+	Hydrax::Hydrax(EngineConfig::RenderAPI& renderapi, Ogre::SceneManager *sm, Ogre::Camera *c, Ogre::Viewport *v)
+		: mSceneManager(sm)
+		, mCamera(c)
+		, mViewport(v)
+		, mCreated(false)
+		, mVisible(true)
+		, mPolygonMode(Ogre::PM_SOLID)
+		, mPosition(Ogre::Vector3(0, 0, 0))
+		, mPlanesError(0)
+		, mFullReflectionDistance(99999997952.0)
+		, mGlobalTransparency(0.05)
+		, mWaterColor(Ogre::Vector3(0, 0.1, 0.172))
+		, mNormalDistortion(0.09)
+		, mSunPosition(Ogre::Vector3(5000, 3000, 1))
+		, mSunStrength(1.75)
+		, mSunArea(150)
+		, mSunColor(Ogre::Vector3(1, 0.75, 0.25))
+		, mFoamMaxDistance(75000000.0)
+		, mFoamScale(0.0075)
+		, mFoamStart(0)
+		, mFoamTransparency(1)
+		, mDepthLimit(0)
+		, mDistLimit(0)
+		, mSmoothPower(30)
+		, mCausticsScale(20)
+		, mCausticsPower(15)
+		, mCausticsEnd(0.55)
+		, mGodRaysExposure(Ogre::Vector3(0.76, 2.46, 2.29))
+		, mGodRaysIntensity(0.015)
+		, mUnderwaterCameraSwitchDelta(1.25f)
+		, mCurrentFrameUnderwater(false)
+		, mMesh(new Mesh(this))
+		, mMaterialManager(new MaterialManager(this))
+		, mRttManager(new RttManager(this))
+		, mTextureManager(new TextureManager(this))
+		, mGodRaysManager(new GodRaysManager(this))
+		, mDecalsManager(new DecalsManager(this))
+		, mGPUNormalMapManager(new GPUNormalMapManager(this))
+		, mCfgFileManager(new CfgFileManager(this))
+		, mModule(0)
+		, mComponents(HYDRAX_COMPONENTS_NONE)
+	{
+		if (renderapi == EngineConfig::RenderAPI::RENDER_OGL)
+			mShaderMode = MaterialManager::SM_GLSL;
+		else
+			mShaderMode = MaterialManager::SM_CG;
+		Debug("Hydrax created.");
+	}
 
-    Hydrax::~Hydrax()
-    {
+	Hydrax::~Hydrax()
+	{
 		remove();
 
 		if (mModule)
 		{
-            delete mModule;
+			delete mModule;
 		}
 
 		delete mTextureManager;
@@ -96,29 +99,29 @@ namespace vega
 		delete mGodRaysManager;
 		delete mRttManager;
 		delete mCfgFileManager;
-        delete mMesh;
+		delete mMesh;
 
-        Debug("Hydrax object removed.");
-    }
+		Debug("Hydrax object removed.");
+	}
 
-    void Hydrax::create()
-    {
+	void Hydrax::create()
+	{
 		if (!mModule)
 		{
 			Debug("Module isn't set, skipping...");
 
-            return;
+			return;
 		}
 
-        if (mCreated)
-        {
-            Debug("Hydrax is alredy created, skipping...");
+		if (mCreated)
+		{
+			Debug("Hydrax is alredy created, skipping...");
 
-            return;
-        }
+			return;
+		}
 
-        Debug("Creating module...");
-        mModule->create();
+		Debug("Creating module...");
+		mModule->create();
 
 		if (mModule->getNormalMode() == MaterialManager::NM_RTT)
 		{
@@ -131,10 +134,10 @@ namespace vega
 		{
 			if (mModule->getNoise()->areGPUNormalMapResourcesCreated())
 			{
-			    mModule->getNoise()->removeGPUNormalMapResources(mGPUNormalMapManager);
+				mModule->getNoise()->removeGPUNormalMapResources(mGPUNormalMapManager);
 			}
 		}
-        Debug("Module created.");
+		Debug("Module created.");
 
 		Debug("Initializating RTT Manager...");
 		mRttManager->initialize(RttManager::RTT_REFLECTION);
@@ -143,7 +146,7 @@ namespace vega
 		{
 			mRttManager->initialize(RttManager::RTT_DEPTH);
 		}
-        Debug("RTT manager initialized.");
+		Debug("RTT manager initialized.");
 
 		Debug("Registring device restored listener...");
 		mDeviceListener.mHydrax = this;
@@ -162,18 +165,18 @@ namespace vega
 			Debug("God rays created.");
 		}
 
-        Debug("Creating water mesh...");
+		Debug("Creating water mesh...");
 		mMesh->setOptions(mModule->getMeshOptions());
-        mMesh->create();
-        Debug("Water mesh created.");
+		mMesh->create();
+		Debug("Water mesh created.");
 
-        mCreated = true;
+		mCreated = true;
 
 		// Hide if !mVisible
 		_checkVisible();
 		// Check for underwater
 		_checkUnderwater(0);
-    }
+	}
 
 	void Hydrax::remove()
 	{
@@ -190,7 +193,7 @@ namespace vega
 		mRttManager->removeAll();
 		mGodRaysManager->remove();
 		mModule->remove();
-        mTextureManager->remove();
+		mTextureManager->remove();
 
 		mCreated = false;
 	}
@@ -212,7 +215,7 @@ namespace vega
 		if (!mVisible)
 		{
 			// Stop RTTs:
-            mRttManager->removeAll();
+			mRttManager->removeAll();
 
 			// Hide hydrax mesh
 			mMesh->getSceneNode()->setVisible(false);
@@ -226,7 +229,7 @@ namespace vega
 			mRttManager->initialize(RttManager::RTT_REFLECTION);
 			mRttManager->initialize(RttManager::RTT_REFRACTION);
 
-		    // Start depth rtt if needed:
+			// Start depth rtt if needed:
 			if (isComponent(HYDRAX_COMPONENT_DEPTH))
 			{
 				mRttManager->initialize(RttManager::RTT_DEPTH);
@@ -254,14 +257,16 @@ namespace vega
 		// If needed...
 
 		if (eventName == "DeviceLost")
-		{}
+		{
+		}
 
 		if (eventName == "DeviceRestored")
-		{}
+		{
+		}
 	}
 
 	void Hydrax::setPolygonMode(const Ogre::PolygonMode& PM)
-    {
+	{
 		if (!mCreated)
 		{
 			return;
@@ -271,11 +276,11 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->getMaterial(MaterialManager::MAT_UNDERWATER)->getTechnique(0)->getPass(0)->setPolygonMode(PM);
+			mMaterialManager->getMaterial(MaterialManager::MAT_UNDERWATER)->getTechnique(0)->getPass(0)->setPolygonMode(PM);
 		}
 
 		mPolygonMode = PM;
-    }
+	}
 
 	void Hydrax::setShaderMode(const MaterialManager::ShaderMode& ShaderMode)
 	{
@@ -283,35 +288,35 @@ namespace vega
 
 		if (mCreated && mModule)
 		{
-		    mMaterialManager->createMaterials(mComponents, MaterialManager::Options(mShaderMode, mModule->getNormalMode()));
+			mMaterialManager->createMaterials(mComponents, MaterialManager::Options(mShaderMode, mModule->getNormalMode()));
 
-		    mMesh->setMaterialName(mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
+			mMesh->setMaterialName(mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
 		}
 	}
 
-    void Hydrax::update(const Ogre::Real &timeSinceLastFrame)
+	void Hydrax::update(const Ogre::Real &timeSinceLastFrame)
 	{
 		if (mCreated && mModule && mVisible)
 		{
-            mModule->update(timeSinceLastFrame);
-		    mDecalsManager->update();
+			mModule->update(timeSinceLastFrame);
+			mDecalsManager->update();
 			_checkUnderwater(timeSinceLastFrame);
 		}
-    }
+	}
 
-    void Hydrax::setComponents(const HydraxComponent &Components)
-    {
-        mComponents = Components;
+	void Hydrax::setComponents(const HydraxComponent &Components)
+	{
+		mComponents = Components;
 
-        if (isComponent(HYDRAX_COMPONENT_SMOOTH) || isComponent(HYDRAX_COMPONENT_CAUSTICS) || isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS))
-        {
+		if (isComponent(HYDRAX_COMPONENT_SMOOTH) || isComponent(HYDRAX_COMPONENT_CAUSTICS) || isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS))
+		{
 			// Delete smooth and/or caustics components wich needs depth component
-            if (!isComponent(HYDRAX_COMPONENT_DEPTH))
-            {
-				HydraxComponent s  = HYDRAX_COMPONENTS_NONE,
-			                    f  = HYDRAX_COMPONENTS_NONE,
-								u  = HYDRAX_COMPONENTS_NONE,
-				                ur = HYDRAX_COMPONENTS_NONE;
+			if (!isComponent(HYDRAX_COMPONENT_DEPTH))
+			{
+				HydraxComponent s = HYDRAX_COMPONENTS_NONE,
+					f = HYDRAX_COMPONENTS_NONE,
+					u = HYDRAX_COMPONENTS_NONE,
+					ur = HYDRAX_COMPONENTS_NONE;
 
 				if (isComponent(HYDRAX_COMPONENT_SUN))
 				{
@@ -343,20 +348,20 @@ namespace vega
 					Debug("God rays component needs depth component... god rays component desactivated.");
 				}
 
-		        mComponents = static_cast<HydraxComponent>(s|f|u|ur);
-            }
-        }
+				mComponents = static_cast<HydraxComponent>(s | f | u | ur);
+			}
+		}
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS) || isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS))
 		{
 			// Delete underwater reflections components wich needs underwater component
 			if (!isComponent(HYDRAX_COMPONENT_UNDERWATER))
 			{
-				HydraxComponent s  = HYDRAX_COMPONENTS_NONE,
-			                    f  = HYDRAX_COMPONENTS_NONE,
-								d  = HYDRAX_COMPONENTS_NONE,
-								sm = HYDRAX_COMPONENTS_NONE,
-								c  = HYDRAX_COMPONENTS_NONE;
+				HydraxComponent s = HYDRAX_COMPONENTS_NONE,
+					f = HYDRAX_COMPONENTS_NONE,
+					d = HYDRAX_COMPONENTS_NONE,
+					sm = HYDRAX_COMPONENTS_NONE,
+					c = HYDRAX_COMPONENTS_NONE;
 
 				if (isComponent(HYDRAX_COMPONENT_SUN))
 				{
@@ -388,19 +393,19 @@ namespace vega
 					Debug("God rays component needs underwater component... god rays component desactivated.");
 				}
 
-				mComponents = static_cast<HydraxComponent>(s|f|d|sm|c);
+				mComponents = static_cast<HydraxComponent>(s | f | d | sm | c);
 			}
 
 			if (isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS) && !isComponent(HYDRAX_COMPONENT_SUN))
 			{
 				Debug("God rays component needs sun component... god rays component desactivated.");
 
-				HydraxComponent f  = HYDRAX_COMPONENTS_NONE,
-								d  = HYDRAX_COMPONENTS_NONE,
-								c  = HYDRAX_COMPONENTS_NONE,
-								sm = HYDRAX_COMPONENTS_NONE,
-								u  = HYDRAX_COMPONENTS_NONE,
-				                ur = HYDRAX_COMPONENTS_NONE;
+				HydraxComponent f = HYDRAX_COMPONENTS_NONE,
+					d = HYDRAX_COMPONENTS_NONE,
+					c = HYDRAX_COMPONENTS_NONE,
+					sm = HYDRAX_COMPONENTS_NONE,
+					u = HYDRAX_COMPONENTS_NONE,
+					ur = HYDRAX_COMPONENTS_NONE;
 
 				if (isComponent(HYDRAX_COMPONENT_FOAM))
 				{
@@ -427,30 +432,30 @@ namespace vega
 					ur = HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS;
 				}
 
-				mComponents = static_cast<HydraxComponent>(f|d|sm|c|u|ur);
+				mComponents = static_cast<HydraxComponent>(f | d | sm | c | u | ur);
 			}
 		}
 
 		int NumberOfDepthChannels = 0;
 
-	    if (isComponent(HYDRAX_COMPONENT_DEPTH))
+		if (isComponent(HYDRAX_COMPONENT_DEPTH))
 		{
 			NumberOfDepthChannels++;
 
 			if (isComponent(HYDRAX_COMPONENT_CAUSTICS))
-		    {
-			    NumberOfDepthChannels++;
-		    }
+			{
+				NumberOfDepthChannels++;
+			}
 
 			if (isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS))
-		    {
-			    NumberOfDepthChannels++;
-		    }
+			{
+				NumberOfDepthChannels++;
+			}
 		}
 
 		if (NumberOfDepthChannels > 0)
 		{
-		    mRttManager->setNumberOfChannels(RttManager::RTT_DEPTH, static_cast<RttManager::NumberOfChannels>(NumberOfDepthChannels));
+			mRttManager->setNumberOfChannels(RttManager::RTT_DEPTH, static_cast<RttManager::NumberOfChannels>(NumberOfDepthChannels));
 		}
 
 		if (!mCreated || !mModule)
@@ -499,11 +504,11 @@ namespace vega
 		{
 			mRttManager->getTexture(RttManager::RTT_REFRACTION)->
 				getBuffer()->getRenderTarget()->getViewport(0)->
-					 setSkiesEnabled(false);
+				setSkiesEnabled(false);
 
 			mRttManager->getTexture(RttManager::RTT_REFLECTION)->
 				getBuffer()->getRenderTarget()->getViewport(0)->
-					 setSkiesEnabled(true);
+				setSkiesEnabled(true);
 		}
 
 		mMesh->setMaterialName("BaseWhiteNoLighting");
@@ -516,13 +521,13 @@ namespace vega
 
 		mMesh->setMaterialName(mCurrentFrameUnderwater ?
 			mMaterialManager->getMaterial(MaterialManager::MAT_UNDERWATER)->getName() :
-		    mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
+			mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
 
 		if (mCurrentFrameUnderwater)
 		{
 			mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, true);
 		}
-    }
+	}
 
 	void Hydrax::setModule(Module::Module* Module, const bool& DeleteOldModule)
 	{
@@ -532,7 +537,7 @@ namespace vega
 			{
 				mMaterialManager->createMaterials(mComponents, MaterialManager::Options(mShaderMode, Module->getNormalMode()));
 
-		        mMesh->setMaterialName(mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
+				mMesh->setMaterialName(mMaterialManager->getMaterial(MaterialManager::MAT_WATER)->getName());
 			}
 
 			if (mModule->getNormalMode() == MaterialManager::NM_RTT && mModule->isCreated() && mModule->getNoise()->areGPUNormalMapResourcesCreated())
@@ -542,7 +547,7 @@ namespace vega
 
 			if (DeleteOldModule)
 			{
-			    delete mModule;
+				delete mModule;
 			}
 			else
 			{
@@ -591,43 +596,43 @@ namespace vega
 				}
 			}
 
-		    Debug("Updating water mesh...");
-		    Ogre::String MaterialNameTmp = mMesh->getMaterialName();
+			Debug("Updating water mesh...");
+			Ogre::String MaterialNameTmp = mMesh->getMaterialName();
 
-		    Debug("Deleting water mesh...");
-		    mMesh->remove();
-		    Debug("Water mesh deleted.");
+			Debug("Deleting water mesh...");
+			mMesh->remove();
+			Debug("Water mesh deleted.");
 
-		    Debug("Creating water mesh...");
-		    mMesh->setOptions(mModule->getMeshOptions());
-		    mMesh->setMaterialName(MaterialNameTmp);
-		    mMesh->create();
-		    setPosition(mPosition);
-		    Debug("Water mesh created.");
+			Debug("Creating water mesh...");
+			mMesh->setOptions(mModule->getMeshOptions());
+			mMesh->setMaterialName(MaterialNameTmp);
+			mMesh->create();
+			setPosition(mPosition);
+			Debug("Water mesh created.");
 
-		    Debug("Module set.");
+			Debug("Module set.");
 		}
 	}
 
-    bool Hydrax::isComponent(const HydraxComponent &Component)
-    {
-        if (mComponents & Component)
-        {
-            return true;
-        }
+	bool Hydrax::isComponent(const HydraxComponent &Component)
+	{
+		if (mComponents & Component)
+		{
+			return true;
+		}
 
-        if (Component == HYDRAX_COMPONENTS_NONE && mComponents == HYDRAX_COMPONENTS_NONE)
-        {
-            return true;
-        }
+		if (Component == HYDRAX_COMPONENTS_NONE && mComponents == HYDRAX_COMPONENTS_NONE)
+		{
+			return true;
+		}
 
-        if (Component == HYDRAX_COMPONENTS_ALL && mComponents == HYDRAX_COMPONENTS_ALL)
-        {
-            return true;
-        }
+		if (Component == HYDRAX_COMPONENTS_ALL && mComponents == HYDRAX_COMPONENTS_ALL)
+		{
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
 	void Hydrax::_checkUnderwater(const Ogre::Real& timeSinceLastFrame)
 	{
@@ -639,7 +644,7 @@ namespace vega
 		}
 
 		// If the camera is under the current water x/z position
-		if (getHeigth(mCamera->getDerivedPosition()) > mCamera->getDerivedPosition().y-mUnderwaterCameraSwitchDelta)
+		if (getHeigth(mCamera->getDerivedPosition()) > mCamera->getDerivedPosition().y - mUnderwaterCameraSwitchDelta)
 		{
 			mCurrentFrameUnderwater = true;
 
@@ -647,18 +652,18 @@ namespace vega
 			{
 				mRttManager->getTexture(RttManager::RTT_REFRACTION)->
 					getBuffer()->getRenderTarget()->getViewport(0)->
-					     setSkiesEnabled(true);
+					setSkiesEnabled(true);
 
 				if (isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS))
 				{
-				    mRttManager->getTexture(RttManager::RTT_REFLECTION)->
-					    getBuffer()->getRenderTarget()->getViewport(0)->
-					         setSkiesEnabled(false);
+					mRttManager->getTexture(RttManager::RTT_REFLECTION)->
+						getBuffer()->getRenderTarget()->getViewport(0)->
+						setSkiesEnabled(false);
 
 					if (isComponent(HYDRAX_COMPONENT_DEPTH))
-				    {
-				        mRttManager->initialize(RttManager::RTT_DEPTH_REFLECTION);
-				    }
+					{
+						mRttManager->initialize(RttManager::RTT_DEPTH_REFLECTION);
+					}
 				}
 				else
 				{
@@ -667,7 +672,7 @@ namespace vega
 
 				if (isComponent(HYDRAX_COMPONENT_DEPTH) && isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS))
 				{
-				    mRttManager->initialize(RttManager::RTT_DEPTH_REFLECTION);
+					mRttManager->initialize(RttManager::RTT_DEPTH_REFLECTION);
 				}
 
 				mMaterialManager->reload(MaterialManager::MAT_UNDERWATER);
@@ -680,7 +685,7 @@ namespace vega
 			// Update god rays
 			if (isComponent(HYDRAX_COMPONENT_UNDERWATER_GODRAYS))
 			{
-			    mGodRaysManager->update(timeSinceLastFrame);
+				mGodRaysManager->update(timeSinceLastFrame);
 			}
 		}
 		else
@@ -692,7 +697,7 @@ namespace vega
 				// We asume that RefractionRtt/ReflectionRtt are initialized
 				mRttManager->getTexture(RttManager::RTT_REFRACTION)->
 					getBuffer()->getRenderTarget()->getViewport(0)->
-					     setSkiesEnabled(false);
+					setSkiesEnabled(false);
 
 				if (!isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS))
 				{
@@ -702,11 +707,11 @@ namespace vega
 
 				mRttManager->getTexture(RttManager::RTT_REFLECTION)->
 					getBuffer()->getRenderTarget()->getViewport(0)->
-					     setSkiesEnabled(true);
+					setSkiesEnabled(true);
 
 				if (isComponent(HYDRAX_COMPONENT_DEPTH) && isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS))
 				{
-				    mRttManager->remove(RttManager::RTT_DEPTH_REFLECTION);
+					mRttManager->remove(RttManager::RTT_DEPTH_REFLECTION);
 				}
 
 				mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, false);
@@ -717,9 +722,9 @@ namespace vega
 
 	}
 
-    void Hydrax::setPosition(const Ogre::Vector3 &Position)
-    {
-        mPosition = Position;
+	void Hydrax::setPosition(const Ogre::Vector3 &Position)
+	{
+		mPosition = Position;
 
 		if (!mCreated)
 		{
@@ -728,17 +733,17 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_DEPTH))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_VERTEX, MaterialManager::MAT_DEPTH,
-			    "uPlaneYPos", Position.y);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_VERTEX, MaterialManager::MAT_DEPTH,
+				"uPlaneYPos", Position.y);
 		}
 
-        mMesh->getSceneNode()->setPosition(Position.x-mMesh->getSize().Width/2, Position.y, Position.z-mMesh->getSize().Height/2);
+		mMesh->getSceneNode()->setPosition(Position.x - mMesh->getSize().Width / 2, Position.y, Position.z - mMesh->getSize().Height / 2);
 		mRttManager->getPlanesSceneNode()->setPosition(Position);
 
 		// For world-space -> object-space conversion
 		setSunPosition(mSunPosition);
-    }
+	}
 
 	void Hydrax::rotate(const Ogre::Quaternion &q)
 	{
@@ -756,33 +761,33 @@ namespace vega
 		setSunPosition(mSunPosition);
 	}
 
-    void Hydrax::setPlanesError(const Ogre::Real &PlanesError)
-    {
-        mPlanesError = PlanesError;
-    }
+	void Hydrax::setPlanesError(const Ogre::Real &PlanesError)
+	{
+		mPlanesError = PlanesError;
+	}
 
-    void Hydrax::_setStrength(const Ogre::Real &Strength)
-    {
+	void Hydrax::_setStrength(const Ogre::Real &Strength)
+	{
 		if (isComponent(HYDRAX_COMPONENT_FOAM))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
-			    "uFoamRange", Strength);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
+				"uFoamRange", Strength);
 
 			if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
-		    {
-		        mMaterialManager->setGpuProgramParameter(
-			        MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			        "uFoamRange", Strength);
-		    }
+			{
+				mMaterialManager->setGpuProgramParameter(
+					MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+					"uFoamRange", Strength);
+			}
 		}
 
 		mDecalsManager->_setWaterStrength(Strength);
-    }
+	}
 
-    void Hydrax::setFullReflectionDistance(const Ogre::Real &FullReflectionDistance)
-    {
-        mFullReflectionDistance = FullReflectionDistance;
+	void Hydrax::setFullReflectionDistance(const Ogre::Real &FullReflectionDistance)
+	{
+		mFullReflectionDistance = FullReflectionDistance;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -790,15 +795,15 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uFullReflectionDistance", FullReflectionDistance);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uFullReflectionDistance", FullReflectionDistance);
 		}
-    }
+	}
 
-    void Hydrax::setGlobalTransparency(const Ogre::Real &GlobalTransparency)
-    {
-        mGlobalTransparency = GlobalTransparency;
+	void Hydrax::setGlobalTransparency(const Ogre::Real &GlobalTransparency)
+	{
+		mGlobalTransparency = GlobalTransparency;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -806,15 +811,15 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uGlobalTransparency", GlobalTransparency);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uGlobalTransparency", GlobalTransparency);
 		}
-    }
+	}
 
 	void Hydrax::setWaterColor(const Ogre::Vector3 &WaterColor)
-    {
-        mWaterColor = WaterColor;
+	{
+		mWaterColor = WaterColor;
 
 		if (!mCreated)
 		{
@@ -826,34 +831,34 @@ namespace vega
 		Ogre::TexturePtr tex;
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS) || !_isCurrentFrameUnderwater())
 		{
-			/* Fix from http://www.ogre3d.org/addonforums/viewtopic.php?f=20&t=10925 
+			/* Fix from http://www.ogre3d.org/addonforums/viewtopic.php?f=20&t=10925
 			mRttManager->getTexture(RttManager::RTT_REFLECTION)->
-				 getBuffer()->getRenderTarget()->getViewport(0)->
-					 setBackgroundColour(WC);
+			getBuffer()->getRenderTarget()->getViewport(0)->
+			setBackgroundColour(WC);
 			*/
 			tex = mRttManager->getTexture(RttManager::RTT_REFLECTION);
-			if(!tex.isNull()) 
+			if (!tex.isNull())
 			{
 				tex->getBuffer()->getRenderTarget()->getViewport(0)->setBackgroundColour(WC);
 				tex.setNull();
 			}
 		}
-		/* Fix from http://www.ogre3d.org/addonforums/viewtopic.php?f=20&t=10925 
-	    mRttManager->getTexture(RttManager::RTT_REFRACTION)->
-			getBuffer()->getRenderTarget()->getViewport(0)->
-				 setBackgroundColour(WC);
+		/* Fix from http://www.ogre3d.org/addonforums/viewtopic.php?f=20&t=10925
+		mRttManager->getTexture(RttManager::RTT_REFRACTION)->
+		getBuffer()->getRenderTarget()->getViewport(0)->
+		setBackgroundColour(WC);
 		*/
 		tex = mRttManager->getTexture(RttManager::RTT_REFRACTION);
-        if(!tex.isNull()) 
+		if (!tex.isNull())
 		{
-            tex->getBuffer()->getRenderTarget()->getViewport(0)->setBackgroundColour(WC);
+			tex->getBuffer()->getRenderTarget()->getViewport(0)->setBackgroundColour(WC);
 			tex.setNull();
 		}
 
 		if (!isComponent(HYDRAX_COMPONENT_DEPTH))
-        {
-            return;
-        }
+		{
+			return;
+		}
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -861,30 +866,30 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uWaterColor", WaterColor);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uWaterColor", WaterColor);
 
 			//mMaterialManager->getCompositor(MaterialManager::COMP_UNDERWATER)->
 			//	getTechnique(0)->getTargetPass(0)->getPass(0)->setClearColour(WC);
 
-            /* Active creation/destruction
+			/* Active creation/destruction
 			if (getHeigth(mCamera->getDerivedPosition()) > mCamera->getDerivedPosition().y-1.25f)
 			{
-				if (mMaterialManager->isCompositorEnable(MaterialManager::COMP_UNDERWATER))
-				{
-					mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, false);
-					mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, true);
-				}
+			if (mMaterialManager->isCompositorEnable(MaterialManager::COMP_UNDERWATER))
+			{
+			mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, false);
+			mMaterialManager->setCompositorEnable(MaterialManager::COMP_UNDERWATER, true);
+			}
 			}
 			*/
 		}
-    }
+	}
 
 
-    void Hydrax::setNormalDistortion(const Ogre::Real &NormalDistortion)
-    {
-        mNormalDistortion = NormalDistortion;
+	void Hydrax::setNormalDistortion(const Ogre::Real &NormalDistortion)
+	{
+		mNormalDistortion = NormalDistortion;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -892,20 +897,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uNormalDistortion", NormalDistortion);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uNormalDistortion", NormalDistortion);
 		}
-    }
+	}
 
-    void Hydrax::setSunPosition(const Ogre::Vector3 &SunPosition)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_SUN))
-        {
-            return;
-        }
+	void Hydrax::setSunPosition(const Ogre::Vector3 &SunPosition)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_SUN))
+		{
+			return;
+		}
 
-        mSunPosition = SunPosition;
+		mSunPosition = SunPosition;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -913,20 +918,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uSunPosition", mMesh->getObjectSpacePosition(SunPosition));
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uSunPosition", mMesh->getObjectSpacePosition(SunPosition));
 		}
-    }
+	}
 
-    void Hydrax::setSunStrength(const Ogre::Real &SunStrength)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_SUN))
-        {
-            return;
-        }
+	void Hydrax::setSunStrength(const Ogre::Real &SunStrength)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_SUN))
+		{
+			return;
+		}
 
-        mSunStrength = SunStrength;
+		mSunStrength = SunStrength;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -934,20 +939,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uSunStrength", SunStrength);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uSunStrength", SunStrength);
 		}
-    }
+	}
 
-    void Hydrax::setSunArea(const Ogre::Real &SunArea)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_SUN))
-        {
-            return;
-        }
+	void Hydrax::setSunArea(const Ogre::Real &SunArea)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_SUN))
+		{
+			return;
+		}
 
-        mSunArea = SunArea;
+		mSunArea = SunArea;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -955,20 +960,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uSunArea", SunArea);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uSunArea", SunArea);
 		}
-    }
+	}
 
 	void Hydrax::setSunColor(const Ogre::Vector3 &SunColor)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_SUN))
-        {
-            return;
-        }
+	{
+		if (!isComponent(HYDRAX_COMPONENT_SUN))
+		{
+			return;
+		}
 
-        mSunColor = SunColor;
+		mSunColor = SunColor;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -976,20 +981,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uSunColor", SunColor);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uSunColor", SunColor);
 		}
-    }
+	}
 
-    void Hydrax::setFoamMaxDistance(const Ogre::Real &FoamMaxDistance)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_FOAM))
-        {
-            return;
-        }
+	void Hydrax::setFoamMaxDistance(const Ogre::Real &FoamMaxDistance)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_FOAM))
+		{
+			return;
+		}
 
-        mFoamMaxDistance = FoamMaxDistance;
+		mFoamMaxDistance = FoamMaxDistance;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -997,20 +1002,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uFoamMaxDistance", FoamMaxDistance);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uFoamMaxDistance", FoamMaxDistance);
 		}
-    }
+	}
 
-    void Hydrax::setFoamScale(const Ogre::Real &FoamScale)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_FOAM))
-        {
-            return;
-        }
+	void Hydrax::setFoamScale(const Ogre::Real &FoamScale)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_FOAM))
+		{
+			return;
+		}
 
-        mFoamScale = FoamScale;
+		mFoamScale = FoamScale;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -1018,20 +1023,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uFoamScale", FoamScale);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uFoamScale", FoamScale);
 		}
-    }
+	}
 
-    void Hydrax::setFoamStart(const Ogre::Real &FoamStart)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_FOAM))
-        {
-            return;
-        }
+	void Hydrax::setFoamStart(const Ogre::Real &FoamStart)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_FOAM))
+		{
+			return;
+		}
 
-        mFoamStart = FoamStart;
+		mFoamStart = FoamStart;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -1039,20 +1044,20 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uFoamStart", FoamStart);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uFoamStart", FoamStart);
 		}
-    }
+	}
 
-    void Hydrax::setFoamTransparency(const Ogre::Real &FoamTransparency)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_FOAM))
-        {
-            return;
-        }
+	void Hydrax::setFoamTransparency(const Ogre::Real &FoamTransparency)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_FOAM))
+		{
+			return;
+		}
 
-        mFoamTransparency = FoamTransparency;
+		mFoamTransparency = FoamTransparency;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -1060,86 +1065,86 @@ namespace vega
 
 		if (isComponent(HYDRAX_COMPONENT_UNDERWATER))
 		{
-		    mMaterialManager->setGpuProgramParameter(
-			    MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			    "uFoamTransparency", FoamTransparency);
+			mMaterialManager->setGpuProgramParameter(
+				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+				"uFoamTransparency", FoamTransparency);
 		}
-    }
+	}
 
-    void Hydrax::setDepthLimit(const Ogre::Real &DepthLimit)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_DEPTH))
-        {
-            return;
-        }
+	void Hydrax::setDepthLimit(const Ogre::Real &DepthLimit)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_DEPTH))
+		{
+			return;
+		}
 
 		mDepthLimit = DepthLimit;
 
-        if (mDepthLimit <= 0)
-        {
-            mDepthLimit = 1;
-        }
+		if (mDepthLimit <= 0)
+		{
+			mDepthLimit = 1;
+		}
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_DEPTH,
-			"uDepthLimit", 1/mDepthLimit);
-    }
+			"uDepthLimit", 1 / mDepthLimit);
+	}
 
-    void Hydrax::setDistLimit(const Ogre::Real &DistLimit)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_DEPTH))
-        {
-            return;
-        }
+	void Hydrax::setDistLimit(const Ogre::Real &DistLimit)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_DEPTH))
+		{
+			return;
+		}
 
 		mDistLimit = DistLimit;
 
-        if (mDistLimit <= 0)
-        {
-            mDistLimit = 1;
-        }
+		if (mDistLimit <= 0)
+		{
+			mDistLimit = 1;
+		}
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_DEPTH,
-			"uDistLimit", 1/mDistLimit);
-    }
+			"uDistLimit", 1 / mDistLimit);
+	}
 
-    void Hydrax::setSmoothPower(const Ogre::Real &SmoothPower)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_SMOOTH))
-        {
-            return;
-        }
+	void Hydrax::setSmoothPower(const Ogre::Real &SmoothPower)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_SMOOTH))
+		{
+			return;
+		}
 
-        mSmoothPower = SmoothPower;
+		mSmoothPower = SmoothPower;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
 			"uSmoothPower", SmoothPower);
-    }
+	}
 
-    void Hydrax::setCausticsScale(const Ogre::Real &CausticsScale)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
-        {
-            return;
-        }
+	void Hydrax::setCausticsScale(const Ogre::Real &CausticsScale)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
+		{
+			return;
+		}
 
-        mCausticsScale = CausticsScale;
+		mCausticsScale = CausticsScale;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_DEPTH,
 			"uCausticsScale", CausticsScale);
-    }
+	}
 
-    void Hydrax::setCausticsPower(const Ogre::Real &CausticsPower)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
-        {
-            return;
-        }
+	void Hydrax::setCausticsPower(const Ogre::Real &CausticsPower)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
+		{
+			return;
+		}
 
-        mCausticsPower = CausticsPower;
+		mCausticsPower = CausticsPower;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_WATER,
@@ -1149,28 +1154,28 @@ namespace vega
 		{
 			if (isComponent(HYDRAX_COMPONENT_UNDERWATER_REFLECTIONS))
 			{
-		        mMaterialManager->setGpuProgramParameter(
-			        MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
-			        "uCausticsPower", CausticsPower);
+				mMaterialManager->setGpuProgramParameter(
+					MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER,
+					"uCausticsPower", CausticsPower);
 			}
 
 			mMaterialManager->setGpuProgramParameter(
 				MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_UNDERWATER_COMPOSITOR,
-			    "uCausticsPower", CausticsPower);
+				"uCausticsPower", CausticsPower);
 		}
-    }
+	}
 
-    void Hydrax::setCausticsEnd(const Ogre::Real &CausticsEnd)
-    {
-        if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
-        {
-            return;
-        }
+	void Hydrax::setCausticsEnd(const Ogre::Real &CausticsEnd)
+	{
+		if (!isComponent(HYDRAX_COMPONENT_CAUSTICS))
+		{
+			return;
+		}
 
-        mCausticsEnd = CausticsEnd;
+		mCausticsEnd = CausticsEnd;
 
 		mMaterialManager->setGpuProgramParameter(
 			MaterialManager::GPUP_FRAGMENT, MaterialManager::MAT_DEPTH,
 			"uCausticsEnd", CausticsEnd);
-    }
+	}
 }

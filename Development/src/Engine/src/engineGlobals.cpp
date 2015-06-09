@@ -130,7 +130,7 @@ namespace vega
 			Debug("[StartupSystems]iGame not Initialize");
 
 		//”казываем состо€ние,что мы уже готовы играть
-		mEngineState = ES_PLAY;
+		mEngineState = EngineState::ES_PLAY;
 	}
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::SetGame(iGame*_game){
@@ -146,7 +146,7 @@ namespace vega
 
 		this->BackgroundLoad();
 
-		if (mEngineState == ES_PLAY)
+		if (mEngineState == EngineState::ES_PLAY)
 		{
 			if (audio)
 				audio->updateSounds();
@@ -244,7 +244,7 @@ namespace vega
 		// Adding Archives
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Engine", true);
 		Ogre::StringVectorPtr gameArchives = Ogre::ResourceGroupManager::getSingleton().findResourceNames("Engine", "*.npk", false);
-		for (unsigned int i = 0; i < gameArchives->size(); i++)
+		for (size_t i = 0; i < gameArchives->size(); i++)
 			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path + (*gameArchives)[i], "Zip", "Engine", true);
 
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("..//Engine//Scripts//", "FileSystem", "Engine", true);
@@ -261,8 +261,9 @@ namespace vega
 			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Game", true);
 			mResBL->BackgroundLoadResourceGroup("Game", path);
 			gameArchives = Ogre::ResourceGroupManager::getSingleton().findResourceNames("Game", "*.npk", false);
-			for (unsigned int i = 0; i < gameArchives->size(); i++)
+			for (size_t i = 0; i < gameArchives->size(); i++)
 				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path + (*gameArchives)[i], "Zip", "Game", true, true);
+			Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 		}
 	}
 	//-------------------------------------------------------------------------------------
@@ -348,7 +349,7 @@ namespace vega
 	}
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::SetPause(bool _a)	{
-		(_a) ? mEngineState = ES_PAUSE : mEngineState = ES_PLAY;
+		(_a) ? mEngineState = EngineState::ES_PAUSE : mEngineState = EngineState::ES_PLAY;
 	}
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::RunConsoleCommand(const char*_str) {
@@ -364,11 +365,11 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	const char* EngineGlobals::GetCurrentState()
 	{
-		if (mEngineState == ES_LOADING)
+		if (mEngineState == EngineState::ES_LOADING)
 			return "LOADING";
-		else if (mEngineState == ES_PAUSE)
+		else if (mEngineState == EngineState::ES_PAUSE)
 			return "PAUSE";
-		else if (mEngineState == ES_PLAY)
+		else if (mEngineState == EngineState::ES_PLAY)
 			return "PLAYING";
 		return "UNKNOWN";
 	}

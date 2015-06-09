@@ -25,7 +25,7 @@ namespace vega
 		// !@Destruction Entity
 		virtual ~ActorMesh();
 		// !@Set Material for Mesh
-		void setMaterialName(const char* _material = "DefMat");
+		void setMaterialName(const char* _material = "AutoDetect");
 		// !@Loading Mesh in background
 		void _LoadInBackGround();
 		// !@Building Navigation Mesh

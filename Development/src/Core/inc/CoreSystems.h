@@ -37,7 +37,8 @@ namespace vega
 		Scripting* mScript;
 		ResourceGroupBackgroundLoader* mResBL;
 
-		enum EngineState{
+		enum class EngineState
+		{
 			ES_BUILDING_GEOMETRY,
 			ES_BUILDING_LIGHT,
 			ES_BUILDING_PATHES,

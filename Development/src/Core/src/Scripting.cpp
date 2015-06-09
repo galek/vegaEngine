@@ -144,7 +144,6 @@ namespace vega
 				.def_readwrite("FarClipDistance", &EngineConfig::mFarClipDistance)
 				.def_readwrite("PrecacheResources", &EngineConfig::mPrecacheResources)
 				.def_readwrite("mAntiAlliasing", &EngineConfig::mAntiAlliasing)
-				.def_readwrite("mRenderAPI", &EngineConfig::mRenderAPI)
 				.enum_("AntiAlliasing")
 				[
 					value("AA_NONE", EngineConfig::AntiAlliasing::AA_NONE),
@@ -152,14 +151,6 @@ namespace vega
 					value("AA_SSAA", EngineConfig::AntiAlliasing::AA_SSAA),
 					value("AA_FXAA", EngineConfig::AntiAlliasing::AA_FXAA)
 				]
-				.enum_("RenderAPI")
-					[
-						value("RENDER_NONE", EngineConfig::RenderAPI::RENDER_NONE),
-						value("RENDER_OGL", EngineConfig::RenderAPI::RENDER_OGL),
-						value("RENDER_DX9", EngineConfig::RenderAPI::RENDER_DX9),
-						value("RENDER_DX11", EngineConfig::RenderAPI::RENDER_DX11),
-						value("RENDER_COUNT", EngineConfig::RenderAPI::RENDER_COUNT)
-					]
 			];
 	}
 

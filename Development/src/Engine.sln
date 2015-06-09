@@ -129,10 +129,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenAL32", "..\external\Ope
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\external\Bullet\build\vs\Bullet.vcxproj", "{1696BAC4-BF4E-404C-A3DF-CA18CDBCA19B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tbb", "tbb", "{5DFE0D75-9653-40DF-89D8-C7179DE119D7}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tbb", "..\external\tbb\build\vs2010\tbb.vcxproj", "{F62787DD-1327-448B-9818-030062BCFAA5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Tegra-Android = Debug|Tegra-Android
@@ -606,16 +602,6 @@ Global
 		{1696BAC4-BF4E-404C-A3DF-CA18CDBCA19B}.Release|Win32.Build.0 = Release|Win32
 		{1696BAC4-BF4E-404C-A3DF-CA18CDBCA19B}.Release|x64.ActiveCfg = Release|x64
 		{1696BAC4-BF4E-404C-A3DF-CA18CDBCA19B}.Release|x64.Build.0 = Release|x64
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Debug|Tegra-Android.ActiveCfg = Debug|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Debug|Win32.Build.0 = Debug|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Debug|x64.ActiveCfg = Debug|x64
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Debug|x64.Build.0 = Debug|x64
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Release|Tegra-Android.ActiveCfg = Release|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Release|Win32.ActiveCfg = Release|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Release|Win32.Build.0 = Release|Win32
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Release|x64.ActiveCfg = Release|x64
-		{F62787DD-1327-448B-9818-030062BCFAA5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -679,8 +665,6 @@ Global
 		{3B146CC5-B2B8-4573-9D46-6139E2EDFEA3} = {03397856-C346-4907-BA53-A919B23BCE43}
 		{70251080-6136-4F0C-AD93-0EB8A914AD75} = {D172B2C1-82C8-471E-9809-EFD6414CB797}
 		{1696BAC4-BF4E-404C-A3DF-CA18CDBCA19B} = {1C3ABE70-29CA-49D5-824F-9AF2222978E6}
-		{5DFE0D75-9653-40DF-89D8-C7179DE119D7} = {D172B2C1-82C8-471E-9809-EFD6414CB797}
-		{F62787DD-1327-448B-9818-030062BCFAA5} = {5DFE0D75-9653-40DF-89D8-C7179DE119D7}
 	EndGlobalSection
 	GlobalSection(IntelOptPkgProperties) = preSolution
 		LoadPackage = true

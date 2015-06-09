@@ -33,9 +33,9 @@ namespace vega
 		mScale = _mScale;
 
 		if (_parentNode == NULL)
-			mNode = GetEngine()->mGSceneMgr->getRootSceneNode()->createChildSceneNode(mName + "_Node", mPosition, mRotation);
+			mNode = GetEngine()->mGSceneMgr->getRootSceneNode()->createChildSceneNode(mName + mFileName + "_Node", mPosition, mRotation);
 		else
-			mNode = _parentNode->createChildSceneNode(mName + "_Node", mPosition, mRotation);
+			mNode = _parentNode->createChildSceneNode(mName + mFileName + "_Node", mPosition, mRotation);
 
 		mNode->setScale(mScale);
 		mNode->rotate(_mRotation);
