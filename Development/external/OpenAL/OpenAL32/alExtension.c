@@ -1,24 +1,4 @@
-/**
- * OpenAL cross platform audio library
- * Copyright (C) 1999-2007 by authors.
- * This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Library General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Library General Public License for more details.
- *
- * You should have received a copy of the GNU Library General Public
- *  License along with this library; if not, write to the
- *  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- *  Boston, MA  02111-1307, USA.
- * Or go to http://www.gnu.org/copyleft/lgpl.html
- */
-
-#include "config.h"
+#include "openal_config.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -36,12 +16,20 @@
 
 
 const struct EffectList EffectList[] = {
-    { "eaxreverb", EAXREVERB, "AL_EFFECT_EAXREVERB",      AL_EFFECT_EAXREVERB },
-    { "reverb",    REVERB,    "AL_EFFECT_REVERB",         AL_EFFECT_REVERB },
-    { "echo",      ECHO,      "AL_EFFECT_ECHO",           AL_EFFECT_ECHO },
-    { "modulator", MODULATOR, "AL_EFFECT_RING_MODULATOR", AL_EFFECT_RING_MODULATOR },
-    { "dedicated", DEDICATED, "AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT", AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT },
-    { "dedicated", DEDICATED, "AL_EFFECT_DEDICATED_DIALOGUE", AL_EFFECT_DEDICATED_DIALOGUE },
+    { "eaxreverb",  EAXREVERB,  "AL_EFFECT_EAXREVERB",      AL_EFFECT_EAXREVERB },
+    { "reverb",     REVERB,     "AL_EFFECT_REVERB",         AL_EFFECT_REVERB },
+#if 0
+    { "autowah",    AUTOWAH,    "AL_EFFECT_AUTOWAH",        AL_EFFECT_AUTOWAH },
+#endif
+    { "chorus",     CHORUS,     "AL_EFFECT_CHORUS",         AL_EFFECT_CHORUS },
+    { "compressor", COMPRESSOR, "AL_EFFECT_COMPRESSOR",     AL_EFFECT_COMPRESSOR },
+    { "distortion", DISTORTION, "AL_EFFECT_DISTORTION",     AL_EFFECT_DISTORTION },
+    { "echo",       ECHO,       "AL_EFFECT_ECHO",           AL_EFFECT_ECHO },
+    { "equalizer",  EQUALIZER,  "AL_EFFECT_EQUALIZER",      AL_EFFECT_EQUALIZER },
+    { "flanger",    FLANGER,    "AL_EFFECT_FLANGER",        AL_EFFECT_FLANGER },
+    { "modulator",  MODULATOR,  "AL_EFFECT_RING_MODULATOR", AL_EFFECT_RING_MODULATOR },
+    { "dedicated",  DEDICATED,  "AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT", AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT },
+    { "dedicated",  DEDICATED,  "AL_EFFECT_DEDICATED_DIALOGUE", AL_EFFECT_DEDICATED_DIALOGUE },
     { NULL, 0, NULL, (ALenum)0 }
 };
 
@@ -49,38 +37,36 @@ const struct EffectList EffectList[] = {
 AL_API ALboolean AL_APIENTRY alIsExtensionPresent(const ALchar *extName)
 {
     ALboolean ret = AL_FALSE;
-    ALCcontext *Context;
+    ALCcontext *context;
     const char *ptr;
     size_t len;
 
-    Context = GetContextRef();
-    if(!Context) return AL_FALSE;
+    context = GetContextRef();
+    if(!context) return AL_FALSE;
 
-    al_try
+    if(!(extName))
+        SET_ERROR_AND_GOTO(context, AL_INVALID_VALUE, done);
+
+    len = strlen(extName);
+    ptr = context->ExtensionList;
+    while(ptr && *ptr)
     {
-        CHECK_VALUE(Context, extName);
-
-        len = strlen(extName);
-        ptr = Context->ExtensionList;
-        while(ptr && *ptr)
+        if(_strnicmp(ptr, extName, len) == 0 &&
+           (ptr[len] == '\0' || isspace(ptr[len])))
         {
-            if(strncasecmp(ptr, extName, len) == 0 &&
-               (ptr[len] == '\0' || isspace(ptr[len])))
-            {
-                ret = AL_TRUE;
-                break;
-            }
-            if((ptr=strchr(ptr, ' ')) != NULL)
-            {
-                do {
-                    ++ptr;
-                } while(isspace(*ptr));
-            }
+            ret = AL_TRUE;
+            break;
+        }
+        if((ptr=strchr(ptr, ' ')) != NULL)
+        {
+            do {
+                ++ptr;
+            } while(isspace(*ptr));
         }
     }
-    al_endtry;
 
-    ALCcontext_DecRef(Context);
+done:
+    ALCcontext_DecRef(context);
     return ret;
 }
 

@@ -5,6 +5,10 @@
 extern "C" {
 #endif
 
+#if (defined NGTECH_STATIC_LIBS)
+#define AL_LIBTYPE_STATIC
+#endif
+
 #ifndef ALC_API
  #if defined(AL_LIBTYPE_STATIC)
   #define ALC_API

@@ -259,6 +259,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\external\OpenAL\buildWin\OpenAL32.vcxproj">
+      <Project>{70251080-6136-4f0c-ad93-0eb8a914ad75}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\AI\AI.vcxproj">
       <Project>{4b67e249-5319-4ed5-a77b-6aafeec6ec85}</Project>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>

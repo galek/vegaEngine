@@ -43,7 +43,7 @@ namespace vega
 	void ActorMesh::_createMesh()
 	{
 		// Загрузжаем файл меша
-		_LoadInBackGround();
+		//_LoadInBackGround();
 		// Создаем временную entity
 		mEntity = GetEngine()->mGSceneMgr->createEntity(mName + "_Ent", mFileName);
 		mNode->attachObject(mEntity);

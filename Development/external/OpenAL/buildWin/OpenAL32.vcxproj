@@ -18,6 +18,75 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Alc\alstring.h" />
+    <ClInclude Include="..\Alc\backends\base.h" />
+    <ClInclude Include="..\Alc\compat.h" />
+    <ClInclude Include="..\Alc\evtqueue.h" />
+    <ClInclude Include="..\Alc\hrtf.h" />
+    <ClInclude Include="..\Alc\midi\base.h" />
+    <ClInclude Include="..\Alc\mixer_defs.h" />
+    <ClInclude Include="..\Alc\openal_vector.h" />
+    <ClInclude Include="openal_config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Alc\ALc.c" />
+    <ClCompile Include="..\Alc\alcConfig.c" />
+    <ClCompile Include="..\Alc\alcRing.c" />
+    <ClCompile Include="..\Alc\ALu.c" />
+    <ClCompile Include="..\Alc\backends\base_backend.c" />
+    <ClCompile Include="..\Alc\backends\dsound.c" />
+    <ClCompile Include="..\Alc\backends\loopback.c" />
+    <ClCompile Include="..\Alc\backends\mmdevapi.c" />
+    <ClCompile Include="..\Alc\backends\null_backend.c" />
+    <ClCompile Include="..\Alc\backends\wave.c" />
+    <ClCompile Include="..\Alc\backends\winmm.c" />
+    <ClCompile Include="..\Alc\bs2b.c" />
+    <ClCompile Include="..\Alc\effects\autowah.c" />
+    <ClCompile Include="..\Alc\effects\chorus.c" />
+    <ClCompile Include="..\Alc\effects\compressor.c" />
+    <ClCompile Include="..\Alc\effects\dedicated.c" />
+    <ClCompile Include="..\Alc\effects\distortion.c" />
+    <ClCompile Include="..\Alc\effects\echo.c" />
+    <ClCompile Include="..\Alc\effects\equalizer.c" />
+    <ClCompile Include="..\Alc\effects\flanger.c" />
+    <ClCompile Include="..\Alc\effects\modulator.c" />
+    <ClCompile Include="..\Alc\effects\null.c" />
+    <ClCompile Include="..\Alc\effects\reverb.c" />
+    <ClCompile Include="..\Alc\helpers.c" />
+    <ClCompile Include="..\Alc\hrtf.c" />
+    <ClCompile Include="..\Alc\midi\base.c" />
+    <ClCompile Include="..\Alc\midi\dummy.c" />
+    <ClCompile Include="..\Alc\midi\fluidsynth.c" />
+    <ClCompile Include="..\Alc\midi\sf2load.c" />
+    <ClCompile Include="..\Alc\midi\soft.c" />
+    <ClCompile Include="..\Alc\mixer.c" />
+    <ClCompile Include="..\Alc\mixer_c.c" />
+    <ClCompile Include="..\Alc\mixer_inc.c" />
+    <ClCompile Include="..\Alc\mixer_sse.c" />
+    <ClCompile Include="..\Alc\mixer_sse2.c" />
+    <ClCompile Include="..\Alc\mixer_sse41.c" />
+    <ClCompile Include="..\Alc\panning.c" />
+    <ClCompile Include="..\common\atomic.c" />
+    <ClCompile Include="..\common\rwlock.c" />
+    <ClCompile Include="..\common\threads.c" />
+    <ClCompile Include="..\common\uintmap.c" />
+    <ClCompile Include="..\OpenAL32\alAuxEffectSlot.c" />
+    <ClCompile Include="..\OpenAL32\alBuffer.c" />
+    <ClCompile Include="..\OpenAL32\alEffect.c" />
+    <ClCompile Include="..\OpenAL32\alError.c" />
+    <ClCompile Include="..\OpenAL32\alExtension.c" />
+    <ClCompile Include="..\OpenAL32\alFilter.c" />
+    <ClCompile Include="..\OpenAL32\alFontsound.c" />
+    <ClCompile Include="..\OpenAL32\alListener.c" />
+    <ClCompile Include="..\OpenAL32\alMidi.c" />
+    <ClCompile Include="..\OpenAL32\alPreset.c" />
+    <ClCompile Include="..\OpenAL32\alSoundfont.c" />
+    <ClCompile Include="..\OpenAL32\alSource.c" />
+    <ClCompile Include="..\OpenAL32\alState.c" />
+    <ClCompile Include="..\OpenAL32\alThunk.c" />
+    <ClCompile Include="..\OpenAL32\sample_cvt.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGUID>{70251080-6136-4F0C-AD93-0EB8A914AD75}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
@@ -261,45 +330,6 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\OpenAL32\alAuxEffectSlot.c" />
-    <ClCompile Include="..\OpenAL32\alBuffer.c" />
-    <ClCompile Include="..\OpenAL32\alEffect.c" />
-    <ClCompile Include="..\OpenAL32\alError.c" />
-    <ClCompile Include="..\OpenAL32\alExtension.c" />
-    <ClCompile Include="..\OpenAL32\alFilter.c" />
-    <ClCompile Include="..\OpenAL32\alListener.c" />
-    <ClCompile Include="..\OpenAL32\alSource.c" />
-    <ClCompile Include="..\OpenAL32\alState.c" />
-    <ClCompile Include="..\OpenAL32\alThunk.c" />
-    <ClCompile Include="..\Alc\ALc.c" />
-    <ClCompile Include="..\Alc\ALu.c" />
-    <ClCompile Include="..\Alc\alcConfig.c" />
-    <ClCompile Include="..\Alc\alcDedicated.c" />
-    <ClCompile Include="..\Alc\alcEcho.c" />
-    <ClCompile Include="..\Alc\alcModulator.c" />
-    <ClCompile Include="..\Alc\alcReverb.c" />
-    <ClCompile Include="..\Alc\alcRing.c" />
-    <ClCompile Include="..\Alc\alcThread.c" />
-    <ClCompile Include="..\Alc\bs2b.c" />
-    <ClCompile Include="..\Alc\helpers.c" />
-    <ClCompile Include="..\Alc\panning.c" />
-    <ClCompile Include="..\Alc\hrtf.c" />
-    <ClCompile Include="..\Alc\mixer.c" />
-    <ClCompile Include="..\Alc\mixer_c.c" />
-    <ClCompile Include="..\Alc\mixer_sse.c">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> -msse %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> -msse %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> -msse %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> -msse %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="..\Alc\backends\loopback.c" />
-    <ClCompile Include="..\Alc\backends\null.c" />
-    <ClCompile Include="..\Alc\backends\mmdevapi.c" />
-    <ClCompile Include="..\Alc\backends\dsound.c" />
-    <ClCompile Include="..\Alc\backends\winmm.c" />
-    <ClCompile Include="..\Alc\backends\wave.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
