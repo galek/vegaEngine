@@ -17,6 +17,7 @@ namespace vega
 		virtual void ChooseSceneManager();
 		virtual void CreateFrameListener();
 	private:
+		virtual void SetupResources();
 		virtual void InitD3D9();
 	public:
 		xgScene_t* GetEditorScene();

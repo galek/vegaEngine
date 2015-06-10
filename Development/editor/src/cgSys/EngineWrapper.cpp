@@ -68,6 +68,14 @@ namespace vega
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Editor", true);
 	}
 
+	void EngineWrapper::SetupResources()
+	{
+		//Базовые ресурсы
+		std::string path = "..//Editor//Content//";
+		// Adding Archives
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Editor", true);
+	}
+
 	void EngineWrapper::Go(int width, int height, Ogre::NameValuePairList*_ptr)
 	{
 		StartupOgre();
