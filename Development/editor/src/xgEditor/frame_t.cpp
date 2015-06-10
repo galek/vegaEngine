@@ -381,11 +381,11 @@ namespace vega
 	/**
 	*/
 	void frame_t::UpdateStatusText(){
-		if (GetEditor()->mEngineState == EngineWrapper::ES_PAUSE)
+		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_PAUSE)
 			SetStatusText(wxT("Ready to play"));
-		if (GetEditor()->mEngineState == EngineWrapper::ES_PLAY)
+		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_PLAY)
 			SetStatusText(wxT("Playing"));
-		if (GetEditor()->mEngineState == EngineWrapper::ES_LOADING)
+		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_LOADING)
 			SetStatusText(wxT("LOADING"));
 	}
 }

@@ -11,6 +11,7 @@
 #include "OgreStaticPluginLoader.h"
 //Engine.dll
 #include "Updater.h"
+#include "Window.h"
 //cgSys.dll
 #include "xgSceneFactory_t.h"
 
@@ -101,5 +102,23 @@ namespace vega
 		//crash	input->createFrameListener();
 		//crash	input->createFrameListener();
 		mGRoot->addFrameListener(updater);
+	}
+
+	void EngineWrapper::InitD3D9()
+	{
+		Ogre::RenderSystem *renderSystem = mGRoot->getRenderSystemByName("Direct3D9 Rendering Subsystem");
+		renderSystem->setConfigOption("Allow DirectX9Ex", "Yes");
+		renderSystem->setConfigOption("Full Screen", mEngineConfig->mFullscreen);
+		renderSystem->setConfigOption("Video Mode", mEngineConfig->mResolution += " @ 32-bit colour");
+		renderSystem->setConfigOption("Use Multihead", "Yes");
+		renderSystem->setConfigOption("Backbuffer Count", "Auto");
+		renderSystem->setConfigOption("FSAA", "0");
+		renderSystem->setConfigOption("Resource Creation Policy", "Create on active device");
+		renderSystem->setConfigOption("Multi device memory hint", "Auto hardware buffers management");
+		renderSystem->setConfigOption("Fixed Pipeline Enabled", "Yes");
+		renderSystem->setConfigOption("VSync", "No");
+		renderSystem->setConfigOption("sRGB Gamma Conversion", "No");
+
+		mGRoot->setRenderSystem(renderSystem);
 	}
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../../../src/Engine/EngineAPI.inc"
+
 namespace vega
 {
 	class xgScene_t;
@@ -14,6 +16,8 @@ namespace vega
 		virtual void Go(int width, int height, Ogre::NameValuePairList*_ptr);
 		virtual void ChooseSceneManager();
 		virtual void CreateFrameListener();
+	private:
+		virtual void InitD3D9();
 	public:
 		xgScene_t* GetEditorScene();
 		void ShowEditor();
