@@ -61,28 +61,48 @@ namespace vega
 			GetEngine()->AttemptConfig();
 		}
 		//-------------------------------------------------------------------------------------
-		void SetMouseLock(bool _status) {
-			GetEngine()->GetInput()->SetMouseLock(_status);
+		void SetMouseLock(bool _status)
+		{
+			auto input = GetEngine()->GetInput();
+			if (!input)
+				return;
+			input->SetMouseLock(_status);
 		}
 		//-------------------------------------------------------------------------------------
-		void SetBufferedUnBufferedMouseMode(bool _status, bool _showGUICusor) {
-			GetEngine()->GetInput()->Recreate(_status);
-			GetEngine()->GetGui()->ShowGUIMouseCursor(_showGUICusor);
+		void SetBufferedUnBufferedMouseMode(bool _status, bool _showGUICusor) 
+		{
+			auto input = GetEngine()->GetInput();
+			if (!input)
+				return;
+			input->Recreate(_status);
+			SetShowGUICursor(_showGUICusor);
 		}
 		//-------------------------------------------------------------------------------------
 		void SetShowGUICursor(bool _status) {
+			auto gui = GetEngine()->GetGui();
+			if (!gui)
+				return;
 			GetEngine()->GetGui()->ShowGUIMouseCursor(_status);
 		}
 		//-------------------------------------------------------------------------------------
 		bool GetShowGUICursor() {
-			return GetEngine()->GetGui()->IsShowingGUIMouseCursor();
+			auto gui = GetEngine()->GetGui();
+			if (!gui)
+				return false;
+			return gui->IsShowingGUIMouseCursor();
 		}
 		//-------------------------------------------------------------------------------------
-		bool IsBufferredInput() {
-			return GetEngine()->GetInput()->IsBuffered();
+		bool IsBufferredInput() 
+		{
+			auto input = GetEngine()->GetInput();
+			if (!input)
+				return false;
+
+			return input->IsBuffered();
 		}
 		//-------------------------------------------------------------------------------------
-		void RunScriptFunctionByName(const char*_file,const char* _status) {
+		void RunScriptFunctionByName(const char*_file, const char* _status) 
+		{
 			RunScript(_file);
 			GetEngine()->mScript->RunFunctionByName(_status);
 		}

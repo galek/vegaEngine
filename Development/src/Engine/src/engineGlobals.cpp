@@ -202,8 +202,8 @@ namespace vega
 		mShutDown = (!(isLaunched()));
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::Release()	{
-		Debug("EngineGlobals::Release");
+	void EngineGlobals::Release()	
+	{
 		SAFE_DELETE(game);
 		SAFE_DELETE(sceneManager);
 		SAFE_DELETE(gui);

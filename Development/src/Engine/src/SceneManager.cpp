@@ -55,6 +55,9 @@ namespace vega
 	//-----------------------------------------------------------------------------
 	void SceneManager::CleanScene()
 	{
+		if (mSceneActors.empty())
+			return;
+
 		mSceneActors.erase(mSceneActors.begin(), mSceneActors.end());
 	}
 	//-----------------------------------------------------------------------------

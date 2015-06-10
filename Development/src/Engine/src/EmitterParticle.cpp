@@ -15,7 +15,7 @@ namespace vega
 {
 	/**
 	*/
-	EmitterParticle::EmitterParticle(const char *name,const char *_temp)
+	EmitterParticle::EmitterParticle(const char *name, const char *_temp)
 		:ps(nullptr)
 	{
 		ParticleSystem::setDefaultNonVisibleUpdateTimeout(5);  // set nonvisible timeout
@@ -27,7 +27,7 @@ namespace vega
 	*/
 	void EmitterParticle::attach(Actor *_mParent)
 	{
-		if(!_mParent)
+		if (!_mParent)
 			GetEngine()->mGSceneMgr->getRootSceneNode()->attachObject(ps);
 		else
 			_mParent->getNode()->attachObject(ps);

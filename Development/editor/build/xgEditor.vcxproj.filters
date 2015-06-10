@@ -16,9 +16,6 @@
     <Filter Include="toolbar">
       <UniqueIdentifier>{aebf5d36-9e13-47e2-aa7b-5ff9302d992f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tools">
-      <UniqueIdentifier>{6d94bc41-f59a-4ef8-8c93-703dc9c99c98}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\xgEditor\app_t.cpp">
@@ -216,7 +213,6 @@
     <ClInclude Include="..\src\xgEditor\lightTool_t.h" />
     <ClInclude Include="..\src\xgEditor\manager.h" />
     <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
-    <ClInclude Include="..\src\xgEditor\reg.h" />
     <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
     <ClInclude Include="..\src\xgEditor\testTool_t.h" />
     <ClInclude Include="..\src\xgEditor\update_t.h" />
@@ -229,6 +225,7 @@
     <ClInclude Include="..\src\xgEditor\toolsids.h">
       <Filter>toolbar</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\xgEditor\reg.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\src\xgEditor\iconMain.ico" />

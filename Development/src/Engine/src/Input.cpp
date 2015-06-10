@@ -238,16 +238,17 @@ namespace vega
 		}
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::Recreate(bool _mBuffered){
-		if (mInputManager)
-		{
-			mInputManager->destroyInputObject(mMouse);
-			mInputManager->destroyInputObject(mKeyboard);
+	void Input::Recreate(bool _mBuffered)
+	{
+		if (!mInputManager)
+			return;
 
-			OIS::InputManager::destroyInputSystem(mInputManager);
-			mInputManager = 0;
-			mInitialised = false;
-		}
+		mInputManager->destroyInputObject(mMouse);
+		mInputManager->destroyInputObject(mKeyboard);
+
+		OIS::InputManager::destroyInputSystem(mInputManager);
+		mInputManager = 0;
+		mInitialised = false;
 		mBuffered = _mBuffered;
 		createFrameListener();
 	}

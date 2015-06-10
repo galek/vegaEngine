@@ -14,7 +14,7 @@ CORE_API void Warning(const char *fmt, ...)
 	va_list mark;
 	char buf[1024];
 	va_start(mark, fmt);
-	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf)-1] = 0;
+	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
 	if (sz)
 	{
@@ -30,24 +30,25 @@ CORE_API void LogPrintf(const char *fmt, ...)
 	va_list mark;
 	char buf[1024];
 	va_start(mark, fmt);
-	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf)-1] = 0;
+	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
-	if (sz)		
+	if (sz)
 	{
-		if (Ogre::LogManager::getSingletonPtr())
-			Ogre::LogManager::getSingletonPtr()->logMessage(buf);
+		auto ptr = Ogre::LogManager::getSingletonPtr();
+		if (ptr)
+			ptr->logMessage(buf);
 		else
 			printf(buf);
 	}
 }
 
 //-----------------------------------------------------------------------------
-CORE_API void SeriousWarning(bool _show,const char *fmt, ...)
+CORE_API void SeriousWarning(bool _show, const char *fmt, ...)
 {
 	va_list mark;
 	char buf[1024];
 	va_start(mark, fmt);
-	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf)-1] = 0;
+	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
 	if (sz)
 	{
@@ -74,7 +75,7 @@ CORE_API void Debug(const char *fmt, ...)
 	va_list mark;
 	char buf[1024];
 	va_start(mark, fmt);
-	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf)-1] = 0;
+	int sz = vsprintf(buf, fmt, mark); buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
 	if (sz)
 	{
@@ -87,11 +88,19 @@ CORE_API void Debug(const char *fmt, ...)
 }
 
 //-----------------------------------------------------------------------------
-CORE_API void SetLoggingLevel(int _level){
-	Ogre::LogManager::getSingletonPtr()->setLogDetail((Ogre::LoggingLevel)_level);
+CORE_API void SetLoggingLevel(int _level)
+{
+	auto ptr = Ogre::LogManager::getSingletonPtr();
+	if (!ptr)
+		return;
+	ptr->setLogDetail((Ogre::LoggingLevel)_level);
 }
 
 //-----------------------------------------------------------------------------
-CORE_API int GetLoggingLevel(){
-	return Ogre::LogManager::getSingletonPtr()->getDefaultLog()->getLogDetail();
+CORE_API int GetLoggingLevel()
+{
+	auto ptr = Ogre::LogManager::getSingletonPtr();
+	if (!ptr)
+		return 0;
+	return ptr->getDefaultLog()->getLogDetail();
 }

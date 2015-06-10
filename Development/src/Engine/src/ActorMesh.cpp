@@ -6,9 +6,8 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-#include "ActorMesh.h"
-using namespace Ogre;
 
+#include "ActorMesh.h"
 
 namespace vega
 {

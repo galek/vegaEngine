@@ -16,17 +16,9 @@
 #include "ConsoleCommands.h"
 #include "EngineScriptingEx.h"
 #include "WrappedScriptFunctions.h"
-#include "ActorWater.h"
-#include "ActorMesh.h"
-#include "ActorDynamicSky.h"
-#include "ActorSkyDome.h"
-#include "ActorSkyBox.h"
-#include "ActorSkyPlane.h"
-#include "Camera/CameraFree.h"
-#include "Camera/CameraFPS.h"
-#include "EmitterSound.h"
 //API
 #include "APIEngineCommands.h"
+#include "../EngineAPI.inc"
 
 namespace vega
 {

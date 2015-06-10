@@ -6,6 +6,8 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
+
+#include "world/Actor.h"
 #include "SceneManager.h"
 
 

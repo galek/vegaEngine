@@ -76,9 +76,6 @@ namespace vega
 		int width;
 		int height;
 		GetSize(&width, &height);
-		width = 800;
-		height = 600;
-		TODO("Не понимаю,зачем получать размеры и потом их переопределять");
 		GetEditor()->Go(width, height, &params);
 		new ActorDynamicSky();
 	}
@@ -147,6 +144,13 @@ namespace vega
 	*/
 	void wxOgre_t::update()
 	{
+		auto root = GetEditor()->mGRoot;
+		if (!root)
+		{
+			printf("Not exist mGRoot");
+			return;
+		}
+
 		int width;
 		int height;
 		GetSize(&width, &height);
@@ -156,7 +160,7 @@ namespace vega
 			wxSizeEvent wse;
 			OnSize(wse);
 		}
-		GetEditor()->mGRoot->renderOneFrame();
+		root->renderOneFrame();
 	}
 	/**
 	*/
