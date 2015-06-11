@@ -1,7 +1,7 @@
 #pragma once
 
 #include "tool_t.h"
-#include "update_t.h"
+#include "Updatable.h"
 
 class wxTreebook;
 
@@ -10,7 +10,7 @@ namespace vega
 {
 	class frame_t;
 	class cameraTool_t
-		:public wxPanel, public tool_t, public update_t
+		:public wxPanel, public tool_t, public Updatable
 	{
 		wxPoint oldPoint;
 		float rotVel;

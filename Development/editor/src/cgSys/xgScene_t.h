@@ -9,7 +9,8 @@ namespace vega
 	class xmlElement_t;
 	typedef void(*loadEntityCallback_t)(Ogre::SceneNode*node, xmlElement_t *o, bool editMode, Ogre::Entity *ent, void *userData);
 
-	class xgScene_t :public Ogre::SceneManager{
+	class xgScene_t :public Ogre::SceneManager
+	{
 		struct entityInfo_t{
 			std::string templateName;
 			std::string meshFile;
@@ -32,13 +33,12 @@ namespace vega
 		bool loadPfx(Ogre::SceneNode*node, xmlElement_t *o, bool editMode);
 		void updateSectorSceneNode();
 		void createGridHelperMesh();
-		std::string resRootPath;
 	public:
 		void addEntityInfo(const char *templateName, const char *meshFile);
 		const char *getEntityInfo(const char *templateName);
 		std::string getSubDir(const char *dir);
 		bool addResourceLocation(const char *path);
-		void setResRootPath(const char *resRootPath){ this->resRootPath = resRootPath; }
+		void setResRootPath(std::string _resRootPath){ this->resRootPath = _resRootPath; MessageBoxA(0, _resRootPath.c_str(), resRootPath.c_str(), 0); }
 		void enableRenderOptimize(bool enable);
 		void pushSelectListener(selectListener_t *me);
 		void delSelectListener(selectListener_t *me);
@@ -68,5 +68,7 @@ namespace vega
 		Ogre::ManualObject *createBoxManualObject(const Ogre::String &name, const Ogre::ColourValue &color, const Ogre::Vector3 &min, const Ogre::Vector3 &max, char *matName);
 		void updateBoxManualObject(Ogre::ManualObject *box, const Ogre::ColourValue &color, const Ogre::Vector3 &min, const Ogre::Vector3 &max, char *matName);
 		const char *getHelpMeshName();
+	private:
+		std::string resRootPath;
 	};
 }

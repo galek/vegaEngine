@@ -3,7 +3,8 @@
 
 namespace vega
 {
-	enum type_t_enum{
+	enum type_t_enum
+	{
 		mesh_type,
 		entity_type,
 		fx_type,

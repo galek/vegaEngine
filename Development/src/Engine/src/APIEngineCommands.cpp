@@ -16,8 +16,8 @@ namespace vega
 {
 	namespace API{
 		//-------------------------------------------------------------------------------------
-		void RunScript(const char*_a)	{
-			GetEngine()->RunScript(_a);
+		int RunScript(const char*_a)	{
+			return GetEngine()->RunScript(_a);
 		}
 		//-------------------------------------------------------------------------------------
 		void SetPause(bool _a)	{
@@ -64,15 +64,15 @@ namespace vega
 		void SetMouseLock(bool _status)
 		{
 			auto input = GetEngine()->GetInput();
-			if (!input)
+			if (!input || !input->isInitialised())
 				return;
 			input->SetMouseLock(_status);
 		}
 		//-------------------------------------------------------------------------------------
-		void SetBufferedUnBufferedMouseMode(bool _status, bool _showGUICusor) 
+		void SetBufferedUnBufferedMouseMode(bool _status, bool _showGUICusor)
 		{
 			auto input = GetEngine()->GetInput();
-			if (!input)
+			if (!input || !input->isInitialised())
 				return;
 			input->Recreate(_status);
 			SetShowGUICursor(_showGUICusor);
@@ -92,7 +92,7 @@ namespace vega
 			return gui->IsShowingGUIMouseCursor();
 		}
 		//-------------------------------------------------------------------------------------
-		bool IsBufferredInput() 
+		bool IsBufferredInput()
 		{
 			auto input = GetEngine()->GetInput();
 			if (!input)
@@ -101,7 +101,7 @@ namespace vega
 			return input->IsBuffered();
 		}
 		//-------------------------------------------------------------------------------------
-		void RunScriptFunctionByName(const char*_file, const char* _status) 
+		void RunScriptFunctionByName(const char*_file, const char* _status)
 		{
 			RunScript(_file);
 			GetEngine()->mScript->RunFunctionByName(_status);

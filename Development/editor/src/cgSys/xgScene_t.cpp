@@ -863,7 +863,8 @@ namespace vega
 
 		return retStr;
 	}
-	bool xgScene_t::addResourceLocation(const char *path){
+	bool xgScene_t::addResourceLocation(const char *path)
+	{
 		StringVector s = ResourceGroupManager::getSingleton().getResourceGroups();
 		StringVector::iterator itr(s.begin());
 		for (; itr != s.end(); ++itr){
@@ -871,16 +872,15 @@ namespace vega
 				break;
 			}
 		}
-		if (itr == s.end()){
+		if (itr == s.end())
+		{
 			ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", path);
 			try{
 				ResourceGroupManager::getSingleton().initialiseResourceGroup(path);
 				return true;
 			}
 			catch (Exception& e) {
-				std::cerr << "An exception has occured: " << e.getFullDescription();
-			}
-			catch (...){
+				MessageBoxA(0, ("An exception has occured: " + e.getFullDescription()).c_str(), "FATAL ERROR", 0);
 			}
 		}
 

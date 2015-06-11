@@ -29,6 +29,7 @@ namespace vega
 	EngineWrapper::EngineWrapper()
 		:EngineGlobals(*this)
 	{}
+
 	/**
 	*/
 	EngineWrapper::~EngineWrapper()
@@ -43,11 +44,22 @@ namespace vega
 		SetLoggingLevel(3);//Disables ogreLog trash messages
 		mOgrePluginLoader = new StaticPluginLoader(mGRoot);
 		mOgrePluginLoader->load();
+	}
+
+	bool EngineWrapper::Configure(void)
+	{
+		Ogre::String platform = "VEGAEngine";
+#ifdef _WIN64
+		platform += "(W64)";
+#elif _WIN32
+		platform += "(W32)";
+#else
+		platform += "(Unknown)";
+#endif
+
 		InitRenderer();
-
 		mGWindow = mGRoot->initialise(false);
-
-		SetupResources();
+		return true;
 	}
 
 	void EngineWrapper::PreInitSystems()
@@ -70,26 +82,41 @@ namespace vega
 
 	void EngineWrapper::SetupResources()
 	{
-		//Базовые ресурсы
-		std::string path = "..//Editor//Content//";
-		// Adding Archives
-		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Editor", true);
+
 	}
 
-	void EngineWrapper::Go(int width, int height, Ogre::NameValuePairList*_ptr)
+	bool EngineWrapper::Setup(void)
 	{
 		StartupOgre();
-		SetupResources();
-		//Configure();
+		Configure();
 		ChooseSceneManager();
 		CreateCamera();
-		mGWindow = mGRoot->createRenderWindow("OgreRenderWindow", width, height, false, _ptr);
+		mGWindow = mGRoot->createRenderWindow("OgreRenderWindow", params.width, params.height, false, params.ptr);
 		CreateViewports();
 		Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 		PreInitSystems();
 		StartupSystems();
 		CreateFrameListener();
+		PrecacheResources();
 		SetEngine(*this);
+
+		return true;
+	}
+
+	void EngineWrapper::PrecacheResources()
+	{
+		//Базовые ресурсы
+		std::string path = "..//Editor//Content//";
+		// Adding Archives
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", "Editor", true);
+		EngineGlobals::PrecacheResources();
+	}
+
+	void EngineWrapper::Go(int width, int height, Ogre::NameValuePairList*_ptr)
+	{
+		params = { width, height, _ptr };
+		if (!Setup())
+			return;
 	}
 
 	void EngineWrapper::ChooseSceneManager()

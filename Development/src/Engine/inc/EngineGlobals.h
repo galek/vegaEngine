@@ -51,8 +51,8 @@ namespace vega
 		void Go(void);
 
 		void SetGame(iGame*_game);
-
-		void RunScript(const char*_filename);
+		/*returned 0 if sucessfully*/
+		int RunScript(const char*_filename);
 
 		//OGRE
 		// !@Creating Listeners for Update cicle

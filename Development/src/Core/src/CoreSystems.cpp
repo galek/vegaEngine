@@ -79,8 +79,7 @@ namespace vega
 
 	//-------------------------------------------------------------------------------------
 	void CoreSystems::Release(){
-		LogPrintf("CoreSystems::Release");
-		//SAFE_DELETE(mResBL);
+		SAFE_DELETE(mResBL);
 		//SAFE_DELETE(mScript);
 		SAFE_DELETE(mFS);
 		SAFE_DELETE(mEngineConfig);

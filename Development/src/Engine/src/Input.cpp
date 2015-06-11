@@ -24,21 +24,28 @@ namespace vega
 	{
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::frameRenderingQueued() {
-		if (mInitialised)
-		{
-			windowResized(GetEngine()->mGWindow);
-			//Need to capture/update each device
-			mKeyboard->capture();
-			mMouse->capture();
-		}
+	void Input::frameRenderingQueued()
+	{
+		if (!mInitialised)
+			return;
+
+		windowResized(GetEngine()->mGWindow);
+		//Need to capture/update each device
+		mKeyboard->capture();
+		mMouse->capture();
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::createFrameListener() {
+	void Input::createFrameListener()
+	{
+		if (GetEngine()->isEditor())
+			return;
 		(mBuffered) ? CreateBuffered() : CreateUnBuffered();
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::windowResized(Ogre::RenderWindow* _window)	{
+	void Input::windowResized(Ogre::RenderWindow* _window)
+	{
+		if (GetEngine()->isEditor())
+			return;
 		unsigned int width, height, depth;
 		int left, top;
 		_window->getMetrics(width, height, depth, left, top);
@@ -50,126 +57,140 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	void Input::windowClosed(Ogre::RenderWindow* _window)
 	{
-		if (mInitialised)
-		{
-			//Only close for window that created OIS (the main window in these demos)
-			if (_window == GetEngine()->mGWindow)
-			{
-				if (mInputManager)
-				{
-					mInputManager->destroyInputObject(mMouse);
-					mInputManager->destroyInputObject(mKeyboard);
+		if (!mInitialised)
+			return;
 
-					OIS::InputManager::destroyInputSystem(mInputManager);
-					mInputManager = 0;
-				}
+		//Only close for window that created OIS (the main window in these demos)
+		if (_window == GetEngine()->mGWindow)
+		{
+			if (mInputManager)
+			{
+				mInputManager->destroyInputObject(mMouse);
+				mInputManager->destroyInputObject(mKeyboard);
+
+				OIS::InputManager::destroyInputSystem(mInputManager);
+				mInputManager = 0;
 			}
-			mInitialised = false;
 		}
+		mInitialised = false;
 	}
 	//-------------------------------------------------------------------------------------
 	bool Input::keyPressed(const OIS::KeyEvent &_arg)
 	{
-		if (mInitialised)
+		if (!mInitialised)
+			return false;
+
+		switch (_arg.key) {
+		case OIS::KC_SYSRQ:   // take a screenshot
+			GetEngine()->mGWindow->writeContentsToTimestampedFile("UserData//screenshot", ".jpg");
+			break;
+
+			//Console
+		case OIS::KC_GRAVE:
+			bool status = !GetEngine()->GetConsole()->GetVisible();
+			GetEngine()->GetConsole()->SetVisible(status);
+
+			(status) ? setInputMode(InputMODE_GUIMK) : setInputModeHowPreventInputMode();//Если активна консоль включаем захват мыши и клавы,Иначе игровой режим
+			break;
+		}
+		//Служебная функция,вот её я тебе настоятельно не рекомендую,ебался я долго с откладкой
+		switch (InputMode)
 		{
-			switch (_arg.key) {
-			case OIS::KC_SYSRQ:   // take a screenshot
-				GetEngine()->mGWindow->writeContentsToTimestampedFile("UserData//screenshot", ".jpg");
-				break;
-
-				//Console
-			case OIS::KC_GRAVE:
-				bool status = !GetEngine()->GetConsole()->GetVisible();
-				GetEngine()->GetConsole()->SetVisible(status);
-
-				(status) ? setInputMode(InputMODE_GUIMK) : setInputModeHowPreventInputMode();//Если активна консоль включаем захват мыши и клавы,Иначе игровой режим
-				break;
-			}
-			//Служебная функция,вот её я тебе настоятельно не рекомендую,ебался я долго с откладкой
-			switch (InputMode){
-			case InputMODE_GUIK:
-			case InputMODE_GUIMK:
-				MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::Enum(_arg.key), _arg.text);
-				break;
-			default:
-				GetEngine()->GetSceneMgr()->InjectKeyDown(_arg.key);
-			}
+		case InputMODE_GUIK:
+		case InputMODE_GUIMK:
+			MyGUI::InputManager::getInstance().injectKeyPress(MyGUI::KeyCode::Enum(_arg.key), _arg.text);
+			break;
+		default:
+			GetEngine()->GetSceneMgr()->InjectKeyDown(_arg.key);
 		}
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
 	bool Input::keyReleased(const OIS::KeyEvent &_arg)
 	{
-		if (mInitialised)
+		if (!mInitialised)
+			return false;
+
+		//Служебная функция,вот её я тебе настоятельно не рекомендую,ебался я долго с откладкой
+		switch (InputMode)
 		{
-			//Служебная функция,вот её я тебе настоятельно не рекомендую,ебался я долго с откладкой
-			switch (InputMode){
-			case InputMODE_GUIK:
-			case InputMODE_GUIMK:
-				MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(_arg.key));
-				break;
-			default:
-				GetEngine()->GetSceneMgr()->InjectKeyUp(_arg.key);
-			}
+		case InputMODE_GUIK:
+		case InputMODE_GUIMK:
+			MyGUI::InputManager::getInstance().injectKeyRelease(MyGUI::KeyCode::Enum(_arg.key));
+			break;
+		default:
+			GetEngine()->GetSceneMgr()->InjectKeyUp(_arg.key);
 		}
+
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
 	bool Input::mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
 	{
-		if (mInitialised)
+		if (!mInitialised)
+			return false;
+
+		switch (InputMode)
 		{
-			switch (InputMode){
-			case InputMODE_GUIMK:
-			case InputMODE_GUIM:
-				MyGUI::InputManager::getInstance().injectMousePress(evt.state.X.abs, evt.state.Y.abs, MyGUI::MouseButton::Enum(id));
-				break;
-			default:
-				GetEngine()->GetSceneMgr()->InjectMouseDown(id);
-			}
+		case InputMODE_GUIMK:
+		case InputMODE_GUIM:
+			MyGUI::InputManager::getInstance().injectMousePress(evt.state.X.abs, evt.state.Y.abs, MyGUI::MouseButton::Enum(id));
+			break;
+		default:
+			GetEngine()->GetSceneMgr()->InjectMouseDown(id);
 		}
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
 	bool Input::mouseMoved(const OIS::MouseEvent &_arg)
 	{
-		if (mInitialised)
+		if (!mInitialised)
+			return false;
+
+		switch (InputMode)
 		{
-			switch (InputMode){
-			case InputMODE_GUIMK:
-			case InputMODE_GUIM:
-				MyGUI::InputManager::getInstance().injectMouseMove(_arg.state.X.abs, _arg.state.Y.abs, _arg.state.Z.abs);
-				break;
-			default:
-				GetEngine()->GetSceneMgr()->InjectMouseMove(Ogre::Vector2(_arg.state.X.rel, _arg.state.Y.rel));
-			}
+		case InputMODE_GUIMK:
+		case InputMODE_GUIM:
+			MyGUI::InputManager::getInstance().injectMouseMove(_arg.state.X.abs, _arg.state.Y.abs, _arg.state.Z.abs);
+			break;
+		default:
+			GetEngine()->GetSceneMgr()->InjectMouseMove(Ogre::Vector2(_arg.state.X.rel, _arg.state.Y.rel));
 		}
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
 	bool Input::mouseReleased(const OIS::MouseEvent &_arg, OIS::MouseButtonID id)
 	{
-		if (mInitialised)
+		if (!mInitialised)
+			return false;
+
+		switch (InputMode)
 		{
-			switch (InputMode){
-			case InputMODE_GUIMK:
-			case InputMODE_GUIK:
-			case InputMODE_GUIM:
-				MyGUI::InputManager::getInstance().injectMouseRelease(_arg.state.X.abs, _arg.state.Y.abs, MyGUI::MouseButton::Enum(id));
-				break;
-			default:
-				GetEngine()->GetSceneMgr()->InjectMouseUp(id);
-			}
+		case InputMODE_GUIMK:
+		case InputMODE_GUIK:
+		case InputMODE_GUIM:
+			MyGUI::InputManager::getInstance().injectMouseRelease(_arg.state.X.abs, _arg.state.Y.abs, MyGUI::MouseButton::Enum(id));
+			break;
+		default:
+			GetEngine()->GetSceneMgr()->InjectMouseUp(id);
 		}
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::setInputMode(InputFor mode){
+	void Input::setInputMode(InputFor mode)
+	{
+		if (!mInitialised)
+			return;
+
 		preventInputMode = InputMode;
 		InputMode = mode;
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::setInputModeHowPreventInputMode() {
+	void Input::setInputModeHowPreventInputMode()
+	{
+		if (!mInitialised)
+			return;
+
 		InputFor temp = InputMode;
 		if (InputMode != preventInputMode){
 			InputMode = preventInputMode;
@@ -177,14 +198,19 @@ namespace vega
 		}
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::SetMouseLock(bool _status) {
+	void Input::SetMouseLock(bool _status)
+	{
+		if (!mInitialised)
+			return;
+
 		if (_status)
 			mMouse->capture();
 		mMouse->setBuffered(_status);
 		mMouseLocked = _status;
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::CreateBuffered() {
+	void Input::CreateBuffered()
+	{
 		if (!mInitialised)
 		{
 			Debug("*** Initializing OIS Buffered***");
@@ -206,7 +232,8 @@ namespace vega
 		}
 	}
 	//-------------------------------------------------------------------------------------
-	void Input::CreateUnBuffered() {
+	void Input::CreateUnBuffered()
+	{
 		if (!mInitialised)
 		{
 			Debug("*** Initializing OIS nBuffered***");

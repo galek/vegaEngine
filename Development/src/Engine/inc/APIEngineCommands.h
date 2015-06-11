@@ -12,7 +12,8 @@
 namespace vega
 {
 	namespace API{
-		ENGINE_API void RunScript(const char*_a);
+		/*return 0 if successfully*/
+		ENGINE_API int RunScript(const char*_a);
 		ENGINE_API void RunScriptFunctionByName(const char*_file, const char*_a);
 		ENGINE_API bool GetShowGUICursor();
 		ENGINE_API bool IsBufferredInput();

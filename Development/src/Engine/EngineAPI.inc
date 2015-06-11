@@ -19,3 +19,6 @@
 #include "inc/camera/iCameraBase.h"
 #include "inc/camera/CameraFPS.h"
 #include "inc/camera/CameraFree.h"
+
+//API
+#include "inc/APIEngineCommands.h"

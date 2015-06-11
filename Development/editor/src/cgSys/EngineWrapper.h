@@ -9,20 +9,29 @@ namespace vega
 	struct EngineWrapper :public EngineGlobals
 	{
 		EngineWrapper();
-		virtual ~EngineWrapper();
-		virtual void StartupOgre();
-		virtual void PreInitSystems();
-		virtual void StartupSystems();
+		virtual ~EngineWrapper(void);
+		virtual void StartupOgre(void);
+		virtual bool Configure(void);
+		virtual void PreInitSystems(void);
+		virtual void StartupSystems(void);
 		virtual void Go(int width, int height, Ogre::NameValuePairList*_ptr);
-		virtual void ChooseSceneManager();
-		virtual void CreateFrameListener();
+		virtual void ChooseSceneManager(void);
+		virtual void CreateFrameListener(void);
+		virtual bool Setup(void);
+		virtual void PrecacheResources(void);
 	private:
-		virtual void SetupResources();
-		virtual void InitD3D9();
+		virtual void SetupResources(void);
+		virtual void InitD3D9(void);
 	public:
-		xgScene_t* GetEditorScene();
-		void ShowEditor();
+		xgScene_t* GetEditorScene(void);
+		void ShowEditor(void);
 	private:
+		struct CreationParams
+		{
+			int width, height;
+			Ogre::NameValuePairList* ptr;
+		};
+		CreationParams params;
 		xgScene_t*edscene;
 	};
 

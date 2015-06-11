@@ -344,8 +344,8 @@ namespace vega
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::RunScript(const char*_a)	{
-		mScript->RunScript(_a);
+	int EngineGlobals::RunScript(const char*_a)	{
+		return mScript->RunScript(_a);
 	}
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::SetPause(bool _a)	{

@@ -23,7 +23,6 @@
 #include "prop_t.h"
 #include "propBag_t.h"
 #include "moveObjectPropBag_t.h"
-#include "updateBag_t.h"
 #include "toolBag_t.h"
 #include "cgSys_t.h"
 #include "xgScene_t.h"
@@ -48,6 +47,7 @@ namespace vega
 		EVT_MENU(wxID_ABOUT, frame_t::OnAbout)
 		EVT_MENU(wxID_EXIT, frame_t::OnQuit)
 		EVT_MENU(wxID_OPEN, frame_t::OnOpen)
+		EVT_MENU(ID_RUNSCRIPT, frame_t::OnRunScript)
 		EVT_MENU(wxID_SAVE, frame_t::OnSave)
 		EVT_MENU(wxID_SAVEAS, frame_t::OnSaveAs)
 
@@ -146,9 +146,11 @@ namespace vega
 			wxMessageBox(msg, wxT("error"));
 		}
 	}
+
 	/**
 	*/
-	void frame_t::OnOpen(wxCommandEvent& event){
+	void frame_t::OnOpen(wxCommandEvent& event)
+	{
 		if (documentName.length() != 0){
 			if (wxMessageBox("do you want save old scene", "", wxYES_NO, this) == wxYES)
 				OnSave(event);
@@ -162,6 +164,31 @@ namespace vega
 			resetTool();
 			GetEditor()->GetEditorScene()->load(documentName, true);
 			status.Printf("open scene file %s success", documentName);
+			SetStatusText(status);
+		}
+	}
+
+	/**
+	*/
+	void frame_t::OnRunScript(wxCommandEvent& event)
+	{
+		if (documentName.length() != 0){
+			if (wxMessageBox("do you want save old scene", "", wxYES_NO, this) == wxYES)
+				OnSave(event);
+		}
+		wxFileDialog fd(this, "select script file to open", wxFileName::GetCwd(), wxEmptyString, "*.lua", wxFD_OPEN);
+		if (fd.ShowModal() == wxID_OK)
+		{
+			wxFileName m_scriptName(fd.GetPath());
+			documentName = m_scriptName.GetFullName();
+			wxString status;
+			status.Printf("running script file %s", documentName);
+			SetStatusText(status);
+			int resI = API::RunScript(documentName);
+			wxString resS = "NOT LOADED";
+
+			(resI) ? resS = "with error,see log" : resS = "success";
+			status.Printf("running script file %s %s", documentName, resS);
 			SetStatusText(status);
 		}
 	}
@@ -237,20 +264,14 @@ namespace vega
 			return frame->processViewEvent(event);
 		}
 	};
+
 	/**
 	*/
 	frame_t::frame_t(const wxString& title) :
 		wxFrame(NULL, ID_FRAME, title, wxDefaultPosition, wxSize(1024, 768)),
 		docInfoList(NULL), timer(this, ID_UPDATE_TIMER),
-		currentViewMsgRecvTool(NULL){
-		char cwd[MAX_PATH];
-		memset(cwd, 0, sizeof cwd);
-		getcwd(cwd, MAX_PATH);
-		//Nick		GetCurrentDirectory(MAX_PATH, cwd);
-		//Nick		resRootPath = cwd;
-		//Nick		GetEditor()->GetEditorScene()->setResRootPath(cwd);
-		//Nick		string resRootPath;
-		//Nick		GetEditor()->GetEditorScene()->setResRootPath("./");
+		currentViewMsgRecvTool(NULL)
+	{
 		propBag = new propBag_t;
 		moveObjectPropBag = new moveObjectPropBag_t;
 		fm = new wxAuiManager;
@@ -273,19 +294,17 @@ namespace vega
 			wxT("Make a new document"));
 		fileMenu->Append(wxID_OPEN, wxT("O&pen\tAlt-O"),
 			wxT("open a document"));
+		fileMenu->Append(ID_RUNSCRIPT, wxT("R&un script"),
+			wxT("run script"));
 		fileMenu->Append(wxID_SAVE, wxT("S&ave\tAlt-S"),
 			wxT("save document"));
 		fileMenu->Append(wxID_SAVEAS, wxT("Save A&s\tAlt-A"),
 			wxT("save to another document"));
 		fileMenu->Append(wxID_EXIT, wxT("E&xit\tAlt-X"),
 			wxT("Quit this program"));
-		//	testMenu->Append(wxID_ANY, wxT("T&xit\tAlt-X"),
-		//	wxT("Quit this program"));
 		// Now append the freshly created menu to the menu bar...
 		menuBar = new wxMenuBar();
 		menuBar->Append(fileMenu, wxT("&File"));
-		//fileMenu->Append(testMenu);
-		//menuBar->Append(testMenu, wxT("&TestMenu"));
 		menuBar->Append(helpMenu, wxT("&Help"));
 		// ... and attach this menu bar to the frame
 		SetMenuBar(menuBar);
@@ -299,7 +318,7 @@ namespace vega
 		fm->AddPane(propWindow, wxAuiPaneInfo().Name(wxT("property")).CloseButton(false).Caption(wxT("property")).Left());
 		toolWindow = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(200, 128), wxBK_TOP);
 		fm->AddPane(toolWindow, wxAuiPaneInfo().Name(wxT("tools")).Caption(wxT("tool")).CloseButton(false).Right().BestSize(300, 100).MinSize(300, 100));
-		toolWindow->AddPage(NULL, "welcome");//to the tool panel
+
 		viewWindow = new wxOgre_t(this);
 		fm->AddPane(viewWindow, wxAuiPaneInfo().Name(wxT("view")).Caption(wxT("workspace")).Center().CloseButton(false).CaptionVisible(false));
 		logWindow = new wxTextCtrl(this, wxID_ANY, L"", wxDefaultPosition, wxSize(128, 64), wxTE_RICH | wxTE_MULTILINE | wxTE_AUTO_URL);
@@ -386,6 +405,7 @@ namespace vega
 		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_PLAY)
 			SetStatusText(wxT("Playing"));
 		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_LOADING)
-			SetStatusText(wxT("LOADING"));
+			SetStatusText(wxT("Loading"));
+		SetStatusText(wxT("Ready"));
 	}
 }

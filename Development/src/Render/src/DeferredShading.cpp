@@ -68,21 +68,26 @@ namespace vega
 
 	DeferredShadingSystem::~DeferredShadingSystem()
 	{
-		CompositorChain *chain = CompositorManager::getSingleton().getCompositorChain(mViewport);
+		auto m_ComPtr = CompositorManager::getSingletonPtr();
+		CompositorChain *chain = m_ComPtr->getCompositorChain(mViewport);
 		for (int i = 0; i < DSM_COUNT; ++i)
 			chain->_removeInstance(mInstance[i]);
-		CompositorManager::getSingleton().removeCompositorChain(mViewport);
+		//Bug:Crash-tempary
+		/*
+		m_ComPtr->removeCompositorChain(mViewport);
 
-		Ogre::CompositorManager& compMgr = Ogre::CompositorManager::getSingleton();
-		CompositorLogicMap::const_iterator itor = mCompositorLogics.begin();
-		CompositorLogicMap::const_iterator end = mCompositorLogics.end();
-		while (itor != end)
 		{
-			compMgr.unregisterCompositorLogic(itor->first);
-			delete itor->second;
-			++itor;
+			CompositorLogicMap::const_iterator itor = mCompositorLogics.begin();
+			CompositorLogicMap::const_iterator end = mCompositorLogics.end();
+			while (itor != end)
+			{
+				m_ComPtr->unregisterCompositorLogic(itor->first);
+				delete itor->second;
+				++itor;
+			}
+			mCompositorLogics.clear();
 		}
-		mCompositorLogics.clear();
+		*/
 	}
 
 	void DeferredShadingSystem::setMode(DSMode mode)

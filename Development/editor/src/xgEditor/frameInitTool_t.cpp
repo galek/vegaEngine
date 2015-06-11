@@ -28,7 +28,6 @@
 //_________________________________________
 #include "cameraTool_t.h"
 #include "gridTool_t.h"
-//#include "testTool_t.h"
 #include "prsTool_t.h"
 #include "sectorTool_t.h"
 #include "resInsertTool_t.h"
@@ -38,7 +37,6 @@
 namespace vega
 {
 	void frame_t::initTool(){
-		//toolBag->push_back(new testTool_t);
 		//cameraTool_t *ct=new cameraTool_t;
 		toolBag->push_back(new cameraTool_t);
 		toolBag->push_back(new gridTool_t);
@@ -56,13 +54,14 @@ namespace vega
 		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr){
 			(*itr)->init();
 		}
-		moveObjectPropBag->addProp(new lightProp_t);
+		auto tempPtr = new lightProp_t();
+
+		moveObjectPropBag->addProp(tempPtr);
+		updateBag->AddUpdatable(tempPtr);
+
 		moveObjectPropBag->addProp(new entityProp_t);
-		moveObjectPropBag->addProp(new blankProp_t);
 
 		GetEditor()->GetEditorScene()->pushSelectListener(moveObjectPropBag);
-		wxWindow *wid = new wxWindow(frame->getPropBook(), wxID_ANY);
-		frame->getPropBook()->AddPage(wid, wxT("blankProp"), true);
 	}
 	void frame_t::resetTool(){
 		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr){
