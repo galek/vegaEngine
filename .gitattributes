@@ -63,3 +63,5 @@
 #*.RTF   diff=astextplain
 *.dll filter=lfs diff=lfs merge=lfs -crlf
 
+*.npk filter=lfs -crlf
+

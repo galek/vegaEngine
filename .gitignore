@@ -20,7 +20,6 @@
 *.unsuccessfulbuild
 *.asml
 Development/Intermediate/
-*.npk
 *.res
 /Intermediate/externals.x64/Release
 /Development/Tools/Launcher/obj/Release
