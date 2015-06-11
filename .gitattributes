@@ -62,8 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 *.dll filter=lfs diff=lfs merge=lfs -crlf
-*.exe filter=lfs diff=lfs merge=lfs -crlf
-*.npk filter=lfs diff=lfs merge=lfs -crlf
-*.pdb filter=lfs diff=lfs merge=lfs -crlf
-*.lib filter=lfs diff=lfs merge=lfs -crlf
-Game filter=lfs diff=lfs merge=lfs -crlf
+
