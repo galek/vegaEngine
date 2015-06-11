@@ -66,3 +66,4 @@
 *.npk filter=lfs diff=lfs merge=lfs -crlf
 *.pdb filter=lfs diff=lfs merge=lfs -crlf
 *.lib filter=lfs diff=lfs merge=lfs -crlf
+Game filter=lfs diff=lfs merge=lfs -crlf
