@@ -1,10 +1,11 @@
 #pragma once
 #include "tool_t.h"
-#include "update_t.h"
+#include "Updatable.h"
 
 namespace vega
 {
-	class moveObjectProp_t :public tool_t, public update_t{
+	class moveObjectProp_t :public tool_t, public Updatable
+	{
 	protected:
 		std::string typeName;
 		int index;

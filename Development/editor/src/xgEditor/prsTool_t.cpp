@@ -172,15 +172,20 @@ namespace vega
 		}
 	}
 
-	bool prsTool_t::onViewKeyEvent(wxKeyEvent & event){
-		if (event.GetKeyCode() == WXK_DELETE){
-			if (sceneNode){
-				while (sceneNode->numAttachedObjects()){
+	bool prsTool_t::onViewKeyEvent(wxKeyEvent & event)
+	{
+		if (event.GetKeyCode() == WXK_DELETE)
+		{
+			if (sceneNode)
+			{
+				auto scene = GetEditor()->GetEditorScene();
+				while (sceneNode->numAttachedObjects())
+				{
 					Ogre::MovableObject *m = sceneNode->getAttachedObject(0);
-					GetEditor()->GetEditorScene()->destroyMovableObject(m->getName(), m->_getCreator()->getType());
+					scene->destroyMovableObject(m->getName(), m->_getCreator()->getType());
 				}
-				GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
-				GetEditor()->GetEditorScene()->destroySceneNode(sceneNode->getName());
+				scene->setSelSceneNode(NULL);
+				scene->destroySceneNode(sceneNode->getName());
 				sceneNode = NULL;
 			}
 			return true;
@@ -196,9 +201,11 @@ namespace vega
 			long x, y;
 			event.GetPosition(&x, &y);
 			Ogre::Ray ray;
-			if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())){
+			auto scene = GetEditor()->GetEditorScene();
+
+			if (mathUtil_t::getViewRay(x, y, ray, scene->getCurrentViewport())){
 				oldRay = ray;
-				Ogre::RaySceneQuery *rsq = GetEditor()->GetEditorScene()->createRayQuery(ray);
+				Ogre::RaySceneQuery *rsq = scene->createRayQuery(ray);
 				rsq->setSortByDistance(true, 10);
 				rsq->setQueryTypeMask(rsq->getQueryTypeMask() | Ogre::SceneManager::LIGHT_TYPE_MASK | Ogre::SceneManager::FX_TYPE_MASK);
 				Ogre::RaySceneQueryResult &rsqr = rsq->execute();
@@ -236,30 +243,30 @@ namespace vega
 								std::pair< bool, Ogre::Real > interPoint = Ogre::Math::intersects(ray, plane);
 								oldPoint = ray.getPoint(interPoint.second);
 								oldPostion = oldPoint;
-								GetEditor()->GetEditorScene()->setSelSceneNode(sceneNode);
-								GetEditor()->GetEditorScene()->setSelMovable(moveAbleObject);
+								scene->setSelSceneNode(sceneNode);
+								scene->setSelMovable(moveAbleObject);
 								break;
 							}
 							else{
-								GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
-								GetEditor()->GetEditorScene()->setSelMovable(NULL);
+								scene->setSelSceneNode(NULL);
+								scene->setSelMovable(NULL);
 								sceneNode = NULL;
 							}
 
 						}
 					}
 					if (itr == rsqr.end()){
-						GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
-						GetEditor()->GetEditorScene()->setSelMovable(NULL);
+						scene->setSelSceneNode(NULL);
+						scene->setSelMovable(NULL);
 					}
 
 				}/*
 				else{
-				GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
+				scene->setSelSceneNode(NULL);
 				sceneNode=NULL;
 				}*/
 
-				GetEditor()->GetEditorScene()->destroyQuery(rsq);
+				scene->destroyQuery(rsq);
 			}
 		}
 		else

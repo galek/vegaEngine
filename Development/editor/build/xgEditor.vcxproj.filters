@@ -16,6 +16,9 @@
     <Filter Include="toolbar">
       <UniqueIdentifier>{aebf5d36-9e13-47e2-aa7b-5ff9302d992f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneStats">
+      <UniqueIdentifier>{24eb44d1-acf6-4c49-a6fa-6cd539751187}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\xgEditor\app_t.cpp">
@@ -105,15 +108,15 @@
     <ClCompile Include="..\src\xgEditor\propBag_t.cpp">
       <Filter>prop</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\xgEditor\lightTool_t.cpp" />
-    <ClCompile Include="..\src\xgEditor\manager.cpp" />
-    <ClCompile Include="..\src\xgEditor\testTool_t.cpp" />
-    <ClCompile Include="..\src\xgEditor\update_t.cpp" />
     <ClCompile Include="..\src\cgSys\EngineWrapper.cpp">
       <Filter>wrapper</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\MainToolBar.cpp">
       <Filter>toolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\Updatable.cpp" />
+    <ClCompile Include="..\src\xgEditor\SceneStats.cpp">
+      <Filter>SceneStats</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,12 +213,8 @@
     <ClInclude Include="..\src\xgEditor\propBag_t.h">
       <Filter>prop</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\xgEditor\lightTool_t.h" />
-    <ClInclude Include="..\src\xgEditor\manager.h" />
     <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
     <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
-    <ClInclude Include="..\src\xgEditor\testTool_t.h" />
-    <ClInclude Include="..\src\xgEditor\update_t.h" />
     <ClInclude Include="..\src\cgSys\EngineWrapper.h">
       <Filter>wrapper</Filter>
     </ClInclude>
@@ -225,7 +224,7 @@
     <ClInclude Include="..\src\xgEditor\toolsids.h">
       <Filter>toolbar</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\xgEditor\reg.h" />
+    <ClInclude Include="..\src\xgEditor\Updatable.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\src\xgEditor\iconMain.ico" />

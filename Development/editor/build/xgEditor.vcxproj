@@ -167,7 +167,7 @@
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);..\depend\wxWidgets\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -184,28 +184,17 @@
     <ClCompile Include="..\src\xgEditor\app_t.cpp" />
     <ClCompile Include="..\src\xgEditor\docInfoList_t.cpp" />
     <ClCompile Include="..\src\xgEditor\frame_t.cpp" />
-    <ClCompile Include="..\src\xgEditor\lightTool_t.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\src\xgEditor\log_t.cpp" />
     <ClCompile Include="..\src\xgEditor\MainToolBar.cpp" />
-    <ClCompile Include="..\src\xgEditor\manager.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\SceneStats.cpp" />
     <ClCompile Include="..\src\xgEditor\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\src\xgEditor\testTool_t.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\src\xgEditor\updateBag_t.cpp" />
-    <ClCompile Include="..\src\xgEditor\update_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\Updatable.cpp" />
     <ClCompile Include="..\src\xgEditor\wxChoicebookEx.cpp" />
     <ClCompile Include="..\src\xgEditor\wxListbookEx.cpp" />
     <ClCompile Include="..\src\xgEditor\wxNotebookEx.cpp" />
@@ -239,19 +228,15 @@
     <ClInclude Include="..\src\xgEditor\docInfo_t.h" />
     <ClInclude Include="..\src\xgEditor\docInfoList_t.h" />
     <ClInclude Include="..\src\xgEditor\frame_t.h" />
-    <ClInclude Include="..\src\xgEditor\lightTool_t.h" />
     <ClInclude Include="..\src\xgEditor\log_t.h" />
     <ClInclude Include="..\src\xgEditor\MainToolBar.h" />
-    <ClInclude Include="..\src\xgEditor\manager.h" />
     <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
-    <ClInclude Include="..\src\xgEditor\reg.h" />
     <ClInclude Include="..\src\xgEditor\resource.h" />
     <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
     <ClInclude Include="..\src\xgEditor\stdafx.h" />
-    <ClInclude Include="..\src\xgEditor\testTool_t.h" />
     <ClInclude Include="..\src\xgEditor\toolsids.h" />
     <ClInclude Include="..\src\xgEditor\updateBag_t.h" />
-    <ClInclude Include="..\src\xgEditor\update_t.h" />
+    <ClInclude Include="..\src\xgEditor\Updatable.h" />
     <ClInclude Include="..\src\xgEditor\wxChoicebookEx.h" />
     <ClInclude Include="..\src\xgEditor\wxListbookEx.h" />
     <ClInclude Include="..\src\xgEditor\wxNotebookEx.h" />

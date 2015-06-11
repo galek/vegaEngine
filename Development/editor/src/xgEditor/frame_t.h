@@ -47,6 +47,7 @@ namespace vega
 		void OnAbout(wxCommandEvent& event);
 		void OnNew(wxCommandEvent& event);
 		void OnOpen(wxCommandEvent& event);
+		void OnRunScript(wxCommandEvent& event);
 		void OnSave(wxCommandEvent& event);
 		void OnSaveAs(wxCommandEvent& event);
 		void OnActivate(wxActivateEvent& event);

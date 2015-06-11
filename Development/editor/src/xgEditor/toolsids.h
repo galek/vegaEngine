@@ -10,4 +10,8 @@ namespace vega
 		IDM_TOOLBAR_TOOL_ROTATE_Y,
 		IDM_TOOLBAR_TOOL_SCALE
 	};
+	enum
+	{
+		ID_RUNSCRIPT = 1
+	};
 }

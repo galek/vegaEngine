@@ -31,3 +31,18 @@ C:\Projects\vegaengine-ogre\Development\src\Render\src\ShadowCameraSetupStableCS
 
 Тут фоновая загрузка текстур,возможно я уже внедрил это
 http://www.ogre3d.org/forums/viewtopic.php?f=2&t=82647
+
+В редакторе невозможно создать два POINT источника света-ругается,что уже такой объект(с таким именем)
+уже существует
+
+
+Внедрить UNDO/REDO, посмотри редактор и редактор террайна,из scape
+Тут CharacterController
+http://codefreax.org/tutorials/view/id/3
+
+http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Reloading+materials+and+parsing+material+scripts&structure=Cookbook
+
+SDL2 implements
+http://www.ogre3d.org/forums/viewtopic.php?f=4&t=79237
+
+http://www.ogre3d.org/forums/viewtopic.php?f=2&t=60388

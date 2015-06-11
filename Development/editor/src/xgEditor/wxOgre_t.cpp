@@ -27,7 +27,6 @@ namespace vega
 		// Required for WX
 		BEGIN_EVENT_TABLE(wxOgre_t, wxControl)
 		EVT_SIZE(wxOgre_t::OnSize)
-		// EVT_PAINT(wxOgre_t::OnPaint) // Produces flickers and runs too fast!
 		EVT_ERASE_BACKGROUND(wxOgre_t::OnEraseBackground)
 		EVT_TIMER(ID_RENDERTIMER, wxOgre_t::OnRenderTimer)
 		END_EVENT_TABLE();
@@ -36,6 +35,7 @@ namespace vega
 	void wxOgre_t::renderStaticThing(){
 		TODO("Delme")
 	}
+
 	/**
 	*/
 	wxOgre_t::wxOgre_t(wxFrame* parent) :
@@ -49,6 +49,7 @@ namespace vega
 		//add this to Render Queue Listener
 		addRenderQueueListener();
 	}
+
 	/**
 	*/
 	void wxOgre_t::createOgreRenderWindow()
@@ -77,8 +78,8 @@ namespace vega
 		int height;
 		GetSize(&width, &height);
 		GetEditor()->Go(width, height, &params);
-		new ActorDynamicSky();
 	}
+
 	/**
 	*/
 	void wxOgre_t::toggleTimerRendering()
@@ -88,6 +89,7 @@ namespace vega
 			mTimer.Stop();
 		mTimer.Start(10);
 	}
+
 	/**
 	*/
 	wxOgre_t::~wxOgre_t()
@@ -104,6 +106,7 @@ namespace vega
 		//mRenderWindow = 0;
 
 	}
+
 	/**
 	*/
 	void wxOgre_t::OnSize(wxSizeEvent& event)
@@ -122,24 +125,21 @@ namespace vega
 
 		update();
 	}
-	/**
-	*/
-	void wxOgre_t::OnPaint(wxPaintEvent& event)
-	{
-		TODO("Delme");
-	}
+
 	/**
 	*/
 	void wxOgre_t::OnEraseBackground(wxEraseEvent&)
 	{
 		update();
 	}
+
 	/**
 	*/
 	void wxOgre_t::OnRenderTimer(wxTimerEvent& event)
 	{
 		update();
 	}
+
 	/**
 	*/
 	void wxOgre_t::update()
@@ -162,38 +162,45 @@ namespace vega
 		}
 		root->renderOneFrame();
 	}
+
 	/**
 	*/
 	Ogre::Root *  wxOgre_t::getRoot()
 	{
 		return GetEditor()->mGRoot;
 	}
+
 	/**
 	*/
 	Ogre::Viewport* wxOgre_t::getViewPort()
 	{
 		return GetEditor()->mGViewport;
 	}
+
 	/**
 	*/
 	Ogre::SceneManager* wxOgre_t::getSceneManager()
 	{
 		return GetEditor()->mGSceneMgr;
 	}
+
 	/**
 	*/
 	Ogre::RenderWindow* wxOgre_t::getRenderWindow()
 	{
 		return GetEditor()->mGWindow;
 	}
+
 	/**
 	*/
 	void wxOgre_t::addRenderQueueListener(void){
 		TODO("Delme");
 	}
+
 	/**
 	*/
 	Ogre::Camera* wxOgre_t::getCamera(){ return GetEditor()->mGCamera; }
+
 	/**
 	*/
 	void wxOgre_t::setCamera(Ogre::Camera* camera){ GetEditor()->mGCamera = camera; }

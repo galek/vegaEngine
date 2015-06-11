@@ -35,8 +35,6 @@ namespace vega
 
 		/** Callback function to a window resize event */
 		void OnSize(wxSizeEvent& event);
-		/** Callback function to a window paint event */
-		void OnPaint(wxPaintEvent& event);
 		/** Callback function to an EraseBackground event */
 		void OnEraseBackground(wxEraseEvent&);
 		/** Callback function to a timer "tick" event */

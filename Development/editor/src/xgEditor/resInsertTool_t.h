@@ -7,32 +7,8 @@ class wxTreeCtrl;
 
 namespace vega
 {
-	class resInsertTool_t :public wxNotebook, public tool_t, public wxDirTraverser{
-		int currentResType;
-		DECLARE_EVENT_TABLE()
-		wxGenericDirCtrl *dir;
-		wxListCtrl *particleList;
-		wxTreeCtrl *entityList;
-		wxString meshFile;
-		wxString moveObjectName;
-		std::string gameEntityName;
-		bool active;
-		Ogre::MovableObject *entity;
-		Ogre::SceneNode *sceneNode;
-		int id;
-		int dirTraverseMode;
-		enum dirTraverseModeEnum{
-			listEntityXmlEnum,
-			listEntityMeshEnum
-		};
-		bool entityXmlListLoaded;
-		bool entityMeshPathLoaded;
-		bool getIntersectGroundPoint(int x, int y, Ogre::Vector3 &pos);
-		void update(int resType);
-		void updateParticleList();
-		void loadEntityXmlList();
-		bool loadEntityXmlFile(const wxTreeItemId &rootId, const wxString &file);
-		void loadEntityMeshPath();
+	class resInsertTool_t :public wxNotebook, public tool_t, public wxDirTraverser
+	{
 	public:
 		virtual wxDirTraverseResult  OnFile(const wxString &filename);
 		virtual wxDirTraverseResult  OnDir(const wxString &dirname);
@@ -50,5 +26,32 @@ namespace vega
 		virtual bool onViewMouseEvent(wxMouseEvent & event);
 		void onLightCreateCommanEvent(wxCommandEvent & event);
 		bool onViewEvent(wxEvent & event);
+	private:
+		int currentResType;
+		DECLARE_EVENT_TABLE()
+		wxGenericDirCtrl *dir;
+		wxListCtrl *particleList;
+		wxTreeCtrl *entityList;
+		wxString meshFile;
+		wxString moveObjectName;
+		std::string gameEntityName;
+		bool active;
+		Ogre::MovableObject *entity;
+		Ogre::SceneNode *sceneNode;
+		int id;
+		int dirTraverseMode;
+		enum dirTraverseModeEnum
+		{
+			listEntityXmlEnum,
+			listEntityMeshEnum
+		};
+		bool entityXmlListLoaded;
+		bool entityMeshPathLoaded;
+		bool getIntersectGroundPoint(int x, int y, Ogre::Vector3 &pos);
+		void update(int resType);
+		void updateParticleList();
+		void loadEntityXmlList();
+		bool loadEntityXmlFile(const wxTreeItemId &rootId, const wxString &file);
+		void loadEntityMeshPath();
 	};
 }

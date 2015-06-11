@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "update_t.h"
+#include "Updatable.h"
 #include "updateBag_t.h"
 
 
@@ -20,4 +20,10 @@ namespace vega
 			itr=erase(itr);*/
 
 	}
+
+	void updateBag_t::AddUpdatable(Updatable*_upd)
+	{
+		this->push_back(_upd);
+	}
+
 }
