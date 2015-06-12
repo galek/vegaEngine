@@ -7,9 +7,6 @@
     <Filter Include="tool">
       <UniqueIdentifier>{225df6a9-880f-40f0-8c71-e6c0e568e483}</UniqueIdentifier>
     </Filter>
-    <Filter Include="prop">
-      <UniqueIdentifier>{9c64c2cf-bf04-4919-9226-14db633f4ebe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="wrapper">
       <UniqueIdentifier>{e3703678-9b4f-4726-99de-a4af93143e01}</UniqueIdentifier>
     </Filter>
@@ -18,6 +15,9 @@
     </Filter>
     <Filter Include="SceneStats">
       <UniqueIdentifier>{24eb44d1-acf6-4c49-a6fa-6cd539751187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PropertyEditors">
+      <UniqueIdentifier>{9c64c2cf-bf04-4919-9226-14db633f4ebe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,28 +85,25 @@
       <Filter>tool</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\blankProp_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\entityProp_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\eventHandler_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\frameInitTool_t.cpp">
-      <Filter>prop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\xgEditor\lightProp_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\moveObjectPropBag_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\prop_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\xgEditor\propBag_t.cpp">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cgSys\EngineWrapper.cpp">
       <Filter>wrapper</Filter>
@@ -117,6 +114,9 @@
     <ClCompile Include="..\src\xgEditor\Updatable.cpp" />
     <ClCompile Include="..\src\xgEditor\SceneStats.cpp">
       <Filter>SceneStats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xgEditor\LightPropertyEditor.cpp">
+      <Filter>PropertyEditors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,28 +190,25 @@
       <Filter>tool</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\blankProp_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\entityProp_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\eventHandler_t.h">
-      <Filter>prop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\xgEditor\lightProp_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\moveObjectProp_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\moveObjectPropBag_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\prop_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\propBag_t.h">
-      <Filter>prop</Filter>
+      <Filter>PropertyEditors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
     <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
@@ -225,6 +222,9 @@
       <Filter>toolbar</Filter>
     </ClInclude>
     <ClInclude Include="..\src\xgEditor\Updatable.h" />
+    <ClInclude Include="..\src\xgEditor\LightPropertyEditor.h">
+      <Filter>PropertyEditors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\src\xgEditor\iconMain.ico" />

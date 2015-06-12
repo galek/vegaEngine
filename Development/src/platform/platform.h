@@ -70,6 +70,19 @@
 // Windows Settings
 #if ENGINE_PLATFORM == ENGINE_PLATFORM_WINDOWS
 #include "PlatformWinDefines.h"
+#include <stdio.h>
+#include <float.h>
+#include <time.h>
+#include <tchar.h>
+#include <io.h>
+#include <direct.h>
+#include <errno.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <windows.h>
+
+//Engine Utils
+#include "UnUtilsForward.h"
 #endif
 //----------------------------------------------------------------------------
 
@@ -89,5 +102,7 @@
 #if ENGINE_PLATFORM == ENGINE_PLATFORM_ANDROID
 #include "PlatformAndroidDefines.h"
 #endif
+
+#include "UnTemplate.h"
 
 #endif

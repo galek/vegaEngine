@@ -32,12 +32,14 @@ namespace vega
 		wxGenericDirCtrl *dir;
 		wxListCtrl *particleList;
 		wxTreeCtrl *entityList;
-		wxString meshFile;
+
+		Ogre::MovableObject *entity;
+		Ogre::SceneNode *sceneNode;
+	private:
+		wxString m_ResTypeStr;
 		wxString moveObjectName;
 		std::string gameEntityName;
 		bool active;
-		Ogre::MovableObject *entity;
-		Ogre::SceneNode *sceneNode;
 		int id;
 		int dirTraverseMode;
 		enum dirTraverseModeEnum
@@ -47,6 +49,7 @@ namespace vega
 		};
 		bool entityXmlListLoaded;
 		bool entityMeshPathLoaded;
+	private:
 		bool getIntersectGroundPoint(int x, int y, Ogre::Vector3 &pos);
 		void update(int resType);
 		void updateParticleList();

@@ -327,7 +327,7 @@ namespace vega
 		log->setLogWindow(logWindow);
 		fm->AddPane(logWindow, wxAuiPaneInfo().Name(wxT("log")).Caption(wxT("log")).Bottom());
 
-		initTool();
+		InitTools();
 
 		viewMsgHandle_t *viewMsgHandle = new viewMsgHandle_t(this);
 		viewWindow->PushEventHandler(viewMsgHandle);

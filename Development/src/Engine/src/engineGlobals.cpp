@@ -60,7 +60,7 @@ namespace vega
 		editorL = gl.editorL;
 	}
 	//-------------------------------------------------------------------------------------
-	EngineGlobals::~EngineGlobals()	{
+	EngineGlobals::~EngineGlobals() {
 		Release();
 	}
 	//-------------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ namespace vega
 		else
 			Warning("[StartupSystems]console not Initialize");
 
-		if (mScript){
+		if (mScript) {
 			mScript->Initialize();
 			_RenderAddScriptFunctionaluty(mScript);
 			_EngineAddScriptFunctionaluty(mScript);
@@ -133,7 +133,7 @@ namespace vega
 		mEngineState = EngineState::ES_PLAY;
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::SetGame(iGame*_game){
+	void EngineGlobals::SetGame(iGame*_game) {
 		game = _game;
 	}
 	//-------------------------------------------------------------------------------------
@@ -197,24 +197,24 @@ namespace vega
 		mOgrePluginLoader->load();
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::EngineShoutdown()	{
+	void EngineGlobals::EngineShoutdown() {
 		Debug("EngineGlobals::EngineShoutdown");
 		mShutDown = (!(isLaunched()));
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::Release()	
+	void EngineGlobals::Release()
 	{
 		SAFE_DELETE(game);
 		SAFE_DELETE(sceneManager);
 		SAFE_DELETE(gui);
 		SAFE_DELETE(audio);
-		SAFE_DELETE(physics);
+		//Test	SAFE_DELETE(physics);
 		SAFE_DELETE(render);
-		SAFE_DELETE(input);
-		SAFE_DELETE(mRaycast);
-		SAFE_DELETE(window);
-		SAFE_DELETE(plugins);
-		SAFE_DELETE(mOgrePluginLoader);
+		//TEST SAFE_DELETE(input);
+		//TEST SAFE_DELETE(mRaycast);
+		//TEST SAFE_DELETE(window);
+		//TEST SAFE_DELETE(plugins);
+		//TEST SAFE_DELETE(mOgrePluginLoader);
 		//TODO
 		//delete ai
 	}
@@ -288,7 +288,7 @@ namespace vega
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::ChooseSceneManager(void)	{
+	void EngineGlobals::ChooseSceneManager(void) {
 		mGSceneMgr = mGRoot->createSceneManager("OctreeSceneManager");
 	}
 	//-------------------------------------------------------------------------------------
@@ -326,7 +326,7 @@ namespace vega
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::StartupSystems()	{
+	void EngineGlobals::StartupSystems() {
 		Initialize();
 		/*PrecacheResources();*/
 	}
@@ -344,11 +344,11 @@ namespace vega
 		return true;
 	}
 	//-------------------------------------------------------------------------------------
-	int EngineGlobals::RunScript(const char*_a)	{
+	int EngineGlobals::RunScript(const char*_a) {
 		return mScript->RunScript(_a);
 	}
 	//-------------------------------------------------------------------------------------
-	void EngineGlobals::SetPause(bool _a)	{
+	void EngineGlobals::SetPause(bool _a) {
 		(_a) ? mEngineState = EngineState::ES_PAUSE : mEngineState = EngineState::ES_PLAY;
 	}
 	//-------------------------------------------------------------------------------------

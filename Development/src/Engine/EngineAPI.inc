@@ -1,5 +1,8 @@
 #pragma once
 
+//SceneManager
+#include "inc/SceneManager.h"
+
 //Entity
 #include "inc/world/Actor.h"
 

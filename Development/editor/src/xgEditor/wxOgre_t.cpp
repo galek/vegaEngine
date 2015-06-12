@@ -32,7 +32,7 @@ namespace vega
 		END_EVENT_TABLE();
 	/**
 	*/
-	void wxOgre_t::renderStaticThing(){
+	void wxOgre_t::renderStaticThing() {
 		TODO("Delme")
 	}
 
@@ -154,7 +154,8 @@ namespace vega
 		int width;
 		int height;
 		GetSize(&width, &height);
-		if (this->width != width || this->height != height){
+		if (this->width != width || this->height != height) 
+		{
 			this->width = width;
 			this->height = height;
 			wxSizeEvent wse;
@@ -193,15 +194,15 @@ namespace vega
 
 	/**
 	*/
-	void wxOgre_t::addRenderQueueListener(void){
+	void wxOgre_t::addRenderQueueListener(void) {
 		TODO("Delme");
 	}
 
 	/**
 	*/
-	Ogre::Camera* wxOgre_t::getCamera(){ return GetEditor()->mGCamera; }
+	Ogre::Camera* wxOgre_t::getCamera() { return GetEditor()->mGCamera; }
 
 	/**
 	*/
-	void wxOgre_t::setCamera(Ogre::Camera* camera){ GetEditor()->mGCamera = camera; }
+	void wxOgre_t::setCamera(Ogre::Camera* camera) { GetEditor()->mGCamera = camera; }
 }

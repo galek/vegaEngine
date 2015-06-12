@@ -40,63 +40,75 @@ namespace vega
 		EVT_BUTTON(idSpotlightLight, onLightCreateCommanEvent)
 		EVT_TREE_SEL_CHANGED(wxID_TREECTRL, onEvent)
 		EVT_TREE_SEL_CHANGED(idEntityList, onEntityListEvent)
-		END_EVENT_TABLE()
-		void resInsertTool_t::onLightCreateCommanEvent(wxCommandEvent & event){
+		END_EVENT_TABLE();
+
+	void resInsertTool_t::onLightCreateCommanEvent(wxCommandEvent & event)
+	{
 		if (event.GetId() == idPointLight)
-			meshFile = "pointLight";
+			m_ResTypeStr = "pointLight";
 		else if (event.GetId() == idDirectionalLight)
-			meshFile = "directionalLight";
+			m_ResTypeStr = "directionalLight";
 		else if (event.GetId() == idSpotlightLight)
-			meshFile = "spotlightLight";
+			m_ResTypeStr = "spotlightLight";
 		update(light_type);
 	}
-	void resInsertTool_t::onParticleListEvent(wxListEvent  & event){
+
+	/**
+	*/
+	void resInsertTool_t::onParticleListEvent(wxListEvent  & event)
+	{
 		wxString n = event.GetLabel();
-		if (n != meshFile){
-			meshFile = n;
+		if (n != m_ResTypeStr) 
+		{
+			m_ResTypeStr = n;
 			update(fx_type);
 		}
 	}
-	void resInsertTool_t::onEvent(wxTreeEvent & event){
+	void resInsertTool_t::onEvent(wxTreeEvent & event)
+	{
 		//wxString ws=dir->GetTreeCtrl()->GetItemText(event.GetItem());
-		//meshFile=dir->GetFilePath ();
-		if (dir){
+		//m_ResTypeStr=dir->GetFilePath ();
+		if (dir) {
 			wxString n = dir->GetTreeCtrl()->GetItemText(event.GetItem());
 			//const char *c=n.c_str();
-			if (n != meshFile){
-				meshFile = n;
+			if (n != m_ResTypeStr) {
+				m_ResTypeStr = n;
 				update(mesh_type);
 			}
 		}
 	}
-	class entityInfoItemData_t :public wxTreeItemData{
+	class entityInfoItemData_t :public wxTreeItemData
+	{
 	public:
 		const string mesh;
 		entityInfoItemData_t(const string &mesh)
-			:mesh(mesh){
+			:mesh(mesh) {
 		}
 	};
-	void resInsertTool_t::onEntityListEvent(wxTreeEvent & event){
-		if (event.GetItem() == entityList->GetRootItem()){
+	void resInsertTool_t::onEntityListEvent(wxTreeEvent & event)
+	{
+		if (event.GetItem() == entityList->GetRootItem())
+		{
 			loadEntityMeshPath();
 			loadEntityXmlList();
 		}
-		else if (entityList->GetItemText(event.GetItem()).Right(4) == ".xml" && !entityList->ItemHasChildren(event.GetItem())){
+		else if (entityList->GetItemText(event.GetItem()).Right(4) == ".xml" && !entityList->ItemHasChildren(event.GetItem())) {
 			loadEntityXmlFile(event.GetItem(), entityList->GetItemText(event.GetItem()));
 		}
-		else{
+		else {
 			wxTreeItemData *itemData = entityList->GetItemData(event.GetItem());
-			if (itemData){
+			if (itemData) {
 				entityInfoItemData_t *entityInfoItemData = static_cast<entityInfoItemData_t *>(itemData);
-				meshFile = entityInfoItemData->mesh;
+				m_ResTypeStr = entityInfoItemData->mesh;
 				gameEntityName = entityList->GetItemText(event.GetItem());
 				update(entity_type);
 			}
 		}
 	}
-	bool resInsertTool_t::loadEntityXmlFile(const wxTreeItemId &rootId, const wxString &file){
+	bool resInsertTool_t::loadEntityXmlFile(const wxTreeItemId &rootId, const wxString &file)
+	{
 		xmlStack_t x;
-		if (!x.loadXMLFile(file.c_str())){
+		if (!x.loadXMLFile(file.c_str())) {
 			string text;
 			text += "I am sorry that i can't open file ";
 			text += file.c_str();
@@ -106,13 +118,13 @@ namespace vega
 		}
 		xmlElement_t *root, *t;
 		root = x.getChildByName("entityInfoBag");
-		if (root){
+		if (root) {
 			size_t n = root->getChildrenCount();
 			string templateName, mesh;
 			float scale;
-			for (int i = 0; i < n; ++i){
+			for (int i = 0; i < n; ++i) {
 				t = root->getChild(i);
-				if (t && t->getName() == "info"){
+				if (t && t->getName() == "info") {
 					t->getChildByName("base")->get("template", templateName);
 					t->getChildByName("entity")->get("mesh", mesh);
 					entityInfoItemData_t *objectInfoItemData = new entityInfoItemData_t(mesh);
@@ -124,15 +136,18 @@ namespace vega
 		}
 		return true;
 	}
-	wxDirTraverseResult  resInsertTool_t::OnFile(const wxString &filename){
-		if (dirTraverseMode == listEntityXmlEnum){
+
+	wxDirTraverseResult  resInsertTool_t::OnFile(const wxString &filename)
+	{
+		if (dirTraverseMode == listEntityXmlEnum) {
 			wxTreeItemId itemId = entityList->AppendItem(entityList->GetRootItem(), filename);
 			loadEntityXmlFile(itemId, filename.c_str());
 		}
 		return wxDIR_CONTINUE;
 	}
-	wxDirTraverseResult  resInsertTool_t::OnDir(const wxString &dirname){
-		if (dirTraverseMode == listEntityMeshEnum){
+	wxDirTraverseResult  resInsertTool_t::OnDir(const wxString &dirname)
+	{
+		if (dirTraverseMode == listEntityMeshEnum) {
 			string path;
 			path = GetEditor()->GetEditorScene()->getSubDir(dirname.c_str());
 			path += "\\";
@@ -140,7 +155,8 @@ namespace vega
 		}
 		return wxDIR_CONTINUE;
 	}
-	void resInsertTool_t::loadEntityMeshPath(){
+	void resInsertTool_t::loadEntityMeshPath()
+	{
 		if (entityMeshPathLoaded)
 			return;
 		entityMeshPathLoaded = true;
@@ -149,27 +165,33 @@ namespace vega
 		//	frame->getConfig()->get("entityMeshRootDir",entityMeshRootDir,false);
 		//	if(entityMeshRootDir.length()){
 		{	wxDir entityRootDir(entityMeshRootDir.c_str());
-		if (wxDir::Exists(entityMeshRootDir.c_str())){
+		if (wxDir::Exists(entityMeshRootDir.c_str())) {
 			dirTraverseMode = listEntityMeshEnum;
 			entityRootDir.Traverse(*this, "", wxDIR_DIRS | wxDIR_HIDDEN);
 		}
 		}
 	}
-	void resInsertTool_t::loadEntityXmlList(){
+
+	void resInsertTool_t::loadEntityXmlList()
+	{
 		if (entityXmlListLoaded)
 			return;
 		entityXmlListLoaded = true;
 		string entityXmlRootDir;
 		//	frame->getConfig()->get("entityXmlRootDir",entityXmlRootDir,false);
 		//	if(entityXmlRootDir.length()){
-		{	wxDir entityRootDir(entityXmlRootDir.c_str());
-		if (wxDir::Exists(entityXmlRootDir.c_str())){
-			dirTraverseMode = listEntityXmlEnum;
-			entityRootDir.Traverse(*this, "*.xml");
-		}
+		{
+			wxDir entityRootDir(entityXmlRootDir.c_str());
+			if (wxDir::Exists(entityXmlRootDir.c_str()))
+			{
+				dirTraverseMode = listEntityXmlEnum;
+				entityRootDir.Traverse(*this, "*.xml");
+			}
 		}
 	}
-	resInsertTool_t::resInsertTool_t(){
+
+	resInsertTool_t::resInsertTool_t()
+	{
 		entityXmlListLoaded = false;
 		entityMeshPathLoaded = false;
 		entity = NULL;
@@ -180,7 +202,8 @@ namespace vega
 	void resInsertTool_t::update(int resType)
 	{
 		currentResType = resType;
-		if (sceneNode && entity){
+		if (sceneNode && entity)
+		{
 			GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
 			GetEditor()->GetEditorScene()->setSelMovable(NULL);
 			GetEditor()->GetEditorScene()->destroySceneNode(sceneNode->getName());
@@ -188,51 +211,57 @@ namespace vega
 			entity = NULL;
 			sceneNode = NULL;
 		}
-		if (active){
-			try{
-				if (resType == mesh_type && meshFile.Right(5) == ".mesh"){
+		if (active)
+		{
+			try
+			{
+				if (resType == mesh_type && m_ResTypeStr.Right(5) == ".mesh")
+				{
 					string path;
-					try{
+					try
+					{
 						wxString filePath = dir->GetFilePath();
-						wxString resPath = filePath.Left(filePath.Len() - meshFile.Len());
+						wxString resPath = filePath.Left(filePath.Len() - m_ResTypeStr.Len());
 						path = GetEditor()->GetEditorScene()->getSubDir(resPath.c_str());
 						GetEditor()->GetEditorScene()->addResourceLocation(path.c_str());
 					}
-					catch (Ogre::Exception& e) {
+					catch (Ogre::Exception& e)
+					{
 						std::cerr << "An exception has occured: " << e.getFullDescription();
 						MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 					}
-					if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, meshFile.c_str().AsChar())){
+
+					if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, m_ResTypeStr.c_str().AsChar())) {
 						xgstring name;
-						name.printf("%s_%d", meshFile.c_str(), id++);
-						while (GetEditor()->GetEditorScene()->hasEntity(name.c_str())){
-							name.printf("%s_%d", meshFile.c_str(), id++);
+						name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
+						while (GetEditor()->GetEditorScene()->hasEntity(name.c_str())) {
+							name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
 						}
-						Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str(), meshFile.c_str().AsChar());
+						Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str(), m_ResTypeStr.c_str().AsChar());
 						entity = e;
 						entity->setUserAny(*new type_t(mesh_type_));
-						if (entity){
+						if (entity) {
 							sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str());
-							if (sceneNode){
+							if (sceneNode) {
 								sceneNode->attachObject(entity);
 								GetEditor()->GetEditorScene()->getRootSceneNode()->addChild(sceneNode);
 							}
 						}
 					}
 				}
-				else if (resType == fx_type){
+				else if (resType == fx_type) {
 					xgstring name;
-					name.printf("%s_%d", meshFile.c_str(), id++);
-					while (GetEditor()->GetEditorScene()->hasParticleSystem(name.c_str())){
-						name.printf("%s_%d", meshFile.c_str(), id++);
+					name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
+					while (GetEditor()->GetEditorScene()->hasParticleSystem(name.c_str())) {
+						name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
 					}
-					Ogre::ParticleSystem *pfx = GetEditor()->GetEditorScene()->createParticleSystem(name.c_str(), meshFile.c_str().AsChar());
+					Ogre::ParticleSystem *pfx = GetEditor()->GetEditorScene()->createParticleSystem(name.c_str(), m_ResTypeStr.c_str().AsChar());
 					entity = pfx;
 					pfx->setBoundsAutoUpdated(false);
-					entity->setUserAny(*new pfxType_t(fx_type_, meshFile.c_str()));
-					if (entity){
+					entity->setUserAny(*new pfxType_t(fx_type_, m_ResTypeStr.c_str()));
+					if (entity) {
 						sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str());
-						if (sceneNode){
+						if (sceneNode) {
 							Ogre::ManualObject *dummy = GetEditor()->GetEditorScene()->createBoxManualObject(GetEditor()->GetEditorScene()->getHelpMeshName(), PFX_COLOR, Ogre::Vector3(-10, -10, -10), Ogre::Vector3(10, 10, 10), "pfxMesh");
 							dummy->setUserAny(*new type_t(dummy_type_));
 							sceneNode->attachObject(dummy);
@@ -249,12 +278,12 @@ namespace vega
 					dir.normalise();
 					vega::ActorLight* light = nullptr;
 
-					if (meshFile == "pointLight")
-						light = vega::ActorLight::PointLight(meshFile.c_str().AsChar());
-					else if (meshFile == "directionalLight")
-						light = vega::ActorLight::DirectLight(meshFile.c_str().AsChar());
-					else if (meshFile == "spotlightLight")
-						light = vega::ActorLight::SpotLight(meshFile.c_str().AsChar());
+					if (m_ResTypeStr == "pointLight")
+						light = vega::ActorLight::PointLight(m_ResTypeStr.c_str().AsChar());
+					else if (m_ResTypeStr == "directionalLight")
+						light = vega::ActorLight::DirectLight(m_ResTypeStr.c_str().AsChar());
+					else if (m_ResTypeStr == "spotlightLight")
+						light = vega::ActorLight::SpotLight(m_ResTypeStr.c_str().AsChar());
 
 					light->getOgreLight()->setUserAny(*new type_t(light_type_));
 					light->setDirection(dir);
@@ -265,23 +294,26 @@ namespace vega
 					light->getNode()->attachObject(dummy);
 				}
 				//end
-				else if (resType == entity_type){
-					if (meshFile.Right(5) == ".mesh"){
-						Ogre::String path = Ogre::ResourceGroupManager::getSingleton().findGroupContainingResource(meshFile.c_str().AsChar());
-						if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, meshFile.c_str().AsChar())){
+				else if (resType == entity_type)
+				{
+					if (m_ResTypeStr.Right(5) == ".mesh")
+					{
+						Ogre::String path = Ogre::ResourceGroupManager::getSingleton().findGroupContainingResource(m_ResTypeStr.c_str().AsChar());
+						if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, m_ResTypeStr.c_str().AsChar())) {
 							xgstring name;
-							name.printf("%s_%d", meshFile.c_str(), id++);
-							while (GetEditor()->GetEditorScene()->hasEntity(name.c_str())){
-								name.printf("%s_%d", meshFile.c_str(), id++);
+							name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
+							while (GetEditor()->GetEditorScene()->hasEntity(name.c_str())) {
+								name.printf("%s_%d", m_ResTypeStr.c_str(), id++);
 							}
-							Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str(), meshFile.c_str().AsChar());
+							Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str(), m_ResTypeStr.c_str().AsChar());
 							entity = e;
 							type_t *t = new type_t(entity_type_);
 							t->userData = gameEntityName;
 							entity->setUserAny(*t);
-							if (entity){
+							if (entity)
+							{
 								sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str());
-								if (sceneNode){
+								if (sceneNode) {
 									sceneNode->attachObject(entity);
 									GetEditor()->GetEditorScene()->getRootSceneNode()->addChild(sceneNode);
 								}
@@ -289,55 +321,54 @@ namespace vega
 						}
 					}
 				}
-				if (sceneNode){
+				if (sceneNode)
+				{
 					GetEditor()->GetEditorScene()->setSelSceneNode(sceneNode);
 					GetEditor()->GetEditorScene()->setSelMovable(entity);
 				}
 			}
-			catch (Ogre::Exception& e) {
+			catch (Ogre::Exception& e)
+			{
 				std::cerr << "An exception has occured: " << e.getFullDescription();
 				MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-			}
-			catch (...){
-
 			}
 		}
 	}
 
-	bool resInsertTool_t::onActive(){
+	bool resInsertTool_t::onActive() {
 		frame->setViewMsgRecvTool(this);
 		active = true;
 		update(currentResType);
 		return true;
 	}
 
-	bool resInsertTool_t::onDeactive(){
+	bool resInsertTool_t::onDeactive() {
 		frame->setViewMsgRecvTool(NULL);
 		active = false;
 		update(currentResType);
 		return true;
 	}
 
-	bool resInsertTool_t::onViewEvent(wxEvent & event){
+	bool resInsertTool_t::onViewEvent(wxEvent & event) {
 		return false;
 	}
 
-	bool resInsertTool_t::Show(bool show){
-		if (show){
+	bool resInsertTool_t::Show(bool show) {
+		if (show) {
 			onActive();
 		}
-		else{
+		else {
 			onDeactive();
 		}
 		return wxNotebook::Show(show);
 	}
 
-	class DnDFile : public wxFileDropTarget{
+	class DnDFile : public wxFileDropTarget {
 		resInsertTool_t *resInsertTool;
 	public:
 		DnDFile(resInsertTool_t *resInsertTool) :resInsertTool(resInsertTool) {}
 		virtual bool OnDropFiles(wxCoord x, wxCoord y,
-			const wxArrayString& filenames){
+			const wxArrayString& filenames) {
 			size_t nFiles = filenames.GetCount();
 			wxString str;
 			str.Printf(_T("%d files dropped"), (int)nFiles);
@@ -350,45 +381,45 @@ namespace vega
 		}
 	};
 
-	bool resInsertTool_t::insertRes(const char *file, int x, int y){
+	bool resInsertTool_t::insertRes(const char *file, int x, int y) {
 		wxFileName  fileName(file);
-		if (fileName.DirExists(file)){
+		if (fileName.DirExists(file)) {
 			string path = GetEditor()->GetEditorScene()->getSubDir(file);
-			if (GetEditor()->GetEditorScene()->addResourceLocation(path.c_str())){
+			if (GetEditor()->GetEditorScene()->addResourceLocation(path.c_str())) {
 				updateParticleList();
 			}
 		}
-		else{
+		else {
 			string name = file;
-			if (name.length() > 5 && name.substr(name.length() - 5, 5) == ".mesh"){
+			if (name.length() > 5 && name.substr(name.length() - 5, 5) == ".mesh") {
 				basic_string <char>::size_type indexCh1a;
 				static const basic_string <char>::size_type npos = -1;
 				indexCh1a = name.rfind("\\");
 				string path;
-				if (indexCh1a != npos){
+				if (indexCh1a != npos) {
 					string resName = name.substr(indexCh1a + 1, name.length() - indexCh1a - 1);
 					path = name.substr(0, indexCh1a + 1);
 					path = GetEditor()->GetEditorScene()->getSubDir(path.c_str());
-					if (GetEditor()->GetEditorScene()->addResourceLocation(path.c_str())){
+					if (GetEditor()->GetEditorScene()->addResourceLocation(path.c_str())) {
 						updateParticleList();
 					}
-					if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, resName)){
+					if (Ogre::ResourceGroupManager::getSingleton().resourceExists(path, resName)) {
 						wxString name;
 						name.Printf("%s_%d", resName.c_str(), id++);
-						while (GetEditor()->GetEditorScene()->hasEntity(name.c_str().AsChar())){
+						while (GetEditor()->GetEditorScene()->hasEntity(name.c_str().AsChar())) {
 							name.Printf("%s_%d", resName.c_str(), id++);
 						}
 						Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str().AsChar(), resName.c_str());
 						entity = e;
 						//e->setDisplaySkeleton(true);
 						entity->setUserAny(*new type_t(mesh_type_));
-						if (entity){
+						if (entity) {
 							sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str().AsChar());
-							if (sceneNode){
+							if (sceneNode) {
 								sceneNode->attachObject(entity);
 								GetEditor()->GetEditorScene()->getRootSceneNode()->addChild(sceneNode);
 								Ogre::Vector3 pos;
-								if (getIntersectGroundPoint(x, y, pos)){
+								if (getIntersectGroundPoint(x, y, pos)) {
 									sceneNode->setPosition(pos);
 								}
 							}
@@ -401,7 +432,7 @@ namespace vega
 		return false;
 	}
 
-	bool resInsertTool_t::getIntersectGroundPoint(int x, int y, Ogre::Vector3 &pos){
+	bool resInsertTool_t::getIntersectGroundPoint(int x, int y, Ogre::Vector3 &pos) {
 		Ogre::Viewport *vp = GetEditor()->GetEditorScene()->getCurrentViewport();
 		Ogre::Camera *c = vp->getCamera();
 		Ogre::RenderTarget *rt = vp->getTarget();
@@ -415,14 +446,14 @@ namespace vega
 		Ogre::Ray ray = c->getCameraToViewportRay(tscreenx, tscreeny);
 		Ogre::Plane plane(Ogre::Vector3(0, 1, 0), 0);
 		std::pair< bool, Ogre::Real > interPoint = Ogre::Math::intersects(ray, plane);
-		if (interPoint.first){
+		if (interPoint.first) {
 			pos = ray.getPoint(interPoint.second);
 			return true;
 		}
 		return false;
 	}
 
-	bool resInsertTool_t::onViewMouseEvent(wxMouseEvent & event){
+	bool resInsertTool_t::onViewMouseEvent(wxMouseEvent & event) {
 		if (!sceneNode)
 			return false;
 		Ogre::Vector3 pos;
@@ -430,7 +461,7 @@ namespace vega
 		event.GetPosition(&x, &y);
 		if (getIntersectGroundPoint(x, y, pos))
 			sceneNode->setPosition(pos);
-		if (event.ButtonUp(wxMOUSE_BTN_LEFT)){
+		if (event.ButtonUp(wxMOUSE_BTN_LEFT)) {
 			entity = NULL;
 			sceneNode = NULL;
 			update(currentResType);
@@ -439,16 +470,16 @@ namespace vega
 		return true;
 	}
 
-	class wxGenericDirCtrlEx :public wxGenericDirCtrl{
+	class wxGenericDirCtrlEx :public wxGenericDirCtrl {
 		DECLARE_EVENT_TABLE()
 		resInsertTool_t *me;
 	public:
-		void onEvent(wxTreeEvent & event){
+		void onEvent(wxTreeEvent & event) {
 			me->onEvent(event);
 		}
 		wxGenericDirCtrlEx(wxWindow *parent, const wxWindowID id = wxID_ANY,
 			const wxString &dir = wxDirDialogDefaultFolderStr,
-			resInsertTool_t *me = NULL) :wxGenericDirCtrl(parent, id, dir), me(me){
+			resInsertTool_t *me = NULL) :wxGenericDirCtrl(parent, id, dir), me(me) {
 		}
 	};
 
@@ -456,11 +487,12 @@ namespace vega
 		EVT_TREE_SEL_CHANGED(wxID_TREECTRL, onEvent)
 		END_EVENT_TABLE();
 
-	bool resInsertTool_t::init(){
+	bool resInsertTool_t::init() 
+	{
 		frame->getView()->SetDropTarget(new DnDFile(this));
 		string resInsertToolDirInitDir;
 		wxNotebook *book = this;
-		if (!Create(frame->getToolBook(), idNoteBookCtl)){
+		if (!Create(frame->getToolBook(), idNoteBookCtl)) {
 			return false;
 		}
 		dir = NULL;
@@ -498,16 +530,16 @@ namespace vega
 		return true;
 	}
 
-	resInsertTool_t::~resInsertTool_t(){
+	resInsertTool_t::~resInsertTool_t() {
 	}
 
-	void resInsertTool_t::refresh(){}
+	void resInsertTool_t::refresh() {}
 
-	void resInsertTool_t::updateParticleList(){
+	void resInsertTool_t::updateParticleList() {
 		Ogre::ParticleSystemManager::ParticleSystemTemplateIterator t = Ogre::ParticleSystemManager::getSingleton().getTemplateIterator();
 		particleList->ClearAll();
 		int i(0);
-		while (t.hasMoreElements()){
+		while (t.hasMoreElements()) {
 			particleList->InsertItem(i++, t.peekNextKey());
 			t.moveNext();
 		}

@@ -12,12 +12,15 @@ namespace vega
 	class ENGINE_API ActorLight :public Actor
 	{
 	public:
-		enum _ltype
+		enum LightTypes
 		{
 			POINT = 0,
 			DIRECTIONAL = 1,
 			SPOT = 2
 		};
+		EFORCEINLINE LightTypes GetLightType() {
+			return mLightType;
+		}
 		// !@Creating Lighting(string,SceneNode,Vector3,Vector3)
 		static ActorLight*PointLight(std::string _mName);
 		// !@Creating Lighting(string,SceneNode,Vector3,Vector3)
@@ -25,12 +28,14 @@ namespace vega
 		// !@Creating Lighting(string,SceneNode,Vector3,Vector3)
 		static ActorLight*SpotLight(std::string _mName);
 		// !@Creating Lighting(string,SceneNode,Vector3,Vector3)
-		ActorLight(std::string _mName, _ltype _type, Ogre::Vector3 _pos = Ogre::Vector3(0, 0, 0), Ogre::Vector3 _rot = Ogre::Vector3::UNIT_X);
+		ActorLight(std::string _mName, LightTypes _type, Ogre::Vector3 _pos = Ogre::Vector3(0, 0, 0), Ogre::Vector3 _rot = Ogre::Vector3::UNIT_X);
+		ActorLight(const Ogre::Light&);
+		ActorLight(Ogre::Light*);
 		virtual ~ActorLight();
 		// !@Attaching to Actor
 		void attach(Actor *_mParent);
 		// !@Set Type(int).1-DIRECTIONAL,2-SPOT,else-POINT
-		void setType(_ltype _type);
+		void setType(LightTypes _type);
 		// !@Set Cast Shadows(bool)
 		void setCastShadows(bool _status = true);
 		// !@Set Visible(bool)
@@ -56,23 +61,45 @@ namespace vega
 		// !@Set Shadow Far Distance(float)
 		void setShadowFarDistance(float _d);
 		// !@Get Direction
-		const Ogre::Vector3& getDirection();
+		const Ogre::Vector3& getDirection(void);
 		// !@Get Diffuse Color()
-		const Ogre::ColourValue& getDiffuse();
+		const Ogre::ColourValue& getDiffuse(void);
 		// !@Get Specular Color()
-		const Ogre::ColourValue& getSpecular();
+		const Ogre::ColourValue& getSpecular(void);
+		// !@Returns the angle covered by the spotlights outer cone.
+		float GetSpotOuter(void);
+		// !@Returns the angle covered by the spotlights inner cone.
+		float GetSpotInner(void);
+		// !@Returns the falloff between the inner and outer cones of the spotlight.
+		float GetSpotlightFalloff(void);
+		// !@Returns the absolute upper range of the light.
+		float GetAttenuationRange(void) const;
+		// !@Returns the constant factor in the attenuation formula.
+		float GetAttenuationConstant(void) const;
+		// !@Returns the linear factor in the attenuation formula.
+		float GetAttenuationLinear(void) const;
+		// !@Returns the quadric factor in the attenuation formula.
+		float GetAttenuationQuadric(void) const;
+		// !@Set the scaling factor which indicates the relative power of a light.
+		float GetPowerScale(void) const;
+		
+		// !@Automatic conversion
+		ActorLight& operator=(Ogre::Light &_mLight);
+		ActorLight& operator=(Ogre::Light *_mLight);
 	public:
 		// !@Method for Editor Fabric-editor only!
 		void _updateRenderQueue(Ogre::RenderQueue *queue);
 		// !@Method for Editor Fabric-editor only!
 		const Ogre::AxisAlignedBox& getBoundingBox(void) const;
-		__inline Ogre::Light * getOgreLight(void) const{ return mLight; }
+		__inline Ogre::Light * getOgreLight(void) const { return mLight; }
+	private:
+		ActorLight() {}
 	private:
 		// !@Pointer to a Wire Bounding Box for this Node,used in edit mode
 		Ogre::WireBoundingBox *mRangeBox;
 	private:
 		Ogre::Light *mLight;
 		std::string mName;
-		_ltype mLightType;
+		LightTypes mLightType;
 	};
 }

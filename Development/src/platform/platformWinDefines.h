@@ -28,4 +28,7 @@
 
 #define stricmp _stricmp
 
+#define LINE_TERMINATOR TEXT("\r\n")
+#define PATH_SEPARATOR TEXT("\\")
+
 #endif

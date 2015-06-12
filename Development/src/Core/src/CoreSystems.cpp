@@ -79,12 +79,12 @@ namespace vega
 
 	//-------------------------------------------------------------------------------------
 	void CoreSystems::Release(){
-		SAFE_DELETE(mResBL);
+		//TEST SAFE_DELETE(mResBL);
 		//SAFE_DELETE(mScript);
-		SAFE_DELETE(mFS);
-		SAFE_DELETE(mEngineConfig);
-		SAFE_DELETE(mConfig);
-		DestroyAdditions();
+		//TEST SAFE_DELETE(mFS);
+		//TEST SAFE_DELETE(mEngineConfig);
+		//TEST SAFE_DELETE(mConfig);
+		//TEST DestroyAdditions();
 	}
 
 	//-------------------------------------------------------------------------------------

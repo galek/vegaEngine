@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{1E086059-6788-4F71-B6E5-482619BAB36C}"
 EndProject
@@ -50,6 +50,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgSys", "..\editor\build\cgSys.vcxproj", "{CBE6F841-6861-4631-A148-126545E6DDBC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EditorPublic", "..\editor\build\xgpublic.vcxproj", "{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{069DB063-0A5A-4CD6-A0B5-33053F328270} = {069DB063-0A5A-4CD6-A0B5-33053F328270}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editor", "Editor", "{E8B3D5B7-1288-469D-8736-83B8CB422AEC}"
 EndProject

@@ -11,6 +11,15 @@
     <Filter Include="win32">
       <UniqueIdentifier>{0963664d-6752-4e56-9cb7-beba447313d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WxWidgets Additions">
+      <UniqueIdentifier>{ba27467c-af4e-4e2d-9c04-6013056f273b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{0935b259-a1bf-483d-8184-d358a8393798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Convertations">
+      <UniqueIdentifier>{913f58c5-8463-4732-9145-731fee9bbeb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\src\xgPublic\win32\xg.rc">
@@ -30,6 +39,13 @@
     <ClInclude Include="..\src\xgPublic\win32\resource.h">
       <Filter>win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\xgPublic\EditorPublicPCH.h" />
+    <ClInclude Include="..\src\xgPublic\Bitmaps.h">
+      <Filter>WxWidgets Additions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\xgPublic\ResourceID.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\xgPublic\sys\xgstring.cpp">
@@ -41,5 +57,14 @@
     <ClCompile Include="..\src\xgPublic\win32\alarm_t.cpp">
       <Filter>win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\xgPublic\EditorPublicPCH.cpp" />
+    <ClCompile Include="..\src\xgPublic\Bitmaps.cpp">
+      <Filter>WxWidgets Additions</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\xgPublic\Convertations.inl">
+      <Filter>Convertations</Filter>
+    </None>
   </ItemGroup>
 </Project>

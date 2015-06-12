@@ -57,9 +57,17 @@ THE SOFTWARE.
 #define DIRECT3D_VERSION 0x0900
 
 // some D3D commonly used macros
+#ifndef SAFE_DELETE
 #define SAFE_DELETE(p)       { if(p) { delete (p);     (p)=NULL; } }
+#endif
+
+#ifndef SAFE_DELETE_ARRAY
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[] (p);   (p)=NULL; } }
+#endif
+
+#ifndef SAFE_RELEASE
 #define SAFE_RELEASE(p)      { if(p) { (p)->Release(); (p)=NULL; } }
+#endif
 
 // enable extended d3d debug 
 #if OGRE_DEBUG_MODE

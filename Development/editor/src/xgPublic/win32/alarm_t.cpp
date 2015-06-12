@@ -1,3 +1,4 @@
+#include "EditorPublicPCH.h"
 #include "alarm_t.h"
 #include <windows.h>
 #include "resource.h"

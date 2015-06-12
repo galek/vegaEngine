@@ -12,12 +12,12 @@
 
 #include "wxOgre_t.h"
 #include "updateBag_t.h"
-//_________________________________________
+
 #include "moveObjectProp_t.h"
-#include "lightProp_t.h"
+#include "LightPropertyEditor.h"
 #include "entityProp_t.h"
 #include "blankProp_t.h"
-//_________________________________________
+
 #include "cgSys_t.h"
 #include "xgScene_t.h"
 #include "selectListener_t.h"
@@ -25,7 +25,7 @@
 #include "wx/choicebk.h"
 
 #include "wx/listbase.h"
-//_________________________________________
+
 #include "cameraTool_t.h"
 #include "gridTool_t.h"
 #include "prsTool_t.h"
@@ -36,7 +36,8 @@
 
 namespace vega
 {
-	void frame_t::initTool(){
+	void frame_t::InitTools()
+	{
 		//cameraTool_t *ct=new cameraTool_t;
 		toolBag->push_back(new cameraTool_t);
 		toolBag->push_back(new gridTool_t);
@@ -49,12 +50,12 @@ namespace vega
 		toolBag->push_back(new renderOptionTool_t);
 		toolBag->push_back(new aiNaviTool_t);
 
-		//toolBag->push_back(new lightProp_t);
+		//toolBag->push_back(new LightPropertyEditor);
 		//ct->init();
 		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr){
 			(*itr)->init();
 		}
-		auto tempPtr = new lightProp_t();
+		auto tempPtr = new LightPropertyEditor();
 
 		moveObjectPropBag->addProp(tempPtr);
 		updateBag->AddUpdatable(tempPtr);

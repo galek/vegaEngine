@@ -76,8 +76,10 @@ namespace vega
 		loadEntityCallback = NULL;
 		loadEntityCallbackUserData = NULL;
 	}
-	void  xgScene_t::destroyAllMovableObjects(void){
-		for (MovableObjectCollectionMap::iterator i = mMovableObjectCollectionMap.begin();
+	void  xgScene_t::destroyAllMovableObjects(void)
+	{
+		GetEditor()->sceneManager->CleanScene();
+		/*for (MovableObjectCollectionMap::iterator i = mMovableObjectCollectionMap.begin();
 			i != mMovableObjectCollectionMap.end(); ++i){
 			for (MovableObjectMap::iterator it(i->second->map.begin()); it != i->second->map.end(); ++it){
 				const Ogre::Any *t = &(it->second->getUserAny());
@@ -87,7 +89,7 @@ namespace vega
 				}
 			}
 		}
-		SceneManager::destroyAllMovableObjects();
+		SceneManager::destroyAllMovableObjects();*/
 	}
 	void  xgScene_t::destroyMovableObject(const String &name, const String &typeName){
 		//MovableObjectCollection* objectMap = getMovableObjectCollection(typeName);

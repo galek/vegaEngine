@@ -28,60 +28,60 @@ namespace vega
 		// Bitmaps
 		wxImage::AddHandler(new wxPNGHandler);
 
-		NewB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\New.bmp"), wxBITMAP_TYPE_BMP);
-		OpenB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Open.bmp"), wxBITMAP_TYPE_BMP);
-		SaveB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Save.bmp"), wxBITMAP_TYPE_BMP);
-		SaveAllB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\SaveAll.bmp"), wxBITMAP_TYPE_BMP);
-		UndoB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Undo.bmp"), wxBITMAP_TYPE_BMP);
-		RedoB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Redo.bmp"), wxBITMAP_TYPE_BMP);
-		CutB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Cut.bmp"), wxBITMAP_TYPE_BMP);
-		CopyB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Copy.bmp"), wxBITMAP_TYPE_BMP);
+		NewB.Load(wxT("New"));
+		OpenB.Load(wxT("Open"));
+		SaveB.Load(wxT("Save"));
+		SaveAllB.Load(wxT("SaveAll"));
+		UndoB.Load(wxT("Undo"));
+		RedoB.Load(wxT("Redo"));
+		CutB.Load(wxT("Cut"));
+		CopyB.Load(wxT("Copy"));
 
-		PasteB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Paste.bmp"), wxBITMAP_TYPE_BMP);
-		SearchB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Search.bmp"), wxBITMAP_TYPE_BMP);
-		FullScreenB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\FullScreen.bmp"), wxBITMAP_TYPE_BMP);
-		ContentBrowserB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\MainToolBar_ContentBrowser.bmp"), wxBITMAP_TYPE_BMP);
-		GenericB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ThumbnailView.bmp"), wxBITMAP_TYPE_BMP);
-		KismetB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Kismet.bmp"), wxBITMAP_TYPE_BMP);
-		MouseLockB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\MouseLock.bmp"), wxBITMAP_TYPE_BMP);
-		ShowWidgetB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ShowWidget.bmp"), wxBITMAP_TYPE_BMP);
+		PasteB.Load(wxT("Paste"));
+		SearchB.Load(wxT("Search"));
+		FullScreenB.Load(wxT("FullScreen"));
+		ContentBrowserB.Load(wxT("MainToolBar_ContentBrowser"));
+		GenericB.Load(wxT("ThumbnailView"));
+		KismetB.Load(wxT("Kismet"));
+		MouseLockB.Load(wxT("MouseLock"));
+		ShowWidgetB.Load(wxT("ShowWidget"));
 
-		TranslateB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Translate.bmp"), wxBITMAP_TYPE_BMP);
-		RotateB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Rotate.bmp"), wxBITMAP_TYPE_BMP);
-		ScaleB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Scale.bmp"), wxBITMAP_TYPE_BMP);
-		ScaleNonUniformB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ScaleNonUniform.bmp"), wxBITMAP_TYPE_BMP);
-		BrushPolysB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BrushPolys.bmp"), wxBITMAP_TYPE_BMP);
-		PrefabLockB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PrefabLock.bmp"), wxBITMAP_TYPE_BMP);
-		DistributionToggleB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\DistributionToggle.bmp"), wxBITMAP_TYPE_BMP);
-		PSysRealtimeLODToggleB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PSysRealtimeLODToggle.bmp"), wxBITMAP_TYPE_BMP);
-		CamSlowB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\CamSlow.bmp"), wxBITMAP_TYPE_BMP);
+		TranslateB.Load(wxT("Translate"));
+		RotateB.Load(wxT("Rotate"));
+		ScaleB.Load(wxT("Scale"));
+		ScaleNonUniformB.Load(wxT("ScaleNonUniform"));
+		BrushPolysB.Load(wxT("BrushPolys"));
+		PrefabLockB.Load(wxT("PrefabLock"));
+		DistributionToggleB.Load(wxT("DistributionToggle"));
+		PSysRealtimeLODToggleB.Load(wxT("PSysRealtimeLODToggle"));
+		CamSlowB.Load(wxT("CamSlow"));
 
-		CamNormalB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\CamNormal.bmp"), wxBITMAP_TYPE_BMP);
-		CamFastB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\CamFast.bmp"), wxBITMAP_TYPE_BMP);
-		ViewPushStartB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ViewPushStart.bmp"), wxBITMAP_TYPE_BMP);
-		ViewPushStopB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ViewPushStop.bmp"), wxBITMAP_TYPE_BMP);
-		ViewPushSyncB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ViewPushSync.bmp"), wxBITMAP_TYPE_BMP);
-		PublishCookB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PublishCook.bmp"), wxBITMAP_TYPE_BMP);
-		PublishCopyB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PublishCopy.bmp"), wxBITMAP_TYPE_BMP);
-		MatineeListB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\MatineeList.bmp"), wxBITMAP_TYPE_BMP);
-		SentinelB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Sentinel.bmp"), wxBITMAP_TYPE_BMP);
-		GameStatsVisualizerB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\GameStatsVisualizer.bmp"), wxBITMAP_TYPE_BMP);
+		CamNormalB.Load(wxT("CamNormal"));
+		CamFastB.Load(wxT("CamFast"));
+		ViewPushStartB.Load(wxT("ViewPushStart"));
+		ViewPushStopB.Load(wxT("ViewPushStop"));
+		ViewPushSyncB.Load(wxT("ViewPushSync"));
+		PublishCookB.Load(wxT("PublishCook"));
+		PublishCopyB.Load(wxT("PublishCopy"));
+		MatineeListB.Load(wxT("MatineeList"));
+		SentinelB.Load(wxT("Sentinel"));
+		GameStatsVisualizerB.Load(wxT("GameStatsVisualizer"));
 
-		BuildGeomB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BuildGeom.bmp"), wxBITMAP_TYPE_BMP);
-		BuildLightingB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BuildLighting.bmp"), wxBITMAP_TYPE_BMP);
-		BuildPathsB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BuildPaths.bmp"), wxBITMAP_TYPE_BMP);
-		BuildCoverNodesB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BuildCoverNodes.bmp"), wxBITMAP_TYPE_BMP);
-		BuildAllB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\BuildAll.bmp"), wxBITMAP_TYPE_BMP);
+		BuildGeomB.Load(wxT("BuildGeom"));
+		BuildLightingB.Load(wxT("BuildLighting"));
+		BuildPathsB.Load(wxT("BuildPaths"));
+		BuildCoverNodesB.Load(wxT("BuildCoverNodes"));
+		BuildAllB.Load(wxT("BuildAll"));
 
-		SocketsB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\ASV_SocketMgr.bmp"), wxBITMAP_TYPE_BMP);
+		SocketsB.Load(wxT("ASV_SocketMgr"));
 		// Play-In-Editor button
-		PlayInEditorB.LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\Play.bmp"), wxBITMAP_TYPE_BMP);
+		PlayInEditorB.Load(wxT("Play"));
 		// default PC play icon
-		PlayOnB[B_PC].LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PlayPC.bmp"), wxBITMAP_TYPE_BMP);
+		PlayOnB[B_PC].Load(wxT("PlayPC"));
 		// Playstation play icon
-		PlayOnB[B_PS3].LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PlayPS.bmp"), wxBITMAP_TYPE_BMP);
+		PlayOnB[B_PS3].Load(wxT("PlayPS"));
 		// Xbox play icon
-		PlayOnB[B_XBox360].LoadFile(wxT("..\\Editor\\EditorResources\\wxRes\\PlayXB.bmp"), wxBITMAP_TYPE_BMP);
+		PlayOnB[B_XBox360].Load(wxT("PlayXB"));
 
 		AddTool(wxID_NEW, NewB, wxT("New Level"));
 		AddTool(wxID_OPEN, OpenB, wxT("Open Level"));
@@ -210,9 +210,9 @@ namespace vega
 		//if (In.GetId == IDM_TOOLBAR_TOOL_MOVE)
 		//if (In.IsChecked())
 		{
-			frame->prs->onEvent(In);
+			frame->GetPrsTool()->onEvent(In);
 			frame->processViewEvent(In);
-			frame->prs->onActive();
+			frame->GetPrsTool()->onActive();
 		}
 	}
 }

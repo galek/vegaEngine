@@ -158,9 +158,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Debug</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Debug/MyGUIEngineStatic_d.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -201,9 +198,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Debug</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Debug/MyGUIEngineStatic_d.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -246,9 +240,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Debug</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Debug/MyGUIEngineStatic_d.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -288,9 +279,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Release</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Release/MyGUIEngineStatic.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4661;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -336,9 +324,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Release</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)%(FileName).o</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Release/MyGUIEngineStatic.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4661;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -386,9 +371,6 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>MyGUI_Precompiled.h</PrecompiledHeaderFile>
-      <AssemblerListingLocation>Release</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\MyGUI_3.2.0\lib\Release/MyGUIEngineStatic.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4661;%(DisableSpecificWarnings)</DisableSpecificWarnings>

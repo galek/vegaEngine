@@ -35,7 +35,7 @@ namespace vega
 
 	/**
 	*/
-	bool Render::PlayVideo(const char* _name)	{
+	bool Render::PlayVideo(const char* _name) {
 		if (!externals)
 			return false;
 		return externals->mVideoPlayer->playVideo(_name, true);
@@ -43,7 +43,7 @@ namespace vega
 
 	/**
 	*/
-	void Render::EnableDisableAA(bool _s){
+	void Render::EnableDisableAA(bool _s) {
 		/*int r = mEngineConfig->mAntiAlliasing;
 		switch (r){
 		case 1:
@@ -151,9 +151,10 @@ namespace vega
 	*/
 	Render::~Render()
 	{
-		SAFE_DELETE(externals);
+		//TEST
+	/*	SAFE_DELETE(externals);
 		SAFE_DELETE(shData);
-		SAFE_DELETE(mSystem);
+		SAFE_DELETE(mSystem);*/
 	}
 
 	/**
@@ -167,7 +168,7 @@ namespace vega
 
 	/**
 	*/
-	void Render::PostEffectSetStatus(const char* _name, bool _status)	{
+	void Render::PostEffectSetStatus(const char* _name, bool _status) {
 		if (_name == "SSAO")
 		{
 			Debug("[PostEffects]Enabled SSAO");
@@ -200,7 +201,7 @@ namespace vega
 
 	/**
 	*/
-	void Render::_EnablePostEffects()	{
+	void Render::_EnablePostEffects() {
 		int r = 0;
 		r = mEngineConfig->mSSAO;
 		if (r)

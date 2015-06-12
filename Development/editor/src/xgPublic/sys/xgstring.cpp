@@ -1,3 +1,4 @@
+#include "EditorPublicPCH.h"
 #include "xgstring.h"
 #include <stdarg.h>
 #include "Windows.h"

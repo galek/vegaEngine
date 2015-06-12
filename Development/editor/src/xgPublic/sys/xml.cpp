@@ -1,3 +1,4 @@
+#include "EditorPublicPCH.h"
 #include <assert.h>
 #include "xml.h"
 #include <stdarg.h>

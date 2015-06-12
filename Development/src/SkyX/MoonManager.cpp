@@ -274,10 +274,16 @@ namespace vega
 		float radius = mSkyX->getMeshManager()->getSkydomeRadius(c)*0.95f,
               size = radius*mMoonSize;
 
+		if (!mMoonBillboard)
+			return;
+
 		mMoonBillboard->setCommonDirection((mSkyX->getController()->getMoonDirection()).normalisedCopy().perpendicular());
 
 		Ogre::Vector3 moonRelativePos = mSkyX->getController()->getMoonDirection()*
 			Ogre::Math::Cos(Ogre::Math::ASin((size/2)/radius))*radius;
+
+		if (!mMoonSceneNode)
+			return;
 
 		mMoonSceneNode->setPosition(c->getDerivedPosition() + moonRelativePos);
 

@@ -38,12 +38,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -110,6 +110,7 @@
       <ProgramDatabaseFile>$(OutDir)xgEditor.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,6 +133,7 @@
       <AssemblyDebug>true</AssemblyDebug>
       <ProgramDatabaseFile>$(OutDir)xgEditor.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,6 +157,7 @@
       <EnableCOMDATFolding>false</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreSpecificDefaultLibraries>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_html.lib;wxmsw30u_gl.lib;wxmsw30u_qa.lib;wxmsw30u_xrc.lib;wxmsw30u_richtext.lib;wxmsw30u_media.lib;wxmsw30u_stc.lib;wxscintilla.lib;wxmsw30u_webview.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,7 +170,7 @@
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/Zm300 %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);..\depend\wxWidgets\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -177,11 +180,14 @@
       <OptimizeReferences>false</OptimizeReferences>
       <EnableCOMDATFolding>false</EnableCOMDATFolding>
       <IgnoreSpecificDefaultLibraries>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_html.lib;wxmsw30u_gl.lib;wxmsw30u_qa.lib;wxmsw30u_xrc.lib;wxmsw30u_richtext.lib;wxmsw30u_media.lib;wxmsw30u_stc.lib;wxscintilla.lib;wxmsw30u_webview.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\cgSys\EngineWrapper.cpp" />
-    <ClCompile Include="..\src\xgEditor\app_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\app_t.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\src\xgEditor\docInfoList_t.cpp" />
     <ClCompile Include="..\src\xgEditor\frame_t.cpp" />
     <ClCompile Include="..\src\xgEditor\log_t.cpp" />
@@ -217,7 +223,7 @@
     <ClCompile Include="..\src\xgEditor\entityProp_t.cpp" />
     <ClCompile Include="..\src\xgEditor\eventHandler_t.cpp" />
     <ClCompile Include="..\src\xgEditor\frameInitTool_t.cpp" />
-    <ClCompile Include="..\src\xgEditor\lightProp_t.cpp" />
+    <ClCompile Include="..\src\xgEditor\LightPropertyEditor.cpp" />
     <ClCompile Include="..\src\xgEditor\moveObjectPropBag_t.cpp" />
     <ClCompile Include="..\src\xgEditor\prop_t.cpp" />
     <ClCompile Include="..\src\xgEditor\propBag_t.cpp" />
@@ -255,7 +261,7 @@
     <ClInclude Include="..\src\xgEditor\blankProp_t.h" />
     <ClInclude Include="..\src\xgEditor\entityProp_t.h" />
     <ClInclude Include="..\src\xgEditor\eventHandler_t.h" />
-    <ClInclude Include="..\src\xgEditor\lightProp_t.h" />
+    <ClInclude Include="..\src\xgEditor\LightPropertyEditor.h" />
     <ClInclude Include="..\src\xgEditor\moveObjectProp_t.h" />
     <ClInclude Include="..\src\xgEditor\moveObjectPropBag_t.h" />
     <ClInclude Include="..\src\xgEditor\prop_t.h" />

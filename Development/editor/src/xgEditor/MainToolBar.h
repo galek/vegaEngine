@@ -2,17 +2,8 @@
 
 class wxComboBox;
 class wxWindow;
-//#include <wx/treectrl.h>
-//#include <wx/noteBook.h>
-//#include <wx/filename.h> 
-//#include <wx/msw/registry.h>
-//#include <wx/generic/choicdgg.h>
-//#include <wx/aui/aui.h>
-#include <wx/wx.h>
-//#include "wx/file.h"
-//#include <wx/dynlib.h> 
 
-
+#include "../xgPublic/EditorPublicPCH.h"
 
 namespace vega
 {
@@ -52,11 +43,11 @@ namespace vega
 		void EnablePushView(bool bEnabled);
 
 	private:
-		wxBitmap NewB, OpenB, SaveB, SaveAllB, UndoB, RedoB, CutB, CopyB, PasteB, SearchB, FullScreenB, ContentBrowserB, GenericB, KismetB, TranslateB,
+		WxMaskedBitmap NewB, OpenB, SaveB, SaveAllB, UndoB, RedoB, CutB, CopyB, PasteB, SearchB, FullScreenB, ContentBrowserB, GenericB, KismetB, TranslateB,
 			ShowWidgetB, RotateB, ScaleB, ScaleNonUniformB, MouseLockB, BrushPolysB, PrefabLockB, CamSlowB, CamNormalB, CamFastB, ViewPushStartB, ViewPushStopB, ViewPushSyncB,
-			DistributionToggleB, SocketsB, PSysRealtimeLODToggleB, PublishCookB, PublishCopyB, MatineeListB, SentinelB, GameStatsVisualizerB;
+			DistributionToggleB, SocketsB, PSysRealtimeLODToggleB, PublishCookB, PublishCopyB, MatineeListB, SentinelB, GameStatsVisualizerB,
+			BuildGeomB, BuildLightingB, BuildPathsB, BuildCoverNodesB, BuildAllB, PlayOnB[B_MAX], PlayInEditorB;;
 		wxToolBarToolBase* ViewPushStartStopButton;
-		wxBitmap BuildGeomB, BuildLightingB, BuildPathsB, BuildCoverNodesB, BuildAllB, PlayOnB[B_MAX], PlayInEditorB;
 		//Nick	WxMenuButton MRUButton, PasteSpecialButton;
 		wxMenu PasteSpecialMenu;
 
