@@ -20,11 +20,11 @@ namespace vega
 
 		struct Listener
 		{
-			virtual void resGroupCreated(const Ogre::String& resGroupName){}
-			virtual void resGroupLoaded(const Ogre::String& resGroupName){}
-			virtual void resGroupUnLoaded(const Ogre::String& resGroupName){}
-			virtual void meshLoaded(const Ogre::String& meshName){}
-			virtual void meshUnLoaded(const Ogre::String& meshName){}
+			virtual void resGroupCreated(const Ogre::String& resGroupName) {}
+			virtual void resGroupLoaded(const Ogre::String& resGroupName) {}
+			virtual void resGroupUnLoaded(const Ogre::String& resGroupName) {}
+			virtual void meshLoaded(const Ogre::String& meshName) {}
+			virtual void meshUnLoaded(const Ogre::String& meshName) {}
 			virtual ~Listener() {}
 		};
 
@@ -38,7 +38,7 @@ namespace vega
 		bool Loading();
 
 	private:
-		ResourceGroupBackgroundLoader(){}
+		ResourceGroupBackgroundLoader() {}
 
 		bool canHandleRequest(const Ogre::WorkQueue::Request* req, const Ogre::WorkQueue* srcQ) { return true; }
 		Ogre::WorkQueue::Response* handleRequest(const Ogre::WorkQueue::Request* req, const Ogre::WorkQueue* srcQ);

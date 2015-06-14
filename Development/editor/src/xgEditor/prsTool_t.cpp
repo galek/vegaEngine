@@ -23,42 +23,42 @@
 
 namespace vega
 {
-	void prsTool_t::onEvent(wxCommandEvent & event){
+	void prsTool_t::onEvent(wxCommandEvent & event) {
 		buttonId = event.GetId();
 	}
-	prsTool_t::prsTool_t(){
+	prsTool_t::prsTool_t() {
 		sceneNode = NULL;
 		buttonId = IDM_TOOLBAR_TOOL_MOVE;
 	}
-	bool prsTool_t::onActive(){
+	bool prsTool_t::onActive() {
 		active = true;
 		frame->setViewMsgRecvTool(this);
 		return true;
 	}
-	bool prsTool_t::onDeactive(){
+	bool prsTool_t::onDeactive() {
 		frame->setViewMsgRecvTool(NULL);
 		active = false;
 		sceneNode = NULL;
 		return true;
 	}
-	bool prsTool_t::Show(bool show){
-		if (show){
+	bool prsTool_t::Show(bool show) {
+		if (show) {
 			onActive();
 		}
-		else{
+		else {
 			onDeactive();
 		}
 		return wxWindow::Show(show);
 	}
-	void prsTool_t::updatePos(wxMouseEvent & event){
+	void prsTool_t::updatePos(wxMouseEvent & event) {
 		//SeriousWarning(true, "prsTool_t::updatePos");
-		if (sceneNode){
-			if (event.ControlDown()){
-				if (event.LeftIsDown()){
+		if (sceneNode) {
+			if (event.ControlDown()) {
+				if (event.LeftIsDown()) {
 					long x, y;
 					event.GetPosition(&x, &y);
 					Ogre::Ray ray;
-					if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())){
+					if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())) {
 						Ogre::Vector3 normal = -ray.getDirection();
 						normal.y = 0;
 						Ogre::Plane plane(normal, oldPostion/*sceneNode->getPosition()*/);
@@ -76,15 +76,15 @@ namespace vega
 									sceneNode->setPosition(p);*/
 				}
 			}
-			else{
-				if (event.LeftIsDown()){
+			else {
+				if (event.LeftIsDown()) {
 					long x, y;
 					event.GetPosition(&x, &y);
 					Ogre::Ray ray;
-					if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())){
+					if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())) {
 						Ogre::Plane plane(Ogre::Vector3(0, 1, 0), sceneNode->getPosition().y);
 						std::pair< bool, Ogre::Real > interPoint = Ogre::Math::intersects(ray, plane);
-						if (interPoint.first){
+						if (interPoint.first) {
 							sceneNode->setPosition(sceneNode->getPosition() + ray.getPoint(interPoint.second) - oldPoint);
 							oldPoint = ray.getPoint(interPoint.second);
 							oldPostion = oldPoint;
@@ -94,20 +94,20 @@ namespace vega
 			}
 		}
 	}
-	void prsTool_t::updateRot(wxMouseEvent & event){
-		if (sceneNode){
-			if (event.LeftIsDown()){
+	void prsTool_t::updateRot(wxMouseEvent & event) {
+		if (sceneNode) {
+			if (event.LeftIsDown()) {
 				long x, y;
 				event.GetPosition(&x, &y);
 				Ogre::Ray ray;
-				if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())){
+				if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())) {
 					Ogre::Radian rfAngle;
 					Ogre::Vector3 axis;
-					if (event.ControlDown()){
+					if (event.ControlDown()) {
 						axis = ray.getDirection();
 						rfAngle = (oldMouseXPos - x) + (oldMouseYPos - y);
 					}
-					else{
+					else {
 						axis = oldRay.getDirection().crossProduct(ray.getDirection());
 						axis.normalise();
 						rfAngle = sqrtf((x - oldMouseXPos)*(x - oldMouseXPos) + (y - oldMouseYPos)*(y - oldMouseYPos));
@@ -120,20 +120,20 @@ namespace vega
 			}
 		}
 	}
-	void prsTool_t::updateRotY(wxMouseEvent & event){
-		if (sceneNode){
-			if (event.LeftIsDown()){
+	void prsTool_t::updateRotY(wxMouseEvent & event) {
+		if (sceneNode) {
+			if (event.LeftIsDown()) {
 				long x, y;
 				event.GetPosition(&x, &y);
 				Ogre::Radian rfAngle;
 				Ogre::Vector3 axis(0, 1, 0);
 				rfAngle = ((x - oldMouseXPos) + (y - oldMouseYPos));
-				if (event.ControlDown()){
+				if (event.ControlDown()) {
 					axis.x = 1;
 					axis.y = 0;
 					axis.z = 0;
 				}
-				else if (event.AltDown()){
+				else if (event.AltDown()) {
 					axis.x = 0;
 					axis.y = 0;
 					axis.z = 1;
@@ -144,20 +144,20 @@ namespace vega
 			}
 		}
 	}
-	void prsTool_t::updateScale(wxMouseEvent & event){
-		if (sceneNode){
-			if (event.LeftIsDown()){
+	void prsTool_t::updateScale(wxMouseEvent & event) {
+		if (sceneNode) {
+			if (event.LeftIsDown()) {
 				long x, y;
 				event.GetPosition(&x, &y);
 				Ogre::Ray ray;
-				if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())){
+				if (mathUtil_t::getViewRay(x, y, ray, GetEditor()->GetEditorScene()->getCurrentViewport())) {
 					Ogre::Radian rfAngle;
 					Ogre::Vector3 axis(0, 0, 0);
-					if (event.ControlDown()){
+					if (event.ControlDown()) {
 						axis.y = (oldMouseYPos - y);
 						axis *= 0.01f;
 					}
-					else{
+					else {
 						Ogre::Plane plane(Ogre::Vector3(0, 1, 0), sceneNode->getPosition().y);
 						std::pair< bool, Ogre::Real > interPoint = Ogre::Math::intersects(ray, plane);
 						axis = ray.getPoint(interPoint.second) - oldPoint;
@@ -203,36 +203,43 @@ namespace vega
 			Ogre::Ray ray;
 			auto scene = GetEditor()->GetEditorScene();
 
-			if (mathUtil_t::getViewRay(x, y, ray, scene->getCurrentViewport())){
+			if (mathUtil_t::getViewRay(x, y, ray, scene->getCurrentViewport()))
+			{
 				oldRay = ray;
 				Ogre::RaySceneQuery *rsq = scene->createRayQuery(ray);
 				rsq->setSortByDistance(true, 10);
-				rsq->setQueryTypeMask(rsq->getQueryTypeMask() | Ogre::SceneManager::LIGHT_TYPE_MASK | Ogre::SceneManager::FX_TYPE_MASK);
+
+				//rsq->setQueryTypeMask(rsq->getQueryTypeMask() | Ogre::SceneManager::LIGHT_TYPE_MASK | Ogre::SceneManager::FX_TYPE_MASK);
+
 				Ogre::RaySceneQueryResult &rsqr = rsq->execute();
 				int count = rsqr.size();
-				if (rsqr.size()){
+				if (rsqr.size())
+				{
 					Ogre::RaySceneQueryResult::iterator itr(rsqr.begin());
 					Ogre::RaySceneQueryResult::iterator itr2;
-					for (; itr != rsqr.end(); ++itr){
+					for (; itr != rsqr.end(); ++itr)
+					{
 						itr2 = itr;
 						++itr2;
-						if (itr2 != rsqr.end()){
+						if (itr2 != rsqr.end())
+						{
 							if ((*itr).movable->getParentSceneNode()->_getWorldAABB().contains((*itr2).movable->getParentSceneNode()->_getWorldAABB()))
 								continue;
 						}
 
-						if ((*itr).movable && !(*itr).movable->getParentSceneNode()->_getWorldAABB().intersects(ray.getOrigin())){
+						if ((*itr).movable && !(*itr).movable->getParentSceneNode()->_getWorldAABB().intersects(ray.getOrigin()))
+						{
 							type_t *t = (type_t*)&((*itr).movable->getUserAny());
-							if (t->editable || t->dummy){
+							if (t->editable || t->dummy) {
 								sceneNode = (*itr).movable->getParentSceneNode();
 								Ogre::MovableObject *moveAbleObject = (*itr).movable;
-								if (t->dummy){
+								if (t->dummy) {
 									moveAbleObject = NULL;
 									int numAttachedObjects = sceneNode->numAttachedObjects();
-									for (int i(0); i < numAttachedObjects; ++i){
+									for (int i(0); i < numAttachedObjects; ++i) {
 										Ogre::MovableObject *m = sceneNode->getAttachedObject(i);
 										type_t* tp = (type_t*)&(m->getUserAny());
-										if (tp->editable && !tp->dummy){
+										if (tp->editable && !tp->dummy) {
 											moveAbleObject = m;
 											break;
 										}
@@ -247,7 +254,8 @@ namespace vega
 								scene->setSelMovable(moveAbleObject);
 								break;
 							}
-							else{
+							else
+							{
 								scene->setSelSceneNode(NULL);
 								scene->setSelMovable(NULL);
 								sceneNode = NULL;
@@ -255,36 +263,38 @@ namespace vega
 
 						}
 					}
-					if (itr == rsqr.end()){
+					if (itr == rsqr.end())
+					{
 						scene->setSelSceneNode(NULL);
 						scene->setSelMovable(NULL);
 					}
 
-				}/*
-				else{
-				scene->setSelSceneNode(NULL);
-				sceneNode=NULL;
-				}*/
+				}
+				else
+				{
+					scene->setSelSceneNode(NULL);
+					sceneNode = NULL;
+				}
 
 				scene->destroyQuery(rsq);
 			}
 		}
 		else
 		{
-			//if (buttonId == IDM_TOOLBAR_TOOL_MOVE)
+			if (buttonId == IDM_TOOLBAR_TOOL_MOVE)
 			{
 				updatePos(event);
 			}
-			/*else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE)
+			else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE)
 			{
-			updateRot(event);
+				updateRot(event);
 			}
-			else if (buttonId == IDM_TOOLBAR_TOOL_SCALE){
-			updateScale(event);
+			else if (buttonId == IDM_TOOLBAR_TOOL_SCALE) {
+				updateScale(event);
 			}
-			else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE_Y){
-			updateRotY(event);
-			}*/
+			else if (buttonId == IDM_TOOLBAR_TOOL_ROTATE_Y) {
+				updateRotY(event);
+			}
 		}
 		event.GetPosition(&oldMouseXPos, &oldMouseYPos);
 		return true;
@@ -313,6 +323,6 @@ namespace vega
 #endif
 		return true;
 	}
-	prsTool_t::~prsTool_t(){
+	prsTool_t::~prsTool_t() {
 	}
 }

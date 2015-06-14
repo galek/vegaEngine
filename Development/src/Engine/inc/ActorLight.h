@@ -67,11 +67,11 @@ namespace vega
 		// !@Get Specular Color()
 		const Ogre::ColourValue& getSpecular(void);
 		// !@Returns the angle covered by the spotlights outer cone.
-		float GetSpotOuter(void);
+		float GetSpotOuter(void) const;
 		// !@Returns the angle covered by the spotlights inner cone.
-		float GetSpotInner(void);
+		float GetSpotInner(void) const;
 		// !@Returns the falloff between the inner and outer cones of the spotlight.
-		float GetSpotlightFalloff(void);
+		float GetSpotlightFalloff(void) const;
 		// !@Returns the absolute upper range of the light.
 		float GetAttenuationRange(void) const;
 		// !@Returns the constant factor in the attenuation formula.
@@ -82,6 +82,9 @@ namespace vega
 		float GetAttenuationQuadric(void) const;
 		// !@Set the scaling factor which indicates the relative power of a light.
 		float GetPowerScale(void) const;
+
+		// !@Automatic validation
+		bool isValid(const char* _funct) const;
 		
 		// !@Automatic conversion
 		ActorLight& operator=(Ogre::Light &_mLight);
@@ -94,9 +97,6 @@ namespace vega
 		__inline Ogre::Light * getOgreLight(void) const { return mLight; }
 	private:
 		ActorLight() {}
-	private:
-		// !@Pointer to a Wire Bounding Box for this Node,used in edit mode
-		Ogre::WireBoundingBox *mRangeBox;
 	private:
 		Ogre::Light *mLight;
 		std::string mName;

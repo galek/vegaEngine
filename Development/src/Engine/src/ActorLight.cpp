@@ -5,7 +5,7 @@
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
 */
-// Last Update:15.01.13
+// Last Update:13.07.15
 // BugFix:изменил функцию установки типа света,добавил функцию добавления дальности прорисовки
 #include "EnginePrivate.h"
 #include "ActorLight.h"
@@ -28,22 +28,19 @@ namespace vega
 		setPosition(_pos);
 		setDirection(_rot.normalisedCopy());
 		setCastShadows(true);
+	}
 
-		mRangeBox = new Ogre::WireBoundingBox();
-		if (GetEngine()->isEditor()) {
-			mRangeBox->setMaterial("LightMesh");
-			Ogre::MaterialPtr baseWhiteNoLighting;
-			if (Ogre::MaterialManager::getSingleton().resourceExists(_mName)) {
-				baseWhiteNoLighting = Ogre::MaterialManager::getSingleton().getByName(_mName);
-			}
-			else {
-				baseWhiteNoLighting = Ogre::MaterialManager::getSingleton().create(_mName, Ogre::ResourceGroupManager::INTERNAL_RESOURCE_GROUP_NAME);
-			}
-			baseWhiteNoLighting->setLightingEnabled(true);
+	//-------------------------------------------------------------------------------------
+	ActorLight::ActorLight(const Ogre::Light&_mLight)
+		:ActorLight(_mLight.getName(), (ActorLight::LightTypes)_mLight.getType(), _mLight.getPosition(), _mLight.getDirection()) {
+		mLight = (Ogre::Light*)&_mLight;
+	}
 
-			baseWhiteNoLighting->setAmbient(0.8, 0.8, 0.0);
-			baseWhiteNoLighting->setDiffuse(1, 1, 1, 1);
-		}
+	//-------------------------------------------------------------------------------------
+	ActorLight::ActorLight(Ogre::Light*_mLight)
+		: ActorLight(_mLight->getName(), (ActorLight::LightTypes)_mLight->getType(), _mLight->getPosition(), _mLight->getDirection())
+	{
+		mLight = _mLight;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -67,27 +64,43 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	ActorLight::~ActorLight()
 	{
-		SAFE_DELETE(mRangeBox);
+		SAFE_DELETE(mLight);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setShadowFarClipDistance(float _d) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setShadowFarClipDistance(_d);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setShadowFarDistance(float _d) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setShadowFarDistance(_d);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::attach(Actor *_mParent) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		_mParent->getNode()->attachObject(mLight);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setType(LightTypes _type)
 	{
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		if (mLightType != _type)
 		{
 			mLightType = (_type);
@@ -97,31 +110,56 @@ namespace vega
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setVisible(bool _status) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setVisible(_status);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setCastShadows(bool _status) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setCastShadows(_status);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setPosition(const Ogre::Vector3& _pos) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setPosition(_pos);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setDirection(const Ogre::Vector3& _quat) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setDirection(_quat);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setDiffuse(float _r, float _g, float _b) {
+		if (!isValid(__FUNCTION__))
+		{
+			return;
+		}
 		mLight->setDiffuseColour(_r, _g, _b);
 	}
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setSpecular(float _r, float _g, float _b) {
+		if (!mLight)
+		{
+			Warning("mLight is null,in function:%s", __FUNCTION__);
+			return;
+		}
 		mLight->setSpecularColour(_r, _g, _b);
 	}
 
@@ -134,7 +172,10 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	void ActorLight::setPowerScale(float _range, float _constant, float _linear, float _quadratic) {
 		if (!mLight)
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+		{
+			Warning("mLight is null,in function:%s", __FUNCTION__);
+			return;
+		}
 		mLight->setAttenuation(_range, _constant, _linear, _quadratic);
 	}
 
@@ -142,7 +183,7 @@ namespace vega
 	const Ogre::Vector3& ActorLight::getDirection() {
 		if (!mLight)
 		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+			Warning("mLight is null,in function:%s", __FUNCTION__);
 			static Ogre::Vector3 error;
 			return error;
 		}
@@ -153,7 +194,7 @@ namespace vega
 	const Ogre::ColourValue& ActorLight::getDiffuse() {
 		if (!mLight)
 		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+			Warning("mLight is null,in function:%s", __FUNCTION__);
 			static Ogre::ColourValue error(1, 0, 0);
 			return error;
 		}
@@ -164,7 +205,7 @@ namespace vega
 	const Ogre::ColourValue& ActorLight::getSpecular() {
 		if (!mLight)
 		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+			Warning("mLight is null,in function:%s", __FUNCTION__);
 			static Ogre::ColourValue error(1, 0, 0);
 			return error;
 		}
@@ -175,7 +216,7 @@ namespace vega
 	void ActorLight::setDiffuse(const Ogre::ColourValue& _col) {
 		if (!mLight)
 		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+			Warning("mLight is null,in function:%s", __FUNCTION__);
 			return;
 		}
 		mLight->setDiffuseColour(_col);
@@ -185,7 +226,7 @@ namespace vega
 	void ActorLight::setSpecular(const Ogre::ColourValue& _col) {
 		if (!mLight)
 		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
+			Warning("mLight is null,in function:%s", __FUNCTION__);
 			return;
 		}
 		mLight->setSpecularColour(_col);
@@ -193,12 +234,11 @@ namespace vega
 
 	//-------------------------------------------------------------------------------------
 	void ActorLight::_updateRenderQueue(Ogre::RenderQueue *queue) {
-		static Ogre::AxisAlignedBox ab;
-		ab.setNull();
-		Ogre::Vector3 c = mLight->getBoundingBox().getCenter();
-		ab.setExtents(c.x - mLight->getAttenuationRange(), c.y - mLight->getAttenuationRange(), c.z - mLight->getAttenuationRange(), c.x + mLight->getAttenuationRange(), c.y + mLight->getAttenuationRange(), c.z + mLight->getAttenuationRange());
-		mRangeBox->setupBoundingBox(ab);
-		queue->addRenderable(mRangeBox);
+		if (!mLight)
+		{
+			Warning("mLight is null,in function:%s", __FUNCTION__);
+			return;
+		}
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -206,6 +246,98 @@ namespace vega
 		// Null, lights are not visible
 		static Ogre::AxisAlignedBox box(-1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f);
 		return box;
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetSpotOuter() const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getSpotlightOuterAngle().valueRadians();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetSpotInner() const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getSpotlightInnerAngle().valueRadians();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetSpotlightFalloff() const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getSpotlightFalloff();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetAttenuationRange(void) const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getAttenuationRange();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetAttenuationConstant(void) const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getAttenuationConstant();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetAttenuationLinear(void) const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getAttenuationLinear();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetAttenuationQuadric(void) const
+	{
+		if (!isValid(__FUNCTION__))
+		{
+			return 0;
+		}
+		return mLight->getAttenuationQuadric();
+	}
+
+	//-------------------------------------------------------------------------------------
+	float ActorLight::GetPowerScale(void) const
+	{
+		if (!mLight)
+		{
+			Warning("mLight is null,in function:%s", __FUNCTION__);
+			return 0;
+		}
+		return mLight->getPowerScale();
+	}
+
+	//-------------------------------------------------------------------------------------
+	bool ActorLight::isValid(const char* _funct) const
+	{
+		if (!mLight)
+		{
+			Warning("mLight is null,in function:%s", _funct);
+			return false;
+		}
+		return true;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -222,106 +354,4 @@ namespace vega
 		return *this;
 	}
 
-	//-------------------------------------------------------------------------------------
-	ActorLight::ActorLight(const Ogre::Light&_mLight)
-		:ActorLight(_mLight.getName(), (ActorLight::LightTypes)_mLight.getType(), _mLight.getPosition(), _mLight.getDirection()) {
-		mLight = (Ogre::Light*)&_mLight;
-	}
-
-	//-------------------------------------------------------------------------------------
-	ActorLight::ActorLight(Ogre::Light*_mLight)
-		:ActorLight(_mLight->getName(), (ActorLight::LightTypes)_mLight->getType(), _mLight->getPosition(), _mLight->getDirection())
-	{
-		mLight = _mLight;
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetSpotOuter() 
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getSpotlightOuterAngle().valueRadians();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetSpotInner()
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getSpotlightInnerAngle().valueRadians();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetSpotlightFalloff()
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getSpotlightFalloff();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetAttenuationRange(void) const
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getAttenuationRange();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetAttenuationConstant(void) const
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getAttenuationConstant();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetAttenuationLinear(void) const
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getAttenuationLinear();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetAttenuationQuadric(void) const
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getAttenuationQuadric();
-	}
-
-	//-------------------------------------------------------------------------------------
-	float ActorLight::GetPowerScale(void) const
-	{
-		if (!mLight)
-		{
-			std::exception((std::string("mLight is null,in function:") + __FUNCTION__).c_str());
-			return 0;
-		}
-		return mLight->getPowerScale();
-	}
-	
-	
 }

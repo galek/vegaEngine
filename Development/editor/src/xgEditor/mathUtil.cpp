@@ -3,7 +3,8 @@
 
 namespace vega
 {
-	bool mathUtil_t::getViewRay(long x, long y, Ogre::Ray &ray, Ogre::Viewport *vp){
+	bool mathUtil_t::getViewRay(long x, long y, Ogre::Ray &ray, Ogre::Viewport *vp)
+	{
 		Ogre::Camera *c = vp->getCamera();
 		Ogre::RenderTarget *rt = vp->getTarget();
 		float tgrx = x / (float)rt->getWidth();

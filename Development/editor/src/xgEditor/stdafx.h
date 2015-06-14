@@ -5,3 +5,4 @@
 
 //Editor
 #include "EngineWrapper.h"
+#include "PropertyEditors.h"

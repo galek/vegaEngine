@@ -22,7 +22,7 @@ mesh = new ActorMesh("s13.mesh", "s13", "s13");
 mesh = new ActorMesh("s14.mesh", "s14", "s14");
 mesh = new ActorMesh("s15.mesh", "s15", "s15");
 --Camera
---camera = new CameraFree(true);
+camera = new CameraFree(true);
 --input
 api.SetMouseLock(true);
 api.SetBufferedUnBufferedMouseMode(false,false);

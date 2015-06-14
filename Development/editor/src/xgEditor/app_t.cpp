@@ -39,7 +39,7 @@ namespace vega
 	/**
 	*/
 	bool app_t::OnInit(){
-		frame = new frame_t(wxT("VegaEd"));
+		frame = new MainFrame(wxT("VegaEd"));
 		// Show it
 		frame->Show(true);
 

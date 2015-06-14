@@ -21,21 +21,27 @@ namespace vega
 	class log_t;
 	class prsTool_t;
 
+	//WxClasses
 	class WxMainToolBar;
 
-	class frame_t : public wxFrame
+	class MainFrame : public wxFrame
 	{
 	public:
 		const std::string &getResRootPath() { return resRootPath; }
 		bool processViewEvent(wxEvent &);
+		/*
+		*/
 		void pushViewMsgRecvTool(tool_t *me);
 		void popViewMsgRecvTool(tool_t *me);
 		void setViewMsgRecvTool(tool_t *me);
+
 		propBag_t *getPropBag() { return propBag; }
 		void toggleTimerUpdate();
 		updateBag_t *getUpdateBag();
 		wxOgre_t *getView() { return viewWindow; }
 		virtual bool ProcessEvent(wxEvent &  event);
+		/*
+		*/
 		wxMenuBar *getMenuBar() { return menuBar; }
 		wxTextCtrl *getLogText() { return logWindow; }
 		wxTreebook *getToolBook() { return toolWindow; }
@@ -49,7 +55,7 @@ namespace vega
 			return prs;
 		}
 		
-		frame_t(const wxString& title);
+		MainFrame(const wxString& title);
 		void OnQuit(wxCommandEvent& event);
 		void OnAbout(wxCommandEvent& event);
 		void OnNew(wxCommandEvent& event);
@@ -59,7 +65,7 @@ namespace vega
 		void OnSaveAs(wxCommandEvent& event);
 		void OnActivate(wxActivateEvent& event);
 		void UpdateStatusText();
-		~frame_t();
+		~MainFrame();
 	private:
 		DECLARE_EVENT_TABLE()
 		void InitTools();
@@ -88,5 +94,5 @@ namespace vega
 		log_t*log;
 		prsTool_t*prs;
 	};
-	extern frame_t *frame;
+	extern MainFrame *frame;
 }

@@ -144,7 +144,7 @@ namespace vega
 		else
 			Debug("[StartupSystems]input not updated");
 
-		this->BackgroundLoad();
+		this->BackgroundLoadProgress();
 
 		if (mEngineState == EngineState::ES_PLAY)
 		{
@@ -305,6 +305,7 @@ namespace vega
 		window->Listener();
 		input->createFrameListener();
 		mGRoot->addFrameListener(updater);
+		this->BackgroundLoadInit();
 	}
 	//-------------------------------------------------------------------------------------
 	bool EngineGlobals::Setup(void)

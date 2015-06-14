@@ -21,7 +21,6 @@ namespace vega
 		virtual void PrecacheResources(void);
 	private:
 		virtual void SetupResources(void);
-		virtual void InitD3D9(void);
 	public:
 		xgScene_t* GetEditorScene(void);
 		void ShowEditor(void);

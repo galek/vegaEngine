@@ -5,7 +5,7 @@ class wxTreebook;
 
 namespace vega
 {
-	class frame_t;
+	class MainFrame;
 	class tool_t
 	{
 	public:

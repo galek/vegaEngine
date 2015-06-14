@@ -41,22 +41,22 @@ namespace vega
 	static const long ID_FRAME = wxNewId();
 	/**
 	*/
-	BEGIN_EVENT_TABLE(frame_t, wxFrame)
-		EVT_TIMER(ID_UPDATE_TIMER, frame_t::onTimer)
-		EVT_MENU(wxID_NEW, frame_t::OnNew)
-		EVT_MENU(wxID_ABOUT, frame_t::OnAbout)
-		EVT_MENU(wxID_EXIT, frame_t::OnQuit)
-		EVT_MENU(wxID_OPEN, frame_t::OnOpen)
-		EVT_MENU(ID_RUNSCRIPT, frame_t::OnRunScript)
-		EVT_MENU(wxID_SAVE, frame_t::OnSave)
-		EVT_MENU(wxID_SAVEAS, frame_t::OnSaveAs)
+	BEGIN_EVENT_TABLE(MainFrame, wxFrame)
+		EVT_TIMER(ID_UPDATE_TIMER, MainFrame::onTimer)
+		EVT_MENU(wxID_NEW, MainFrame::OnNew)
+		EVT_MENU(wxID_ABOUT, MainFrame::OnAbout)
+		EVT_MENU(wxID_EXIT, MainFrame::OnQuit)
+		EVT_MENU(wxID_OPEN, MainFrame::OnOpen)
+		EVT_MENU(ID_RUNSCRIPT, MainFrame::OnRunScript)
+		EVT_MENU(wxID_SAVE, MainFrame::OnSave)
+		EVT_MENU(wxID_SAVEAS, MainFrame::OnSaveAs)
 
-		EVT_ACTIVATE(frame_t::OnActivate)
+		EVT_ACTIVATE(MainFrame::OnActivate)
 		END_EVENT_TABLE()
-		frame_t *frame;
+		MainFrame *frame;
 	/**
 	*/
-	void frame_t::OnAbout(wxCommandEvent& event){
+	void MainFrame::OnAbout(wxCommandEvent& event){
 		wxString msg;
 		msg.Printf(wxT("welcome to "));
 		wxMessageBox(msg, wxT("About VegaEd"),
@@ -64,7 +64,7 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::OnQuit(wxCommandEvent& event){
+	void MainFrame::OnQuit(wxCommandEvent& event){
 		// Destroy the frame
 		if (timer.IsRunning())
 			timer.Stop();
@@ -72,7 +72,7 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::OnActivate(wxActivateEvent& event){
+	void MainFrame::OnActivate(wxActivateEvent& event){
 		if (event.GetActive()){
 			if (timer.IsRunning())
 				timer.Stop();
@@ -85,20 +85,20 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::onTimer(wxTimerEvent& event){
+	void MainFrame::onTimer(wxTimerEvent& event){
 		if (updateBag)
 			updateBag->update(event.GetInterval() / 1000.0f);
 	}
 	/**
 	*/
-	void frame_t::toggleTimerUpdate(){
+	void MainFrame::toggleTimerUpdate(){
 		if (timer.IsRunning())
 			timer.Stop();
 		timer.Start(10);
 	}
 	/**
 	*/
-	void frame_t::OnNew(wxCommandEvent& event){
+	void MainFrame::OnNew(wxCommandEvent& event){
 		resetTool();
 		GetEditor()->GetEditorScene()->reset(true);
 		documentName = "";
@@ -149,7 +149,7 @@ namespace vega
 
 	/**
 	*/
-	void frame_t::OnOpen(wxCommandEvent& event)
+	void MainFrame::OnOpen(wxCommandEvent& event)
 	{
 		if (documentName.length() != 0){
 			if (wxMessageBox("do you want save old scene", "", wxYES_NO, this) == wxYES)
@@ -170,7 +170,7 @@ namespace vega
 
 	/**
 	*/
-	void frame_t::OnRunScript(wxCommandEvent& event)
+	void MainFrame::OnRunScript(wxCommandEvent& event)
 	{
 		if (documentName.length() != 0){
 			if (wxMessageBox("do you want save old scene", "", wxYES_NO, this) == wxYES)
@@ -194,7 +194,7 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::OnSave(wxCommandEvent& event){
+	void MainFrame::OnSave(wxCommandEvent& event){
 		wxString status;
 		if (documentName.length() != 0){
 			status.Printf("saving file %s", documentName);
@@ -217,7 +217,7 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::OnSaveAs(wxCommandEvent& event){
+	void MainFrame::OnSaveAs(wxCommandEvent& event){
 		wxString status;
 		wxFileDialog fd(this, "select scene file", wxFileName::GetCwd(), wxEmptyString, "*.scene.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 		if (fd.ShowModal() == wxID_OK){
@@ -231,7 +231,7 @@ namespace vega
 	}
 	/**
 	*/
-	frame_t::~frame_t()
+	MainFrame::~MainFrame()
 	{
 		int ret = MessageBoxA(NULL, "you scene has been changed,do you want to save your current scene", "alarm", MB_YESNO | MB_ICONQUESTION | MB_TASKMODAL);
 		if (ret == IDYES)
@@ -250,14 +250,14 @@ namespace vega
 	/**
 	*/
 	class viewMsgHandle_t :public wxEvtHandler{
-		frame_t *frame;
+		MainFrame *frame;
 	public:
 		/**
 		*/
 		~viewMsgHandle_t(){}
 		/**
 		*/
-		viewMsgHandle_t(frame_t *frame) :frame(frame){}
+		viewMsgHandle_t(MainFrame *frame) :frame(frame){}
 		/**
 		*/
 		bool ProcessEvent(wxEvent &  event){
@@ -267,7 +267,7 @@ namespace vega
 
 	/**
 	*/
-	frame_t::frame_t(const wxString& title) :
+	MainFrame::MainFrame(const wxString& title) :
 		wxFrame(NULL, ID_FRAME, title, wxDefaultPosition, wxSize(1024, 768)),
 		docInfoList(NULL), timer(this, ID_UPDATE_TIMER),
 		currentViewMsgRecvTool(NULL)
@@ -340,7 +340,7 @@ namespace vega
 	}
 	/**
 	*/
-	bool frame_t::processViewEvent(wxEvent &  event){
+	bool MainFrame::processViewEvent(wxEvent &  event){
 		if (wxIS_KIND_OF((&event), wxMouseEvent)){
 			wxMouseEvent &e = *wxStaticCastEvent(wxMouseEvent*, &event);
 			viewMsgRecvToolBag->onViewMouseEvent(e);
@@ -359,22 +359,22 @@ namespace vega
 	}
 	/**
 	*/
-	void frame_t::pushViewMsgRecvTool(tool_t *me){
+	void MainFrame::pushViewMsgRecvTool(tool_t *me){
 		viewMsgRecvToolBag->push_back(me);
 	}
 	/**
 	*/
-	void frame_t::popViewMsgRecvTool(tool_t *me){
+	void MainFrame::popViewMsgRecvTool(tool_t *me){
 		viewMsgRecvToolBag->remove(me);
 	}
 	/**
 	*/
-	void frame_t::setViewMsgRecvTool(tool_t *me){
+	void MainFrame::setViewMsgRecvTool(tool_t *me){
 		currentViewMsgRecvTool = me;
 	}
 	/**
 	*/
-	bool frame_t::ProcessEvent(wxEvent &  event){
+	bool MainFrame::ProcessEvent(wxEvent &  event){
 		/*if(event.GetEventObject()==viewWindow){
 		switchHub.onViewEvent(event);
 		return false;
@@ -386,20 +386,20 @@ namespace vega
 	}
 	/**
 	*/
-	updateBag_t *frame_t::getUpdateBag()
+	updateBag_t *MainFrame::getUpdateBag()
 	{
 		return updateBag;
 	}
 	/**
 	*/
-	void frame_t::CreateEditorToolBar()
+	void MainFrame::CreateEditorToolBar()
 	{
 		toolbar = new WxMainToolBar(this, -1);
 		this->SetToolBar(toolbar);
 	}
 	/**
 	*/
-	void frame_t::UpdateStatusText(){
+	void MainFrame::UpdateStatusText(){
 		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_PAUSE)
 			SetStatusText(wxT("Ready to play"));
 		if (GetEditor()->mEngineState == EngineWrapper::EngineState::ES_PLAY)

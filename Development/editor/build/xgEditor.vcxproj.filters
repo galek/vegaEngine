@@ -118,6 +118,7 @@
     <ClCompile Include="..\src\xgEditor\LightPropertyEditor.cpp">
       <Filter>PropertyEditors</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\xgEditor\PropertyEditors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\xgEditor\app_t.h">
@@ -225,6 +226,7 @@
     <ClInclude Include="..\src\xgEditor\LightPropertyEditor.h">
       <Filter>PropertyEditors</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\xgEditor\PropertyEditors.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\src\xgEditor\iconMain.ico" />

@@ -36,7 +36,7 @@
 
 namespace vega
 {
-	void frame_t::InitTools()
+	void MainFrame::InitTools()
 	{
 		//cameraTool_t *ct=new cameraTool_t;
 		toolBag->push_back(new cameraTool_t);
@@ -52,20 +52,22 @@ namespace vega
 
 		//toolBag->push_back(new LightPropertyEditor);
 		//ct->init();
-		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr){
+		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr) {
 			(*itr)->init();
 		}
-		auto tempPtr = new LightPropertyEditor();
 
-		moveObjectPropBag->addProp(tempPtr);
-		updateBag->AddUpdatable(tempPtr);
+		GetPropEditors().m_LightPE = new LightPropertyEditor();
+
+		moveObjectPropBag->addProp(GetPropEditors().m_LightPE);
+		updateBag->AddUpdatable(GetPropEditors().m_LightPE);
 
 		moveObjectPropBag->addProp(new entityProp_t);
 
 		GetEditor()->GetEditorScene()->pushSelectListener(moveObjectPropBag);
 	}
-	void frame_t::resetTool(){
-		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr){
+
+	void MainFrame::resetTool() {
+		for (toolBag_t::iterator itr(toolBag->begin()); itr != toolBag->end(); ++itr) {
 			(*itr)->onDeactive();
 		}
 	}

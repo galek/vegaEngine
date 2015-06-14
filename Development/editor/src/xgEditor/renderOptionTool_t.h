@@ -4,7 +4,7 @@
 
 namespace vega
 {
-	class frame_t;
+	class MainFrame;
 	//##ModelId=44B9D7F0000F
 	class renderOptionTool_t :public wxPanel, public tool_t
 	{

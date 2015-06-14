@@ -192,6 +192,7 @@
     <ClCompile Include="..\src\xgEditor\frame_t.cpp" />
     <ClCompile Include="..\src\xgEditor\log_t.cpp" />
     <ClCompile Include="..\src\xgEditor\MainToolBar.cpp" />
+    <ClCompile Include="..\src\xgEditor\PropertyEditors.cpp" />
     <ClCompile Include="..\src\xgEditor\SceneStats.cpp" />
     <ClCompile Include="..\src\xgEditor\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -237,6 +238,7 @@
     <ClInclude Include="..\src\xgEditor\log_t.h" />
     <ClInclude Include="..\src\xgEditor\MainToolBar.h" />
     <ClInclude Include="..\src\xgEditor\pfxType_t.h" />
+    <ClInclude Include="..\src\xgEditor\PropertyEditors.h" />
     <ClInclude Include="..\src\xgEditor\resource.h" />
     <ClInclude Include="..\src\xgEditor\selectListener_t.h" />
     <ClInclude Include="..\src\xgEditor\stdafx.h" />

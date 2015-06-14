@@ -8,7 +8,7 @@ class wxTreebook;
 
 namespace vega
 {
-	class frame_t;
+	class MainFrame;
 	class cameraTool_t
 		:public wxPanel, public tool_t, public Updatable
 	{

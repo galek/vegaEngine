@@ -29,11 +29,10 @@ namespace vega
 
 	void ResourceGroupBackgroundLoader::BackgroundLoadResourceGroup(const Ogre::String& resGroupName, const Ogre::String& location, Listener* listener)
 	{
-		Debug(__FUNCTION__);
-		BUG("Crash using iterator")
-#if 0//Crash using iterator
+		if (mResGroupRequestQueue.empty())
+			return;
 		for (auto it = mResGroupRequestQueue.begin();
-			it != mResGroupRequestQueue.end(); ++it)
+		it != mResGroupRequestQueue.end(); ++it)
 		{
 			if (it->name == resGroupName &&
 				it->type == UNLOAD_GROUP && it->status == INITIALISE)
@@ -57,16 +56,13 @@ namespace vega
 			ResGroupRequest newResGroupReq = { LOAD_GROUP, INITIALISE, resGroupName, location, listener };
 			mResGroupRequestQueue.push_back(newResGroupReq);
 		}
-#endif
 	}
 
 
 	void ResourceGroupBackgroundLoader::BackgroundUnLoadResourceGroup(const Ogre::String& resGroupName, Listener* listener)
 	{
-		BUG("Crash using iterator")
-#if 0//Crash using iterator
 		for (ResGroupRequestQueue::iterator requestQueueItor = mResGroupRequestQueue.begin();
-			requestQueueItor != mResGroupRequestQueue.end(); ++requestQueueItor)
+		requestQueueItor != mResGroupRequestQueue.end(); ++requestQueueItor)
 		{
 			if (requestQueueItor->name == resGroupName &&
 				requestQueueItor->type == LOAD_GROUP)
@@ -95,114 +91,115 @@ namespace vega
 			ResGroupRequest newResGroupReq = { UNLOAD_GROUP, INITIALISE, resGroupName };
 			mResGroupRequestQueue.push_back(newResGroupReq);
 		}
-#endif
 	}
 
 
 	bool ResourceGroupBackgroundLoader::Loading()
 	{
-		if (!mResGroupRequestQueue.empty())
+		if (mResGroupRequestQueue.empty())
 		{
-			ResGroupRequest& resGroupReq = mResGroupRequestQueue.front();
-			if (resGroupReq.status == INITIALISE)
+			return false;
+		}
+
+		ResGroupRequest& resGroupReq = mResGroupRequestQueue.front();
+		if (resGroupReq.status == INITIALISE)
+		{
+			if (resGroupReq.type == LOAD_GROUP)
 			{
-				if (resGroupReq.type == LOAD_GROUP)
+				Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
+				if (!resGroupMgr.resourceGroupExists(resGroupReq.name))
 				{
-					Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
-					if (!resGroupMgr.resourceGroupExists(resGroupReq.name))
+					resGroupMgr.createResourceGroup(resGroupReq.name, false);
+					resGroupMgr.addResourceLocation(resGroupReq.location, "FileSystem", resGroupReq.name);
+				}
+
+				if (resGroupReq.listener)
+					resGroupReq.listener->resGroupCreated(resGroupReq.name);
+
+				Request req;
+				req.type = resGroupReq.type;
+				req.resGroupName = resGroupReq.name;
+				Ogre::Root::getSingleton().getWorkQueue()->addRequest(mWorkQueueChannel, resGroupReq.type, Ogre::Any(req));
+
+				resGroupReq.status = PREPARING;
+			}
+			else if (resGroupReq.type == UNLOAD_GROUP)
+			{
+				Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
+				if (resGroupMgr.resourceGroupExists(resGroupReq.name))
+					resGroupReq.meshes = Ogre::ResourceGroupManager::getSingleton().findResourceNames(resGroupReq.name, "*.mesh");
+				getResourcesFromResourceGroup(false);
+				resGroupReq.status = PREPARED;
+			}
+		}
+		else if (resGroupReq.status == PREPARED)
+		{
+			DWORD beginTime = GetTickCount();
+			DWORD elapseTime = 0;
+			while (elapseTime < mLoadingIntervalMs)
+			{
+				if (!resGroupReq.resourceQueue.empty())
+				{
+					auto res = resGroupReq.resourceQueue.front();
+					if (resGroupReq.type == LOAD_GROUP)
 					{
-						resGroupMgr.createResourceGroup(resGroupReq.name, false);
-						resGroupMgr.addResourceLocation(resGroupReq.location, "FileSystem", resGroupReq.name);
+						res->load(true);
+					}
+					else if (resGroupReq.type == UNLOAD_GROUP)
+					{
+						res->unload();
 					}
 
-					if (resGroupReq.listener)
-						resGroupReq.listener->resGroupCreated(resGroupReq.name);
-
-					Request req;
-					req.type = resGroupReq.type;
-					req.resGroupName = resGroupReq.name;
-					Ogre::Root::getSingleton().getWorkQueue()->addRequest(mWorkQueueChannel, resGroupReq.type, Ogre::Any(req));
-
-					resGroupReq.status = PREPARING;
-				}
-				else if (resGroupReq.type == UNLOAD_GROUP)
-				{
-					Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
-					if (resGroupMgr.resourceGroupExists(resGroupReq.name))
-						resGroupReq.meshes = Ogre::ResourceGroupManager::getSingleton().findResourceNames(resGroupReq.name, "*.mesh");
-					getResourcesFromResourceGroup(false);
-					resGroupReq.status = PREPARED;
-				}
-			}
-			else if (resGroupReq.status == PREPARED)
-			{
-				DWORD beginTime = GetTickCount();
-				DWORD elapseTime = 0;
-				while (elapseTime < mLoadingIntervalMs)
-				{
-					if (!resGroupReq.resourceQueue.empty())
+					if (res->getCreator() == Ogre::MeshManager::getSingletonPtr() &&
+						resGroupReq.listener)
 					{
-						auto res = resGroupReq.resourceQueue.front();
 						if (resGroupReq.type == LOAD_GROUP)
 						{
-							res->load(true);
+							res->_fireLoadingComplete(true);
+							resGroupReq.listener->meshLoaded(res->getName());
 						}
 						else if (resGroupReq.type == UNLOAD_GROUP)
 						{
-							res->unload();
+							res->_fireUnloadingComplete();
+							resGroupReq.listener->meshUnLoaded(res->getName());
 						}
-
-						if (res->getCreator() == Ogre::MeshManager::getSingletonPtr() &&
-							resGroupReq.listener)
-						{
-							if (resGroupReq.type == LOAD_GROUP)
-							{
-								res->_fireLoadingComplete(true);
-								resGroupReq.listener->meshLoaded(res->getName());
-							}
-							else if (resGroupReq.type == UNLOAD_GROUP)
-							{
-								res->_fireUnloadingComplete();
-								resGroupReq.listener->meshUnLoaded(res->getName());
-							}
-						}
-
-						resGroupReq.resourceQueue.pop_front();
 					}
-					else
-						break;
 
-					elapseTime = GetTickCount() - beginTime;
+					resGroupReq.resourceQueue.pop_front();
 				}
+				else
+					break;
 
-				if (resGroupReq.resourceQueue.empty())
-					getResourcesFromResourceGroup(resGroupReq.type == LOAD_GROUP);
-
-				if (resGroupReq.resourceQueue.empty())
-					resGroupReq.status = COMPLETED;
+				elapseTime = GetTickCount() - beginTime;
 			}
-			else if (resGroupReq.status == COMPLETED)
+
+			if (resGroupReq.resourceQueue.empty())
+				getResourcesFromResourceGroup(resGroupReq.type == LOAD_GROUP);
+
+			if (resGroupReq.resourceQueue.empty())
+				resGroupReq.status = COMPLETED;
+		}
+		else if (resGroupReq.status == COMPLETED)
+		{
+			Ogre::String resGroupName = resGroupReq.name;
+			mResGroupRequestQueue.pop_front();
+
+			Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
+			switch (resGroupReq.type)
 			{
-				Ogre::String resGroupName = resGroupReq.name;
-				mResGroupRequestQueue.pop_front();
+			case LOAD_GROUP:
+				resGroupMgr.loadResourceGroup(resGroupName, true, false);
+				if (resGroupReq.listener)
+					resGroupReq.listener->resGroupLoaded(resGroupName);
+				break;
 
-				Ogre::ResourceGroupManager& resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
-				switch (resGroupReq.type)
-				{
-				case LOAD_GROUP:
-					resGroupMgr.loadResourceGroup(resGroupName, true, false);
-					if (resGroupReq.listener)
-						resGroupReq.listener->resGroupLoaded(resGroupName);
-					break;
+			case UNLOAD_GROUP:
+				if (resGroupMgr.resourceGroupExists(resGroupName))
+					resGroupMgr.destroyResourceGroup(resGroupName);
+				break;
 
-				case UNLOAD_GROUP:
-					if (resGroupMgr.resourceGroupExists(resGroupName))
-						resGroupMgr.destroyResourceGroup(resGroupName);
-					break;
-
-				default:
-					break;
-				}
+			default:
+				break;
 			}
 		}
 

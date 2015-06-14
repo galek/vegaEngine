@@ -84,7 +84,7 @@ namespace vega
 		//TEST SAFE_DELETE(mFS);
 		//TEST SAFE_DELETE(mEngineConfig);
 		//TEST SAFE_DELETE(mConfig);
-		//TEST DestroyAdditions();
+		DestroyAdditions();
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -118,7 +118,8 @@ namespace vega
 		Ogre::RenderSystem *renderSystem = mGRoot->getRenderSystemByName("OpenGL Rendering Subsystem");
 		renderSystem->setConfigOption("Full Screen", mEngineConfig->mFullscreen);
 		renderSystem->setConfigOption("Video Mode", mEngineConfig->mResolution += " @ 32-bit colour");
-		renderSystem->setConfigOption("Fixed Pipeline Enabled", "No");
+		//TODO:DISABLE,когда сделаешь аналогичную функцию для редактора,ему нужно FFP
+		renderSystem->setConfigOption("Fixed Pipeline Enabled", "Yes");
 		renderSystem->setConfigOption("VSync", "No");
 		renderSystem->setConfigOption("sRGB Gamma Conversion", "No");
 
@@ -138,14 +139,17 @@ namespace vega
 	}
 
 	//-------------------------------------------------------------------------------------
-	void CoreSystems::BackgroundLoad() {
+	void CoreSystems::BackgroundLoadInit() {
 		static bool firstStart = true;
 		if (firstStart)
 		{
 			mResBL = new ResourceGroupBackgroundLoader(this, 1);
 			firstStart = false;
 		}
+	}
 
+	//-------------------------------------------------------------------------------------
+	void CoreSystems::BackgroundLoadProgress() {
 		if (!mResBL)
 		{
 			ErrorF("mResBL is nullptr");

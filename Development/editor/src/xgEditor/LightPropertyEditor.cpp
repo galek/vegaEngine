@@ -87,8 +87,8 @@ namespace vega
 	}
 
 	LightPropertyEditor::LightPropertyEditor()
-		:light(NULL)
 	{
+		m_EditableLight = nullptr;
 		m_TopSizer = nullptr;
 		m_PropGrid = nullptr;
 	}
@@ -98,53 +98,66 @@ namespace vega
 		SAFE_DELETE(m_PropGrid);
 	}
 
-	void LightPropertyEditor::_update(ActorLight *_obj)
+	void LightPropertyEditor::_update()
 	{
-		light = _obj;
-		if (!light)
+		if (!m_EditableLight)
 			return;
 
-		wxColor c;
-		Ogre::ColourValue v;
-		v = light->getDiffuse();
-		c.Set(v.r * 255, v.g * 255, v.b * 255, v.a * 255);
-		m_PropGrid->SetPropertyValue(wxT("diffuse"), c);
-		v = light->getSpecular();
-		c.Set(v.r * 255, v.g * 255, v.b * 255, v.a * 255);
-		m_PropGrid->SetPropertyValue(wxT("specular"), c);
+		if (m_PropGrid->IsPropertyModified(wxT("diffuse")) || m_PropGrid->IsPropertyModified(wxT("specular")))
+		{
+			wxColor c;
+			Ogre::ColourValue v;
+			v = m_EditableLight->getDiffuse();
+			c.Set(v.r * 255, v.g * 255, v.b * 255, v.a * 255);
+			m_PropGrid->SetPropertyValue(wxT("diffuse"), c);
+			v = m_EditableLight->getSpecular();
+			c.Set(v.r * 255, v.g * 255, v.b * 255, v.a * 255);
+			m_PropGrid->SetPropertyValue(wxT("specular"), c);
+		}
 
-
-		lightTypes = light->GetLightType();
-		if (lightTypes = ActorLight::POINT)
-			m_PropGrid->SetPropertyValue(wxT("light type"), wxT("point light"));
-		else if (lightTypes = ActorLight::DIRECTIONAL)
-			m_PropGrid->SetPropertyValue(wxT("light type"), wxT("directional light"));
-		else if (lightTypes = ActorLight::SPOT)
-			m_PropGrid->SetPropertyValue(wxT("light type"), wxT("spot light"));
-		m_PropGrid->SetPropertyValue(wxT("spotOuter"), light->GetSpotOuter());
-		m_PropGrid->SetPropertyValue(wxT("spotInner"), light->GetSpotInner());
-		m_PropGrid->SetPropertyValue(wxT("spotFalloff"), light->GetSpotlightFalloff());
-		m_PropGrid->SetPropertyValue(wxT("range"), light->GetAttenuationRange());
-		m_PropGrid->SetPropertyValue(wxT("attenuationConst"), light->GetAttenuationConstant());
-		m_PropGrid->SetPropertyValue(wxT("attenuationLinear"), light->GetAttenuationLinear());
-		m_PropGrid->SetPropertyValue(wxT("attenuationQuad"), light->GetAttenuationQuadric());
-		m_PropGrid->SetPropertyValue(wxT("powerScale"), light->GetPowerScale());
+		if (m_PropGrid->IsPropertyModified(wxT("light type")))
+		{
+			lightTypes = m_EditableLight->GetLightType();
+			if (lightTypes = ActorLight::POINT)
+				m_PropGrid->SetPropertyValue(wxT("light type"), wxT("point light"));
+			else if (lightTypes = ActorLight::DIRECTIONAL)
+				m_PropGrid->SetPropertyValue(wxT("light type"), wxT("directional light"));
+			else if (lightTypes = ActorLight::SPOT)
+				m_PropGrid->SetPropertyValue(wxT("light type"), wxT("spot light"));
+		}
+		if (m_PropGrid->IsPropertyModified(wxT("spotOuter")))
+			m_PropGrid->SetPropertyValue(wxT("spotOuter"), m_EditableLight->GetSpotOuter());
+		if (m_PropGrid->IsPropertyModified(wxT("spotInner")))
+			m_PropGrid->SetPropertyValue(wxT("spotInner"), m_EditableLight->GetSpotInner());
+		if (m_PropGrid->IsPropertyModified(wxT("spotFalloff")))
+			m_PropGrid->SetPropertyValue(wxT("spotFalloff"), m_EditableLight->GetSpotlightFalloff());
+		if (m_PropGrid->IsPropertyModified(wxT("range")))
+			m_PropGrid->SetPropertyValue(wxT("range"), m_EditableLight->GetAttenuationRange());
+		if (m_PropGrid->IsPropertyModified(wxT("attenuationConst")))
+			m_PropGrid->SetPropertyValue(wxT("attenuationConst"), m_EditableLight->GetAttenuationConstant());
+		if (m_PropGrid->IsPropertyModified(wxT("attenuationLinear")))
+			m_PropGrid->SetPropertyValue(wxT("attenuationLinear"), m_EditableLight->GetAttenuationLinear());
+		if (m_PropGrid->IsPropertyModified(wxT("attenuationQuad")))
+			m_PropGrid->SetPropertyValue(wxT("attenuationQuad"), m_EditableLight->GetAttenuationQuadric());
+		if (m_PropGrid->IsPropertyModified(wxT("powerScale")))
+			m_PropGrid->SetPropertyValue(wxT("powerScale"), m_EditableLight->GetPowerScale());
 	}
 
 	void LightPropertyEditor::update(float t)
 	{
-		Ogre::LightList list = GetEngine()->mGSceneMgr->_getLightsAffectingFrustum();
+		/*Ogre::LightList list = GetEngine()->mGSceneMgr->_getLightsAffectingFrustum();
 		Ogre::LightList::iterator it = list.begin();
 		while (it != list.end())
 		{
 			_update((ActorLight*)(*it));
 			it++;
-		}
+		}*/
+		_update();
 	}
 
 	void LightPropertyEditor::OnPropertyGridChange(wxPropertyGridEvent& _event)
 	{
-		if (!light)
+		if (!m_EditableLight)
 			return;
 
 		auto m_changed = _event.GetPropertyName();
@@ -153,30 +166,43 @@ namespace vega
 		{
 			Debug("CHANGED diffuse");
 			auto color = ConvertFromPropertyValueToOgreColor(m_property);
-			light->setDiffuse(color);
+			m_EditableLight->setDiffuse(color);
 		}
 		else if (m_changed == wxT("specular"))
 		{
 			Debug("CHANGED specular");
 			auto color = ConvertFromPropertyValueToOgreColor(m_property);
-			light->setSpecular(color);
+			m_EditableLight->setSpecular(color);
 		}
 		TODO("UNCOMMENT THIS AND FINISH")
-		/*if (lightTypes == Light::LT_SPOTLIGHT)
-			light->setSpotlightRange(
-				Radian(m_PropGrid->GetPropertyValueAsDouble(wxT("spotInner"))),
-				Radian(m_PropGrid->GetPropertyValueAsDouble(wxT("spotOuter"))),
-				m_PropGrid->GetPropertyValueAsDouble(wxT("spotFalloff"))
-				);
-		light->setAttenuation(m_PropGrid->GetPropertyValueAsDouble(wxT("range")),
-			m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationConst")),
-			m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationLinear")),
-			m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationQuad")));
-		light->setPowerScale(m_PropGrid->GetPropertyValueAsDouble(wxT("powerScale")));*/
+			/*if (lightTypes == Light::LT_SPOTLIGHT)
+				light->setSpotlightRange(
+					Radian(m_PropGrid->GetPropertyValueAsDouble(wxT("spotInner"))),
+					Radian(m_PropGrid->GetPropertyValueAsDouble(wxT("spotOuter"))),
+					m_PropGrid->GetPropertyValueAsDouble(wxT("spotFalloff"))
+					);
+			light->setAttenuation(m_PropGrid->GetPropertyValueAsDouble(wxT("range")),
+				m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationConst")),
+				m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationLinear")),
+				m_PropGrid->GetPropertyValueAsDouble(wxT("attenuationQuad")));
+			light->setPowerScale(m_PropGrid->GetPropertyValueAsDouble(wxT("powerScale")));*/
 	}
 
 	bool LightPropertyEditor::Show(bool show)
 	{
 		return wxWindow::Show(show);
+	}
+
+	void LightPropertyEditor::SetEditableLight(ActorLight * _mEditableLight)
+	{
+		if (!_mEditableLight)
+			return;
+
+		m_EditableLight = _mEditableLight;
+	}
+
+	void LightPropertyEditor::SetEditableLightIsNull()
+	{
+		m_EditableLight = nullptr;
 	}
 }

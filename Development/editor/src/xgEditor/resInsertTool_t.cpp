@@ -22,6 +22,10 @@
 #include "xml.h"
 using namespace std;
 
+
+//EditorParts
+#include "LightPropertyEditor.h"
+
 namespace vega
 {
 	static const long idDirCtrl = wxNewId();
@@ -202,7 +206,7 @@ namespace vega
 	void resInsertTool_t::update(int resType)
 	{
 		currentResType = resType;
-		if (sceneNode && entity)
+		/*if (sceneNode && entity)
 		{
 			GetEditor()->GetEditorScene()->setSelSceneNode(NULL);
 			GetEditor()->GetEditorScene()->setSelMovable(NULL);
@@ -210,7 +214,7 @@ namespace vega
 			GetEditor()->GetEditorScene()->destroyMovableObject(entity->getName(), entity->_getCreator()->getType());
 			entity = NULL;
 			sceneNode = NULL;
-		}
+		}*/
 		if (active)
 		{
 			try
@@ -240,13 +244,14 @@ namespace vega
 						Ogre::Entity *e = GetEditor()->GetEditorScene()->createEntity(name.c_str(), m_ResTypeStr.c_str().AsChar());
 						entity = e;
 						entity->setUserAny(*new type_t(mesh_type_));
-						if (entity) {
+						/*if (entity) 
+						{
 							sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str());
 							if (sceneNode) {
 								sceneNode->attachObject(entity);
 								GetEditor()->GetEditorScene()->getRootSceneNode()->addChild(sceneNode);
 							}
-						}
+						}*/
 					}
 				}
 				else if (resType == fx_type) {
@@ -259,7 +264,8 @@ namespace vega
 					entity = pfx;
 					pfx->setBoundsAutoUpdated(false);
 					entity->setUserAny(*new pfxType_t(fx_type_, m_ResTypeStr.c_str()));
-					if (entity) {
+					/*if (entity) 
+					{
 						sceneNode = GetEditor()->GetEditorScene()->createSceneNode(name.c_str());
 						if (sceneNode) {
 							Ogre::ManualObject *dummy = GetEditor()->GetEditorScene()->createBoxManualObject(GetEditor()->GetEditorScene()->getHelpMeshName(), PFX_COLOR, Ogre::Vector3(-10, -10, -10), Ogre::Vector3(10, 10, 10), "pfxMesh");
@@ -269,7 +275,7 @@ namespace vega
 							sceneNode->attachObject(entity);
 							GetEditor()->GetEditorScene()->getRootSceneNode()->addChild(sceneNode);
 						}
-					}
+					}*/
 				}
 				//Nick:переписал  
 				else if (resType == light_type)
@@ -285,13 +291,17 @@ namespace vega
 					else if (m_ResTypeStr == "spotlightLight")
 						light = vega::ActorLight::SpotLight(m_ResTypeStr.c_str().AsChar());
 
-					light->getOgreLight()->setUserAny(*new type_t(light_type_));
+					GetPropEditors().m_LightPE->SetEditableLight(light);
+
+					/*light->getOgreLight()->setUserAny(*new type_t(light_type_));*/
 					light->setDirection(dir);
 					light->setDiffuse(Ogre::ColourValue(0.6, 0.6, 0.6));
 					light->setPowerScale(50, 1, 0, 0);
 					Ogre::ManualObject *dummy = GetEditor()->GetEditorScene()->createBoxManualObject(GetEditor()->GetEditorScene()->getHelpMeshName(), LIGHT_COLOR, Ogre::Vector3(-10, -10, -10), Ogre::Vector3(10, 10, 10), "LightMesh");
 					dummy->setUserAny(*new type_t(dummy_type_));
 					light->getNode()->attachObject(dummy);
+
+
 				}
 				//end
 				else if (resType == entity_type)
