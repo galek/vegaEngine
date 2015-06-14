@@ -70,12 +70,14 @@ namespace vega
 			Listener*					listener;
 			Ogre::StringVectorPtr		meshes;
 
-			std::deque<Ogre::ResourcePtr>	resourceQueue;
+			typedef std::deque<Ogre::ResourcePtr> ResourceQueue;
+			ResourceQueue resourceQueue;
 		};
+		typedef std::deque<ResGroupRequest> ResGroupRequestQueue;
 
 
 		DWORD							mLoadingIntervalMs;
-		std::deque<ResGroupRequest>		mResGroupRequestQueue;
+		ResGroupRequestQueue			mResGroupRequestQueue;
 
 		Ogre::uint16					mWorkQueueChannel;
 
