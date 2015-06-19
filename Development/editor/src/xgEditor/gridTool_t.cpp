@@ -9,6 +9,7 @@ namespace vega
 {
 	bool gridTool_t::init()
 	{
+#if 0
 		grid = GetEditor()->GetEditorScene()->createManualObject("marke");
 		grid->setUserAny(*new type_t(grid_helper_type_));
 		grid->begin("gridMesh", Ogre::RenderOperation::OT_LINE_LIST);
@@ -102,6 +103,7 @@ namespace vega
 		Ogre::SceneNode *mk = sm->createSceneNode("gridMesh");
 		sm->getRootSceneNode()->addChild(mk);
 		mk->attachObject(grid);
+#endif
 		return true;
 	}
 
@@ -110,6 +112,8 @@ namespace vega
 	}
 
 	gridTool_t::~gridTool_t(){
+#if 0
 		GetEditor()->GetEditorScene()->destroyManualObject(grid);
+#endif
 	}
 }

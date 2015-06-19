@@ -33,6 +33,7 @@
     <ProjectGuid>{069DB063-0A5A-4CD6-A0B5-33053F328270}</ProjectGuid>
     <RootNamespace>platform</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>Platform</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -145,7 +146,6 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>

@@ -14,8 +14,28 @@ namespace vega
 	struct BaseActorInterface
 	{
 		BaseActorInterface();
-		virtual ~BaseActorInterface();
+		~BaseActorInterface();
 
+		enum class ActorDescription
+		{
+			AD_BASE = 0,
+			AD_ACTORBASE,
+			AD_LIGHT,
+			AD_CAMERA,
+			AD_MESH,
+			AD_SKY,
+			AD_VEGETATION,
+			AD_WATER,
+			AD_EMITTER_SOUND,
+			AD_EMITTER_PARTICLE,
+			AD_NUM
+		};
+		ActorDescription m_actDesc;
+
+		// !@Got Description as string
+		std::string GetDescriptionAsString();
+		EFORCEINLINE ActorDescription GetDescriptionAsEnum() { return m_actDesc; }
+		
 		// !@Entity Node
 		Ogre::SceneNode* mNode;
 		// !@Entity

@@ -4,14 +4,13 @@ namespace Ogre{
 	class SceneNode;
 	class MovableObject;
 };
-using namespace Ogre;
-
 
 namespace vega
 {
-	class selectListener_t{
+	class selectListener_t
+	{
 	public:
-		virtual void onSelNode(SceneNode *me){};
-		virtual void onSelMovable(MovableObject *me){}
+		virtual void onSelNode(Actor *me){};
+		virtual void onSelMovable(Ogre::MovableObject *me){}
 	};
 }

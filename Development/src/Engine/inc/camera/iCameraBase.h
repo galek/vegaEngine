@@ -9,7 +9,8 @@
 
 namespace vega
 {
-	class ENGINE_API iCameraBase :public Actor{
+	class ENGINE_API iCameraBase :public Actor
+	{
 	public:
 		iCameraBase();
 		virtual ~iCameraBase();

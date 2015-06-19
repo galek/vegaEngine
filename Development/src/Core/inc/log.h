@@ -16,11 +16,12 @@
 CORE_API void Warning(const char *fmt, ...);
 
 /// Report error and terminate program. Returns S_OK to shut up functions. Will never really return.
-CORE_API void ErrorFunction(bool _toLog,const char *fmt, const char *_file, int _line, ...);
+CORE_API void ErrorFunction(bool _toLog, std::string fmt, const char *_file, int _line, ...);
 #ifndef ErrorF
 #if ENGINE_PLATFORM != ENGINE_PLATFORM_ANDROID
 #define ErrorF(x) ErrorFunction(true,x,__FILE__,__LINE__)
 #define ErrorTrace() ErrorFunction(true,__FUNCTION__,__FILE__,__LINE__)
+#define ErrorTraceName(x) ErrorFunction(true,x+ __FUNCTION__,__FILE__,__LINE__)
 #else
 #define ErrorF(x) 
 #define ErrorTrace()

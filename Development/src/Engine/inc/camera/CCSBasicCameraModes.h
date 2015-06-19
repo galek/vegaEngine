@@ -51,19 +51,19 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void setCameraPosition(Ogre::Vector3 pos)
+		EFORCEINLINE virtual void setCameraPosition(Ogre::Vector3 pos)
 		{
 			mLastPosition = pos;
 			mCameraPosition = pos;
 		}
 
-		inline virtual void setCameraOrientation(Ogre::Quaternion orient)
+		EFORCEINLINE virtual void setCameraOrientation(Ogre::Quaternion orient)
 		{
 			mLastOrientation = orient;
 			mCameraOrientation = mLastOrientation;
 		}
 
-		inline virtual void setCameraOrientation(const Ogre::Radian roll,
+		EFORCEINLINE virtual void setCameraOrientation(const Ogre::Radian roll,
 			const Ogre::Radian yaw, const Ogre::Radian pitch)
 		{
 			mLastOrientation = Ogre::Quaternion(roll, Ogre::Vector3::UNIT_Z)
@@ -216,15 +216,15 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget)
+		EFORCEINLINE virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget)
 		{
 			mRelativePositionToCameraTarget = posRelativeToCameraTarget;
 			instantUpdate();
 		}
 
-		inline virtual void setFixedYawAxis(bool useFixedAxis, const Ogre::Vector3 &fixedAxis = Ogre::Vector3::UNIT_Y)
+		EFORCEINLINE virtual void setFixedYawAxis(bool useFixedAxis, const Ogre::Vector3 &fixedAxis = Ogre::Vector3::UNIT_Y)
 		{
-			mFixedAxis = mFixedAxis;
+			mFixedAxis = fixedAxis;
 			mCameraCS->setFixedYawAxis(true, mFixedAxis);
 		}
 
@@ -302,7 +302,7 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget
+		EFORCEINLINE virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget
 			, Ogre::Quaternion rotation)
 		{
 			mRelativePositionToCameraTarget = posRelativeToCameraTarget;
@@ -312,7 +312,7 @@ namespace vega
 			instantUpdate();
 		}
 
-		inline virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget
+		EFORCEINLINE virtual void setCameraRelativePosition(Ogre::Vector3 posRelativeToCameraTarget
 			, const Ogre::Radian roll, const Ogre::Radian yaw, const Ogre::Radian pitch)
 		{
 			mRelativePositionToCameraTarget = posRelativeToCameraTarget;
@@ -559,10 +559,10 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void setCameraFocusPosition(Ogre::Vector3 pos) {
+		EFORCEINLINE virtual void setCameraFocusPosition(Ogre::Vector3 pos) {
 			mFocusPos = pos;
 			init();
-		};
+		}
 
 		void setInverse(bool value){ mInverse = value; }
 		bool getInverse(){ return mInverse; }
@@ -623,11 +623,11 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void addCameraPosition(Ogre::Vector3 &pos)
+		EFORCEINLINE virtual void addCameraPosition(Ogre::Vector3 &pos)
 		{
 			mPositionsList.push_back(pos);
 			init();
-		};
+		}
 
 	protected:
 		std::vector<Ogre::Vector3> mPositionsList;
@@ -687,13 +687,13 @@ namespace vega
 
 		// Specific methods
 
-		inline virtual void setDirection(Ogre::Vector3 direction)
+		EFORCEINLINE virtual void setDirection(Ogre::Vector3 direction)
 		{
 			mDirection = direction.normalisedCopy();
 			instantUpdate();
 		}
 
-		inline virtual void setDistance(float distance)
+		EFORCEINLINE virtual void setDistance(float distance)
 		{
 			mDistance = distance;
 			instantUpdate();
@@ -799,7 +799,7 @@ namespace vega
 		 *
 		 * @param unitsPerSecond the units the camera will be translated per second
 		 */
-		inline virtual void setMoveFactor(float unitsPerSecond){ mMoveFactor = unitsPerSecond; }
+		EFORCEINLINE virtual void setMoveFactor(float unitsPerSecond){ mMoveFactor = unitsPerSecond; }
 
 		void setZoom(float zoom)
 		{
@@ -833,7 +833,7 @@ namespace vega
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void zoomIn(float percentage = 1)
+		EFORCEINLINE virtual void zoomIn(float percentage = 1)
 		{
 			float desiredDisplacement = mMoveFactor * percentage;
 			float desiredZoom = mZoom + desiredDisplacement;
@@ -862,35 +862,35 @@ namespace vega
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void zoomOut(float percentage = 1){ zoomIn(-percentage); }
+		EFORCEINLINE virtual void zoomOut(float percentage = 1){ zoomIn(-percentage); }
 
 		/**
 		 * @brief Tell the camera to go right (along the leftAxis)
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void goRight(float percentage = 1){ mLateralDisplacement -= mMoveFactor * percentage; }
+		EFORCEINLINE virtual void goRight(float percentage = 1){ mLateralDisplacement -= mMoveFactor * percentage; }
 
 		/**
 		 * @brief Tell the camera to go left (along the leftAxis)
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void goLeft(float percentage = 1){ goRight(-percentage); }
+		EFORCEINLINE virtual void goLeft(float percentage = 1){ goRight(-percentage); }
 
 		/**
 		 * @brief Tell the camera to go up (along the upAxis)
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void goUp(float percentage = 1){ mVerticalDisplacement += mMoveFactor * percentage; }
+		EFORCEINLINE virtual void goUp(float percentage = 1){ mVerticalDisplacement += mMoveFactor * percentage; }
 
 		/**
 		 * @brief Tell the camera to go down (along the upAxis)
 		 *
 		 * @param percentage the relative speed of the movement acording to the move factor (1: 100%, 0: 0%, -1: -100%)
 		 */
-		inline virtual void goDown(float percentage = 1){ goUp(-percentage); }
+		EFORCEINLINE virtual void goDown(float percentage = 1){ goUp(-percentage); }
 
 	protected:
 

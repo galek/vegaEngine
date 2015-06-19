@@ -52,8 +52,7 @@ CORE_API void SeriousWarning(bool _show, const char *fmt, ...)
 	va_end(mark);
 	if (sz)
 	{
-		std::string str = ("[Serious Warning] %s\n", buf);
-		LogPrintf(str.c_str());
+		LogPrintf("[Serious Warning] %s", buf);
 		if (_show)
 		{
 #if WIN32

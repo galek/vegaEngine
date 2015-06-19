@@ -1,5 +1,5 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
+* VegaEngine(TM) Package 0.5.6.0
 * Copyright (C) 2009-2014 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
@@ -22,9 +22,9 @@ namespace vega
 	ActorWater::ActorWater()
 		:water(nullptr)
 	{
-		mNode = nullptr;
-		mEntity = nullptr;
 		mName = "Water";//for Actor Base
+		m_actDesc = ActorDescription::AD_WATER;
+
 		//hydrax package
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation("..\\Engine\\Content\\Water.npk", "Zip", "Hydrax", true);
 		Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("Hydrax");
@@ -64,7 +64,10 @@ namespace vega
 
 		water->create();
 
-		GetEngine()->GetSceneMgr()->_ContainActorWater(this);
+		auto ptr = GetEngine()->GetSceneMgr();
+		ptr->InitForSkyWaterDepends();
+		ptr->_ContainActorWater(this);
+
 		Debug("WaterSystem::Init finished");
 	}
 }

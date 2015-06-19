@@ -9,8 +9,7 @@ namespace vega
 {
 	class LightPropertyEditor :
 		public wxPanel,
-		public moveObjectProp_t,
-		public Updatable
+		public moveObjectProp_t
 	{
 		DECLARE_EVENT_TABLE()
 		ActorLight::LightTypes lightTypes;

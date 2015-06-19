@@ -96,8 +96,12 @@ namespace vega
         void create();
 
 		/** Remove SkyX (free resources)
-		 */
+		*/
 		void remove();
+
+		/** Remove SkyX (free resources)
+		*/
+		void Destroy();
 
         /** Update (to be invoked per frame)
 		    @param timeSinceLastFrame Time elapsed since last frame

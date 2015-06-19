@@ -22,7 +22,6 @@ namespace vega
 		entityInfoBag_t entityInfoBag;
 		typedef std::vector<selectListener_t*> selectListenerBag_t;
 		selectListenerBag_t selectListenerBag;
-		Ogre::SceneNode *selectSceneNode;
 		sectorRoot_t *sectorRoot;
 		loadEntityCallback_t loadEntityCallback;
 		void *loadEntityCallbackUserData;
@@ -32,7 +31,6 @@ namespace vega
 		bool loadEntity(Ogre::SceneNode*node, xmlElement_t *o, bool editMode);
 		bool loadPfx(Ogre::SceneNode*node, xmlElement_t *o, bool editMode);
 		void updateSectorSceneNode();
-		void createGridHelperMesh();
 	public:
 		void addEntityInfo(const char *templateName, const char *meshFile);
 		const char *getEntityInfo(const char *templateName);
@@ -42,7 +40,9 @@ namespace vega
 		void enableRenderOptimize(bool enable);
 		void pushSelectListener(selectListener_t *me);
 		void delSelectListener(selectListener_t *me);
-		void setSelSceneNode(Ogre::SceneNode *me);
+
+		void SetSelectObject(Actor *me);
+		
 		void setSelMovable(Ogre::MovableObject *me);
 		bool getViewRay(long x, long y, Ogre::Ray &ray);
 		Ogre::SceneNode *pickSceneNode(long x, long y);
@@ -58,7 +58,10 @@ namespace vega
 		bool save(const char *name, bool editMode);
 		bool load(const char *name, bool editMode);
 		bool load(xmlElement_t *xml, bool editMode);
-		void reset(bool editMode);
+		/*
+		Очистка сцены редактора
+		*/
+		void ResetScene(bool editMode);
 
 
 		virtual void  _findVisibleObjects(Ogre::Camera *cam, Ogre::VisibleObjectsBoundsInfo* visibleBounds, bool onlyShadowCasters);
@@ -66,9 +69,11 @@ namespace vega
 		virtual void  destroyMovableObject(const Ogre::String &name, const Ogre::String &typeName);
 
 		Ogre::ManualObject *createBoxManualObject(const Ogre::String &name, const Ogre::ColourValue &color, const Ogre::Vector3 &min, const Ogre::Vector3 &max, char *matName);
+		/*Deprecated*/
 		void updateBoxManualObject(Ogre::ManualObject *box, const Ogre::ColourValue &color, const Ogre::Vector3 &min, const Ogre::Vector3 &max, char *matName);
 		const char *getHelpMeshName();
 	private:
 		std::string resRootPath;
+		Actor *m_SelectedObject;
 	};
 }

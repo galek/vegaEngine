@@ -11,11 +11,11 @@
 
 namespace vega
 {
-	struct ENGINE_API Actor:public BaseActorInterface
+	struct ENGINE_API Actor :public BaseActorInterface
 	{
 		Actor();
 		virtual ~Actor();
-		
+
 		// !@Get Entity Name
 		std::string getName();
 		// !@Get File Name
@@ -23,7 +23,7 @@ namespace vega
 		// !@Set Position of Actor
 		void setPosition(const Ogre::Vector3& _pos);
 		// !@Set Position of Actor
-		void setPosition(float _x,float _y,float _z);
+		void setPosition(float _x, float _y, float _z);
 		// !@Get Position of Actor
 		Ogre::Vector3& getPosition();
 		// !@Set Material
@@ -33,13 +33,13 @@ namespace vega
 		// !@Set Scale
 		void setScale(const Ogre::Vector3& _scale);
 		// !@Set Scale
-		void setScale(float _x,float _y,float _z);
+		void setScale(float _x, float _y, float _z);
 		// !@Set Casting Shadows
 		void setCastShadows(bool _status);
 		// !@Set Linear Velocity
 		void setLinearVelocity(const Ogre::Vector3 &_mLinearVelocity);
 		// !@Set Linear Velocity
-		void setLinearVelocity(float _x,float _y,float _z);
+		void setLinearVelocity(float _x, float _y, float _z);
 		// !@Set Mass
 		void setMass(float _mass);
 		// !@Set Collision Model
@@ -50,18 +50,25 @@ namespace vega
 		void setYaw(const Ogre::Radian& _rot);
 
 		// !@Get SceneNode
-		__inline Ogre::SceneNode* const getNode(){
+		EFORCEINLINE Ogre::SceneNode* const getNode() {
 			return mNode;
-		};
+		}
 		// !@Get Entity
-		__inline Ogre::Entity* const getEntity(){
+		EFORCEINLINE Ogre::Entity* const getEntity() {
 			return mEntity;
 		}
+
+		// !@Showing Bounding Box
+		EFORCEINLINE void ShowBoundingBox(bool _value) { if (!mNode) return; mNode->showBoundingBox(_value); }
 	protected:
 		// !@CreateNode
 		void _createNode(Ogre::SceneNode* _parentNode = NULL, Ogre::Vector3 _mPosition = Ogre::Vector3(0, 0, 0), Ogre::Quaternion _mRotation = Ogre::Quaternion(1, 0, 0, 0), Ogre::Vector3 _mScale = Ogre::Vector3(1, 1, 1));
 		// !@_switchCollision
 		void _switchCollision();
+
+		void destroyAllAttachedMovableObjects(Ogre::SceneNode* node);
+
+		void destroySceneNode(Ogre::SceneNode* node);
 	protected:
 		Ogre::StaticGeometry *mStaticGeometry;
 		IBody*phBody;

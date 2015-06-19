@@ -30,9 +30,6 @@
     <ClCompile Include="src\iPhysics.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="src\Libs.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="src\RayCast.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>

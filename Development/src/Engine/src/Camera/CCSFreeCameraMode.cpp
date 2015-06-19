@@ -8,7 +8,8 @@
 #include "EnginePrivate.h"
 
 #include "camera\CCSFreeCameraMode.h"
-namespace vega{
+namespace vega
+{
 	bool FreeCameraMode::init()
 	{
 		CameraMode::init();

@@ -16,6 +16,9 @@ namespace vega
 	ActorVegetation::ActorVegetation(const std::string &_fileName, const Ogre::Vector3& _position,
 		const Ogre::Radian& _rot, float _scale, const std::string &_material)
 	{
+		mName = "ActorSkyPlane" + _fileName;//for Actor Base
+		m_actDesc = ActorDescription::AD_VEGETATION;
+
 		_createMeshVegetation(_fileName, _material, _position, _rot, _scale);
 		setCastShadows(true);
 
@@ -24,9 +27,6 @@ namespace vega
 	void ActorVegetation::_createMeshVegetation(const std::string &_fileName, const std::string &_material, const Ogre::Vector3& _position,
 		const Ogre::Radian& _rot, float _scale)
 	{
-		mName = "ActorVegetation_" + _fileName;//for Actor Base
-
-
 		// Prepare mesh for normalmapping
 		pmEntity = Ogre::MeshManager::getSingleton().load(_fileName,
 			Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME);
@@ -48,12 +48,12 @@ namespace vega
 		rot.FromAngleAxis(_rot, Ogre::Vector3::UNIT_Y);
 
 		mNode->setOrientation(rot);
-		TODO("Possible bug^")
-			mNode->scale(_scale, _scale, _scale);
+		TODO("Possible bug^");
+		mNode->scale(_scale, _scale, _scale);
 	}
 
 	void ActorVegetation::setCastShadows(bool _status)
 	{
-		TODO("Deprecated,rewrite")
+		TODO("Deprecated,rewrite");
 	}
 }

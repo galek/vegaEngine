@@ -21,7 +21,7 @@ namespace vega
 		, mCloudsManager(new CloudsManager(this))
 		, mRenderQueueGroups(RenderQueueGroups(Ogre::RENDER_QUEUE_SKIES_EARLY, Ogre::RENDER_QUEUE_3, Ogre::RENDER_QUEUE_4, Ogre::RENDER_QUEUE_2))
 		, mCreated(false)
-		, mLastCameraPosition(Ogre::Vector3(0,0,0))
+		, mLastCameraPosition(Ogre::Vector3(0, 0, 0))
 		, mLastCameraFarClipDistance(-1)
 		, mInfiniteCameraFarClipDistance(100000)
 		, mVisible(true)
@@ -37,20 +37,36 @@ namespace vega
 
 	SkyX::~SkyX()
 	{
+		Destroy();
+	}
+
+	void SkyX::Destroy()
+	{
+		if (!mCreated)
+			return;
+
 		remove();
 
-		delete mMeshManager;
-		delete mAtmosphereManager;
-		delete mGPUManager;
-		delete mMoonManager;
-		delete mCloudsManager;
-		delete mVCloudsManager;
+		if (mMeshManager)
+			delete mMeshManager;
+		if (mAtmosphereManager)
+			delete mAtmosphereManager;
+		if (mGPUManager)
+			delete mGPUManager;
+		if (mMoonManager)
+			delete mMoonManager;
+		if (mCloudsManager)
+			delete mCloudsManager;
+		if (mVCloudsManager)
+			delete mVCloudsManager;
 
 		if (mController->getDeleteBySkyX())
 			delete mController;
-		
+
 		if (mSun)
 			delete mSun;
+
+		mCreated = false;
 	}
 
 	void SkyX::create()
@@ -77,14 +93,14 @@ namespace vega
 
 		setVisible(mVisible);
 
-		mLastCameraPosition = Ogre::Vector3(0,0,0);
+		mLastCameraPosition = Ogre::Vector3(0, 0, 0);
 		mLastCameraFarClipDistance = -1;
 		//NickGalko
-		mSun = new ActorLight("Sun", ActorLight::DIRECTIONAL);
+		mSun = new ActorLight("Sun/Moon", ActorLight::DIRECTIONAL);
 		mSun->setDiffuse(255, 255, 255);
 		mSun->setDirection(-(mController->getSunDirection()));
-	
-		mCreated = true;	
+
+		mCreated = true;
 
 		mWindow->addListener(this);
 	}
@@ -103,6 +119,8 @@ namespace vega
 
 		mCamera = 0;
 		mCreated = false;
+
+		SAFE_DELETE(mSun);
 	}
 
 	void SkyX::update(const Ogre::Real& timeSinceLastFrame)
@@ -120,7 +138,7 @@ namespace vega
 
 			if (mStarfield)
 				mGPUManager->setGpuProgramParameter(GPUManager::GPUP_FRAGMENT, "uTime", mTimeOffset*0.5f, false);
-			
+
 		}
 
 		mGPUManager->setGpuProgramParameter(GPUManager::GPUP_VERTEX, "uLightDir", mController->getSunDirection());
@@ -129,7 +147,7 @@ namespace vega
 		mMoonManager->updateMoonPhase(mController->getMoonPhase());
 		mCloudsManager->update();
 		mVCloudsManager->update(timeSinceLastFrame);
-//NickGalko
+		//NickGalko
 		updateEnvironmentLighting();
 	}
 	/** Update environment lighting
@@ -139,7 +157,7 @@ namespace vega
 		Ogre::Vector3 lightDir = mController->getSunDirection();
 		// Calculate current color gradients point
 		float point = (-lightDir.y + 1.0f) / 2.0f;
-		
+
 		mSun->setDirection(-lightDir.normalisedCopy());
 		// Sun and ambient colours
 		Ogre::ColourValue sunCol = VectorToColour(
@@ -162,16 +180,20 @@ namespace vega
 	}
 	void SkyX::notifyCameraRender(Ogre::Camera* c)
 	{
-		if (!mCreated)
+		if (!mCreated || !c || !mMeshManager || !mMeshManager->getSceneNode() || !mMoonManager || !mVCloudsManager || !this->getController())
+		{
 			return;
+		}
 
 		mCamera = c;
-		
-		if (mLastCameraPosition != c->getDerivedPosition())
-		{
-			mMeshManager->getSceneNode()->setPosition(mCamera->getDerivedPosition());
 
-			mLastCameraPosition = mCamera->getDerivedPosition();
+		auto campos = c->getDerivedPosition();
+
+		if (mLastCameraPosition != campos)
+		{
+			mMeshManager->SetPosition(campos);
+
+			mLastCameraPosition = campos;
 		}
 
 		if (mLastCameraFarClipDistance != c->getFarClipDistance())
@@ -181,7 +203,7 @@ namespace vega
 			mLastCameraFarClipDistance = mCamera->getFarClipDistance();
 		}
 
-		mMoonManager->updateGeometry(c);
+		mMoonManager->updateGeometry(c, this->getController()->getMoonDirection());
 
 		mVCloudsManager->notifyCameraRender(c);
 	}
@@ -211,7 +233,7 @@ namespace vega
 			return;
 
 		mMeshManager->getEntity()->setRenderQueueGroup(mRenderQueueGroups.skydome);
-		mMoonManager->getMoonBillboard()->setRenderQueueGroup(mRenderQueueGroups.skydome+1);
+		mMoonManager->getMoonBillboard()->setRenderQueueGroup(mRenderQueueGroups.skydome + 1);
 	}
 
 	void SkyX::setLightingMode(const LightingMode& lm)

@@ -73,10 +73,10 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\lib\vc_x64_lib\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">vc_mswu\adv\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vc_x64_mswu\adv\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">wxmsw30ud_adv</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">wxmsw30ud_adv</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">wxmsw30u_adv</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">wxmsw30u_adv</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)ud</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)ud</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)u</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)u</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>

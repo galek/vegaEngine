@@ -34,7 +34,7 @@ namespace vega
 		if (!bRet)
 			bool bRet = LoadFile(wxString::Format(TEXT("..\\Editor\\EditorResources\\wxRes\\%s.bmp"), InFilename.c_str()), wxBITMAP_TYPE_BMP);
 
-		assert(bRet);	// Loading bitmaps should never fail
+		assert(!bRet);	// Loading bitmaps should never fail
 		return bRet;
 	}
 
@@ -49,7 +49,7 @@ namespace vega
 		if (!bRet)
 			bool bRet = LoadFile(wxString::Format(TEXT("..\\Editor\\EditorResources\\wxRes\\%s.bmp"), InFilename.c_str()), wxBITMAP_TYPE_BMP);
 
-		assert(bRet);	// Loading bitmaps should never fail
+		assert(!bRet);	// Loading bitmaps should never fail
 		return bRet;
 	}
 

@@ -6,17 +6,3 @@
 * All Rights Reserved.
 */
 #include "EnginePrivate.h"
-
-#pragma comment(lib,"OgreMain.lib")
-#pragma comment(lib,"OIS_static.lib")
-
-#pragma comment(lib,"Common.lib")
-#pragma comment(lib,"Core.lib")
-#pragma comment(lib,"Render.lib")
-
-
-#pragma comment(lib,"platform.lib")
-
-#pragma comment(lib,"MyGUICommon.lib")
-#pragma comment(lib,"MyGUI.OgrePlatform.lib")
-#pragma comment(lib,"MyGUIEngine.lib")

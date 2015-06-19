@@ -31,34 +31,53 @@ namespace vega
 	{
 		/*levelloader = new LevelLoader();*/
 		// Create the camera system using the previously created ogre camera.
+		mHRTTL = new HydraxRttListener();
 		mCameraCS = new CameraControlSystem(_engine->mGSceneMgr, "CameraControlSystem", _engine->mGCamera);
-		_CreateCameras();
-		_InitForSkyWaterDepends();
 	}
+
 	//-----------------------------------------------------------------------------
-	SceneManager::~SceneManager()	{
+	SceneManager::~SceneManager() {
 		CleanScene();
-		//crash		SAFE_DELETE(mHRTTL);
+		SAFE_DELETE(mCameraCS);
+		SAFE_DELETE(mHRTTL);
 	}
-	//-----------------------------------------------------------------------------
-	void SceneManager::_CreateCameras()
-	{
-	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::_UpdateCameraMove(float _time)
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->Update(_time);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::CleanScene()
 	{
+		if (engine->isEditor())
+		{
+			PrintfSceneContain();
+		}
+
 		if (mSceneActors.empty())
 			return;
 
-		mSceneActors.erase(mSceneActors.begin(), mSceneActors.end());
+		for (auto it = mSceneActors.begin(); it != mSceneActors.end(); ++it)
+		{
+			SAFE_DELETE(*it);
+		}
+		mSceneActors.clear();
+
+		engine->mGSceneMgr->CompleteClearScene();
+		mHRTTL->SetNull();
+	}
+
+	//-----------------------------------------------------------------------------
+	void SceneManager::PrintfSceneContain()
+	{
+		Debug("mSceneActors contains %i,list:", mSceneActors.size());
+		for (auto it = mSceneActors.begin(); it != mSceneActors.end(); ++it)
+			Debug("%s ", (*it)->getName().c_str());
 	}
 	//-----------------------------------------------------------------------------
 	void SceneManager::LoadLevel(const char* _mFileName, bool _newLoading)
@@ -66,11 +85,12 @@ namespace vega
 		/*if (!levelloader)
 			return;
 
-		if (_newLoading)
+			if (_newLoading)
 			CleanScene();
 
-		levelloader->Load(_mFileName, engine->mGWindow);*/
+			levelloader->Load(_mFileName, engine->mGWindow);*/
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::Update(float _time)
 	{
@@ -80,107 +100,117 @@ namespace vega
 		_UpdateCameraMove(_time);
 		_UpdateSkyWater(_time);
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::ManualStop()
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->ManualStop();
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::InjectMouseMove(const Ogre::Vector2& evt)
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseMove(evt);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::InjectMouseDown(int id)
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseDown(id);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void SceneManager::InjectMouseUp(int _id)
 	{
 		OIS::MouseButtonID id = (OIS::MouseButtonID)_id;
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectMouseUp(id);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void  SceneManager::InjectKeyDown(const int evt)
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectKeyDown(evt);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
 	void  SceneManager::InjectKeyUp(const int evt)
 	{
-		for (int i = 0; i < mSceneCameras.size(); i++){
+		for (int i = 0; i < mSceneCameras.size(); i++) {
 			if (mSceneCameras[i] == mCurrentCamera)
 				mSceneCameras[i]->InjectKeyUp(evt);
 		}
 	}
+
 	//-----------------------------------------------------------------------------
-	void  SceneManager::SetAmbientLight(float r, float g, float b){
+	void  SceneManager::SetAmbientLight(float r, float g, float b) {
 		GetEngine()->mGSceneMgr->setAmbientLight(Ogre::ColourValue(r, g, b));
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::AddActorToList(Actor* _actor)	{
+	void SceneManager::AddActorToList(Actor* _actor) {
 		mSceneActors.push_back(_actor);
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::DeleteActor(Actor*_actor)	{
+	void SceneManager::DeleteActorFromList(Actor*_actor) {
 
 	}
-	//-----------------------------------------------------------------------------
-	void SceneManager::DeleteActorFromList(Actor*_actor)	{
 
-	}
 	//-----------------------------------------------------------------------------
-	void SceneManager::AddActorCameraToList(iCameraBase* _actor)	{
+	void SceneManager::AddActorCameraToList(iCameraBase* _actor) {
 		mSceneCameras.push_back(_actor);
 	}
-	//-----------------------------------------------------------------------------
-	void SceneManager::DeleteCameraFromList(iCameraBase*_actor)	{
 
-	}
 	//-----------------------------------------------------------------------------
-	void SceneManager::DeleteCameraActor(iCameraBase*_actor)	{
-
-	}
-	//-----------------------------------------------------------------------------
-	void SceneManager::SetActiveCamera(iCameraBase*_actor)	{
+	void SceneManager::SetActiveCamera(iCameraBase*_actor) {
 		mCurrentCamera = _actor;//Just delete from list,without calling destructor of Actor
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::_ContainActorDynamicSky(ActorDynamicSky*_actor)	{
+	void SceneManager::_ContainActorDynamicSky(ActorDynamicSky*_actor)
+	{
+		if (!mHRTTL)
+			return;
 		mDSky = _actor;
 		mHRTTL->SetSky(_actor->GetSkyX());
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::_ContainActorWater(ActorWater*_actor)	{
+	void SceneManager::_ContainActorWater(ActorWater*_actor)
+	{
+		if (!mHRTTL)
+			return;
 		mWater = _actor;
 		mHRTTL->SetWater(_actor->GetHydrax());
 		mWater->GetHydrax()->getRttManager()->addRttListener(mHRTTL);
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::_UpdateSkyWater(float _time)	{
+	void SceneManager::_UpdateSkyWater(float _time) {
 		if (mWater)
 			mWater->Update(_time);
 		if (mDSky)
 			mDSky->Update(_time);
 	}
+
 	//-----------------------------------------------------------------------------
-	void SceneManager::_InitForSkyWaterDepends()	{
-		mHRTTL = new HydraxRttListener();
+	void SceneManager::InitForSkyWaterDepends() {
+		if (!mHRTTL)
+			mHRTTL = new HydraxRttListener();
 	}
 }

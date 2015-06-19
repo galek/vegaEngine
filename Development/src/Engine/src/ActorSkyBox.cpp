@@ -12,8 +12,11 @@ namespace vega
 {
 	/**
 	*/
-	ActorSkyBox::ActorSkyBox(const char* _material)
+	ActorSkyBox::ActorSkyBox(std::string _material)
 	{
+		mName = "ActorSkyBox_" + _material;//for Actor Base
+		m_actDesc = ActorDescription::AD_SKY;
+
 		if (!GetEngine()->mGSceneMgr->isSkyBoxEnabled())
 			GetEngine()->mGSceneMgr->setSkyBox(true, _material, 500);
 	}

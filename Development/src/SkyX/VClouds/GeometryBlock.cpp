@@ -278,7 +278,7 @@ namespace vega{ namespace VClouds
 
 	void GeometryBlock::updateGeometry(Ogre::Camera* c, const Ogre::Vector3& displacement, const Ogre::Vector3& distance)
 	{
-		if (!mCreated)
+		if (!mCreated || !c)
 		{
 			return;
 		}

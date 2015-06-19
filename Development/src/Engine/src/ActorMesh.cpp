@@ -1,6 +1,6 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
-* Copyright (C) 2009-2014 Vega Group Ltd.
+* VegaEngine(TM) Package 0.5.6.0
+* Copyright (C) 2009-2015 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
@@ -12,14 +12,14 @@
 namespace vega
 {
 
-	ActorMesh::ActorMesh(const char *_fileName, const char*_name, const char* material, int _mCollisionModel,
+	ActorMesh::ActorMesh(const char *_fileName, std::string _name, const char* material, int _mCollisionModel,
 		float _mass, Ogre::Vector3 _mPosition, Ogre::Quaternion _mRotation, Ogre::Vector3 _scale,
 		Ogre::Vector3 _mLinearVelocity)
 		:pmEntity(nullptr)
 	{
-		mName = _name;//for Actor Base
-		mNode = nullptr;//for Actor Base
-		mEntity = nullptr;//for Actor Base
+		mName = "ActorMesh_" + _name;//for Actor Base
+		m_actDesc = ActorDescription::AD_MESH;
+		
 		mFileName = _fileName;
 		mPosition = _mPosition;
 		mRotation = _mRotation;
@@ -28,14 +28,28 @@ namespace vega
 		mLinearVelocity = _mLinearVelocity;
 		mMass = _mass;
 		mCollisionModel = CollisionModel(_mCollisionModel);
+
 		_createNode(mNode, mPosition, mRotation, mScale);
+
 		_createMesh();
+
 		setCastShadows(true);
+
 		setMaterialName(material);
 	}
 	//-------------------------------------------------------------------------------------
 	ActorMesh::~ActorMesh()
 	{
+		SAFE_DELETE(phBody);
+
+		mNode->detachAllObjects();
+		mNode->getCreator()->destroyEntity(mEntity);
+
+		mNode->removeAndDestroyAllChildren();
+		mNode->getCreator()->getRootSceneNode()->removeAndDestroyChild(mNode->getName());
+
+		mEntity = nullptr;
+		mNode = nullptr;
 	}
 
 	//-------------------------------------------------------------------------------------

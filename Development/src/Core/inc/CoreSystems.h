@@ -27,7 +27,6 @@ namespace vega
 		void Release();
 		void WriteInfoAboutBuild();
 		void InitRenderer();
-		void BackgroundLoadInit();
 		void BackgroundLoadProgress();
 	public:
 		//Sub-systems

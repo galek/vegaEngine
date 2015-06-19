@@ -34,7 +34,7 @@
 
 #ifndef USE_STEAMWORKS
 #if ENGINE_PLATFORM != ENGINE_PLATFORM_ANDROID
-#define USE_STEAMWORKS 1
+//#define USE_STEAMWORKS 1
 #endif
 #endif
 

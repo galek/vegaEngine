@@ -29,34 +29,37 @@ namespace vega
 		SceneManager(EngineGlobals *_engine);
 		~SceneManager();
 		// !@Loading level,bool-new loading or extending exist
-		void LoadLevel(const char* _mFileName,bool _newLoading);
+		void LoadLevel(const char* _mFileName, bool _newLoading);
+		// !@
 		void CleanScene();
+		// !@Scene contains
+		void PrintfSceneContain();
+		// !@ Actors count
+		size_t GetCountOfActors() { return mSceneActors.size(); }
+
+
 		void Update(float _time);
 		void InjectMouseMove(const Ogre::Vector2 &_arg);
 		void InjectMouseUp(const int id);
 		void InjectMouseDown(const int  id);
-		void InjectKeyDown(const int _arg );
+		void InjectKeyDown(const int _arg);
 		void InjectKeyUp(const int _arg);
 		void ManualStop();
 		inline CameraControlSystem*getCameraManager(){ return mCameraCS; }
 		void SetAmbientLight(float r, float g, float b);
 		void AddActorToList(Actor* _actor);
 		void DeleteActorFromList(Actor*_actor);
-		void DeleteActor(Actor*_actor);
 		void AddActorCameraToList(iCameraBase* _actor);
-		void DeleteCameraFromList(iCameraBase*_actor);
-		void DeleteCameraActor(iCameraBase*_actor);
 		void SetActiveCamera(iCameraBase*_actor);
 		void _ContainActorDynamicSky(ActorDynamicSky*sky);
 		__inline ActorDynamicSky*GetActorDynamicSkyFromContain(){ return mDSky; }
 		void _ContainActorWater(ActorWater*sky);
 		__inline ActorWater*GetActorWaterFromContain(){ return mWater; }
 		__inline iCameraBase*GetActiveCamera(){ return mCurrentCamera; }
+		void InitForSkyWaterDepends();
 	private:
-		void _CreateCameras();
 		void _UpdateCameraMove(float _time);
 		void _UpdateSkyWater(float _time);
-		void _InitForSkyWaterDepends();
 	private:
 		/*LevelLoader* levelloader;*/
 		CameraControlSystem* mCameraCS;
@@ -66,7 +69,7 @@ namespace vega
 		HydraxRttListener*mHRTTL;
 		EngineGlobals *engine;
 	private:
-		std::vector<Actor*>mSceneActors;
+		std::deque<Actor*>mSceneActors;
 		std::vector<iCameraBase*>mSceneCameras;
 	};
 }

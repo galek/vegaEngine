@@ -103,7 +103,7 @@ namespace vega{ namespace VClouds
 
 	void GeometryManager::updateGeometry(Ogre::Camera* c, const Ogre::Real& timeSinceLastCameraFrame)
 	{
-		if (!mCreated)
+		if (!mCreated || !mSceneNode || !c)
 		{
 			return;
 		}
@@ -148,6 +148,11 @@ namespace vega{ namespace VClouds
 
 	void GeometryManager::_updateGeometry(Ogre::Camera* c, const Ogre::Real& timeSinceLastFrame)
 	{
+		if (!mCreated || !mSceneNode || !c)
+		{
+			return;
+		}
+
 		// Look for current camera data
 		std::vector<VClouds::CameraData>& camerasData = mVClouds->_getCamerasData();
 		std::vector<VClouds::CameraData>::iterator currentCameraDataIt;

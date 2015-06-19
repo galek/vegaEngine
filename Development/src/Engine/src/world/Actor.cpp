@@ -1,5 +1,5 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
+* VegaEngine(TM) Package 0.5.6.0
 * Copyright (C) 2009-2014 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
@@ -18,6 +18,8 @@ namespace vega
 		:mStaticGeometry(nullptr),
 		phBody(nullptr)
 	{
+		mName = "Actor";
+		m_actDesc = ActorDescription::AD_ACTORBASE;
 		GetEngine()->GetSceneMgr()->AddActorToList(this);
 	}
 	//-------------------------------------------------------------------------------------
@@ -43,6 +45,7 @@ namespace vega
 		mNode->rotate(_mRotation);
 		mNode->setInitialState();
 	}
+
 	//-------------------------------------------------------------------------------------
 	void Actor::setPosition(const Ogre::Vector3& _pos)
 	{
@@ -50,14 +53,17 @@ namespace vega
 		mNode->setPosition(mPosition);
 		mNode->setInitialState();
 	}
+
 	//-------------------------------------------------------------------------------------
-	void Actor::setPosition(float _x, float _y, float _z)	{
+	void Actor::setPosition(float _x, float _y, float _z) {
 		setPosition(Ogre::Vector3(_x, _y, _z));
 	}
+
 	//-------------------------------------------------------------------------------------
-	void Actor::setScale(float _x, float _y, float _z)	{
+	void Actor::setScale(float _x, float _y, float _z) {
 		setScale(Ogre::Vector3(_x, _y, _z));
 	}
+
 	//-------------------------------------------------------------------------------------
 	void Actor::setScale(const Ogre::Vector3& _scale)
 	{
@@ -65,7 +71,7 @@ namespace vega
 		mNode->setScale(mScale);
 	}
 	//-------------------------------------------------------------------------------------
-	void Actor::setYaw(const Ogre::Radian& _rot)	{
+	void Actor::setYaw(const Ogre::Radian& _rot) {
 		mNode->yaw(_rot);
 	}
 	//-------------------------------------------------------------------------------------
@@ -75,7 +81,7 @@ namespace vega
 		mNode->setOrientation(mRotation);
 	}
 	//-------------------------------------------------------------------------------------
-	void Actor::setCastShadows(bool _status)	{
+	void Actor::setCastShadows(bool _status) {
 		mEntity->setCastShadows(_status);
 	}
 	//-------------------------------------------------------------------------------------
@@ -84,11 +90,11 @@ namespace vega
 		return mPosition;
 	}
 	//-------------------------------------------------------------------------------------
-	std::string Actor::getName(){
+	std::string Actor::getName() {
 		return mName;
 	}
 	//-------------------------------------------------------------------------------------
-	std::string Actor::getFileName(){
+	std::string Actor::getFileName() {
 		return mFileName;
 	}
 	//-------------------------------------------------------------------------------------
@@ -109,15 +115,15 @@ namespace vega
 		Debug("mRadius:%f", mRadius);
 	}
 	//-------------------------------------------------------------------------------------
-	void Actor::setLinearVelocity(const Ogre::Vector3 &_mLinearVelocity){
+	void Actor::setLinearVelocity(const Ogre::Vector3 &_mLinearVelocity) {
 		mLinearVelocity = _mLinearVelocity;
 	}
 	//-------------------------------------------------------------------------------------
-	void Actor::setLinearVelocity(float _x, float _y, float _z){
+	void Actor::setLinearVelocity(float _x, float _y, float _z) {
 		mLinearVelocity = Ogre::Vector3(_x, _y, _z);
 	}
 	//-------------------------------------------------------------------------------------
-	void Actor::setMass(float _mass){
+	void Actor::setMass(float _mass) {
 		mMass = _mass;
 	}
 	//-------------------------------------------------------------------------------------

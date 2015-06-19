@@ -12,14 +12,15 @@ namespace vega
 	class SkyX;
 	class BasicController;
 
-	class ENGINE_API ActorDynamicSky:public Actor
+	class ENGINE_API ActorDynamicSky :public Actor
 	{
 	public:
 		ActorDynamicSky();
 		~ActorDynamicSky();
 		void Update(float evt);
 		void AddCloudLayer();
-		__inline SkyX*GetSkyX(){ return mSkyX; }
+		bool isValid(const char* _funct) const;
+		EFORCEINLINE SkyX*GetSkyX() { return mSkyX; }
 	private:
 		SkyX* mSkyX;
 		BasicController* mBC;

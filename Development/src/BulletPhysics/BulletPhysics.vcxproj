@@ -130,6 +130,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ExpandAttributedSource>true</ExpandAttributedSource>
       <AssemblerOutput>All</AssemblerOutput>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>FoundationDEBUG.lib;PhysX3CommonDEBUG.lib;PhysX3CharacterKinematic.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;LowLevel.lib;GeomUtilsDEBUG.lib;SceneQuery.lib;SimulationController.lib;PxTask.lib;PhysX3ExtensionsDEBUG.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -159,10 +160,10 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ExpandAttributedSource>true</ExpandAttributedSource>
       <AssemblerOutput>All</AssemblerOutput>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>FoundationDEBUG.lib;PhysX3CommonDEBUG.lib;PhysX3CharacterKinematic.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;LowLevel.lib;GeomUtilsDEBUG.lib;SceneQuery.lib;SimulationController.lib;PxTask.lib;PhysX3ExtensionsDEBUG.lib;OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>

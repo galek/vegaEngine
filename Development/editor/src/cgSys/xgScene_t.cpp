@@ -14,29 +14,41 @@ using namespace std;
 
 namespace vega
 {
-	void xgScene_t::pushSelectListener(selectListener_t *me){
+	void xgScene_t::pushSelectListener(selectListener_t *me) {
 		selectListenerBag.push_back(me);
 	}
-	void xgScene_t::setSelSceneNode(SceneNode *me){
-		for (selectListenerBag_t::const_iterator itr(selectListenerBag.begin()); itr != selectListenerBag.end(); ++itr){
+
+	void xgScene_t::SetSelectObject(Actor *me)
+	{
+		if (!me)
+			return;
+
+		for (selectListenerBag_t::const_iterator itr(selectListenerBag.begin()); itr != selectListenerBag.end(); ++itr) {
 			(*itr)->onSelNode(me);
 		}
-		if (selectSceneNode != me){
-			if (selectSceneNode){
-				selectSceneNode->showBoundingBox(false);
+		if (m_SelectedObject != me)
+		{
+			if (m_SelectedObject)
+			{
+				m_SelectedObject->ShowBoundingBox(false);
 			}
-			selectSceneNode = me;
-			if (selectSceneNode){
-				selectSceneNode->showBoundingBox(true);
+
+			m_SelectedObject = me;
+
+			if (m_SelectedObject)
+			{
+				m_SelectedObject->ShowBoundingBox(true);
 			}
 		}
 	}
-	void xgScene_t::setSelMovable(MovableObject *me){
-		for (selectListenerBag_t::const_iterator itr(selectListenerBag.begin()); itr != selectListenerBag.end(); ++itr){
+
+
+	void xgScene_t::setSelMovable(MovableObject *me) {
+		for (selectListenerBag_t::const_iterator itr(selectListenerBag.begin()); itr != selectListenerBag.end(); ++itr) {
 			(*itr)->onSelMovable(me);
 		}
 	}
-	bool xgScene_t::getViewRay(long x, long y, Ray &ray){
+	bool xgScene_t::getViewRay(long x, long y, Ray &ray) {
 		Viewport *vp = getCurrentViewport();
 		Camera *c = vp->getCamera();
 		RenderTarget *rt = vp->getTarget();
@@ -50,27 +62,27 @@ namespace vega
 		ray = c->getCameraToViewportRay(tscreenx, tscreeny);
 		return true;
 	}
-	MovableObject *xgScene_t::pickMoveable(long x, long y){
+	MovableObject *xgScene_t::pickMoveable(long x, long y) {
 		Ray ray;
-		if (!getViewRay(x, y, ray)){
+		if (!getViewRay(x, y, ray)) {
 			return NULL;
 		}
 		RaySceneQuery *rsq = createRayQuery(ray);
 		rsq->setSortByDistance(true, 1);
 		RaySceneQueryResult &rsqr = rsq->execute();
-		if (rsqr.size() && rsqr.front().movable){
+		if (rsqr.size() && rsqr.front().movable) {
 			return rsqr.front().movable;
 		}
 		return NULL;
 	}
-	SceneNode *xgScene_t::pickSceneNode(long x, long y){
+	SceneNode *xgScene_t::pickSceneNode(long x, long y) {
 		MovableObject *o = pickMoveable(x, y);
-		if (o){
+		if (o) {
 			return o->getParentSceneNode();
 		}
 		return NULL;
 	}
-	xgScene_t::xgScene_t(const String& name) :SceneManager(name), selectSceneNode(NULL){
+	xgScene_t::xgScene_t(const String& name) :SceneManager(name), m_SelectedObject(NULL) {
 		sectorRoot = new sectorRoot_t;
 		renderOptimize = false;
 		loadEntityCallback = NULL;
@@ -91,7 +103,7 @@ namespace vega
 		}
 		SceneManager::destroyAllMovableObjects();*/
 	}
-	void  xgScene_t::destroyMovableObject(const String &name, const String &typeName){
+	void  xgScene_t::destroyMovableObject(const String &name, const String &typeName) {
 		//MovableObjectCollection* objectMap = getMovableObjectCollection(typeName);
 		//MovableObjectFactory* factory = Root::getSingleton().getMovableObjectFactory(typeName);
 		//MovableObjectMap::iterator mi = objectMap->map.find(name);
@@ -105,16 +117,16 @@ namespace vega
 		//	objectMap->map.erase(mi);
 		//}
 	}
-	xgScene_t::~xgScene_t(){
+	xgScene_t::~xgScene_t() {
 		delete sectorRoot;
 	}
-	const String& xgScene_t::getTypeName(void) const{
+	const String& xgScene_t::getTypeName(void) const {
 		return xgSceneFactory_t::FACTORY_TYPE_NAME;
 	}
-	void xgScene_t::delSelectListener(selectListener_t *me){
+	void xgScene_t::delSelectListener(selectListener_t *me) {
 		remove(selectListenerBag.begin(), selectListenerBag.end(), me);
 	}
-	void xgScene_t::updateSectorSceneNode(){
+	void xgScene_t::updateSectorSceneNode() {
 		//for (SceneNodeList::iterator itr(mSceneNodes.begin()); itr != mSceneNodes.end(); ++itr){
 		//	int numAttachedObjects = itr->second->numAttachedObjects();
 		//	for (int i(0); i < numAttachedObjects; ++i){
@@ -127,7 +139,7 @@ namespace vega
 		//	}
 		//}
 	}
-	void xgScene_t::enableRenderOptimize(bool enable){
+	void xgScene_t::enableRenderOptimize(bool enable) {
 		//renderOptimize = enable;
 		//if (enable){
 		//	sectorRoot->beginAddSector();
@@ -147,34 +159,34 @@ namespace vega
 		//	sectorRoot->clear();
 		//}
 	}
-	void  xgScene_t::_findVisibleObjects(Camera *cam, VisibleObjectsBoundsInfo* visibleBounds, bool onlyShadowCasters){
-		if (renderOptimize){
+	void  xgScene_t::_findVisibleObjects(Camera *cam, VisibleObjectsBoundsInfo* visibleBounds, bool onlyShadowCasters) {
+		if (renderOptimize) {
 			return sectorRoot->findVisibleObjects(cam, getRenderQueue(), visibleBounds, true, mDisplayNodes, onlyShadowCasters);
 		}
-		else{
+		else {
 			return SceneManager::_findVisibleObjects(cam, visibleBounds, onlyShadowCasters);
 		}
 	}
-	void saveVector3(const Vector3 &v, ofstream &o){
+	void saveVector3(const Vector3 &v, ofstream &o) {
 		o << "<x>" << v.x << "</x>" << "<y>" << v.y << "</y>" << "<z>" << v.z << "</z>";
 	}
-	void saveOrientation(const Quaternion &q, ofstream &o){
+	void saveOrientation(const Quaternion &q, ofstream &o) {
 		o << "<x>" << q.x << "</x>" << "<y>" << q.y << "</y>" << "<z>" << q.z << "</z>" << "<w>" << q.w << "</w>";
 	}
-	void saveColourValue(const ColourValue &c, ofstream &o){
+	void saveColourValue(const ColourValue &c, ofstream &o) {
 		o << "<r>" << c.r << "</r>" << "<g>" << c.g << "</g>" << "<b>" << c.b << "</b>" << "<a>" << c.a << "</a>";
 	}
 	//bool saveSceneNode(SceneNode*node,ofstream &o,bool editMode);
-	bool saveEntity(MovableObject *me, ofstream &o, bool editMode){
+	bool saveEntity(MovableObject *me, ofstream &o, bool editMode) {
 		Entity *m = static_cast<Entity*>(me);
-		if (m){
+		if (m) {
 			o << "<type>" << "entity" << "</type>\n";
 			o << "<name>" << m->getName() << "</name>\n";
 			o << "<file>" << m->getMesh()->getName() << "</file>\n";
 		}
 		return true;
 	}
-	bool saveGameEntity(MovableObject *me, ofstream &o, bool editMode){
+	bool saveGameEntity(MovableObject *me, ofstream &o, bool editMode) {
 		//type_t *tp = (type_t *)&(me->getUserAny());
 		//if (tp){
 		//	o << "<type>" << "gameEntity" << "</type>\n";
@@ -183,7 +195,7 @@ namespace vega
 		//}
 		return true;
 	}
-	bool saveParticle(MovableObject *me, ofstream &o, bool editMode){
+	bool saveParticle(MovableObject *me, ofstream &o, bool editMode) {
 		//pfxType_t *tp = (pfxType_t*)&(me->getUserAny());
 		//if (&tp){
 		//	o << "<type>" << "pfx" << "</type>\n";
@@ -192,10 +204,10 @@ namespace vega
 		//}
 		return true;
 	}
-	bool saveLight(MovableObject *me, ofstream &o, bool editMode){
+	bool saveLight(MovableObject *me, ofstream &o, bool editMode) {
 		//Nick:“ÛÚ
 		Light *m = static_cast<Light*>(me);
-		if (m){
+		if (m) {
 			o << "<type>" << "light" << "</type>\n";
 			o << "<name>" << m->getName() << "</name>\n";
 			o << "<diffuse>";
@@ -215,7 +227,7 @@ namespace vega
 		}
 		return true;
 	}
-	bool isSceneNodeNeedSave(SceneNode*node){
+	bool isSceneNodeNeedSave(SceneNode*node) {
 		//if (!node)
 		//	return false;
 		//int numNode = node->numChildren();
@@ -252,7 +264,7 @@ namespace vega
 		//}
 		return false;
 	}
-	bool saveSceneNode(SceneNode*node, ofstream &o, bool editMode){
+	bool saveSceneNode(SceneNode*node, ofstream &o, bool editMode) {
 		//int numNode = node->numChildren();
 		//int numObject = node->numAttachedObjects();
 		//o << "<sceneNode>\n"; {
@@ -327,7 +339,7 @@ namespace vega
 		//o << "</sceneNode>\n";
 		return true;
 	}
-	void saveAABB(const AxisAlignedBox &me, ofstream &o){
+	void saveAABB(const AxisAlignedBox &me, ofstream &o) {
 		o << "<min>\n";
 		saveVector3(me.getMinimum(), o);
 		o << "</min>\n";
@@ -336,16 +348,16 @@ namespace vega
 		o << "</max>\n";
 	}
 	//********************************************************
-	static void loadVector3(Vector3 &v, xmlElement_t *o){
+	static void loadVector3(Vector3 &v, xmlElement_t *o) {
 		o->get("x", v.x).get("y", v.y).get("z", v.z);
 	}
-	static void loadOrientation(Quaternion &q, xmlElement_t *o){
+	static void loadOrientation(Quaternion &q, xmlElement_t *o) {
 		o->get("x", q.x).get("y", q.y).get("z", q.z).get("w", q.w);
 	}
-	static void loadColourValue(ColourValue &c, xmlElement_t *o){
+	static void loadColourValue(ColourValue &c, xmlElement_t *o) {
 		o->get("r", c.r).get("g", c.g).get("b", c.b).get("a", c.a);
 	}
-	bool xgScene_t::loadPfx(SceneNode*node, xmlElement_t *o, bool editMode){
+	bool xgScene_t::loadPfx(SceneNode*node, xmlElement_t *o, bool editMode) {
 		string name;
 		string file;
 		o->get("name", name).get("template", file);
@@ -356,16 +368,16 @@ namespace vega
 		return true;
 	}
 
-	const char *xgScene_t::getHelpMeshName(){
+	const char *xgScene_t::getHelpMeshName() {
 		static char name[1024];
 		static int id;
 		sprintf(name, "%s_%d", "dummy", ++id);
-		while (hasManualObject(name)){
+		while (hasManualObject(name)) {
 			sprintf(name, "%s_%d", "dummy", ++id);
 		}
 		return name;
 	}
-	bool xgScene_t::loadLight(SceneNode*node, xmlElement_t *o, bool editMode){
+	bool xgScene_t::loadLight(SceneNode*node, xmlElement_t *o, bool editMode) {
 		string name;
 		ColourValue diffuse;
 		ColourValue specular;
@@ -390,7 +402,7 @@ namespace vega
 			.get("powerScale", powerScale);
 		//Nick:“ÛÚ
 		Light *l = createLight(name);
-		if (l){
+		if (l) {
 			l->setDiffuseColour(diffuse);
 			l->setSpecularColour(specular);
 			l->setSpotlightOuterAngle(Radian(spotOuter));
@@ -398,7 +410,7 @@ namespace vega
 			l->setSpotlightFalloff(spotFalloff);
 			l->setAttenuation(range, attenuationConst, attenuationLinear, attenuationQuad);
 			l->setPowerScale(powerScale);
-			if (editMode){
+			if (editMode) {
 				l->setUserAny(*new type_t(light_type_));
 				ManualObject *dummy = createBoxManualObject(getHelpMeshName(), LIGHT_COLOR, Vector3(-10, -10, -10), Vector3(10, 10, 10), "LightMesh");
 				dummy->setUserAny(*new type_t(dummy_type_));
@@ -410,22 +422,24 @@ namespace vega
 		return true;
 	}
 
-	bool xgScene_t::loadEntity(SceneNode*node, xmlElement_t *o, bool editMode){
+	bool xgScene_t::loadEntity(SceneNode*node, xmlElement_t *o, bool editMode) 
+	{
 		string name;
 		string file;
-		string templateName;
 		o->get("name", name).get("file", file);
 
 		Entity *entity = createEntity(name.c_str(), file.c_str());
 		if (editMode)
 			entity->setUserAny(*new type_t(mesh_type_));
 		node->attachObject(entity);
-		if (loadEntityCallback && loadEntityCallbackUserData){
+		if (loadEntityCallback && loadEntityCallbackUserData) 
+		{
 			(*loadEntityCallback)(node, o, editMode, entity, loadEntityCallbackUserData);
 		}
 		return true;
 	}
-	bool xgScene_t::loadSceneNode(SceneNode*node, xmlElement_t *o, bool editMode){
+
+	bool xgScene_t::loadSceneNode(SceneNode*node, xmlElement_t *o, bool editMode) {
 		Vector3 pos;
 		Vector3 scale;
 		Quaternion q;
@@ -445,18 +459,18 @@ namespace vega
 		xmlElement_t *moveObjects = o->getChildByName("moveObjects");
 		xmlElement_t *sceneNodes = o->getChildByName("sceneNodes");
 
-		if (moveObjects){
+		if (moveObjects) {
 			string type;
-			for (size_t i = 0; i < moveObjects->getChildrenCount(); ++i){
+			for (size_t i = 0; i < moveObjects->getChildrenCount(); ++i) {
 				xmlElement_t *moveObject = moveObjects->getChild(i);
 				moveObject->get("type", type);
-				if (type == "entity"){
+				if (type == "entity") {
 					loadEntity(node, moveObject, editMode);
 				}
-				else if (type == "pfx"){
+				else if (type == "pfx") {
 					loadPfx(node, moveObject, editMode);
 				}
-				else if (type == "light"){
+				else if (type == "light") {
 					loadLight(node, moveObject, editMode);
 				}/*
 				else if(type=="gameEntity"){
@@ -465,9 +479,9 @@ namespace vega
 
 			}
 		}
-		if (sceneNodes){
+		if (sceneNodes) {
 			string name;
-			for (size_t i = 0; i < sceneNodes->getChildrenCount(); ++i){
+			for (size_t i = 0; i < sceneNodes->getChildrenCount(); ++i) {
 				name.clear();
 				xmlElement_t *sceneNode = sceneNodes->getChild(i);
 				sceneNode->get("name", name);
@@ -478,7 +492,7 @@ namespace vega
 		}
 		return true;
 	}
-	static void loadAABB(AxisAlignedBox &me, xmlElement_t *o){
+	static void loadAABB(AxisAlignedBox &me, xmlElement_t *o) {
 		Vector3 min, max;
 		loadVector3(min, o->getChildByName("min"));
 		loadVector3(max, o->getChildByName("max"));
@@ -486,28 +500,28 @@ namespace vega
 		me.setMinimum(max);
 	}
 	//***************************************************
-	bool xgScene_t::save(const char *name, bool editMode){
+	bool xgScene_t::save(const char *name, bool editMode) {
 		return true;
 	}
-	bool xgScene_t::load(xmlElement_t *xml, bool editMode){
-		selectSceneNode = NULL;
+	bool xgScene_t::load(xmlElement_t *xml, bool editMode) {
+		m_SelectedObject = NULL;
 		xmlElement_t *o = xml->getChildByName("scene");
 		if (!o)
 			return false;
-		reset(editMode);
+		ResetScene(editMode);
 		//____________________________________________________
 		//resourceLocations
 		xmlElement_t *resourceLocations = o->getChildByName("resourceLocations");
-		if (resourceLocations){
+		if (resourceLocations) {
 			xmlElement_t *itr;
 			string name;
 			StringVector s = ResourceGroupManager::getSingleton().getResourceGroups();
-			for (size_t i = 0; i < resourceLocations->getChildrenCount(); ++i){
+			for (size_t i = 0; i < resourceLocations->getChildrenCount(); ++i) {
 				itr = resourceLocations->getChild(i);
 				(*itr) >> name;
 				StringVector::iterator itr(s.begin());
-				for (; itr != s.end(); ++itr){
-					if (*itr == name){
+				for (; itr != s.end(); ++itr) {
+					if (*itr == name) {
 						break;
 					}
 				}
@@ -518,16 +532,16 @@ namespace vega
 		//resourceLocations
 		//____________________________________________________
 		xmlElement_t *sceneNode = o->getChildByName("sceneNode");
-		if (sceneNode){
+		if (sceneNode) {
 			loadSceneNode(getRootSceneNode(), sceneNode, editMode);
 		}
 		//load entityList
 		//____________________________________________________
 		xmlElement_t *entityList = o->getChildByName("entityList");
-		if (editMode && entityList){
+		if (editMode && entityList) {
 			xmlElement_t *entity;
 			String name;
-			for (size_t i = 0; i < entityList->getChildrenCount(); ++i){
+			for (size_t i = 0; i < entityList->getChildrenCount(); ++i) {
 				entity = entityList->getChild(i);
 				string templateName;
 				entity->get("name", name).get("template", templateName);
@@ -550,14 +564,14 @@ namespace vega
 				node->setOrientation(q);
 				node->setScale(scale);
 				const char *meshFile = getEntityInfo(templateName.c_str());
-				if (meshFile){
+				if (meshFile) {
 					Entity *entity = createEntity(name.c_str(), meshFile);
 					type_t *type = new type_t(entity_type_);
 					type->userData = templateName;
 					entity->setUserAny(*type);
 					node->attachObject(entity);
 				}
-				else{
+				else {
 					cout << "entity info " << templateName << " not find\n";
 				}
 			}
@@ -565,17 +579,17 @@ namespace vega
 		//load sector
 		//____________________________________________________
 		xmlElement_t *sectors = o->getChildByName("sectors");
-		if (sectors){
+		if (sectors) {
 			xmlElement_t *sector;
 			String name;
 			AxisAlignedBox ab;
 			if (!editMode)
 				sectorRoot->beginAddSector();
-			for (size_t i = 0; i < sectors->getChildrenCount(); ++i){
+			for (size_t i = 0; i < sectors->getChildrenCount(); ++i) {
 				sector = sectors->getChild(i);
 				ab.setNull();
 				loadAABB(ab, sector);
-				if (editMode){
+				if (editMode) {
 					sector->get("name", name);
 					Vector3 min, max;
 					loadVector3(min, sector->getChildByName("min"));
@@ -587,30 +601,30 @@ namespace vega
 					getRootSceneNode()->addChild(sceneNode);
 					sceneNode->setPosition(min + (max - min)*.5f);
 				}
-				else{
+				else {
 					sectorRoot->addSector(ab);
 				}
 			}
-			if (!editMode){
+			if (!editMode) {
 				sectorRoot->endAddSector();
 				updateSectorSceneNode();
 			}
 		}
 		//graph
 		//____________________________________________________
-		if (editMode){
+		if (editMode) {
 			xmlElement_t *nodes = o->getChildByName("graph");
-			if (nodes){
+			if (nodes) {
 				xmlElement_t *node;
 				String name;
 				AxisAlignedBox ab;
 				//if(!editMode)
 				//	nodeRoot->beginAddSector();
-				for (size_t i = 0; i < nodes->getChildrenCount(); ++i){
+				for (size_t i = 0; i < nodes->getChildrenCount(); ++i) {
 					node = nodes->getChild(i);
 					ab.setNull();
 					loadAABB(ab, node);
-					if (editMode){
+					if (editMode) {
 						node->get("name", name);
 						Vector3 min, max;
 						loadVector3(min, node->getChildByName("min"));
@@ -622,11 +636,11 @@ namespace vega
 						getRootSceneNode()->addChild(sceneNode);
 						sceneNode->setPosition(min + (max - min)*.5f);
 					}
-					else{
+					else {
 						//nodeRoot->addSector(ab);
 					}
 				}
-				if (!editMode){
+				if (!editMode) {
 					//nodeRoot->endAddSector();
 					//updateSectorSceneNode();
 				}
@@ -634,20 +648,20 @@ namespace vega
 		}
 		return true;
 	}
-	bool xgScene_t::load(const char *name, bool editMode){
-		try{
+	bool xgScene_t::load(const char *name, bool editMode) {
+		try {
 			DataStreamPtr data = ResourceGroupManager::getSingleton().openResource(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-			if (data.isNull()){
+			if (data.isNull()) {
 				return false;
 			}
 			xmlStack_t x;
 			char *buf = new char[data->size() + 1];
 			buf[data->size()] = NULL;
-			if (data->read(buf, data->size()) != data->size()){
+			if (data->read(buf, data->size()) != data->size()) {
 				delete buf;
 				return false;
 			}
-			if (!x.parseMem(buf, data->size())){
+			if (!x.parseMem(buf, data->size())) {
 				delete buf;
 				return false;
 			}
@@ -657,141 +671,20 @@ namespace vega
 		catch (Exception& e) {
 			std::cerr << "An exception has occured: " << e.getFullDescription();
 		}
-		catch (...){
+		catch (...) {
 		}
 		return false;
 	}
-	void xgScene_t::createGridHelperMesh(){
-		if (hasSceneNode("gridMesh"))
-			return;
-		ManualObject *grid = createManualObject("marke");
-		grid->setUserAny(*new type_t(grid_helper_type_));
-		grid->begin("gridMesh", RenderOperation::OT_LINE_LIST);
-		float xwidth;
-		float yheight;
-		float gup;
-		xwidth = 1000;
-		yheight = 1000;
-		gup = 20;
-		xwidth /= 2;
-		yheight /= 2;
-		ColourValue gray(0.5f, 0.5f, 0.5f);
-		ColourValue black(0.31f, 0.31f, 0.31f);
-		for (float x = -xwidth; x < xwidth + 1; x += gup){
-			grid->position(x, 0, -yheight);
-			grid->normal(0, 1, 0);
-			grid->textureCoord(0, 0);
-			//grid->colour(0,1,0);
-			grid->colour(gray);
-
-			grid->position(x, 0, yheight);
-			grid->normal(0, 1, 0);
-			grid->textureCoord(0, 0);
-			grid->colour(gray);
-
-		}
-		for (float z = -yheight; z < yheight + 1; z += gup){
-			grid->position(-xwidth, 0, z);
-			grid->normal(0, 1, 0);
-			grid->textureCoord(0, 0);
-			grid->colour(gray);
-
-			grid->position(xwidth, 0, z);
-			grid->normal(0, 1, 0);
-			grid->textureCoord(0, 0);
-			grid->colour(gray);
-		}
-		//----------------------------------------
-		grid->position(0, 0, -yheight);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		//grid->colour(0,1,0);
-		grid->colour(black);
-
-		grid->position(0, 0, yheight);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(black);
-
-		//----------------------------------------
-		grid->position(-xwidth, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(black);
-
-		grid->position(xwidth, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(black);
-		//----------------------------------------
-		//----------------------------------------z
-		grid->position(0, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		//grid->colour(0,1,0);
-		grid->colour(ColourValue(0, 0, 1, 1));
-
-		grid->position(0, 0, 10);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(ColourValue(0, 0, 1, 1));
-
-		//----------------------------------------x
-		grid->position(0, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(ColourValue(1, 0, 0, 1));
-
-		grid->position(10, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(ColourValue(1, 0, 0, 1));
-		//----------------------------------------
-
-		//----------------------------------------y
-		grid->position(0, 0, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(ColourValue(0, 1, 0, 1));
-
-		grid->position(0, 10, 0);
-		grid->normal(0, 1, 0);
-		grid->textureCoord(0, 0);
-		grid->colour(ColourValue(0, 1, 0, 1));
-		//----------------------------------------
-		grid->end();
-
-		Ogre::SceneNode *mk = createSceneNode("gridMesh");
-		getRootSceneNode()->addChild(mk);
-		mk->attachObject(grid);
-	}
-
-	static void makeTrangle(ManualObject *me, const ColourValue &color, const Vector3 *p, int a, int b, int c){
-		//ColourValue gray(0.0f,0.6f,0.0f,0.5f);
-		Vector3 normal = (p[c] - p[b]).crossProduct(p[b] - p[a]);
-		normal.normalise();
-		me->position(p[a]);
-		me->normal(normal);
-		//manualObject->textureCoord(0,0);
-		me->colour(color);
-
-		me->position(p[b]);
-		me->normal(normal);
-		//manualObject->textureCoord(0,0);
-		me->colour(color);
-
-		me->position(p[c]);
-		me->normal(normal);
-		//manualObject->textureCoord(0,0);
-		me->colour(color);
-
-	}
-	ManualObject *xgScene_t::createBoxManualObject(const String &name, const ColourValue &color, const Vector3 &min, const Vector3 &max, char *matName){
+	
+	ManualObject *xgScene_t::createBoxManualObject(const String &name, const ColourValue &color, const Vector3 &min, const Vector3 &max, char *matName) {
 		ManualObject *o = createManualObject(name);
 		updateBoxManualObject(o, color, min, max, matName);
 		return o;
 	}
-	void xgScene_t::updateBoxManualObject(ManualObject *box, const ColourValue &color, const Vector3 &min, const Vector3 &max, char *matName){
+
+	void xgScene_t::updateBoxManualObject(ManualObject *box, const ColourValue &color, const Vector3 &min, const Vector3 &max, char *matName) 
+	{
+#if 0
 		//Vector3 minp;
 		//Vector3 maxp;
 		Vector3 center;
@@ -826,21 +719,24 @@ namespace vega
 		makeTrangle(box, color, c, 6, 4, 5);
 
 		box->end();
+#endif
 	}
-	bool xgScene_t::insertResource(const char *filePath){
+	bool xgScene_t::insertResource(const char *filePath) {
 		String file = filePath;//.mesh
-		if (file.length() > 5 && file.substr(file.length() - 5, 5) == ".mesh"){
+		if (file.length() > 5 && file.substr(file.length() - 5, 5) == ".mesh") {
 			return true;
 		}
 		return false;
 	}
-	void xgScene_t::reset(bool editMode){
-		setSelSceneNode(NULL);
-		clearScene();
-		if (editMode)
-			createGridHelperMesh();
+
+	void xgScene_t::ResetScene(bool editMode)
+	{
+		//SetSelectObject(NULL);
+		GetEditor()->sceneManager->CleanScene();
 	}
-	string xgScene_t::getSubDir(const char *dir){
+
+
+	string xgScene_t::getSubDir(const char *dir) {
 		char *rootPath = strdup(resRootPath.c_str());
 		_strlwr(rootPath);
 		char *lwrPath = strdup(dir);
@@ -848,11 +744,11 @@ namespace vega
 		_strlwr(lwrPath);
 		size_t t = strspn(lwrPath, rootPath);
 		string retStr;
-		if (t){
+		if (t) {
 			retStr = lwrPath + t;
 			string leftPath(lwrPath);
 			leftPath = leftPath.substr(0, leftPath.length() - retStr.length());
-			if (leftPath != rootPath){
+			if (leftPath != rootPath) {
 				retStr = lwrPath;
 			}
 		}
@@ -869,15 +765,15 @@ namespace vega
 	{
 		StringVector s = ResourceGroupManager::getSingleton().getResourceGroups();
 		StringVector::iterator itr(s.begin());
-		for (; itr != s.end(); ++itr){
-			if (*itr == path){
+		for (; itr != s.end(); ++itr) {
+			if (*itr == path) {
 				break;
 			}
 		}
 		if (itr == s.end())
 		{
 			ResourceGroupManager::getSingleton().addResourceLocation(path, "FileSystem", path);
-			try{
+			try {
 				ResourceGroupManager::getSingleton().initialiseResourceGroup(path);
 				return true;
 			}
@@ -888,12 +784,12 @@ namespace vega
 
 		return false;
 	}
-	void xgScene_t::addEntityInfo(const char *templateName, const char *meshFile){
+	void xgScene_t::addEntityInfo(const char *templateName, const char *meshFile) {
 		entityInfoBag[templateName] = entityInfo_t(templateName, meshFile);
 	}
-	const char *xgScene_t::getEntityInfo(const char *templateName){
+	const char *xgScene_t::getEntityInfo(const char *templateName) {
 		entityInfoBag_t::iterator itr = entityInfoBag.find(templateName);
-		if (itr != entityInfoBag.end()){
+		if (itr != entityInfoBag.end()) {
 			return itr->second.meshFile.c_str();
 		}
 		return NULL;

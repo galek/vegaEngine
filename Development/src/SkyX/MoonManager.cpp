@@ -62,12 +62,12 @@ namespace vega
 		mMoonSceneNode = mSkyX->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 
 		mMoonBillboard = mSkyX->getSceneManager()->createBillboardSet("SkyXMoonBillboardSet", 1);
-        mMoonBillboard->setMaterialName(mSkyX->getGPUManager()->getMoonMaterialName());
+		mMoonBillboard->setMaterialName(mSkyX->getGPUManager()->getMoonMaterialName());
 		mMoonBillboard->setBillboardType(Ogre::BBT_ORIENTED_COMMON);
-		mMoonBillboard->setRenderQueueGroup(mSkyX->getRenderQueueGroups().skydome+1);
+		mMoonBillboard->setRenderQueueGroup(mSkyX->getRenderQueueGroups().skydome + 1);
 		mMoonBillboard->setCastShadows(false);
 
-		mMoonBillboard->createBillboard(Ogre::Vector3(0,0,0));
+		mMoonBillboard->createBillboard(Ogre::Vector3(0, 0, 0));
 
 		mMoonSceneNode->attachObject(mMoonBillboard);
 
@@ -105,33 +105,33 @@ namespace vega
 			// [-1, -0.5]
 			if (phase < -0.5)
 			{
-				center = (1+phase)/2;
+				center = (1 + phase) / 2;
 				radius = 0.25;
 
-				interpolation = center*4;
+				interpolation = center * 4;
 
-				if (interpolation < 1.0f/3)
+				if (interpolation < 1.0f / 3)
 				{
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.25, 0.5, (1-interpolation)*interpolation);
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.25, 0.5, (1 - interpolation)*interpolation);
 					halo2 = Ogre::Vector3(0.25, 0.5, interpolation);
 				}
-				else if (interpolation < 2.0f/3)
+				else if (interpolation < 2.0f / 3)
 				{
-					interpolation -= 1.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.25, 0.5, 1-interpolation);
+					interpolation -= 1.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.25, 0.5, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.0, 0.5, interpolation);
 				}
 				else
 				{
-					interpolation -= 2.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.0, 0.5, 1-interpolation);
+					interpolation -= 2.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.0, 0.5, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.75, 0.0, interpolation);
 				}
 
-				radius_add =  0.1*center/(0.25001-center);
+				radius_add = 0.1*center / (0.25001 - center);
 
 				radius += radius_add;
 				center += radius_add;
@@ -139,33 +139,33 @@ namespace vega
 			// [-0.5, 0]
 			else
 			{
-				center = (-phase)/2;
+				center = (-phase) / 2;
 				radius = 0.25;
 
-				interpolation = 1-center*4;
+				interpolation = 1 - center * 4;
 
-				if (interpolation < 1.0f/3)
+				if (interpolation < 1.0f / 3)
 				{
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.75, 0.0, 1-interpolation);
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.75, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.5, 0.0, interpolation);
 				}
-				else if (interpolation < 2.0f/3)
+				else if (interpolation < 2.0f / 3)
 				{
-					interpolation -= 1.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.5, 0.0, 1-interpolation);
+					interpolation -= 1.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.5, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.25, 0.0, interpolation);
 				}
 				else
 				{
-					interpolation -= 2.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.25, 0.0, 1-interpolation);
+					interpolation -= 2.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.25, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.00, 0.0, interpolation);
 				}
 
-				radius_add =  0.1*center/(0.25001-center);
+				radius_add = 0.1*center / (0.25001 - center);
 
 				radius += radius_add;
 				center += radius_add;
@@ -182,33 +182,33 @@ namespace vega
 			// [0, 0.5]
 			if (phase < 0.5)
 			{
-				center = phase/2;
+				center = phase / 2;
 				radius = 0.25;
 
-				interpolation = center*4;
+				interpolation = center * 4;
 
-				if (interpolation < 1.0f/3)
+				if (interpolation < 1.0f / 3)
 				{
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.00, 0.0, 1-interpolation);
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.00, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.25, 0.0, interpolation);
 				}
-				else if (interpolation < 2.0f/3)
+				else if (interpolation < 2.0f / 3)
 				{
-					interpolation -= 1.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.25, 0.0, 1-interpolation);
+					interpolation -= 1.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.25, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.5, 0.0, interpolation);
 				}
 				else
 				{
-					interpolation -= 2.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.5, 0.0, 1-interpolation);
+					interpolation -= 2.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.5, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.75, 0.0, interpolation);
 				}
 
-				radius_add =  0.1*center/(0.25001-center);
+				radius_add = 0.1*center / (0.25001 - center);
 
 				radius += radius_add;
 				center += radius_add;
@@ -219,33 +219,33 @@ namespace vega
 			// [0.5, 1]
 			else
 			{
-				center = (1-phase)/2;
+				center = (1 - phase) / 2;
 				radius = 0.25;
 
-				interpolation = 1-center*4;
+				interpolation = 1 - center * 4;
 
-				if (interpolation < 1.0f/3)
+				if (interpolation < 1.0f / 3)
 				{
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.75, 0.0, 1-interpolation);
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.75, 0.0, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.0, 0.5, interpolation);
 				}
-				else if (interpolation < 2.0f/3)
+				else if (interpolation < 2.0f / 3)
 				{
-					interpolation -= 1.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.0, 0.5, 1-interpolation);
+					interpolation -= 1.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.0, 0.5, 1 - interpolation);
 					halo2 = Ogre::Vector3(0.25, 0.5, interpolation);
 				}
 				else
 				{
-					interpolation -= 2.0f/3;
-					interpolation /= 1.0f/3;
-					halo1 = Ogre::Vector3(0.25, 0.5, 1-interpolation);
-					halo2 = Ogre::Vector3(0.25, 0.5, (1-interpolation)*interpolation);
+					interpolation -= 2.0f / 3;
+					interpolation /= 1.0f / 3;
+					halo1 = Ogre::Vector3(0.25, 0.5, 1 - interpolation);
+					halo2 = Ogre::Vector3(0.25, 0.5, (1 - interpolation)*interpolation);
 				}
 
-				radius_add =  0.1*center/(0.25001-center);
+				radius_add = 0.1*center / (0.25001 - center);
 
 				radius += radius_add;
 				center += radius_add;
@@ -264,24 +264,26 @@ namespace vega
 		mMoonMaterial->getTechnique(0)->getPass(0)->getFragmentProgramParameters()->setNamedConstant("uMoonHaloFlip", halo_flip);
 	}
 
-	void MoonManager::updateGeometry(Ogre::Camera* c)
+	void MoonManager::updateGeometry(Ogre::Camera* c, const Ogre::Vector3&dir)
 	{
+
 		if (!mCreated || !mMoonBillboard || !mMoonSceneNode || !c)
 		{
 			return;
 		}
 
 		float radius = mSkyX->getMeshManager()->getSkydomeRadius(c)*0.95f,
-              size = radius*mMoonSize;
+			size = radius*mMoonSize;
 
-		mMoonBillboard->setCommonDirection((mSkyX->getController()->getMoonDirection()).normalisedCopy().perpendicular());
+		//Crash
+		mMoonBillboard->setCommonDirection((dir).normalisedCopy().perpendicular());
 
 		Ogre::Vector3 moonRelativePos = mSkyX->getController()->getMoonDirection()*
-			Ogre::Math::Cos(Ogre::Math::ASin((size/2)/radius))*radius;
+			Ogre::Math::Cos(Ogre::Math::ASin((size / 2) / radius))*radius;
 
 		mMoonSceneNode->setPosition(c->getDerivedPosition() + moonRelativePos);
 
-		if (moonRelativePos.y < -size/2)
+		if (moonRelativePos.y < -size / 2)
 		{
 			mMoonSceneNode->setVisible(false);
 		}
@@ -302,11 +304,11 @@ namespace vega
 	void MoonManager::_updateMoonBounds(Ogre::Camera* c)
 	{
 		float radius = mSkyX->getMeshManager()->getSkydomeRadius(c)*0.95f,
-              size = radius*mMoonSize;
+			size = radius*mMoonSize;
 
 		mMoonBillboard->setDefaultDimensions(size, size);
-		mMoonBillboard->setBounds(Ogre::AxisAlignedBox(-size/2, -size/2, -size/2,
-														size/2,  size/2,  size/2), 1);
+		mMoonBillboard->setBounds(Ogre::AxisAlignedBox(-size / 2, -size / 2, -size / 2,
+			size / 2, size / 2, size / 2), 1);
 		mMoonSceneNode->_updateBounds();
 	}
 }

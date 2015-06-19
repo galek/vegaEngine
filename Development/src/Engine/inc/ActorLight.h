@@ -85,13 +85,11 @@ namespace vega
 
 		// !@Automatic validation
 		bool isValid(const char* _funct) const;
-		
+
 		// !@Automatic conversion
 		ActorLight& operator=(Ogre::Light &_mLight);
 		ActorLight& operator=(Ogre::Light *_mLight);
 	public:
-		// !@Method for Editor Fabric-editor only!
-		void _updateRenderQueue(Ogre::RenderQueue *queue);
 		// !@Method for Editor Fabric-editor only!
 		const Ogre::AxisAlignedBox& getBoundingBox(void) const;
 		__inline Ogre::Light * getOgreLight(void) const { return mLight; }

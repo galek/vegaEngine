@@ -8,13 +8,13 @@
 #include "CorePrivate.h"
 
 //-----------------------------------------------------------------------------
-CORE_API void ErrorFunction(bool _toLog, const char *fmt, const char *_file, int _line, ...)
+CORE_API void ErrorFunction(bool _toLog, std::string fmt, const char *_file, int _line, ...)
 {
 	char		msg[1024];
 
 	va_list		argptr;
 	va_start(argptr, fmt);
-	vsprintf(msg, fmt, argptr);
+	vsprintf(msg, fmt.c_str(), argptr);
 	va_end(argptr);
 
 	std::string str(fmt);

@@ -9,10 +9,10 @@
 
 namespace vega
 {
-	class ENGINE_API ActorSkyBox:public Actor
+	class ENGINE_API ActorSkyBox :public Actor
 	{
 	public:
-		ActorSkyBox(const char* _material="DefMat");
+		ActorSkyBox(std::string _material = "DefMat");
 		virtual ~ActorSkyBox();
 	};
 }

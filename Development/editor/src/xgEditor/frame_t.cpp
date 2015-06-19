@@ -98,7 +98,9 @@ namespace vega
 	}
 	/**
 	*/
-	void MainFrame::OnNew(wxCommandEvent& event){
+	void MainFrame::OnNew(wxCommandEvent& event)
+	{
+#if 0
 		resetTool();
 		GetEditor()->GetEditorScene()->reset(true);
 		documentName = "";
@@ -145,6 +147,10 @@ namespace vega
 			msg.Printf(wxT("no plugin defined in docInfoList.xml"));
 			wxMessageBox(msg, wxT("error"));
 		}
+#else
+		resetTool();
+		GetEditor()->GetEditorScene()->ResetScene(true);
+#endif
 	}
 
 	/**

@@ -205,6 +205,7 @@ namespace vega
 
 	void resInsertTool_t::update(int resType)
 	{
+#if 0
 		currentResType = resType;
 		/*if (sceneNode && entity)
 		{
@@ -333,7 +334,7 @@ namespace vega
 				}
 				if (sceneNode)
 				{
-					GetEditor()->GetEditorScene()->setSelSceneNode(sceneNode);
+					GetEditor()->GetEditorScene()->SetSelectObject(sceneNode);
 					GetEditor()->GetEditorScene()->setSelMovable(entity);
 				}
 			}
@@ -343,6 +344,7 @@ namespace vega
 				MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 			}
 		}
+#endif
 	}
 
 	bool resInsertTool_t::onActive() {

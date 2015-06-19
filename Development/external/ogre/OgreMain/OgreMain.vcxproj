@@ -155,7 +155,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions> /Zm106 /bigobj</AdditionalOptions>
       <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -255,7 +255,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions> /Zm106</AdditionalOptions>
+      <AdditionalOptions> /Zm106 /bigobj</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>include;../include;$(SolutionDir)/../external/Ogre/include;$(SolutionDir)/../external/Ogre/OgreMain/include;$(SolutionDir)/../external/Ogre/Components/Paging/include;$(SolutionDir)/../external/Ogre/Components/Property/include;$(SolutionDir)/../external/Ogre/Components/Terrain/include;$(SolutionDir)/../external/zzip;$(SolutionDir)/../external/FreeImage/Source;$(SolutionDir)/../external/freetype/include/freetype;$(SolutionDir)/../external/freetype/include;..;$(SolutionDir)/../external/Cg;$(SolutionDir)/../external/;$(SolutionDir)/../external/DXSDK/include;$(SolutionDir)/../external/TBB/include;$(SolutionDir)/../external/MyGUI_3.2.0/MyGUIEngine/include;$(SolutionDir)/../external/MyGUI_3.2.0/Common;$(SolutionDir)/../external/MyGUI_3.2.0/Common/input/ois;$(SolutionDir)/../external/MyGUI_3.2.0/Platforms/Ogre/OgrePlatform/include;$(SolutionDir)/../external/OIS/Include;include/WIN32;src/nedmalloc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;DEBUG;BOOST_ALL_NO_LIB;OGRE_NONCLIENT_BUILD;FREEIMAGE_LIB;_MT;_USRDLL;CMAKE_INTDIR="Debug";OgreMain_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

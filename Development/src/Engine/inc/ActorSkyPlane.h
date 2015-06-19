@@ -12,9 +12,9 @@ namespace vega
 	class ENGINE_API ActorSkyPlane:public Actor
 	{
 	public:
-		ActorSkyPlane(const char* _material="DefMat");
-		ActorSkyPlane(const char* _material, const Ogre::Vector4 &_vec);
-		ActorSkyPlane(const char* _material,float _a,float _b,float _c,float _d);
+		ActorSkyPlane(std::string  _material = "DefMat");
+		ActorSkyPlane(std::string  _material, const Ogre::Vector4 &_vec);
+		ActorSkyPlane(std::string  _material, float _a, float _b, float _c, float _d);
 		virtual ~ActorSkyPlane();
 	};
 }

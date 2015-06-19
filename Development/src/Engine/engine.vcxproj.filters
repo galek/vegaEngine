@@ -173,9 +173,6 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SceneManager.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="src\Camera\iCameraBase.cpp">
       <Filter>Source Files\Entity\Camera</Filter>
     </ClCompile>
@@ -234,6 +231,9 @@
       <Filter>Source Files\API</Filter>
     </ClCompile>
     <ClCompile Include="src\EngineGlobals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

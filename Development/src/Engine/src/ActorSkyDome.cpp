@@ -12,8 +12,11 @@ namespace vega
 {
 	/**
 	*/
-	ActorSkyDome::ActorSkyDome(const char* _material)
+	ActorSkyDome::ActorSkyDome(std::string  _material)
 	{
+		mName = "ActorSkyDome_" + _material;//for Actor Base
+		m_actDesc = ActorDescription::AD_SKY;
+
 		if(!GetEngine()->mGSceneMgr->isSkyDomeEnabled())
 			GetEngine()->mGSceneMgr->setSkyDome(true, _material);
 	}

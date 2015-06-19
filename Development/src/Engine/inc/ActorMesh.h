@@ -9,12 +9,12 @@
 
 namespace vega
 {
-	class ENGINE_API ActorMesh:public Actor
+	class ENGINE_API ActorMesh :public Actor
 	{
 	public:
 		// !@Cretion new actor mesh
-		ActorMesh(const char *_fileName, const char*_name, const char* _material,
-			int _mCollisionModel,float _mass,Ogre::Vector3 _mPosition,
+		ActorMesh(const char *_fileName, std::string _name, const char* _material,
+			int _mCollisionModel, float _mass, Ogre::Vector3 _mPosition,
 			Ogre::Quaternion _mRotation,
 			Ogre::Vector3 _scale,
 			Ogre::Vector3 _mLinearVelocity);
@@ -33,7 +33,7 @@ namespace vega
 		void rebuildNavMesh();
 		void destroyNavMesh();
 		void setUsingNavMesh(bool use);
-		__inline bool isUsingNavMesh(){ return mUsingNavMesh; }
+		EFORCEINLINE bool isUsingNavMesh() { return mUsingNavMesh; }
 	private:
 		// !@Creation Mesh
 		void _createMesh();

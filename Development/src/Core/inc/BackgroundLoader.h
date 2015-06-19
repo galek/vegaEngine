@@ -35,6 +35,8 @@ namespace vega
 		void BackgroundUnLoadResourceGroup(const Ogre::String& resGroupName, Listener* listener = 0);
 
 
+		void Initialize();
+		void Destroy();
 		bool Loading();
 
 	private:
@@ -94,5 +96,6 @@ namespace vega
 		};
 	private:
 		SubSystemsManager* systems;
+		bool b_Initialized;
 	};
 }

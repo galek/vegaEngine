@@ -12,31 +12,40 @@ namespace vega
 {
 	/**
 	*/
-	ActorSkyPlane::ActorSkyPlane(const char* _material)
+	ActorSkyPlane::ActorSkyPlane(std::string  _material)
 	{
-		if(!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
-			GetEngine()->mGSceneMgr->setSkyPlane(true,Ogre::Plane(0, -1, 0, 5000), _material);
+		mName = "ActorSkyPlane_" + _material;//for Actor Base
+		m_actDesc = ActorDescription::AD_SKY;
+
+		if (!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
+			GetEngine()->mGSceneMgr->setSkyPlane(true, Ogre::Plane(0, -1, 0, 5000), _material);
 	}
 	/**
 	*/
-	ActorSkyPlane::ActorSkyPlane(const char* _material, const Ogre::Vector4 &_vec)
+	ActorSkyPlane::ActorSkyPlane(std::string  _material, const Ogre::Vector4 &_vec)
 	{
-		if(!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
+		mName = "ActorSkyPlane_" + _material;//for Actor Base
+		m_actDesc = ActorDescription::AD_SKY;
+
+		if (!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
 			GetEngine()->mGSceneMgr->setSkyPlane(true, Ogre::Plane(_vec.x, _vec.y, _vec.z, _vec.w), _material);
 	}
 	/**
 	*/
-	ActorSkyPlane::ActorSkyPlane(const char* _material, float _a, float _b, float _c, float _d)
+	ActorSkyPlane::ActorSkyPlane(std::string  _material, float _a, float _b, float _c, float _d)
 	{
-		if(!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
+		mName = "ActorSkyPlane_" + _material;//for Actor Base
+		m_actDesc = ActorDescription::AD_SKY;
+
+		if (!GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
 			GetEngine()->mGSceneMgr->setSkyPlane(true, Ogre::Plane(_a, _b, _c, _d), _material);
 	}
-	
+
 	/**
 	*/
 	ActorSkyPlane::~ActorSkyPlane()
 	{
-		if(GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
+		if (GetEngine()->mGSceneMgr->isSkyPlaneEnabled())
 			GetEngine()->mGSceneMgr->destroySceneNode(GetEngine()->mGSceneMgr->getSkyPlaneNode());
 	}
 }

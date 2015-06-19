@@ -184,7 +184,7 @@ namespace vega
 					Ogre::MovableObject *m = sceneNode->getAttachedObject(0);
 					scene->destroyMovableObject(m->getName(), m->_getCreator()->getType());
 				}
-				scene->setSelSceneNode(NULL);
+				scene->SetSelectObject(NULL);
 				scene->destroySceneNode(sceneNode->getName());
 				sceneNode = NULL;
 			}
@@ -194,6 +194,7 @@ namespace vega
 	}
 	bool prsTool_t::onViewMouseEvent(wxMouseEvent & event)
 	{
+#if 0
 		//SeriousWarning(true, " prsTool_t::onViewMouseEvent");
 		if (event.ButtonDown(wxMOUSE_BTN_LEFT))
 		{
@@ -250,13 +251,13 @@ namespace vega
 								std::pair< bool, Ogre::Real > interPoint = Ogre::Math::intersects(ray, plane);
 								oldPoint = ray.getPoint(interPoint.second);
 								oldPostion = oldPoint;
-								scene->setSelSceneNode(sceneNode);
+								scene->SetSelectObject(sceneNode);
 								scene->setSelMovable(moveAbleObject);
 								break;
 							}
 							else
 							{
-								scene->setSelSceneNode(NULL);
+								scene->SetSelectObject(NULL);
 								scene->setSelMovable(NULL);
 								sceneNode = NULL;
 							}
@@ -265,14 +266,14 @@ namespace vega
 					}
 					if (itr == rsqr.end())
 					{
-						scene->setSelSceneNode(NULL);
+						scene->SetSelectObject(NULL);
 						scene->setSelMovable(NULL);
 					}
 
 				}
 				else
 				{
-					scene->setSelSceneNode(NULL);
+					scene->SetSelectObject(NULL);
 					sceneNode = NULL;
 				}
 
@@ -297,6 +298,7 @@ namespace vega
 			}
 		}
 		event.GetPosition(&oldMouseXPos, &oldMouseYPos);
+#endif
 		return true;
 	}
 

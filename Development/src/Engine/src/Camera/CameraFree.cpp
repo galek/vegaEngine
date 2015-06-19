@@ -1,6 +1,6 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
-* Copyright (C) 2009-2014 Vega Group Ltd.
+* VegaEngine(TM) Package 0.5.6.0
+* Copyright (C) 2009-2015 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
@@ -17,9 +17,12 @@ namespace vega {
 	*/
 	CameraFree::CameraFree(bool _active)
 		:mCameraCS(GetEngine()->GetSceneMgr()->getCameraManager()),
-		camMode(new FreeCameraMode(mCameraCS, Ogre::Vector3::ZERO, Ogre::Degree(225), Ogre::Degree(10)
-			, FreeCameraMode::CURRENT_STATE))
+		camMode(new FreeCameraMode(mCameraCS, Ogre::Vector3::ZERO, Ogre::Degree(225), Ogre::Degree(10),
+		FreeCameraMode::CURRENT_STATE))
 	{
+		mName = "CameraFree";
+		m_actDesc = ActorDescription::AD_CAMERA;
+
 		mCameraCS->registerCameraMode("Free", camMode);
 		camMode->setMoveFactor(30);
 		if (_active && (!GetEngine()->isEditor()))

@@ -101,7 +101,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src\cgSys;..\depend\ogre-win32-v1-4-0\ogrenew\OgreMain\include;..\src\xgpublic\sys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\..\src\platform;..\..\src\Common;..\..\src\Core\inc;..\..\src\Engine\inc;..\..\src\AI;..\..\src\AudioAL\inc;..\..\src\Render\inc;..\..\src\BulletPhysics\inc;..\..\external\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;..\..\external\MyGUI_3.2.0\MyGUIEngine\include;..\..\external\boost\;..\..\external\ogre\include;..\..\external\ogre\;..\..\external\ogre\OgreMain\include;..\..\external\OIS\includes;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;..\depend\wxWidgets\include\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -110,6 +110,7 @@
       </BrowseInformation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/Zm900 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName)d.lib</OutputFile>

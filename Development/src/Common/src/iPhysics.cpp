@@ -6,8 +6,3 @@
 * All Rights Reserved.
 */
 #include "IEngine.h"
-
-namespace vega
-{
-	
-};

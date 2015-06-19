@@ -268,7 +268,7 @@ namespace vega
 	{
 		static void fail(const std::string &str)
 		{
-			ErrorF(str.c_str());
+			ErrorF(str);
 		}
 
 		struct AutoAVPacket : public AVPacket {

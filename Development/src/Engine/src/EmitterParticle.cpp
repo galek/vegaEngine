@@ -15,12 +15,16 @@ namespace vega
 {
 	/**
 	*/
-	EmitterParticle::EmitterParticle(const char *name, const char *_temp)
+	EmitterParticle::EmitterParticle(std::string _name, const char *_temp)
 		:ps(nullptr)
 	{
+		mName = "EmitterParticle_" + _name;//for Actor Base
+		m_actDesc = ActorDescription::AD_EMITTER_PARTICLE;
+
+
 		ParticleSystem::setDefaultNonVisibleUpdateTimeout(5);  // set nonvisible timeout
 		// create some nice fireworks and place it at the origin
-		ps = GetEngine()->mGSceneMgr->createParticleSystem(name, _temp);
+		ps = GetEngine()->mGSceneMgr->createParticleSystem(_name, _temp);
 		attach(nullptr);
 	}
 	/**

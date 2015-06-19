@@ -130,7 +130,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);..\evAI\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GAME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GAME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -156,7 +156,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);..\evAI\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GAME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GAME_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -173,7 +173,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\external\libs.x64\$(Configuration);..\..\..\Binaries\Lib\Binaries.win64_d\$(Configuration);..\..\external\boost\libs.x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../../Binaries/Lib/Binaries.win64/$(Configuration);$(SolutionDir)/../external/libs.x64;$(SolutionDir)/../external/libs.x64/$(Configuration)</AdditionalLibraryDirectories>
       <MinimumRequiredVersion />
     </Link>
   </ItemDefinitionGroup>
@@ -258,6 +258,9 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\external\ogre\OgreMain\OgreMain.vcxproj">
+      <Project>{ae9f6baf-f30b-4aac-a22a-38f23b0c0447}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Engine\engine.vcxproj">
       <Project>{882f047c-66aa-4cb9-8b2b-3cf45d0eaa43}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

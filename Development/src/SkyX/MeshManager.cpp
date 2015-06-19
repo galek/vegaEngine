@@ -55,21 +55,27 @@ namespace vega
 
 	void MeshManager::remove()
 	{
+
 		if (!mCreated)
 		{
 			return;
 		}
 
 		mSceneNode->detachAllObjects();
-		mSceneNode->getParentSceneNode()->removeAndDestroyChild(mSceneNode->getName());
-		mSceneNode = 0;
 
 		Ogre::MeshManager::getSingleton().remove("SkyXMesh");
-		mSkyX->getSceneManager()->destroyEntity(mEntity);
+		mSceneNode->getCreator()->destroyEntity(mEntity);
+
+		mSceneNode->removeAndDestroyAllChildren();
+		mSceneNode->getCreator()->getRootSceneNode()->removeAndDestroyChild(mSceneNode->getName());
+
 
 		mMesh = nullptr;
-		mSubMesh = 0;
-		mEntity = 0;
+		mEntity = nullptr;
+		mSceneNode = nullptr;
+
+		mSubMesh = nullptr;
+		mEntity = nullptr;
 		mVertexBuffer.setNull();
 		mIndexBuffer.setNull();
 		mMaterialName = "_NULL_";
@@ -116,7 +122,7 @@ namespace vega
 
 	void MeshManager::updateGeometry(Ogre::Camera* cam)
 	{
-		if (!mCreated)
+		if (!mCreated || !mSceneNode || !cam)
 		{
 			return;
 		}

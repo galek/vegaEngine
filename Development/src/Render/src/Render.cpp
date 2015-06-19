@@ -29,8 +29,7 @@ namespace vega
 		Debug("[render]Render::Render");
 
 		mSystem = nullptr;
-		//Создаем дополнительные модули в рендере
-		externals = new Externals(this);
+		externals = nullptr;
 	}
 
 	/**
@@ -131,6 +130,11 @@ namespace vega
 				shData->iActivate = true;
 				shData->iGlobalActivate = true;
 			}
+
+			{
+				//Создаем дополнительные модули в рендере
+				externals = new Externals(this);
+			}
 			firstStart = false;
 		}
 	}
@@ -152,9 +156,9 @@ namespace vega
 	Render::~Render()
 	{
 		//TEST
-	/*	SAFE_DELETE(externals);
-		SAFE_DELETE(shData);
-		SAFE_DELETE(mSystem);*/
+		/*	SAFE_DELETE(externals);
+			SAFE_DELETE(shData);
+			SAFE_DELETE(mSystem);*/
 	}
 
 	/**
@@ -169,7 +173,7 @@ namespace vega
 	/**
 	*/
 	void Render::PostEffectSetStatus(const char* _name, bool _status) {
-		if (_name == "SSAO")
+		if (strcmp(_name, "SSAO") == 0)
 		{
 			Debug("[PostEffects]Enabled SSAO");
 			if (!mSystem)
@@ -180,7 +184,7 @@ namespace vega
 		}
 		else
 		{
-			if (_name == "HDR")
+			if (strcmp(_name, "HDR") == 0)
 			{
 				if (_status)
 					CompositorManager::getSingleton().addCompositor(mViewport, _name, 0);

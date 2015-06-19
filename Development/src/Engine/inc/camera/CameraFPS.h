@@ -10,7 +10,8 @@
 
 namespace vega
 {
-	class ENGINE_API CameraFPS :public iCameraBase{
+	class ENGINE_API CameraFPS :public iCameraBase
+	{
 	public:
 		CameraFPS(bool _active = false);
 		virtual ~CameraFPS();

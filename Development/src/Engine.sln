@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{1E086059-6788-4F71-B6E5-482619BAB36C}"
 EndProject
@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Physics Subsystems", "Physi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameDll", "GameDll", "{72284465-3D78-49CD-AE8F-D61635B44533}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "launcher", "launcher\launcher.vcxproj", "{FBDF476F-DED0-49F6-A716-54954E03DD39}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "launcher\launcher.vcxproj", "{FBDF476F-DED0-49F6-A716-54954E03DD39}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "platform", "platform\platform.vcxproj", "{069DB063-0A5A-4CD6-A0B5-33053F328270}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Platform", "platform\platform.vcxproj", "{069DB063-0A5A-4CD6-A0B5-33053F328270}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj", "{98923DE1-AE6E-48F9-8BB4-CD92B30DCCAC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine", "Engine\engine.vcxproj", "{882F047C-66AA-4CB9-8B2B-3CF45D0EAA43}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\engine.vcxproj", "{882F047C-66AA-4CB9-8B2B-3CF45D0EAA43}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AI", "AI\AI.vcxproj", "{4B67E249-5319-4ED5-A77B-6AAFEEC6EC85}"
 EndProject
@@ -291,7 +291,8 @@ Global
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|Tegra-Android.ActiveCfg = Debug|Win32
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|Win32.ActiveCfg = Debug|Win32
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|Win32.Build.0 = Debug|Win32
-		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|x64.ActiveCfg = Debug|Win32
+		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|x64.ActiveCfg = Debug|x64
+		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Debug|x64.Build.0 = Debug|x64
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Release|Tegra-Android.ActiveCfg = Release|Win32
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Release|Win32.ActiveCfg = Release|Win32
 		{DFB263AB-EA17-4133-818A-62C077C5BFDA}.Release|Win32.Build.0 = Release|Win32
@@ -300,7 +301,8 @@ Global
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|Tegra-Android.ActiveCfg = Debug|Win32
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|Win32.ActiveCfg = Debug|Win32
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|Win32.Build.0 = Debug|Win32
-		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|x64.ActiveCfg = Debug|Win32
+		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|x64.ActiveCfg = Debug|x64
+		{CBE6F841-6861-4631-A148-126545E6DDBC}.Debug|x64.Build.0 = Debug|x64
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Release|Tegra-Android.ActiveCfg = Release|Win32
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Release|Win32.ActiveCfg = Release|Win32
 		{CBE6F841-6861-4631-A148-126545E6DDBC}.Release|Win32.Build.0 = Release|Win32
@@ -309,7 +311,8 @@ Global
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|Tegra-Android.ActiveCfg = Debug|Win32
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|Win32.Build.0 = Debug|Win32
-		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|x64.ActiveCfg = Debug|Win32
+		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|x64.ActiveCfg = Debug|x64
+		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Debug|x64.Build.0 = Debug|x64
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Release|Tegra-Android.ActiveCfg = Release|Win32
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Release|Win32.ActiveCfg = Release|Win32
 		{C3DBFA0A-8576-47E3-85B4-39B6BEA5AA1C}.Release|Win32.Build.0 = Release|Win32

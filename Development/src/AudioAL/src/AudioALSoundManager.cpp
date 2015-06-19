@@ -2,8 +2,8 @@
 #include "AudioALSoundManager.h"
 
 
-namespace vega {
-#pragma comment(lib,"OpenAL32")
+namespace vega
+{
 	const std::string SoundManager::SOUND_FILE = "SoundFile";
 	const std::string SoundManager::LOOP_STATE = "LoopState";
 	const std::string SoundManager::STREAM = "Stream";
@@ -12,7 +12,7 @@ namespace vega {
 	const ALenum SoundManager::xRamHardware = alGetEnumValue("AL_STORAGE_HARDWARE");
 	const ALenum SoundManager::xRamAccessible = alGetEnumValue("AL_STORAGE_ACCESSIBLE");
 
-  SoundManager::SoundManager(const std::string& deviceName, int maxNumSources) : 
+	SoundManager::SoundManager(const std::string& deviceName, int maxNumSources) :
 		mEAXSupport(false),
 		mEAXVersion(0),
 		mXRAMSupport(false),
@@ -33,7 +33,7 @@ namespace vega {
 		// Create and register Sound and Listener Factories
 		mSoundFactory = new SoundFactory(this);
 		mListenerFactory = new ListenerFactory();
-		
+
 		Ogre::Root::getSingleton().addMovableObjectFactory(mSoundFactory);
 		Ogre::Root::getSingleton().addMovableObjectFactory(mListenerFactory);
 
@@ -61,7 +61,7 @@ namespace vega {
 		mQueuedSounds.clear();
 
 		// Clean up the SourcePool
-		while(!mSourcePool.empty())
+		while (!mSourcePool.empty())
 		{
 			alDeleteSources(1, &mSourcePool.front());
 			CheckError(alGetError(), "Failed to destroy source");
@@ -98,7 +98,7 @@ namespace vega {
 		fileTypePair[SOUND_FILE] = fileName;
 		fileTypePair[LOOP_STATE] = Ogre::StringConverter::toString(loop);
 		fileTypePair[STREAM] = Ogre::StringConverter::toString(stream);
-		
+
 		Sound *newSound = static_cast<Sound*>(mSoundFactory->createInstance(name, NULL, &fileTypePair));
 		mSoundMap[name] = newSound;
 		return newSound;
@@ -109,12 +109,12 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		SoundMap::const_iterator soundItr = mSoundMap.find(name);
-		if(soundItr == mSoundMap.end())
+			SoundMap::const_iterator soundItr = mSoundMap.find(name);
+		if (soundItr == mSoundMap.end())
 		{
-			throw Ogre::Exception(Ogre::Exception::ERR_ITEM_NOT_FOUND, 
-					"Object named '" + name + "' does not exist.", 
-					"SceneManager::getMovableObject");
+			throw Ogre::Exception(Ogre::Exception::ERR_ITEM_NOT_FOUND,
+				"Object named '" + name + "' does not exist.",
+				"SceneManager::getMovableObject");
 		}
 
 		return soundItr->second;
@@ -125,23 +125,23 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		SoundMap::const_iterator soundItr = mSoundMap.find(name);
-		if(soundItr != mSoundMap.end())
+			SoundMap::const_iterator soundItr = mSoundMap.find(name);
+		if (soundItr != mSoundMap.end())
 			return true;
 		else
 			return false;
 	}
 
-  SoundMapIterPair SoundManager::getSoundIterator() {
-    return SoundMapIterPair(mSoundMap.begin(), mSoundMap.end());
-  }
-  
+	SoundMapIterPair SoundManager::getSoundIterator() {
+		return SoundMapIterPair(mSoundMap.begin(), mSoundMap.end());
+	}
+
 	void SoundManager::destroySound(Sound *sound)
 	{
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		destroySound(sound->getName());
+			destroySound(sound->getName());
 	}
 
 	void SoundManager::destroySound(const std::string& name)
@@ -149,9 +149,9 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		SoundMap::iterator soundItr = mSoundMap.find(name);
-		if(soundItr != mSoundMap.end())
-		{			
+			SoundMap::iterator soundItr = mSoundMap.find(name);
+		if (soundItr != mSoundMap.end())
+		{
 			mSoundsToDestroy.push_back(soundItr->second);
 			mSoundMap.erase(soundItr);
 		}
@@ -162,8 +162,8 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		// Delete all Sound pointers in the SoundMap.
-		std::for_each(mSoundMap.begin(), mSoundMap.end(), DeleteSecond());
+			// Delete all Sound pointers in the SoundMap.
+			std::for_each(mSoundMap.begin(), mSoundMap.end(), DeleteSecond());
 		mSoundMap.clear();
 		// Delete all Sounds scheduled for deletion.
 		performDeleteQueueCycle();
@@ -171,16 +171,16 @@ namespace vega {
 		// Also flush gain values.
 		mSoundGainMap.clear();
 	}
-	
+
 	void SoundManager::pauseAllSounds()
 	{
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		SoundMap::iterator soundItr;
-		for(soundItr = mSoundMap.begin(); soundItr != mSoundMap.end(); ++soundItr)
+			SoundMap::iterator soundItr;
+		for (soundItr = mSoundMap.begin(); soundItr != mSoundMap.end(); ++soundItr)
 		{
-			if(soundItr->second->isPlaying())
+			if (soundItr->second->isPlaying())
 			{
 				soundItr->second->pause();
 				mPauseResumeAll.push_back(soundItr->second);
@@ -193,18 +193,18 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		SoundList::iterator soundItr;
-		for(soundItr = mPauseResumeAll.begin(); soundItr != mPauseResumeAll.end(); ++soundItr)
+			SoundList::iterator soundItr;
+		for (soundItr = mPauseResumeAll.begin(); soundItr != mPauseResumeAll.end(); ++soundItr)
 		{
 			(*soundItr)->play();
 		}
 		mPauseResumeAll.clear();
-	} 
+	}
 
 	void SoundManager::createListener()
 	{
 		Listener *listener = Listener::getSingletonPtr();
-		if(!listener)
+		if (!listener)
 		{
 			listener = static_cast<Listener*>
 				(mListenerFactory->createInstance("ListenerSingleton", NULL));
@@ -216,7 +216,7 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		return Listener::getSingletonPtr();
+			return Listener::getSingletonPtr();
 	}
 
 
@@ -225,15 +225,15 @@ namespace vega {
 		bool operator()(const Sound *sound1, const Sound *sound2)const
 		{
 			// First we see if either sound has stopped and not given up its source
-			if(sound1->isStopped() && !sound2->isStopped())
+			if (sound1->isStopped() && !sound2->isStopped())
 				return true;
-			else if(sound2->isStopped() && !sound1->isStopped())
+			else if (sound2->isStopped() && !sound1->isStopped())
 				return false;
-			else if(sound1->isStopped() && sound2->isStopped())
+			else if (sound1->isStopped() && sound2->isStopped())
 				return sound1 < sound2;
 
 			// If they are both playing we'll test priority
-			if(sound1->getPriority() < sound2->getPriority())
+			if (sound1->getPriority() < sound2->getPriority())
 				return true;
 			else if (sound1->getPriority() > sound2->getPriority())
 				return false;
@@ -242,7 +242,7 @@ namespace vega {
 			// distance from the listener
 			float distSound1, distSound2;
 			Ogre::Vector3 listenerPos = Listener::getSingleton().getDerivedPosition();
-			if(sound1->isRelativeToListener())
+			if (sound1->isRelativeToListener())
 			{
 				distSound1 = sound1->getPosition().length();
 			}
@@ -251,7 +251,7 @@ namespace vega {
 				distSound1 = sound1->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(sound2->isRelativeToListener())
+			if (sound2->isRelativeToListener())
 			{
 				distSound2 = sound1->getPosition().length();
 			}
@@ -260,9 +260,9 @@ namespace vega {
 				distSound2 = sound2->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(distSound1 > distSound2)
+			if (distSound1 > distSound2)
 				return true;
-			else if(distSound1 < distSound2)
+			else if (distSound1 < distSound2)
 				return false;
 
 			// If they are at the same priority and distance from the listener then
@@ -277,7 +277,7 @@ namespace vega {
 		bool operator()(const Sound *sound1, const Sound *sound2)const
 		{
 			// First we'll test priority
-			if(sound1->getPriority() > sound2->getPriority())
+			if (sound1->getPriority() > sound2->getPriority())
 				return true;
 			else if (sound1->getPriority() < sound2->getPriority())
 				return false;
@@ -286,7 +286,7 @@ namespace vega {
 			// distance from the listener
 			float distSound1, distSound2;
 			Ogre::Vector3 listenerPos = Listener::getSingleton().getDerivedPosition();
-			if(sound1->isRelativeToListener())
+			if (sound1->isRelativeToListener())
 			{
 				distSound1 = sound1->getPosition().length();
 			}
@@ -295,7 +295,7 @@ namespace vega {
 				distSound1 = sound1->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(sound2->isRelativeToListener())
+			if (sound2->isRelativeToListener())
 			{
 				distSound2 = sound1->getPosition().length();
 			}
@@ -304,9 +304,9 @@ namespace vega {
 				distSound2 = sound2->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(distSound1 < distSound2)
+			if (distSound1 < distSound2)
 				return true;
-			else if(distSound1 > distSound2)
+			else if (distSound1 > distSound2)
 				return false;
 
 			// If they are at the same priority and distance from the listener then
@@ -322,10 +322,10 @@ namespace vega {
 		mLastDeltaTime = _time;
 
 		// If there are sounds to delete, do so now.
-		if(mSoundsToDestroy.size() > 0) {
-		  performDeleteQueueCycle();
+		if (mSoundsToDestroy.size() > 0) {
+			performDeleteQueueCycle();
 		}
-		
+
 		updateSounds();
 		return true;
 	}
@@ -333,12 +333,12 @@ namespace vega {
 	void SoundManager::setDopplerFactor(float dopplerFactor)
 	{
 		// Negative values are invalid
-		if(dopplerFactor < 0) return;
+		if (dopplerFactor < 0) return;
 
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		mDopplerFactor = dopplerFactor;
+			mDopplerFactor = dopplerFactor;
 		alDopplerFactor(mDopplerFactor);
 		CheckError(alGetError(), "Failed to set Doppler Factor");
 	}
@@ -346,31 +346,31 @@ namespace vega {
 	void SoundManager::setSpeedOfSound(float speedOfSound)
 	{
 		// Negative values are invalid
-		if(speedOfSound < 0) return;
+		if (speedOfSound < 0) return;
 
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		mSpeedOfSound = speedOfSound;
+			mSpeedOfSound = speedOfSound;
 		alSpeedOfSound(mSpeedOfSound);
 		CheckError(alGetError(), "Failed to set Speed of Sound");
 	}
 
-  float SoundManager::getCullDistance() const {
-    return mCullDistance;
-  }
+	float SoundManager::getCullDistance() const {
+		return mCullDistance;
+	}
 
-  void SoundManager::setCullDistance(float distance) {
-    // Assign new cull distance.
-    mCullDistance = distance;
+	void SoundManager::setCullDistance(float distance) {
+		// Assign new cull distance.
+		mCullDistance = distance;
 
-    // Go over all sounds.
-    for(SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
-      // Perform a cull cycle on the sound, redoing all culls based on the 
-      // newly set cull distance.
-      performSoundCull(i->second);
-    }
-  }
+		// Go over all sounds.
+		for (SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
+			// Perform a cull cycle on the sound, redoing all culls based on the 
+			// newly set cull distance.
+			performSoundCull(i->second);
+		}
+	}
 
 	Ogre::StringVector SoundManager::getDeviceList()
 	{
@@ -383,24 +383,24 @@ namespace vega {
 		** two NULL characters, so we can cast the list into a string and it
 		** will automatically stop at the first NULL that it sees, then we
 		** can move the pointer ahead by the lenght of that string + 1 and we
-		** will be at the begining of the next string.  Once we hit an empty 
+		** will be at the begining of the next string.  Once we hit an empty
 		** string we know that we've found the double NULL that terminates the
 		** list and we can stop there.
 		*/
-		while(*deviceList != '\0')
+		while (*deviceList != '\0')
 		{
 			try
 			{
 				ALCdevice *device = alcOpenDevice(deviceList);
 
-				if(device)
+				if (device)
 				{
-				  CheckError(alcGetError(device), "Unable to open device");
+					CheckError(alcGetError(device), "Unable to open device");
 
 					// Device seems to be valid
 					ALCcontext *context = alcCreateContext(device, NULL);
 					CheckError(alcGetError(device), "Unable to create context");
-					if(context)
+					if (context)
 					{
 						// Context seems to be valid
 						alcMakeContextCurrent(context);
@@ -412,13 +412,14 @@ namespace vega {
 						CheckError(alcGetError(device), "Unable to destroy context");
 					}
 					alcCloseDevice(device);
-				}else{
-				  // There is a chance that because the device could not be
-				  // opened, the error flag was set, clear it.
-				  alcGetError(device);
+				}
+				else{
+					// There is a chance that because the device could not be
+					// opened, the error flag was set, clear it.
+					alcGetError(device);
 				}
 			}
-			catch(...)
+			catch (...)
 			{
 				// Don't die here, we'll just skip this device.
 			}
@@ -434,7 +435,7 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		return FormatMapIterator(mSupportedFormats.begin(), mSupportedFormats.end());
+			return FormatMapIterator(mSupportedFormats.begin(), mSupportedFormats.end());
 	}
 
 	const FormatData* SoundManager::retrieveFormatData(AudioFormat format) const
@@ -442,8 +443,8 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		FormatMap::const_iterator itr = mSupportedFormats.find(format);
-		if(itr != mSupportedFormats.end())
+			FormatMap::const_iterator itr = mSupportedFormats.find(format);
+		if (itr != mSupportedFormats.end())
 			return itr->second;
 		else
 			return 0;
@@ -454,30 +455,30 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		Ogre::LogManager::getSingleton().logMessage(" === Setting X-RAM Buffer Mode");
-		if(bufferMode == xRamHardware)
+			Ogre::LogManager::getSingleton().logMessage(" === Setting X-RAM Buffer Mode");
+		if (bufferMode == xRamHardware)
 		{
 			ALint size;
 			alGetBufferi(*buffers, AL_SIZE, &size);
 			// If the buffer won't fit in xram, return false
-			if(mXRamSize < (mXRamFree + size)) return AL_FALSE;
+			if (mXRamSize < (mXRamFree + size)) return AL_FALSE;
 
 			Ogre::LogManager::getSingleton().logMessage(" === Allocating " + Ogre::StringConverter::toString(size) +
 				" bytes of X-RAM");
 		}
 		// Try setting the buffer mode, if it fails return false
-		if(mSetXRamMode(numBuffers, buffers, bufferMode) == AL_FALSE) return AL_FALSE;
+		if (mSetXRamMode(numBuffers, buffers, bufferMode) == AL_FALSE) return AL_FALSE;
 
 		mXRamFree = alGetEnumValue("AL_EAX_RAM_FREE");
 		return AL_TRUE;
 	}
-	
+
 	ALenum SoundManager::eaxGetBufferMode(BufferRef buffer, ALint *reserved)
 	{
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		return mGetXRamMode(buffer, reserved);
+			return mGetXRamMode(buffer, reserved);
 	}
 
 	void SoundManager::_removeBufferRef(const std::string& bufferName)
@@ -485,7 +486,7 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		mSoundFactory->_removeBufferRef(bufferName);
+			mSoundFactory->_removeBufferRef(bufferName);
 	}
 
 	void SoundManager::_addBufferRef(const std::string& bufferName, BufferRef buffer)
@@ -493,7 +494,7 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		mSoundFactory->_addBufferRef(bufferName, buffer);
+			mSoundFactory->_addBufferRef(bufferName, buffer);
 	}
 
 	SourceRef SoundManager::_requestSource(Sound *sound)
@@ -501,16 +502,16 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		if(sound->getSource() != AL_NONE)
-		{
-			// This sound already has a source, so we'll just return the same one
-			return sound->getSource();
-		}
+			if (sound->getSource() != AL_NONE)
+			{
+				// This sound already has a source, so we'll just return the same one
+				return sound->getSource();
+			}
 
 		SoundList::iterator soundItr;
-		for(soundItr = mQueuedSounds.begin(); soundItr != mQueuedSounds.end(); ++soundItr)
+		for (soundItr = mQueuedSounds.begin(); soundItr != mQueuedSounds.end(); ++soundItr)
 		{
-			if((*soundItr) == sound)
+			if ((*soundItr) == sound)
 			{
 				// This sound has already requested a source
 				return AL_NONE;
@@ -518,7 +519,7 @@ namespace vega {
 			}
 		}
 
-		if(!mSourcePool.empty())
+		if (!mSourcePool.empty())
 		{
 			mActiveSounds.push_back(sound);
 			SourceRef source = mSourcePool.front();
@@ -526,14 +527,14 @@ namespace vega {
 			return source;
 		}
 		// Beefed up check. Wasn't safe before.
-		else if(!mActiveSounds.empty())
+		else if (!mActiveSounds.empty())
 		{
 			Sound *activeSound = mActiveSounds.front();
 			Ogre::Vector3 listenerPos = Listener::getSingleton().getDerivedPosition();
 			float distSound = sound->getDerivedPosition().distance(listenerPos);
 			float distActiveSound = activeSound->getDerivedPosition().distance(listenerPos);
 
-			if(sound->getPriority() > activeSound->getPriority() ||
+			if (sound->getPriority() > activeSound->getPriority() ||
 				sound->getPriority() == activeSound->getPriority() && distSound < distActiveSound)
 			{
 				activeSound->pause();
@@ -560,27 +561,27 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		bool soundFound = false;
+			bool soundFound = false;
 		SoundList::iterator soundItr;
 		// Look for the sound in the active sounds list.
-		for(soundItr = mActiveSounds.begin(); soundItr != mActiveSounds.end(); ++soundItr) {
-		  // If we've found the sound.
-		  if((*soundItr) == sound) {
-		    // Erase and flag as found.
-		    mActiveSounds.erase(soundItr);
-		    soundFound = true;
-		    break;
-		  }
+		for (soundItr = mActiveSounds.begin(); soundItr != mActiveSounds.end(); ++soundItr) {
+			// If we've found the sound.
+			if ((*soundItr) == sound) {
+				// Erase and flag as found.
+				mActiveSounds.erase(soundItr);
+				soundFound = true;
+				break;
+			}
 		}
 
 		// If it's not in the active list, check the queued list.
-		if(!soundFound)	{
-		  for(soundItr = mQueuedSounds.begin(); soundItr != mQueuedSounds.end(); ++soundItr) {
-		    if((*soundItr) == sound) {
-		      mQueuedSounds.erase(soundItr);
-		      break;
-		    }
-		  }
+		if (!soundFound)	{
+			for (soundItr = mQueuedSounds.begin(); soundItr != mQueuedSounds.end(); ++soundItr) {
+				if ((*soundItr) == sound) {
+					mQueuedSounds.erase(soundItr);
+					break;
+				}
+			}
 		}
 
 		// At this stage we're going to assume that we have found the sound in either
@@ -589,27 +590,28 @@ namespace vega {
 		// sound in line for a source (a sound in the queued sounds list).
 		SourceRef source = sound->getSource();
 		// If the sound released had a valid source.
-		if(source != AL_NONE) {
-		  // Unbind the buffer from the source. This also decrements the reference count, 
-		  // which needs to be done before we try to release the buffer. In any case we
-		  // want the next sound to have a clean buffer.
-		  alSourcei(source, AL_BUFFER, 0);
-		  CheckError(alGetError(), "Failed to unbind buffer from source.");
+		if (source != AL_NONE) {
+			// Unbind the buffer from the source. This also decrements the reference count, 
+			// which needs to be done before we try to release the buffer. In any case we
+			// want the next sound to have a clean buffer.
+			alSourcei(source, AL_BUFFER, 0);
+			CheckError(alGetError(), "Failed to unbind buffer from source.");
 
-		  // If there are queued sounds.
-		  if(!mQueuedSounds.empty()) {
-		    // Give the first queued sound the source.
-		    Sound *queuedSound = mQueuedSounds.front();
-		    mQueuedSounds.erase(mQueuedSounds.begin());
-		    
-		    queuedSound->setSource(source);
-		    queuedSound->play();
-		    mActiveSounds.push_back(queuedSound);
+			// If there are queued sounds.
+			if (!mQueuedSounds.empty()) {
+				// Give the first queued sound the source.
+				Sound *queuedSound = mQueuedSounds.front();
+				mQueuedSounds.erase(mQueuedSounds.begin());
 
-		    // No queued sounds.
-		  }else{
-		    mSourcePool.push(source);
-		  }
+				queuedSound->setSource(source);
+				queuedSound->play();
+				mActiveSounds.push_back(queuedSound);
+
+				// No queued sounds.
+			}
+			else{
+				mSourcePool.push(source);
+			}
 		}
 
 		return AL_NONE;
@@ -617,48 +619,49 @@ namespace vega {
 
 	int SoundManager::createSourcePool()
 	{
-	  SourceRef source;
+		SourceRef source;
 
-	  // Starting with no sources.
-	  int numSources = 0;
-	  // So 
-	  while(alGetError() == AL_NO_ERROR && numSources < mMaxNumSources) {
-	    // Clear source handle and generate the source.
-	    source = 0;
-	    alGenSources(1, &source);
+		// Starting with no sources.
+		int numSources = 0;
+		// So 
+		while (alGetError() == AL_NO_ERROR && numSources < mMaxNumSources) {
+			// Clear source handle and generate the source.
+			source = 0;
+			alGenSources(1, &source);
 
-	    // If source creation worked.
-	    if(source != 0) {
-	      // Store the source in the list and keep track of count.
-	      mSourcePool.push(source);
-	      numSources++;
-	      
-	    }else{
-	      // Failed to generate all required sources. Clear state.
-	      alGetError();
-	      // Discontinue generation of sources.
-	      break;
-	    }
-	  }
-	  
-	  // If we could not generate all necessary sources.
-	  if(numSources != mMaxNumSources) {
-	    // Notify the user that they are limited.
-	    Ogre::LogManager::getSingleton().logMessage("vega: Warning: Failed to generate all required sources.");
-	  }
+			// If source creation worked.
+			if (source != 0) {
+				// Store the source in the list and keep track of count.
+				mSourcePool.push(source);
+				numSources++;
 
-	  return numSources;
+			}
+			else{
+				// Failed to generate all required sources. Clear state.
+				alGetError();
+				// Discontinue generation of sources.
+				break;
+			}
+		}
+
+		// If we could not generate all necessary sources.
+		if (numSources != mMaxNumSources) {
+			// Notify the user that they are limited.
+			Ogre::LogManager::getSingleton().logMessage("vega: Warning: Failed to generate all required sources.");
+		}
+
+		return numSources;
 	}
 
 	void SoundManager::initializeDevice(const std::string& deviceName)
 	{
 		/*
 		** OpenAL versions prior to 1.0 DO NOT support device enumeration, so we
-		** need to test the current version and decide if we should try to find 
+		** need to test the current version and decide if we should try to find
 		** an appropriate device or if we should just open the default device.
 		*/
 		bool deviceInList = false;
-		if(mMajorVersion >= 1 && mMinorVersion >= 1)
+		if (mMajorVersion >= 1 && mMinorVersion >= 1)
 		{
 			Ogre::LogManager::getSingleton().logMessage("Available Devices");
 			Ogre::LogManager::getSingleton().logMessage("-----------------");
@@ -667,7 +670,7 @@ namespace vega {
 			Ogre::StringVector deviceList = getDeviceList();
 			std::stringstream ss;
 			Ogre::StringVector::iterator deviceItr;
-			for(deviceItr = deviceList.begin(); deviceItr != deviceList.end() && (*deviceItr).compare("") != 0; ++deviceItr)
+			for (deviceItr = deviceList.begin(); deviceItr != deviceList.end() && (*deviceItr).compare("") != 0; ++deviceItr)
 			{
 				deviceInList = (*deviceItr).compare(deviceName) == 0;
 				ss << " * " << (*deviceItr);
@@ -697,41 +700,41 @@ namespace vega {
 		// Check for Supported Formats
 		ALenum eBufferFormat = 0;
 		eBufferFormat = alGetEnumValue("AL_FORMAT_MONO16");
-		if(eBufferFormat) mSupportedFormats[MONO_CHANNEL] = 
+		if (eBufferFormat) mSupportedFormats[MONO_CHANNEL] =
 			new FormatData(eBufferFormat, "AL_FORMAT_MONO16", "Monophonic Sound");
 		eBufferFormat = alGetEnumValue("AL_FORMAT_STEREO16");
-		if(eBufferFormat) mSupportedFormats[STEREO_CHANNEL] = 
+		if (eBufferFormat) mSupportedFormats[STEREO_CHANNEL] =
 			new FormatData(eBufferFormat, "AL_FORMAT_STEREO16", "Stereo Sound");
 		eBufferFormat = alGetEnumValue("AL_FORMAT_QUAD16");
-		if(eBufferFormat) mSupportedFormats[QUAD_CHANNEL] = 
+		if (eBufferFormat) mSupportedFormats[QUAD_CHANNEL] =
 			new FormatData(eBufferFormat, "AL_FORMAT_QUAD16", "4 Channel Sound");
 		eBufferFormat = alGetEnumValue("AL_FORMAT_51CHN16");
-		if(eBufferFormat) mSupportedFormats[MULTI_CHANNEL_51] = 
+		if (eBufferFormat) mSupportedFormats[MULTI_CHANNEL_51] =
 			new FormatData(eBufferFormat, "AL_FORMAT_51CHN16", "5.1 Surround Sound");
 		eBufferFormat = alGetEnumValue("AL_FORMAT_61CHN16");
-		if(eBufferFormat) mSupportedFormats[MULTI_CHANNEL_61] = 
+		if (eBufferFormat) mSupportedFormats[MULTI_CHANNEL_61] =
 			new FormatData(eBufferFormat, "AL_FORMAT_61CHN16", "6.1 Surround Sound");
 		eBufferFormat = alGetEnumValue("AL_FORMAT_71CHN16");
-		if(eBufferFormat) mSupportedFormats[MULTI_CHANNEL_71] = 
+		if (eBufferFormat) mSupportedFormats[MULTI_CHANNEL_71] =
 			new FormatData(eBufferFormat, "AL_FORMAT_71CHN16", "7.1 Surround Sound");
 
 		// Log supported formats
 		FormatMapIterator itr = getSupportedFormatIterator();
 		Ogre::LogManager::getSingleton().logMessage("Supported Formats");
 		Ogre::LogManager::getSingleton().logMessage("-----------------");
-		while(itr.hasMoreElements())
+		while (itr.hasMoreElements())
 		{
-			Ogre::LogManager::getSingleton().logMessage(" * " + 
+			Ogre::LogManager::getSingleton().logMessage(" * " +
 				(itr.peekNextValue()->formatName) + ", " + itr.peekNextValue()->formatDescription);
 			itr.getNext();
 		}
 
 		// Check for EAX Support
 		std::stringbuf versionString;
-		for(int version = 5; version >= 2; version--)
+		for (int version = 5; version >= 2; version--)
 		{
-			versionString.str("EAX"+Ogre::StringConverter::toString(version)+".0");
-			if(alIsExtensionPresent(versionString.str().data()) == AL_TRUE)
+			versionString.str("EAX" + Ogre::StringConverter::toString(version) + ".0");
+			if (alIsExtensionPresent(versionString.str().data()) == AL_TRUE)
 			{
 				mEAXSupport = true;
 				mEAXVersion = version;
@@ -742,13 +745,13 @@ namespace vega {
 		}
 
 		// Check for EFX Support
-		if(alcIsExtensionPresent(mDevice, "ALC_EXT_EFX") == AL_TRUE)
+		if (alcIsExtensionPresent(mDevice, "ALC_EXT_EFX") == AL_TRUE)
 		{
 			Ogre::LogManager::getSingleton().logMessage("EFX Extension Found");
 		}
 
 		// Check for X-RAM extension
-		if(alIsExtensionPresent("EAX-RAM") == AL_TRUE)
+		if (alIsExtensionPresent("EAX-RAM") == AL_TRUE)
 		{
 			mXRAMSupport = true;
 			Ogre::LogManager::getSingleton().logMessage("X-RAM Detected");
@@ -757,7 +760,7 @@ namespace vega {
 			EAXGetBufferMode getXRamMode = (EAXGetBufferMode)alGetProcAddress("EAXGetBufferMode");
 			mXRamSize = alGetEnumValue("AL_EAX_RAM_SIZE");
 			mXRamFree = alGetEnumValue("AL_EAX_RAM_FREE");
-			
+
 			Ogre::LogManager::getSingleton().logMessage("X-RAM: " + Ogre::StringConverter::toString(mXRamSize) +
 				" (" + Ogre::StringConverter::toString(mXRamFree) + " free)");
 		}
@@ -771,31 +774,31 @@ namespace vega {
 		// Lock Mutex
 		OGREAL_LOCK_AUTO_MUTEX
 
-		// Update the Sound and Listeners if necessary	
-		  for(SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
-		    // Perform a sound update.
-		    i->second->updateSound();
-		    
-		    // If culling is enabled, perform cull on the sound.
-		    if(mCullDistance > 0.0) {
-		      performSoundCull(i->second);
-		    }
-		  }
+			// Update the Sound and Listeners if necessary	
+			for (SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
+				// Perform a sound update.
+				i->second->updateSound();
+
+				// If culling is enabled, perform cull on the sound.
+				if (mCullDistance > 0.0) {
+					performSoundCull(i->second);
+				}
+			}
 
 		Listener::getSingleton().updateListener();
 
 		// Before sorting, lock states to use cache. Otherwise it is possible for
 		// a sound to change state in the middle of sorting and cause a segmentation
 		// fault. It has happened to me on numerous occasions.
-		for(SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
-		  i->second->setStateCached(true);
+		for (SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
+			i->second->setStateCached(true);
 		}
 		// Sort the active and queued sounds
 		std::sort(mActiveSounds.begin(), mActiveSounds.end(), SortLowToHigh());
 		std::sort(mQueuedSounds.begin(), mQueuedSounds.end(), SortHighToLow());
 		// Revert back to live states.
-		for(SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
-		  i->second->setStateCached(false);
+		for (SoundMap::iterator i = mSoundMap.begin(); i != mSoundMap.end(); ++i) {
+			i->second->setStateCached(false);
 		}
 
 		// Check to see if we should sacrifice any sounds
@@ -804,14 +807,14 @@ namespace vega {
 
 	void SoundManager::updateSourceAllocations()
 	{
-		while(!mQueuedSounds.empty() && !mActiveSounds.empty())
+		while (!mQueuedSounds.empty() && !mActiveSounds.empty())
 		{
 			Sound *queuedSound = mQueuedSounds.front();
 			Sound *activeSound = mActiveSounds.front();
 
 			float distQueuedSound, distActiveSound;
 			Ogre::Vector3 listenerPos = Listener::getSingleton().getDerivedPosition();
-			if(queuedSound->isRelativeToListener())
+			if (queuedSound->isRelativeToListener())
 			{
 				distQueuedSound = queuedSound->getPosition().length();
 			}
@@ -820,7 +823,7 @@ namespace vega {
 				distQueuedSound = queuedSound->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(activeSound->isRelativeToListener())
+			if (activeSound->isRelativeToListener())
 			{
 				distActiveSound = activeSound->getPosition().length();
 			}
@@ -829,9 +832,9 @@ namespace vega {
 				distActiveSound = activeSound->getDerivedPosition().distance(listenerPos);
 			}
 
-			if(queuedSound->getPriority() > activeSound->getPriority() ||
-			   queuedSound->getPriority() == activeSound->getPriority() && 
-			   distQueuedSound < distActiveSound)
+			if (queuedSound->getPriority() > activeSound->getPriority() ||
+				queuedSound->getPriority() == activeSound->getPriority() &&
+				distQueuedSound < distActiveSound)
 			{
 				// Remove the sounds from their respective lists
 				mActiveSounds.erase(mActiveSounds.begin());
@@ -859,74 +862,75 @@ namespace vega {
 		}
 	}
 
-  void SoundManager::performDeleteQueueCycle() {
-    // Destroy any sounds that were queued last frame
-    SoundList::iterator soundItr = mSoundsToDestroy.begin();
-    while(!mSoundsToDestroy.empty())
-      {
-	// Grab the pointer to the sound.
-	Sound* sound = *soundItr;
+	void SoundManager::performDeleteQueueCycle() {
+		// Destroy any sounds that were queued last frame
+		SoundList::iterator soundItr = mSoundsToDestroy.begin();
+		while (!mSoundsToDestroy.empty())
+		{
+			// Grab the pointer to the sound.
+			Sound* sound = *soundItr;
 
-	// If the sound has stored gain for distance culling.
-	SoundGainMap::iterator soundGainItr = mSoundGainMap.find(sound);
-	if(soundGainItr != mSoundGainMap.end()) {
-	  // Delete it along with the sound.
-	  mSoundGainMap.erase(soundGainItr);
+			// If the sound has stored gain for distance culling.
+			SoundGainMap::iterator soundGainItr = mSoundGainMap.find(sound);
+			if (soundGainItr != mSoundGainMap.end()) {
+				// Delete it along with the sound.
+				mSoundGainMap.erase(soundGainItr);
+			}
+
+			// Free sound instance.
+			delete sound;
+			// Remove from sound list.
+			soundItr = mSoundsToDestroy.erase(soundItr);
+		}
 	}
 
-	// Free sound instance.
-	delete sound;
-	// Remove from sound list.
-	soundItr = mSoundsToDestroy.erase(soundItr);
-      }
-  }
+	void SoundManager::performSoundCull(Sound* sound) {
+		// Get the distance between the sound and the listener.
+		Ogre::Vector3 soundToListener = sound->getDerivedPosition() - getListener()->getPosition();
+		// Attempt to get the iterator for the sound from the cull map.
+		SoundGainMap::iterator soundGainItr = mSoundGainMap.find(sound);
 
-  void SoundManager::performSoundCull(Sound* sound) {
-    // Get the distance between the sound and the listener.
-    Ogre::Vector3 soundToListener = sound->getDerivedPosition() - getListener()->getPosition();
-    // Attempt to get the iterator for the sound from the cull map.
-    SoundGainMap::iterator soundGainItr = mSoundGainMap.find(sound);
+		// If the sound is further than the cull distance from the listener and
+		// is not already culled, cull it.
+		if (soundToListener.length() > mCullDistance &&
+			soundGainItr == mSoundGainMap.end()) {
+			cullSound(sound);
 
-    // If the sound is further than the cull distance from the listener and
-    // is not already culled, cull it.
-    if(soundToListener.length() > mCullDistance &&
-       soundGainItr == mSoundGainMap.end()) {
-      cullSound(sound);
+			// Or if the sound is closer than the cull distance to the listener,
+			// or the culling has been turned off but the sound is culled, uncull.
+		}
+		else if ((soundToListener.length() <= mCullDistance ||
+			mCullDistance <= 0.0) &&
+			soundGainItr != mSoundGainMap.end()) {
+			uncullSound(soundGainItr);
+		}
+	}
 
-      // Or if the sound is closer than the cull distance to the listener,
-      // or the culling has been turned off but the sound is culled, uncull.
-    }else if((soundToListener.length() <= mCullDistance || 
-	      mCullDistance <= 0.0) &&
-	     soundGainItr != mSoundGainMap.end()) {
-      uncullSound(soundGainItr);
-    }
-  }
+	// Callers of this function must guarantee that the sound is valid and not 
+	// already culled.
+	void SoundManager::cullSound(Sound* sound) {
+		// Add to the culling map.
+		mSoundGainMap[sound] = sound->getGain();
+		// Set gain of the sound to zero.
+		sound->setGain(0.0);
+	}
 
-  // Callers of this function must guarantee that the sound is valid and not 
-  // already culled.
-  void SoundManager::cullSound(Sound* sound) {
-    // Add to the culling map.
-    mSoundGainMap[sound] = sound->getGain();
-    // Set gain of the sound to zero.
-    sound->setGain(0.0);
-  }
+	// Callers of this function must guarantee that the sound is valid and that
+	// it is already culled (ie. has an entry in the sound gain map.
+	void SoundManager::uncullSound(Sound* sound) {
+		// Attempt to find the sound.
+		SoundGainMap::iterator i = mSoundGainMap.find(sound);
+		// If the sound exists, uncull it.
+		if (i != mSoundGainMap.end()) {
+			uncullSound(i);
+		}
+	}
 
-  // Callers of this function must guarantee that the sound is valid and that
-  // it is already culled (ie. has an entry in the sound gain map.
-  void SoundManager::uncullSound(Sound* sound) {
-    // Attempt to find the sound.
-    SoundGainMap::iterator i = mSoundGainMap.find(sound);
-    // If the sound exists, uncull it.
-    if(i != mSoundGainMap.end()) {
-      uncullSound(i);
-    }
-  }
-
-  void SoundManager::uncullSound(SoundGainMap::iterator& soundGainItr) {
-    // Restore the sound's gain.
-    soundGainItr->first->setGain(soundGainItr->second);
-    // Remove the entry from the gain map.
-    mSoundGainMap.erase(soundGainItr);
-  }
+	void SoundManager::uncullSound(SoundGainMap::iterator& soundGainItr) {
+		// Restore the sound's gain.
+		soundGainItr->first->setGain(soundGainItr->second);
+		// Remove the entry from the gain map.
+		mSoundGainMap.erase(soundGainItr);
+	}
 
 } // Namespace

@@ -95,21 +95,30 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	void EngineGlobals::Initialize()
 	{
+		Debug("[StartupSystems]mResBL");
+		if (mResBL)
+			mResBL->Initialize();
+		else
+			Warning("[StartupSystems]ResBL not Initialize");
+
 		Debug("[StartupSystems]physics");
 		if (physics)
 			physics->initialize();
 		else
 			Warning("[StartupSystems]physics not Initialize");
+
 		Debug("[StartupSystems]render");
 		if (render)
 			render->Initialize();
 		else
 			Warning("[StartupSystems]render not Initialize");
+
 		Debug("[StartupSystems]gui");
 		if (gui)
 			gui->Initialize();
 		else
 			Warning("[StartupSystems]gui not Initialize");
+
 		if (console)
 			console->Initialize();
 		else
@@ -305,7 +314,6 @@ namespace vega
 		window->Listener();
 		input->createFrameListener();
 		mGRoot->addFrameListener(updater);
-		this->BackgroundLoadInit();
 	}
 	//-------------------------------------------------------------------------------------
 	bool EngineGlobals::Setup(void)

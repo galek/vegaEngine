@@ -1,15 +1,15 @@
 /* VG CONFIDENTIAL
-* VegaEngine(TM) Package 0.5.5.0
+* VegaEngine(TM) Package 0.5.6.0
 * Copyright (C) 2009-2014 Vega Group Ltd.
 * Author: Nick Galko
 * E-mail: nick.galko@vegaengine.com
 * All Rights Reserved.
 */
-// Last Update:13.07.15
+// Last Update:18.07.15
 // BugFix:изменил функцию установки типа света,добавил функцию добавления дальности прорисовки
 #include "EnginePrivate.h"
 #include "ActorLight.h"
-#include "OgreWireBoundingBox.h"
+#include "SceneManager.h"
 
 namespace vega
 {
@@ -17,7 +17,8 @@ namespace vega
 	ActorLight::ActorLight(std::string _mName, LightTypes _type, Ogre::Vector3 _pos, Ogre::Vector3 _rot)
 	{
 		mName = "ActorLight_" + _mName;
-
+		m_actDesc = ActorDescription::AD_LIGHT;
+		
 		mLight = GetEngine()->mGSceneMgr->createLight(mName);
 		mNode = GetEngine()->mGSceneMgr->getRootSceneNode()->createChildSceneNode(mName);
 
@@ -64,7 +65,14 @@ namespace vega
 	//-------------------------------------------------------------------------------------
 	ActorLight::~ActorLight()
 	{
-		SAFE_DELETE(mLight);
+		mNode->detachAllObjects();
+		mNode->getCreator()->destroyLight(mLight);
+		mNode->removeAndDestroyAllChildren();
+		mNode->getCreator()->getRootSceneNode()->removeAndDestroyChild(mNode->getName());
+
+		mLight = nullptr;
+
+		mNode = nullptr;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -230,15 +238,6 @@ namespace vega
 			return;
 		}
 		mLight->setSpecularColour(_col);
-	}
-
-	//-------------------------------------------------------------------------------------
-	void ActorLight::_updateRenderQueue(Ogre::RenderQueue *queue) {
-		if (!mLight)
-		{
-			Warning("mLight is null,in function:%s", __FUNCTION__);
-			return;
-		}
 	}
 
 	//-------------------------------------------------------------------------------------

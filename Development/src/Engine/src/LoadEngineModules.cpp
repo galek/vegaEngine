@@ -9,15 +9,8 @@
 
 
 //Modules
-#ifndef ENGINE_DLL_LOADING_PLUGINS
 #include "../../BulletPhysics/inc/VBulletPhysics.h"
-#if ENGINE_PLATFORM == ENGINE_PLATFORM_WINDOWS
-#pragma comment(lib,"BulletPhysics.lib")
-
 #include "../../AudioAL/inc/AudioAL.h"
-#pragma comment(lib,"AudioAL.lib")
-#endif
-#endif
 
 namespace vega
 {

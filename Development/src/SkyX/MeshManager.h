@@ -222,6 +222,9 @@ namespace vega
 		 */
 		const float getSkydomeRadius(Ogre::Camera* c) const;
 
+
+		inline void SetPosition(const Ogre::Vector3& _campos) { if (!mSceneNode) return; mSceneNode->setPosition(_campos); }
+
 	private:
 		/** Create geometry
 		 */

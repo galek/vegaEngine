@@ -43,7 +43,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -112,7 +112,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\src\xgpublic\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src\xgpublic\sys;..\depend\wxWidgets\include;..\..\src\platform;..\..\src\Common;..\..\src\Core\inc;..\..\src\AI;..\..\src\AudioAL\inc;..\..\src\Render\inc;..\..\src\Engine\inc;..\..\src\BulletPhysics\inc;..\..\external\MyGUI_3.2.0\Platforms\Ogre\OgrePlatform\include;..\..\external\MyGUI_3.2.0\MyGUIEngine\include;..\..\external\boost\;..\..\external\ogre\include;..\..\external\ogre\;..\..\external\ogre\OgreMain\include;..\..\external\OIS\includes;..\depend\wxWidgets\lib\vc_lib\mswd;..\depend\wxWidgets\contrib\include\;..\src\cgSys;..\depend\Visual Leak Detector\include;..\depend\wxWidgets\include\msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XGPUBLIC_EXPORTS;XG_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>

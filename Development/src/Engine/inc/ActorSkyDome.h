@@ -12,7 +12,7 @@ namespace vega
 	class ENGINE_API ActorSkyDome:public Actor
 	{
 	public:
-		ActorSkyDome(const char* _material="DefMat");
+		ActorSkyDome(std::string _material = "DefMat");
 		virtual ~ActorSkyDome();
 	};
 }

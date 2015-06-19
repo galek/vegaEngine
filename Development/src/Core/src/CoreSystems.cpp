@@ -70,6 +70,8 @@ namespace vega
 		GetDataFromSettingsFile();
 
 		mFS = new FileSystem(mEngineConfig);
+
+		mResBL = new ResourceGroupBackgroundLoader(this, 1);
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -135,16 +137,6 @@ namespace vega
 		else
 		{
 			ErrorF("Render not selected. Shutdown");
-		}
-	}
-
-	//-------------------------------------------------------------------------------------
-	void CoreSystems::BackgroundLoadInit() {
-		static bool firstStart = true;
-		if (firstStart)
-		{
-			mResBL = new ResourceGroupBackgroundLoader(this, 1);
-			firstStart = false;
 		}
 	}
 

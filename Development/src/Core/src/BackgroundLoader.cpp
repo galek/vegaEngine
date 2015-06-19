@@ -6,6 +6,17 @@ namespace vega
 	ResourceGroupBackgroundLoader::ResourceGroupBackgroundLoader(SubSystemsManager* _systems, DWORD loadingIntervalMs)
 		: mLoadingIntervalMs(loadingIntervalMs)
 		, systems(_systems)
+		, b_Initialized(false)
+	{
+	}
+
+
+	ResourceGroupBackgroundLoader::~ResourceGroupBackgroundLoader()
+	{
+		Destroy();
+	}
+
+	void ResourceGroupBackgroundLoader::Initialize()
 	{
 		Ogre::WorkQueue* wq = systems->mGRoot->getWorkQueue();
 		mWorkQueueChannel = wq->getChannel("core/ResourceGroupBackgroundLoader");
@@ -13,11 +24,12 @@ namespace vega
 		wq->addResponseHandler(mWorkQueueChannel, this);
 
 		systems->mGRoot->addFrameListener(this);
+		b_Initialized = true;
 	}
 
-
-	ResourceGroupBackgroundLoader::~ResourceGroupBackgroundLoader()
+	void ResourceGroupBackgroundLoader::Destroy()
 	{
+		b_Initialized = false;
 		systems->mGRoot->removeFrameListener(this);
 
 		Ogre::WorkQueue* wq = systems->mGRoot->getWorkQueue();
@@ -26,10 +38,9 @@ namespace vega
 		wq->removeResponseHandler(mWorkQueueChannel, this);
 	}
 
-
 	void ResourceGroupBackgroundLoader::BackgroundLoadResourceGroup(const Ogre::String& resGroupName, const Ogre::String& location, Listener* listener)
 	{
-		if (mResGroupRequestQueue.empty())
+		if (mResGroupRequestQueue.empty() || !b_Initialized)
 			return;
 		for (auto it = mResGroupRequestQueue.begin();
 		it != mResGroupRequestQueue.end(); ++it)
@@ -61,6 +72,9 @@ namespace vega
 
 	void ResourceGroupBackgroundLoader::BackgroundUnLoadResourceGroup(const Ogre::String& resGroupName, Listener* listener)
 	{
+		if (!b_Initialized)
+			return;
+
 		for (ResGroupRequestQueue::iterator requestQueueItor = mResGroupRequestQueue.begin();
 		requestQueueItor != mResGroupRequestQueue.end(); ++requestQueueItor)
 		{
@@ -96,7 +110,7 @@ namespace vega
 
 	bool ResourceGroupBackgroundLoader::Loading()
 	{
-		if (mResGroupRequestQueue.empty())
+		if (mResGroupRequestQueue.empty() || !b_Initialized)
 		{
 			return false;
 		}
@@ -209,6 +223,9 @@ namespace vega
 
 	Ogre::WorkQueue::Response* ResourceGroupBackgroundLoader::handleRequest(const Ogre::WorkQueue::Request* req, const Ogre::WorkQueue* srcQ)
 	{
+		if (!b_Initialized)
+			return nullptr;
+
 		Request resreq = Ogre::any_cast<Request>(req->getData());
 
 		if (req->getAborted())
@@ -241,7 +258,7 @@ namespace vega
 
 	void ResourceGroupBackgroundLoader::handleResponse(const Ogre::WorkQueue::Response* res, const Ogre::WorkQueue* srcQ)
 	{
-		if (res->getRequest()->getAborted())
+		if (res->getRequest()->getAborted() || !b_Initialized)
 			return;
 
 		if (res->succeeded())
@@ -264,6 +281,9 @@ namespace vega
 
 	void ResourceGroupBackgroundLoader::getResourcesFromResourceGroup(bool load)
 	{
+		if (!b_Initialized)
+			return;
+
 		auto resGroupReq = mResGroupRequestQueue.front();
 		if (!resGroupReq.meshes.isNull() &&
 			!resGroupReq.meshes->empty())

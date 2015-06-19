@@ -21,13 +21,14 @@ namespace vega
 	class HydraxRttListener : public RttManager::RttListener
 	{
 	public:
-		HydraxRttListener(){}
+		HydraxRttListener();
 		HydraxRttListener(class Hydrax*_mH, class SkyX*_mSkyX);
-		~HydraxRttListener(){}
+		~HydraxRttListener();
 		void preRenderTargetUpdate(const RttManager::RttType& Rtt);
 		void postRenderTargetUpdate(const RttManager::RttType& Rtt);
 		void SetSky(SkyX*_mSkyX){ mSkyX = _mSkyX; };
 		void SetWater(Hydrax*_mHydrax){ mHydrax = _mHydrax; }
+		void SetNull();
 	private:
 		class Hydrax*mHydrax;
 		class SkyX*mSkyX;

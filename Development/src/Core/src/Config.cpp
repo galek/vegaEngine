@@ -60,7 +60,7 @@ namespace vega
 			x += " not found";
 			x += "Config::getValue";
 			//Logger currently not initilaised
-			ErrorFunction(false, x.c_str(), __FILE__, __LINE__);
+			ErrorFunction(false, x, __FILE__, __LINE__);
 			return _default;
 		}
 

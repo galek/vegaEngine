@@ -24,70 +24,64 @@
 
 namespace vega
 {
+
 	/**
 	*/
 	IBody* VBulletPhysics::createPrimitiveBoxCollision(BaseActorInterface *_actor)
 	{
-		VBody body;
-		return body.createPrimitiveBoxCollision(_actor, mWorld);
+		VBody *body = new VBody(this);
+		return body->createPrimitiveBoxCollision(_actor, mWorld);
 	}
+
 	/**
 	*/
-	IBody* VBulletPhysics::createConvex(BaseActorInterface *_actor){
-		VBody body;
-		return body.createConvex(_actor, mWorld);
-	}
-	/**
-	*/
-	IBody* VBulletPhysics::createTriangle(BaseActorInterface *_actor){
-		return NULL;
-	}
-	/**
-	*/
-	IBody* VBulletPhysics::createPrimitiveSphereCollision(BaseActorInterface *_actor)	{
-		VBody body;
-		return body.createPrimitiveSphereCollision(_actor, mWorld);
-	}
-	/**
-	*/
-	IBody* VBulletPhysics::addObject(BaseActorInterface *_actor)
+	IBody* VBulletPhysics::createConvex(BaseActorInterface *_actor)
 	{
-		if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_STATIC)
-			return createStaticGeometry(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_PRBOX)
-			return createPrimitiveBoxCollision(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_PRSPHERE)
-			return createPrimitiveSphereCollision(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_PRCAPSULE)
-			return createPrimitiveCapsuleCollision(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_CONVEX)
-			return createConvex(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_RAGGDOL)
-			return createRagdoll(_actor);
-		else if (_actor->mCollisionModel == _actor->ACTORMESH_COLLISION_TRIANGLE)
-			return createTriangle(_actor);
-		return NULL;
+		VBody *body = new VBody(this);
+		return body->createConvex(_actor, mWorld);
 	}
+
 	/**
 	*/
-	IBody* VBulletPhysics::createStaticGeometry(BaseActorInterface *_actor)	{
-		VBody body;
-		return body.createStaticGeometry(_actor, mWorld);
+	IBody* VBulletPhysics::createTriangle(BaseActorInterface *_actor)
+	{
+		TODO(__FUNCTION__);
+		return nullptr;
 	}
+
 	/**
 	*/
-	IBody* VBulletPhysics::createRagdoll(BaseActorInterface *_actor)	{
-		VBody body(this);
-		body.createRagdoll(_actor);
-		return &body;
+	IBody* VBulletPhysics::createPrimitiveSphereCollision(BaseActorInterface *_actor)	
+	{
+		VBody *body = new VBody(this);
+		return body->createPrimitiveSphereCollision(_actor, mWorld);
 	}
+
+	/**
+	*/
+	IBody* VBulletPhysics::createStaticGeometry(BaseActorInterface *_actor)
+	{
+		VBody *body = new VBody(this);
+		return body->createStaticGeometry(_actor, mWorld);
+	}
+
+	/**
+	*/
+	IBody* VBulletPhysics::createRagdoll(BaseActorInterface *_actor)
+	{
+		VBody *body = new VBody(this);
+		body->createRagdoll(_actor);
+		return body;
+	}
+
 	/**
 	*/
 	IBody* VBulletPhysics::createPrimitiveCapsuleCollision(BaseActorInterface *_actor)
 	{
-		VBody body;
-		return body.createPrimitiveCapsuleCollision(_actor, mWorld);
+		VBody *body = new VBody(this);
+		return body->createPrimitiveCapsuleCollision(_actor, mWorld);
 	}
+
 	/**
 	*/
 	VBody* VBody::createPrimitiveSphereCollision(BaseActorInterface *_actor, DynamicsWorld *world){
@@ -97,6 +91,7 @@ namespace vega
 		body->setDebugDisplayEnabled(true);
 		return this;
 	}
+
 	/**
 	*/
 	VBody*VBody::createPrimitiveCapsuleCollision(BaseActorInterface *_actor, DynamicsWorld *world){
@@ -106,6 +101,7 @@ namespace vega
 		body->setDebugDisplayEnabled(true);
 		return this;
 	}
+
 	/**
 	*/
 	VBody* VBody::createConvex(BaseActorInterface *_actor, DynamicsWorld *world){
@@ -116,6 +112,7 @@ namespace vega
 		body->setShape(_actor->mNode, convexCollisionShape, 1.0f, 1.0f, _actor->mMass, _actor->mPosition, _actor->mRotation);
 		return this;
 	}
+
 	/**
 	*/
 	VBody*	VBody::createStaticGeometry(BaseActorInterface *_actor, DynamicsWorld *world) {
@@ -132,6 +129,7 @@ namespace vega
 		//mBodies.push_back(caveBody);
 		return this;
 	}
+
 	/**
 	*/
 	VBody*VBody::createPrimitiveBoxCollision(BaseActorInterface *_actor, DynamicsWorld *world)
@@ -142,6 +140,44 @@ namespace vega
 		body->setDebugDisplayEnabled(true);
 		return this;
 	}
+
+
+	/**
+	*/
+	IBody* VBulletPhysics::addObject(BaseActorInterface *_actor)
+	{
+		IBody* value = nullptr;
+
+		switch (_actor->mCollisionModel)
+		{
+		case BaseActorInterface::ACTORMESH_COLLISION_STATIC:
+			value = createStaticGeometry(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_PRBOX:
+			value = createPrimitiveBoxCollision(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_PRSPHERE:
+			value = createPrimitiveSphereCollision(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_PRCAPSULE:
+			value = createPrimitiveCapsuleCollision(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_CONVEX:
+			value = createConvex(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_RAGGDOL:
+			value = createRagdoll(_actor);
+			break;
+		case BaseActorInterface::ACTORMESH_COLLISION_TRIANGLE:
+			value = createTriangle(_actor);
+			break;
+		default:
+			ErrorTraceName(_actor->mName);
+		}
+		return value;
+	}
+
+
 	/**
 	*/
 	VBody::VBody(VBulletPhysics*_ph)

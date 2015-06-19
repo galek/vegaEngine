@@ -155,7 +155,6 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>AiPrivate.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(OgreInclude);$(EngineALLInclude);$(ExternalInclude);libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExpandAttributedSource>true</ExpandAttributedSource>

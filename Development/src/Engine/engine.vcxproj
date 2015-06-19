@@ -33,6 +33,7 @@
     <ProjectGuid>{882F047C-66AA-4CB9-8B2B-3CF45D0EAA43}</ProjectGuid>
     <RootNamespace>Engine</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -138,14 +139,17 @@
     <Link>
       <AdditionalDependencies>user32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration)\$(ProjectName).lib</ImportLibrary>
       <AssemblyDebug>true</AssemblyDebug>
       <MinimumRequiredVersion />
+      <AdditionalLibraryDirectories>$(SolutionDir)../../Binaries/Lib/Binaries.win32/$(Configuration);$(SolutionDir)/../external/libs;$(SolutionDir)/../external/libs/$(Configuration)</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -157,7 +161,6 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ExpandAttributedSource>true</ExpandAttributedSource>
       <AssemblerOutput>All</AssemblerOutput>
@@ -165,13 +168,16 @@
     <Link>
       <AdditionalDependencies>user32.lib;Ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration);..\..\external\libs.x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../../Binaries/Lib/Binaries.win64/$(Configuration);$(SolutionDir)/../external/libs.x64;$(SolutionDir)/../external/libs.x64/$(Configuration)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <ImportLibrary>..\..\..\Binaries\Lib\Binaries.win64\$(Configuration)\$(ProjectName).lib</ImportLibrary>
       <MinimumRequiredVersion />
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -197,7 +203,6 @@
     <Link>
       <AdditionalOptions>/LTCG %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>..\..\..\Binaries\Lib\Binaries.win32\$(Configuration);..\..\external\libs\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -210,6 +215,7 @@
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
+    <ProjectReference />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -240,6 +246,7 @@
       <AssemblyDebug>true</AssemblyDebug>
       <MinimumRequiredVersion />
     </Link>
+    <ProjectReference />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
     <ClCompile>
@@ -257,13 +264,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\external\ogre\OgreMain\OgreMain.vcxproj">
+      <Project>{ae9f6baf-f30b-4aac-a22a-38f23b0c0447}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+    <ProjectReference Include="..\..\external\ois\Win32\OIS_vc9.vcxproj">
+      <Project>{9cc704cb-4956-4479-bdec-57cbc03f700e}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
     <ProjectReference Include="..\..\external\OpenAL\buildWin\OpenAL32.vcxproj">
       <Project>{70251080-6136-4f0c-ad93-0eb8a914ad75}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\AI\AI.vcxproj">
       <Project>{4b67e249-5319-4ed5-a77b-6aafeec6ec85}</Project>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <Private>true</Private>
+      <Private>false</Private>
       <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
@@ -272,6 +300,9 @@
       <Project>{63e674da-e000-4c00-8956-f25af29366b1}</Project>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\BulletPhysics\BulletPhysics.vcxproj">
       <Project>{6a281ba9-5c0e-4595-b1a7-792dcf5d2558}</Project>
@@ -287,7 +318,7 @@
       <Private>false</Private>
       <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{98923de1-ae6e-48f9-8bb4-cd92b30dccac}</Project>
@@ -299,6 +330,11 @@
     </ProjectReference>
     <ProjectReference Include="..\Hydrax\Hydrax.vcxproj">
       <Project>{5506c2ab-7dd1-47bb-a77d-eb26e52be41c}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\platform\platform.vcxproj">
       <Project>{069db063-0a5a-4cd6-a0b5-33053f328270}</Project>
@@ -312,7 +348,7 @@
       <Project>{1115c3ef-7daa-4fea-b837-6e80c94216bc}</Project>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <Private>true</Private>
+      <Private>false</Private>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
